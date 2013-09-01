@@ -32,23 +32,17 @@ srcdb.listUrls().forEach(function (url) {
     var src = srcdb.fetch(url);
     var doc = libxml.parseHtmlString(src);
     // q.find('script, header, #nav-toolbar, .page-watch, footer, #sessionMsg, head, #pageToc, #article-nav, #page-buttons').remove();
-    doc.search('script, header, #nav-toolbar, .page-watch, footer, #sessionMsg, head, #pageToc, #article-nav, #page-buttons, noscript, #page-tags').forEach(function (e) {
+    doc.search('script, #masthead, .offline-notice, #offline-dialog-content, #nav-toolbar, .page-watch, #footer, footer, #sessionMsg, head, #pageToc, #article-nav, #page-buttons, noscript, #page-tags').forEach(function (e) {
         e.remove();
     });
 
     var path = Url.parse(url).pathname;
-
-    var title = path.replace(/^\/en\/JavaScript\/Reference\//, '').replace(/^[^/]+\//, '').replace(/\//g, '.').replace(/_/g, ' ');
-    if (path == '/en/JavaScript/Reference') {
-        title = 'Top page';
-    }
-    doc.search('#title').forEach(function (e) { e.text(title) });
     doc.search('#content').forEach(function (e) {
         e.attr('id').remove(); // dup with system id
         e.addClass('entry-content');
     });
-    doc.search('#title').forEach(function (e) {
-        e.addClass('entry-title roundTop');
+    doc.search('.title').forEach(function (e) {
+        e.addClass('entry-title');
     });
     var md5 = crypto.createHash('md5');
     md5.update(path);

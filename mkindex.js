@@ -15,6 +15,8 @@ var fs = require('fs'),
     undefined;
 
 var srcdb = new DB('docs.db');
+var TOP = '/en-US/docs/Web/JavaScript/Reference';
+var PREFIX = /\/en-US\/docs\/(?:Web\/)?JavaScript\/Reference\//;
 
 /**
  * Source file object
@@ -26,7 +28,7 @@ function SourcePath(path, content) {
 }
 SourcePath.prototype = {
     getCategory: function () {
-        var path = this.path.replace('/en/JavaScript/Reference/', '');
+        var path = this.path.replace(PREFIX, '');
         var x = path.match(/^([^/]+)\//);
         if (x) {
             return x[1].replace(/_/g, ' ').replace(/^[a-z]/, function (x) {
@@ -39,12 +41,12 @@ SourcePath.prototype = {
     getTitle: function () {
         assert(this.path);
 
-        if (this.path === '/en/JavaScript/Reference') {
+        if (this.path === TOP) {
             return 'Top';
         }
 
         var p = this.path;
-        p = p.replace('/en/JavaScript/Reference/', '');
+        p = p.replace(PREFIX, '');
         p = p.replace(/^([^\/]+)\//, '');
         p = p.replace(/_/g, ' ');
         p = p.replace(/\//g, '.');
