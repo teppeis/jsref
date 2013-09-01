@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="445893" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">let</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.7">JavaScript 1.7</a></p> 
+</div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Declares a block scope local variable, optionally initializing it to a value.</p>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<p><code>let</code> definition:</p>
+<pre class="syntaxbox">let var1 [= value1] [, var2 [= value2]] [, ..., varN [= valueN]];</pre>
+<p><code>let</code> expression:</p>
+<pre class="syntaxbox">let (var1 [= value1] [, var2 [= value2]] [, ..., varN [= valueN]]) expression;</pre>
+<p><code>let</code> statement:</p>
+<pre class="syntaxbox">let (var1 [= value1] [, var2 [= value2]] [, ..., varN [= valueN]]) statement;</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Parameter</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>var1</code>, <code>var2</code>, …, <code>varN</code></td>
+      <td>Variable name. It can be any legal identifier.</td>
+    </tr>
+    <tr>
+      <td><code>value1</code>, <code>value2</code>, …, <code>valueN</code></td>
+      <td>Initial value of the variable. It can be any legal expression.</td>
+    </tr>
+    <tr>
+      <td><code>expression</code></td>
+      <td>Any legal <a href="/en-US/docs/JavaScript/Guide/Expressions_and_Operators#Expressions" title="JavaScript/Guide/Expressions and Operators#Expressions">expression</a>.</td>
+    </tr>
+    <tr>
+      <td><code>statement</code></td>
+      <td>Any legal <a href="/en-US/docs/JavaScript/Reference/Statements" title="JavaScript/Reference/Statements">statement</a>.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Description" name="Description">Description</h2>
+<p><code>let</code> allows you to declare variables, limiting its scope to the block, statement, or expression on which it is used. This is unlike the <a href="/en-US/docs/JavaScript/Reference/Statements/var" title="JavaScript/Reference/Statements/var"><code>var</code></a> keyword, which defines a variable globally, or locally to an entire function regardless of block scope.</p>
+<h2 id="Block_scoping" name="Block_scoping">Block scoping</h2>
+<p><code>let</code> declared variables are hoisted to the beginning of the enclosing block.</p>
+<p>Redeclaration of the same variable in the same block scope raises a <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="TypeError">TypeError</a></code>.</p>
+<pre class="brush: js">if (x) {
+  let foo;
+  let foo; // TypeError thrown.
+}</pre>
+<p>However, function bodies do not have this limitation!</p>
+<pre class="brush: js">function do_something() {
+  let foo;
+  let foo; // This works fine.
+}</pre>
+<div class="warning">
+  <strong>Warning:</strong> ECMAScript 6 drafts (as of April, 2012) make this behavior illegal. That means that future versions of JavaScript will likely be consistent and raise a <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="TypeError">TypeError</a></code> if you do this, so you should avoid this practice!</div>
+<p>You may encounter errors in <a href="/en-US/docs/JavaScript/Reference/Statements/switch" title="switch"><code>switch</code></a> statements because there is only one underlying block.</p>
+<pre class="brush: js">switch (x) {
+  case 0:
+    let foo;
+    break;
+    
+  case 1:
+    let foo; // TypeError for redeclaration.
+    break;
+}</pre>
+<h2 id="Examples" name="Examples">Examples</h2>
+<p>A <em>let expression</em> limits the scope of the declared variable to only that expression.</p>
+<pre class="brush: js">var a = 5;
+let(a = 6) alert(a); // 6
+alert(a); // 5</pre>
+<p>Used inside a block, <em>let</em> limits the variable's scope to that block. Note the difference between <em>var </em>whose scope is inside the function where it is declared</p>
+<pre class="brush: js">var a = 5;
+var b = 10;
+
+if (a === 5) {
+  let a = 4; // The scope is inside the if-block
+  var b = 1; // The scope is inside the function
+
+  console.log(a);  // 4
+  console.log(b);  // 1
+} 
+
+console.log(a); // 5
+console.log(b); // 1</pre>
+<p>You can use the <em>let</em> keyword to bind variables locally in the scope of loops instead of using a global variable (defined using <em>var</em>) for that.</p>
+<pre class="brush: js">for (let i = 0; i&lt;10; i++) {
+  alert(i); // 1, 2, 3, 4 ... 9
+}
+
+alert(i); // i is not defined</pre>
+<p>When you are dealing with constructors you can use the <code>let</code> statement in order to create a <em>private interface</em> without using closures:</p>
+<pre class="brush: js">/*\
+|*|
+|*|  :: A public and reusable API for constructors ... ::
+|*|
+\*/
+
+let (
+  switchScope = function (oOwner, fConstructor) {
+    return oOwner &amp;&amp; oOwner.constructor === fConstructor ? oOwner : this;
+  }
+) {
+  function buildIndoors (fConstructor) {
+    const oPrivate = new fConstructor(this);
+    this.getScope = oPrivate.getScope = switchScope.bind(this, oPrivate);
+    return oPrivate;
+  }
+}
+
+/*\
+|*|
+|*|  :: Use of the *let* statement in order to create a private interface without closures... ::
+|*|
+\*/
+
+let (
+
+  /* "Secrets" is the constructor of the private interface */
+
+  Secrets = function Secrets (oPublic /* (the public interface) */) {
+    /* setting a private property... */
+    this.password = Math.floor(Math.random() * 1e16).toString(36);
+    /* you can also store the public interface into a private property... */
+    /* this.publicInterface = oPublic; */
+    alert("I\'m getting a public property from a private constructor...: somePublicProperty: " + oPublic.somePublicProperty);
+  }
+
+) {
+
+  /* "User" is the constructor of the public interface */
+
+  function User (sNick) {
+    /* setting a public property... */
+    this.somePublicProperty = "Hello World!";
+    const oPrivate = this.createScope(Secrets); /* (the private interface) */
+    /* setting a public property... */
+    this.user = sNick;
+    alert("I\'m getting a private property from a public constructor...: password: " + oPrivate.password);
+  }
+
+  User.prototype.somePublicMethod = function () {
+    const oPrivate = this.getScope(Secrets); /* (the private interface) */
+    alert("I\'m getting a public property from a public method...: user: " + this.user);
+    alert("I\'m getting a private property from a public method...: password: " + oPrivate.password);
+    oPrivate.somePrivateMethod();
+  };
+
+  Secrets.prototype.somePrivateMethod = function () {
+    const oPublic = this.getScope(); /* (the public interface) */
+    alert("I\'m getting a public property from a private method...: user: " + oPublic.user);
+    alert("I\'m getting a private property from a private method...: password: " + this.password);
+  };
+
+  /* ...creating a mutual access... */
+
+  User.prototype.createScope = buildIndoors;
+}
+
+/* out of the *let* statement you have not access to the private interface! */
+
+const johnSmith = new User("John Smith");
+johnSmith.somePublicMethod();</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/var" title="JavaScript/Reference/Statements/var"><code>var</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/const" title="JavaScript/Reference/Statements/const"><code>const</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.7#Block_scope_with_let_(Merge_into_let_Statement)" title="JavaScript/New in JavaScript/1.7#Block scope with let (Merge into let Statement)">New in JavaScript 1.7</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Jens.B">Jens.B</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/MattBrubeck">MattBrubeck</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Pitux">Pitux</a>, <a href="/en-US/profiles/Markus%20Prokott">Markus Prokott</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/gps">gps</a>, <a href="/en-US/profiles/tehsis">tehsis</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/user01">user01</a>, <a href="/en-US/profiles/IgorKitsa">IgorKitsa</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Jens.B">Jens.B</a>, 
+          <time datetime="2013-07-30T00:27:21-07:00">Jul 30, 2013 12:27:21 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Jens.B">Jens.B</a>, 
+            <time datetime="2013-07-30T00:27:21-07:00">Jul 30, 2013 12:27:21 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/let$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

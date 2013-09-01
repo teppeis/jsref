@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418371" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">get</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Binds an object property to a function that will be called when that property is looked up.</p>
+<h2 id="Syntax">Syntax</h2>
+<p><code>{get <em>prop</em>() { . . . } }</code></p>
+<h2 id="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>prop</code></dt>
+  <dd>
+    the name of the property to bind to the given function</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>Sometimes it is desirable to allow access to a property that returns a dynamically computed value, or you may want reflect the status of an internal variable without requiring the use of explicit method calls. In JavaScript, this can be accomplished with the use of a getter. It is not possible to simultaneously have a getter bound to a property and have that property actually hold a value, although it is possible to use a getter and a setter in conjunction to create a type of pseudo-property.</p>
+<div>
+  <div class="blockIndicator standardNote standardNoteBlock"> 
+    <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a> note</p> 
+    <p style="font-weight: 400;">
+  </p><p style="text-align: left;">Starting in JavaScript 1.8.5, the <code>get</code> operator:</p>
+  <ul style="text-align: left;">
+    <li>can have an identifier which is either a number or a string;</li>
+    <li>must have exactly zero parameters (see 
+      <a class="external" href="http://whereswalden.com/2010/08/22/incompatible-es5-change-literal-getter-and-setter-functions-must-now-have-exactly-zero-or-one-arguments/">Incompatible <abbr title="ECMAScript 5th edition">ES5</abbr> change: literal getter and setter functions must now have exactly zero or one arguments</a>
+      for more information);</li>
+    <li>must not appear in an object literal with another <code>get</code>
+      or with a data entry for the same property (<code>{ get x() { }, get x() { } }</code>
+      and <code>{ x: ..., get x() { } }</code> are forbidden).</li>
+  </ul>
+ <p/> 
+</div></div>
+<p>A getter can be removed using the <code><a href="/en/JavaScript/Reference/Operators/delete" title="en/Core_JavaScript_1.5_Reference/Operators/Special_Operators/delete_Operator">delete</a></code> operator.</p>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example:_Defining_a_getter_with_the_get_operator" name="Example:_Defining_a_getter_with_the_get_operator">Defining a getter with the <code>get</code> operator</h3>
+<p>This will create a pseudo-property <code>latest</code> of object <code>o</code> that will return the most recent entry into <code>o.log</code>:</p>
+<pre class="brush: js">var o = {
+  get latest () {
+    if (this.log.length &gt; 0) {
+      return this.log[this.log.length - 1];
+    }
+    else {
+      return null;
+    }
+  },
+  log: []
+}
+</pre>
+<p>Note that attempting to assign a value to <code>latest</code> will not change it.</p>
+<h3 id="Example:_Deleting_a_getter_using_the_delete_operator" name="Example:_Deleting_a_getter_using_the_delete_operator">Deleting a getter using the <code>delete</code> operator</h3>
+<pre class="brush: js">delete o.latest;
+</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p>Based on <a class="external" href="http://robertnyman.com/javascript/javascript-getters-setters.html#regular-getters-and-setters">Robert Nyman's page</a></p>
+<p>No support (notably in IE6-8) means that the script will trigger a syntax error.</p>
+<p/><div class="htab"> 
+    <a name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>2.0 (1.8.1)</td>
+        <td>1</td>
+        <td>9</td>
+        <td>9.5</td>
+        <td>3</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><code><a href="/en/JavaScript/Reference/Operators/delete" title="en/JavaScript/Reference/Operators/Special_Operators/delete_Operator">delete</a></code></li>
+  <li><code><a href="/en/JavaScript/Reference/Operators/set" title="en/Core_JavaScript_1.5_Reference/Operators/Special_Operators/set_Operator">set</a></code></li>
+  <li><code><a href="/en/JavaScript/Reference/Global_Objects/Object/defineGetter" title="en/JavaScript/Reference/Global_Objects/Object/defineGetter">__defineGetter__</a></code></li>
+  <li><code><a href="/en/JavaScript/Reference/Global_Objects/Object/defineSetter" title="en/JavaScript/Reference/Global_Objects/Object/defineSetter">__defineSetter__</a></code></li>
+  <li><a href="/en/JavaScript/Guide/Working_with_Objects#Defining_Getters_and_Setters" title="en/JavaScript/Guide/Working with Objects#Defining Getters and Setters">Defining Getters and Setters</a> in JavaScript Guide</li>
+</ul>
+<div class="noinclude">
+  <p/>
+</div>
+<p> </p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/getter">getter</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/gbr">gbr</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/IgorKitsa">IgorKitsa</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:45-07:00">May 28, 2013 8:33:45 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/gbr">gbr</a>, 
+            <time datetime="2012-11-20T08:40:21-08:00">Nov 20, 2012 8:40:21 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/get$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

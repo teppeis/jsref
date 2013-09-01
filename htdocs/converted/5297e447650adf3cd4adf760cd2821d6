@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="438849" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Arrow functions</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p/><div class="overheadIndicator" style="background: #9CF49C;"> 
+    <p><strong>This is an experimental technology, part of the Harmony (EcmaScript 6) proposal.</strong><br/>Because this technology's specification has not stabilized, check the <a href="#Browser_compatibility">compatibility table</a> for usage in various browsers. Also note that the syntax and behavior of an experimental technology is subject to change in future version of browsers as the spec changes.</p> 
+</div><p/>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>An arrow function expression has a shorter syntax compared to function expressions and lexically binds the <code>this</code> value. Arrow functions are always anonymous.</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Expression</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>Firefox 22 (SpiderMonkey 22)</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMAScript 6th Edition (Draft)</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox">([param] [, param]) =&gt; {
+   statements
+}
+
+param =&gt; expression</pre>
+<p>Detailed syntax examples can be seen <a class="external" href="http://wiki.ecmascript.org/doku.php?id=harmony:arrow_function_syntax" title="http://wiki.ecmascript.org/doku.php?id=harmony:arrow_function_syntax">here</a>.</p>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>param</code></dt>
+  <dd>
+    The name of an argument. Zero arguments need to be indicated with <code>()</code>. For only one argument the <span id="Parentheses_.28_.29">parentheses</span> are not required. (like <code>foo =&gt; 1</code>)</dd>
+  <dt>
+    <code>statements or expression</code></dt>
+  <dd>
+    Multiple statements need to be enclosed in brackets. A single expression however requires no brackets. The expression is also the implicit return value of that function.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>Two factors influenced the introduction of arrow functions: shorter functions and lexical this.</p>
+<h3 id="Shorter_functions">Shorter functions</h3>
+<p>In some functional patterns, shorter functions are welcome. Compare:</p>
+<pre class="brush: js">var a = [
+  "We're up all night 'til the sun",
+  "We're up all night to get some",
+  "We're up all night for good fun",
+  "We're up all night to get lucky"
+];
+
+var a2 = a.map(function(s){ return s.length });
+
+var a3 = a.map( s =&gt; s.length );</pre>
+<h3 id="Lexical_this">Lexical <code>this</code></h3>
+<p>Until arrow functions, all new function defined its own <a href="/en-US/docs/Web/JavaScript/Reference/Operators/this">this</a> value (a new object in case of a constructor, undefined in strict mode function calls, the context object if the function is called as an "object method", etc.). This proved to be annoying with an object-oriented style of programming.</p>
+<pre class="brush: js">function Person(){
+  this.age = 0;
+
+  setInterval(function growUp(){
+    // not the |this| you expect 
+    this.age++; // global object in non-strict mode, which will have a hard to discover misbehavior
+  }, 1000);
+}
+
+var p = new Person();</pre>
+<p>In ECMAScript 3/5, this issue was fixed by assigning the value in <code>this</code> to a variable that could be closed over.</p>
+<pre class="brush: js">function Person(){
+  var self = this; // some choose 'that' instead of 'self'. Choose one and be consistent
+  self.age = 0;
+
+  setInterval(function growUp(){
+    // the callback refers to the self variable which value is the expected object
+    self.age++;
+  }, 1000);
+}</pre>
+<p>Alternatively, a <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bound function</a> could be created so that the proper <code>this</code> value is passed to the <code>growUp</code> function.</p>
+<p>Arrow functions capture the <code>this</code> value of the enclosing context, so the following code works as expected.</p>
+<pre class="brush: js">function Person(){
+  this.age = 0;
+
+  setInterval(() =&gt; {
+    this.age++; // |this| properly refers to the person object
+  }, 1000);
+}
+
+var p = new Person();</pre>
+<h4 id="Relation_with_strict_mode">Relation with strict mode</h4>
+<p>Given that <code>this</code> is lexical, <a href="/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">strict mode</a> rules when it comes to <code>this</code> are just ignored.</p>
+<pre class="brush: js">var f = () =&gt; {'use strict'; return this};
+f() === window; // or the global object</pre>
+<p>The rest of strict mode rules apply normally.</p>
+<h2 id="Examples">Examples</h2>
+<pre class="brush: js">// An empty arrow function returns undefined
+let empty = () =&gt; {};
+
+(() =&gt; "foobar")() // returns "foobar" 
+
+var simple = a =&gt; a &gt; 15 ? 15 : a; 
+simple(16); // 15
+simple(10); // 10
+
+var complex = (a, b) =&gt; {
+    if (a &gt; b) {
+        return a;
+    } else {
+        return b;
+    }
+}</pre>
+<h2 id="Specification">Specification</h2>
+<ul>
+  <li><a class="external" href="http://wiki.ecmascript.org/doku.php?id=harmony:arrow_function_syntax">Harmony proposal</a></li>
+  <li><a class="external" href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-13.2">Draft spec</a></li>
+</ul>
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>22.0 (22.0)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>22.0 (22.0)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3 id="Firefox_Note">Firefox Note</h3>
+<p>The initial implementation of arrow functions in Firefox made them automatically strict. This has been changed as of <a href="/en-US/docs/Mozilla/Firefox/Releases/24" title="/en-US/docs/Mozilla/Firefox/Releases/24">Firefox 24</a>. The use of <code>"use strict";</code> is now required.</p>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Jesse">Jesse</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/WebReflection">WebReflection</a>, <a href="/en-US/profiles/Skoua">Skoua</a>, <a href="/en-US/profiles/ChaitanyaGSNR">ChaitanyaGSNR</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/evilpie">evilpie</a>, 
+          <time datetime="2013-07-08T19:01:02-07:00">Jul 8, 2013 7:01:02 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/evilpie">evilpie</a>, 
+            <time datetime="2013-07-08T19:01:02-07:00">Jul 8, 2013 7:01:02 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/arrow_functions$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

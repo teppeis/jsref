@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418319" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Intl.DateTimeFormat</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>The <code>Intl.DateTimeFormat</code> object is a constructor for objects that enable language sensitive date and time formatting.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Property of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl" title="JavaScript/Reference/Global_Objects/Intl"><code>Intl</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript Internationalization API Specification, 1<sup>st</sup> Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<pre class="syntaxbox">new Intl.DateTimeFormat([<em>locales</em> [, <em>options</em>]])
+
+Intl.DateTimeFormat.call(<em>this</em> [, <em>locales</em> [, <em>options</em>]])</pre>
+<h3 id="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>locales</code></dt>
+  <dd>
+    <p>A string with a BCP 47 language tag, or an array of such strings. For the general form and interpretation of the <code>locales</code> argument, see the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation" title="/Intl#Functionality_common_to_internationalization_constructors">Intl page</a>. The following Unicode extension keys are allowed:</p>
+    <dl>
+      <dt>
+        nu</dt>
+      <dd>
+        Numbering system. Possible values include: "arab", "arabext", "bali", "beng", "deva", "fullwide", "gujr", "guru", "hanidec", "khmr", "knda", "laoo", "latn", "limb", "mlym", "mong", "mymr", "orya", "tamldec", "telu", "thai", "tibt".</dd>
+      <dt>
+        ca</dt>
+      <dd>
+        Calendar. Possible values include: "buddhist", "chinese", "coptic", "ethioaa", "ethiopic", "gregory", "hebrew", "indian", "islamic", "islamicc", "iso8601", "japanese", "persian", "roc".</dd>
+    </dl>
+  </dd>
+  <dt>
+    <code>options</code></dt>
+  <dd>
+    <p>An object with some or all of the following properties:</p>
+    <dl>
+      <dt>
+        <code>localeMatcher</code></dt>
+      <dd>
+        The locale matching algorithm to use. Possible values are "lookup" and "best fit"; the default is "best fit". For information about this option, see the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation" title="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation">Intl page</a>.</dd>
+      <dt>
+        <code>timeZone</code></dt>
+      <dd>
+        The time zone to use. The only value implementations must recognize is "UTC"; the default is the runtime's default time zone. Implementations may also recognize the time zone names of the <a class="external" href="https://www.iana.org/time-zones" title="https://www.iana.org/time-zones">IANA time zone database</a>, such as "Asia/Shanghai", "Asia/Kolkata", "America/New_York".</dd>
+      <dt>
+        <code>hour12</code></dt>
+      <dd>
+        Whether to use 12-hour time (as opposed to 24-hour time). Possible values are <code>true</code> and <code>false</code>; the default is locale dependent.</dd>
+      <dt>
+        <code>formatMatcher</code></dt>
+      <dd>
+        The format matching algorithm to use. Possible values are "basic" and "best fit"; the default is "best fit". See the following paragraphs for information about the use of this property.</dd>
+    </dl>
+    <p>The following properties describe the date-time components to use in formatted output, and their desired representations.  Implementations are required to support at least the following subsets:</p>
+    <ul>
+      <li>weekday, year, month, day, hour, minute, second</li>
+      <li>weekday, year, month, day</li>
+      <li>year, month, day</li>
+      <li>year, month</li>
+      <li>month, day</li>
+      <li>hour, minute, second</li>
+      <li>hour, minute</li>
+    </ul>
+    <p>Implementations may support other subsets, and requests will be negotiated against all available subset-representation combinations to find the best match. Two algorithms are available for this negotiation and selected by the <code>formatMatcher</code> property: A <a class="external" href="http://www.ecma-international.org/ecma-402/1.0/#BasicFormatMatcher" title="http://www.ecma-international.org/ecma-402/1.0/#BasicFormatMatcher">fully specified "basic" algorithm</a> and an implementation dependent "best fit" algorithm.</p>
+    <dl>
+      <dt>
+        <code>weekday</code></dt>
+      <dd>
+        The representation of the weekday. Possible values are "narrow", "short", "long".</dd>
+      <dt>
+        <code>era</code></dt>
+      <dd>
+        The representation of the era. Possible values are "narrow", "short", "long".</dd>
+      <dt>
+        <code>year</code></dt>
+      <dd>
+        The representation of the year. Possible values are "numeric", "2-digit".</dd>
+      <dt>
+        <code>month</code></dt>
+      <dd>
+        The representation of the month. Possible values are "numeric", "2-digit", "narrow", "short", "long".</dd>
+      <dt>
+        <code>day</code></dt>
+      <dd>
+        The representation of the day. Possible values are "numeric", "2-digit".</dd>
+      <dt>
+        <code>hour</code></dt>
+      <dd>
+        The representation of the hour. Possible values are "numeric", "2-digit".</dd>
+      <dt>
+        <code>minute</code></dt>
+      <dd>
+        The representation of the minute. Possible values are "numeric", "2-digit".</dd>
+      <dt>
+        <code>second</code></dt>
+      <dd>
+        The representation of the second. Possible values are "numeric", "2-digit".</dd>
+      <dt>
+        <code>timeZoneName</code></dt>
+      <dd>
+        The representation of the time zone name. Possible values are "short", "long".</dd>
+    </dl>
+    <p class="noinclude">The default value for each date-time component property is <code>undefined</code>, but if all component properties are <code>undefined</code>, then <code>year</code>, <code>month</code>, and <code>day</code> are assumed to be "numeric".</p>
+  </dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<h3 id="Properties" name="Properties">Properties</h3>
+<p><small><em>For properties available on <code>Intl.DateTimeFormat</code> instances, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/prototype#Properties">Properties of Intl.DateTimeFormat instances</a>.</em></small></p>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat/prototype" title="JavaScript/Reference/Global_Objects/DateTimeFormat/prototype">prototype</a></dt>
+  <dd>
+    Allows the addition of properties to all objects.</dd>
+</dl>
+<p/><div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Arity"><code>arity</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Caller"><code>caller</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Constructor"><code>constructor</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Length"><code>length</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Name"><code>name</code></a></div> 
+</div><p/>
+<h3 id="Methods">Methods</h3>
+<p><small><em>For methods available on <code>Intl.DateTimeFormat</code> instances, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/prototype#Methods">Methods of Intl.DateTimeFormat instances</a>.</em></small></p>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat/supportedLocalesOf" title="JavaScript/Reference/Global_Objects/DateTimeFormat/supportedLocalesOf">supportedLocalesOf</a></dt>
+  <dd>
+    Returns an array containing those of the provided locales that are supported without having to fall back to the runtime's default locale.</dd>
+</dl>
+<p/><div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Apply"><code>apply</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Call"><code>call</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToSource"><code>toSource</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToString"><code>toString</code></a></div> 
+</div><p/>
+<h2 id="DateTimeFormat_instances"><code>DateTimeFormat</code> instances</h2>
+<h3 id="Properties">Properties</h3>
+<p><code>DateTimeFormat</code> instances inherit the following properties from their prototype:</p>
+<div>
+  <dl><dt>
+    <code>constructor</code></dt>
+  <dd>
+    A reference to <code>Intl.DateTimeFormat</code>.</dd>
+</dl><div>
+  <dl><dt>
+      <a href="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat/format" title="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat/format"><code>format</code></a></dt>
+    <dd>
+      Getter; returns a function that formats a date according to the locale and formatting options of this DateTimeFormat object.</dd>
+  </dl><div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Parent"><code>__parent__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Proto"><code>__proto__</code></a></div> 
+</div></div></div>
+<h3 id="Methods">Methods</h3>
+<div>
+  <p><code>DateTimeFormat</code> instances inherit the following methods from their prototype:</p>
+  <dl><dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat/resolvedOptions" title="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat/resolvedOptions"><code>resolvedOptions</code></a></dt>
+  <dd>
+    Returns a new object with properties reflecting the locale and formatting options computed during initialization of the object.</dd>
+</dl><div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/DefineGetter"><code>__defineGetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/DefineSetter"><code>__defineSetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/HasOwnProperty"><code>hasOwnProperty</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/IsPrototypeOf"><code>isPrototypeOf</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/LookupGetter"><code>__lookupGetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/LookupSetter"><code>__lookupSetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/NoSuchMethod"><code>__noSuchMethod__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/PropertyIsEnumerable"><code>propertyIsEnumerable</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToLocaleString"><code>toLocaleString</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToString"><code>toString</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Unwatch"><code>unwatch</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ValueOf"><code>valueOf</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Watch"><code>watch</code></a></div> 
+</div></div></div>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example:_Using_DateTimeFormat" name="Example:_Using_DateTimeFormat">Example: Using <code>DateTimeFormat</code></h3>
+<p>In basic use without specifying a locale, DateTimeFormat uses the default locale and default options.</p>
+<pre class="brush:js">var date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+
+// toLocaleString without arguments depends on the implementation,
+// the default locale, and the default time zone
+alert(new Intl.DateTimeFormat().format(date));
+// → "12/19/2012" if run in en-US locale with time zone America/Los_Angeles</pre>
+<h3 id="Example:_Using_locales" name="Example:_Using_locales">Example: Using <code>locales</code></h3>
+<p>This example shows some of the variations in localized date and time formats. In order to get the format of the language used in the user interface of your application, make sure to specify that language (and possibly some fallback languages) using the <code>locales</code> argument:</p>
+<pre class="brush: js">var date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+
+// formats below assume the local time zone of the locale;
+// America/Los_Angeles for the US
+
+// US English uses month-day-year order
+alert(new Intl.DateTimeFormat("en-US").format(date));
+// → "12/19/2012"
+
+// British English uses day-month-year order
+alert(new Intl.DateTimeFormat("en-GB").format(date));
+// → "20/12/2012"
+
+// Korean uses year-month-day order
+alert(new Intl.DateTimeFormat("ko-KR").format(date));
+// → "2012. 12. 20."
+
+// Arabic in most Arabic speaking countries uses real Arabic digits
+alert(new Intl.DateTimeFormat("ar-EG").format(date));
+// → "<span dir="rtl">٢٠‏/١٢‏/٢٠١٢</span>"
+
+// for Japanese, applications may want to use the Japanese calendar,
+// where 2012 was the year 24 of the Heisei era
+alert(new Intl.DateTimeFormat("ja-JP-u-ca-japanese").format(date));
+// → "24/12/20"
+
+// when requesting a language that may not be supported, such as
+// Balinese, include a fallback language, in this case Indonesian
+alert(new Intl.DateTimeFormat(["ban", "id"]).format(date));
+// → "20/12/2012"
+</pre>
+<h3 id="Example:_Using_options" name="Example:_Using_options">Example: Using <code>options</code></h3>
+<p>The date and time formats can be customized using the <code>options</code> argument:</p>
+<pre class="brush: js">var date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+
+// request a weekday along with a long date
+var options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
+alert(new Intl.DateTimeFormat("de-DE", options).format(date));
+// → "Donnerstag, 20. Dezember 2012"
+
+// an application may want to use UTC and make that visible
+options.timeZone = "UTC";
+options.timeZoneName = "short";
+alert(new Intl.DateTimeFormat("en-US", options).format(date));
+// → "Thursday, December 20, 2012, GMT"
+
+// sometimes you want to be more precise
+options = {hour: "numeric", minute: "numeric", second: "numeric",
+           timeZoneName: "short"};
+alert(new Intl.DateTimeFormat("en-AU", options).format(date));
+// → "2:00:00 pm AEDT"
+
+// sometimes even the US needs 24-hour time
+options = {year: "numeric", month: "numeric", day: "numeric",
+           hour: "numeric", minute: "numeric", second: "numeric",
+           hour12: false};
+alert(date.toLocaleString("en-US", options));
+// → "12/19/2012, 19:00:00"
+</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"> 
+    </a><ul><a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/><li class="selected"><a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul></div><p>
+</p><div id="compat-desktop">
+  <table class="compat-table"><tbody><tr><th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr><tr><td>Basic support</td>
+        <td>24</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>11</td>
+        <td>15</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr></tbody></table></div>
+<div id="compat-mobile">
+  <table class="compat-table"><tbody><tr><th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr><tr><td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>26</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr></tbody></table></div></div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a class="external" href="http://www.ecma-international.org/ecma-402/1.0/" title="http://www.ecma-international.org/ecma-402/1.0/">ECMAScript Internationalization API Specification, 1<sup>st</sup> edition</a></li>
+  <li>Introduction: <a class="external" href="http://norbertlindenberg.com/2012/12/ecmascript-internationalization-api/index.html" title="http://norbertlindenberg.com/2012/12/ecmascript-internationalization-api/index.html">The ECMAScript Internationalization API</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl" title="/en-US/docs/JavaScript/Reference/Global_Objects/Intl">Intl</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleString">Date.prototype.toLocaleString</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleDateString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleDateString">Date.prototype.toLocaleDateString</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString">Date.prototype.toLocaleTimeString</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Internationalization">Internationalization</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DateTimeFormat">DateTimeFormat</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Norbert">Norbert</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:43-07:00">May 28, 2013 8:33:43 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Norbert">Norbert</a>, 
+            <time datetime="2013-04-08T19:41:06-07:00">Apr 8, 2013 7:41:06 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417143" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Function</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Every function in JavaScript is actually a <code>Function</code> object.</p>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>new Function ([<em>arg1</em>[, <em>arg2</em>[, ... <i>argN</i>]],] <em>functionBody</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>arg1, arg2, ... arg<em>N</em></code></dt>
+  <dd>
+    Names to be used by the function as formal argument names. Each must be a string that corresponds to a valid JavaScript identifier or a list of such strings separated with a comma; for example "<code>x</code>", "<code>theValue</code>", or "<code>a,b</code>".</dd>
+  <dt>
+    <code>functionBody</code></dt>
+  <dd>
+    A string containing the JavaScript statements comprising the function definition.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p><code>Function</code> objects created with the <code>Function</code> constructor are parsed when the function is created. This is less efficient than declaring a function and calling it within your code, because functions declared with the function statement are parsed with the rest of the code.</p>
+<p>All arguments passed to the function are treated as the names of the identifiers of the parameters in the function to be created, in the order in which they are passed.</p>
+<p><strong>Note: </strong>Functions created with the <code>Function</code> constructor do not create closures to their creation contexts; they always run in the <em>window</em> context (unless the function body starts with a <code>"use strict";</code> statement, in which case the context is <em>undefined</em>).</p>
+<p>Invoking the <code>Function</code> constructor as a function (without using the <code>new</code> operator) has the same effect as invoking it as a constructor.</p>
+<h2 id="Example" name="Example">Example</h2>
+<p>Creating functions with the <code>Function</code> constructor is one of the ways to dynamically create an indeterminate number of new objects with some executable code into the global scope from a function. The following example (a recursive shortcut to massively modify the DOM) is impossible without the invocation of the <code>Function</code> constructor for each new query if you want to avoid closures.</p>
+<pre class="brush: html">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;title&gt;MDN Example - a recursive shortcut to massively modify the DOM&lt;/title&gt;
+&lt;script type="text/javascript"&gt;
+var domQuery = (function() {
+  var aDOMFunc = [
+        Element.prototype.removeAttribute,
+        Element.prototype.setAttribute,
+        CSSStyleDeclaration.prototype.removeProperty,
+        CSSStyleDeclaration.prototype.setProperty
+      ];
+
+  function setSomething (bStyle, sProp, sVal) {
+    var  bSet = Boolean(sVal), fAction = aDOMFunc[bSet | bStyle &lt;&lt; 1],
+         aArgs = Array.prototype.slice.call(arguments, 1, bSet ? 3 : 2),
+         aNodeList = bStyle ? this.cssNodes : this.nodes;
+
+    if (bSet &amp;&amp; bStyle) { aArgs.push(""); }
+    for (
+      var nItem = 0, nLen = this.nodes.length;
+      nItem &lt; nLen;
+      fAction.apply(aNodeList[nItem++], aArgs)
+    );
+    this.follow = setSomething.caller;
+    return this;
+  }
+
+  function setStyles (sProp, sVal) { return setSomething.call(this, true, sProp, sVal); }
+  function setAttribs (sProp, sVal) { return setSomething.call(this, false, sProp, sVal); }
+  function getSelectors () { return this.selectors; };
+  function getNodes () { return this.nodes; };
+
+  return (function (sSelectors) {
+    var oQuery = new Function("return arguments.callee.follow.apply(arguments.callee, arguments);");
+    oQuery.selectors = sSelectors;
+    oQuery.nodes = document.querySelectorAll(sSelectors);
+    oQuery.cssNodes = Array.prototype.map.call(oQuery.nodes, function (oInlineCSS) { return oInlineCSS.style; });
+    oQuery.attributes = setAttribs;
+    oQuery.inlineStyle = setStyles;
+    oQuery.follow = getNodes;
+    oQuery.toString = getSelectors;
+    oQuery.valueOf = getNodes;
+    return oQuery;
+  });
+})();
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div class="testClass"&gt;Lorem ipsum&lt;/div&gt;
+&lt;p&gt;Some text&lt;/p&gt;
+&lt;div class="testClass"&gt;dolor sit amet&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+  domQuery(".testClass").attributes("lang", "en")("title", "Risus abundat in ore stultorum")
+  .inlineStyle("background-color", "black")("color", "white")("width", "100px")("height", "50px");
+&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+<h2 id="Properties" name="Properties">Properties</h2>
+<div>
+  <small><em>For properties available on <code>Function</code> instances, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype#Properties">Properties of Function instances</a>.</em></small></div>
+<p>The global <code>Function</code> object has no methods of its own, however, it does inherit some methods through the prototype chain.</p>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Arity"><code>arity</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Caller"><code>caller</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Constructor"><code>constructor</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Length"><code>length</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Name"><code>name</code></a></div> 
+</div></div>
+<h2 id="Methods" name="Methods">Methods</h2>
+<div>
+  <small><em>For methods available on <code>Function</code> instances, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype#Methods">Methods of Function instances</a>.</em></small></div>
+<p>The global <code>Function</code> object has no methods of its own, however, it does inherit some methods through the prototype chain.</p>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Apply"><code>apply</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Call"><code>call</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToSource"><code>toSource</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToString"><code>toString</code></a></div> 
+</div></div>
+<h2 id="Function_instances" name="Function_instances"><code>Function</code> instances</h2>
+<p><code>Function</code> instances inherit from <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/prototype" title="JavaScript/Reference/Global_Objects/Function/prototype"><code>Function.prototype</code></a>. As with all constructors, you can change the constructor's prototype object to make changes to all <code>Function</code> instances.</p>
+<h3 id="Function_instance-Properties" name="Function_instance-Properties">Properties</h3>
+<div>
+  <dl><dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/arguments" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/arguments">arguments</a> <span class="inlineIndicator deprecated deprecatedInline" title="">Deprecated</span></dt>
+  <dd>
+    An array corresponding to the arguments passed to a function. This is deprecated as property of <code>Function</code>, use the <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments" title="en-US/docs/JavaScript/Reference/Functions/arguments">arguments</a> object available within the function instead.</dd>
+</dl><dl><dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/arity" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/arity">arity</a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete since <a class="new" href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.6">JavaScript 1.8.6</a></span></dt>
+  <dd>
+    Specifies the number of arguments expected by the function. Use the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/length" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/length">length</a> property instead.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/caller" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/caller">caller</a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Specifies the function that invoked the currently executing function.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/constructor" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/constructor">constructor</a></dt>
+  <dd>
+    Specifies the function that creates an object's prototype.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/length" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/length">length</a></dt>
+  <dd>
+    Specifies the number of arguments expected by the function.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/name" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/name">name</a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    The name of the function.</dd>
+</dl><div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Constructor"><code>constructor</code></a></div> 
+</div></div></div>
+<h3 id="Function_instance-Methods" name="Function_instance-Methods">Methods</h3>
+<div>
+  <dl><dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">apply</a></code></dt>
+  <dd>
+    Applies the method of another object in the context of a different object (the calling object); arguments can be passed as an Array object.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/bind" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/bind">bind</a></code> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Creates a new function which, when called, itself calls this function in the context of the provided value, with a given sequence of arguments preceding any provided when the new function was called.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/call" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/call">call</a></code></dt>
+  <dd>
+    Calls (executes) a method of another object in the context of a different object (the calling object); arguments can be passed as they are.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/isGenerator" title="en-US/docs/JavaScript/Reference/Global Objects/Function/isGenerator"><code>isGenerator</code></a> <span class="inlineIndicator jsMinVer">Requires <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.6">JavaScript 1.8.6</a></span></dt>
+  <dd>
+    Returns <code>true</code> if the function is a <a href="/en-US/docs/Core_JavaScript_1.5_Guide/Iterators_and_Generators#Generators.3a_a_better_way_to_build_Iterators" title="en-US/docs/Core JavaScript 1.5 Guide/Iterators and Generators#Generators.3a a better way to build Iterators">generator</a>; otherwise returns <code>false</code>.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/toSource" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/toSource">toSource</a></code> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns a string representing the source code of the function. Overrides the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource" title="en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource">Object.toSource</a></code> method.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/toString" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/toString">toString</a></code></dt>
+  <dd>
+    Returns a string representing the source code of the function. Overrides the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="en-US/docs/JavaScript/Reference/Global_Objects/Object/toString">Object.toString</a></code> method.</dd>
+</dl><div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToSource"><code>toSource</code></a></div> 
+</div></div></div>
+<h2 id="Example.3A_Specifying_arguments_with_the_Function_constructor" name="Example.3A_Specifying_arguments_with_the_Function_constructor">Example: Specifying arguments with the <code>Function</code> constructor</h2>
+<p>The following code creates a <code>Function</code> object that takes two arguments.</p>
+<pre class="brush: js">// Example can be run directly in your JavaScript console
+
+// Create a function that takes two arguments and returns the sum of those arguments
+var adder = new Function("a", "b", "return a + b");
+
+// Call the function
+adder(2, 6);
+// &gt; 8</pre>
+<p>The arguments "<code>a</code>" and "<code>b</code>" are formal argument names that are used in the function body, "<code>return a + b</code>".</p>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Operators/function" title="JavaScript/Reference/Operators/Special_Operators/function_Operator">function Operator</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/function" title="JavaScript/Reference/Statements/function">function Statement</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope" title="JavaScript/Reference/Functions_and_function_scope">Functions</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsMobileBrowserCompatibility">NeedsMobileBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/ChiLiJung">ChiLiJung</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/rwaldron">rwaldron</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Skorney">Skorney</a>, <a href="/en-US/profiles/jorh">jorh</a>, <a href="/en-US/profiles/Jamespharaoh">Jamespharaoh</a>, <a href="/en-US/profiles/Niklas">Niklas</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/angelorubin">angelorubin</a>, <a href="/en-US/profiles/AllenWB">AllenWB</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/victorporof">victorporof</a>, <a href="/en-US/profiles/wizard04">wizard04</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/PointedEars">PointedEars</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/emdonahu">emdonahu</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/secoif">secoif</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:51-07:00">May 28, 2013 8:32:51 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/angelorubin">angelorubin</a>, 
+            <time datetime="2013-05-28T03:57:50-07:00">May 28, 2013 3:57:50 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

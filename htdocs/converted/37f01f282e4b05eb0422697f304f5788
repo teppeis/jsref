@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418435" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String Operators</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+
+<p>In addition to the comparison operators, which can be used on string values, the concatenation operator (<code>+</code>) concatenates two string values together, returning another string that is the union of the two operand strings. For example, <code>"my " + "string"</code> returns the string <code>"my string"</code>.</p>
+
+<p>The shorthand assignment operator <code>+=</code> can also be used to concatenate strings. For example, if the variable <code>mystring</code> has the value "<code>alpha</code>", then the expression <code>mystring += "bet"</code> evaluates to "<code>alphabet</code>" and assigns this value to <code>mystring</code>.</p>
+
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Operator</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:48-07:00">May 28, 2013 8:33:48 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-08-03T22:36:38-07:00">Aug 3, 2012 10:36:38 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/String_Operators$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

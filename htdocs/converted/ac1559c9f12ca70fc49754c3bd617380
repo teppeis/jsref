@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="450347" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.defineProperty</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></p> 
+</div></div>
+<h2 id="summary" name="summary">Summary</h2>
+<p>Defines a new property directly on an object, or modifies an existing property on an object, and returns the object. If you want to see how to use the <code>Object.defineProperty</code> method with a <em>binary-flags-like</em> syntax, see <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty/Additional_examples" title="JavaScript/Reference/Global_Objects/Object/defineProperty/Additional_examples">this article</a>.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Object.defineProperty(<em>obj</em>, <em>prop</em>, <em>descriptor</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>obj</code></dt>
+  <dd>
+    The object on which to define the property.</dd>
+  <dt>
+    <code>prop</code></dt>
+  <dd>
+    The name of the property to be defined or modified.</dd>
+  <dt>
+    <code>descriptor</code></dt>
+  <dd>
+    The descriptor for the property being defined or modified.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>This method allows precise addition to or modification of a property on an object. Normal property addition through assignment creates properties which show up during property enumeration (<a href="/en-US/docs/JavaScript/Reference/Statements/for...in" title="JavaScript/Reference/Statements/for...in"><code>for...in</code> loop</a> or <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/keys" title="JavaScript/Reference/Global_Objects/Object/keys">Object.keys method</a>), whose values may be changed, and which may be <a href="/en-US/docs/JavaScript/Reference/Operators/delete" title="JavaScript/Reference/Operators/Special Operators/delete Operator">deleted</a>. This method allows these extra details to be changed from their defaults.</p>
+<p>Property descriptors present in objects come in two main flavors: data descriptors and accessor descriptors. A <em><dfn>data descriptor</dfn></em> is a property that has a value, which may or may not be writable. An <dfn>accessor descriptor</dfn> is a property described by a getter-setter pair of functions. A descriptor must be one of these two flavors; it cannot be both.</p>
+<p>Both data and accessor descriptors are objects. They share the following optional keys:</p>
+<dl>
+  <dt>
+    <code>configurable</code></dt>
+  <dd>
+    <code>true</code> if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object. <strong>Defaults to </strong><strong><code>false</code></strong><strong>.</strong></dd>
+  <dt>
+    <code>enumerable</code></dt>
+  <dd>
+    <code>true</code> if and only if this property shows up during enumeration of the properties on the corresponding object. <strong>Defaults to </strong><strong><code>false</code></strong><strong>.</strong></dd>
+</dl>
+<p>A data descriptor also has the following optional keys:</p>
+<dl>
+  <dt>
+    <code>value</code></dt>
+  <dd>
+    The value associated with the property. Can be any valid JavaScript value (number, object, function, etc) <strong>Defaults to <code>undefined</code>.</strong></dd>
+  <dt>
+    <code>writable</code></dt>
+  <dd>
+    True if and only if the value associated with the property may be changed with<code> </code>an <a href="/en-US/docs/JavaScript/Reference/Operators/Assignment_Operators" title="JavaScript/Reference/Operators/Assignment_Operators">assignment operator</a>.<strong> Defaults to <code>false</code>.</strong></dd>
+</dl>
+<p>An accessor descriptor also has the following optional keys:</p>
+<dl>
+  <dt>
+    <code>get</code></dt>
+  <dd>
+    A function which serves as a getter for the property, or <code>undefined</code> if there is no getter. The function return will be used as the value of property. <strong>Defaults to <code>undefined</code></strong>.</dd>
+  <dt>
+    <code>set</code></dt>
+  <dd>
+    A function which serves as a setter for the property, or <code>undefined</code> if there is no setter. The function will receive as only argument the new value being assigned to the property. <strong>Defaults to <code>undefined</code></strong>.</dd>
+</dl>
+<p>Bear in mind that these options are not necessarily own properties so, if inherited, will be considered too. In order to ensure these defaults are preserved you might freeze the Object.prototype upfront, specify all options explicitly, or point to null as __proto__ property.</p>
+<pre class="brush:js">// using __proto__
+Object.defineProperty(obj, "key", {
+  __proto__: null, // no inherited properties
+  value: "static"  // not enumerable
+                   // not configurable
+                   // not writable
+                   // as defaults
+});
+
+// being explicit
+Object.defineProperty(obj, "key", {
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value: "static"
+});
+
+// recycling same object
+function withValue(value) {
+  var d = withValue.d || (
+    withValue.d = {
+      enumerable: false,
+      writable: false,
+      configurable: false,
+      value: null
+    }
+  );
+  d.value = value;
+  return d;
+}
+// ... and ...
+Object.defineProperty(obj, "key", withValue("static"));
+
+// if freeze is available, prevents the code to add
+// value, get, set, enumerable, writable, configurable
+// to the Object prototype
+(Object.freeze||Object)(Object.prototype);</pre>
+<h2 id="Creating_a_property" name="Creating_a_property">Creating a property</h2>
+<p>When the property specified doesn't exist in the object, <code>Object.defineProperty()</code> creates a new property as described. Fields may be omitted from the descriptor, and default values for those fields are imputed. All of the Boolean-valued fields default to <code>false</code>. The <code>value</code>, <code>get</code>, and <code>set</code> fields default to <code>undefined</code>. A property which is defined without <code>get</code>/<code>set</code>/<code>value</code>/<code>writable</code> is called "generic" and is "typed" as a data descriptor.</p>
+<h3 id="Creating_a_property-Example" name="Creating_a_property-Example">Examples</h3>
+<pre class="brush: js">var o = {}; // Creates a new object
+
+// Example of an object property added with defineProperty with a data property descriptor
+Object.defineProperty(o, "a", {value : 37,
+                               writable : true,
+                               enumerable : true,
+                               configurable : true});
+// 'a' property exists in the o object and its value is 37
+
+// Example of an object property added with defineProperty with an accessor property descriptor
+var bValue;
+Object.defineProperty(o, "b", {get : function(){ return bValue; },
+                               set : function(newValue){ bValue = newValue; },
+                               enumerable : true,
+                               configurable : true});
+o.b = 38;
+// 'b' property exists in the o object and its value is 38
+// The value of o.b is now always identical to bValue, unless o.b is redefined
+
+// You cannot try to mix both :
+Object.defineProperty(o, "conflict", { value: 0x9f91102, 
+                                       get: function() { return 0xdeadbeef; } });
+// throws a TypeError: value appears only in data descriptors, get appears only in accessor descriptors
+</pre>
+<h2 id="Modifying_a_property" name="Modifying_a_property">Modifying a property</h2>
+<p>When the property already exists, <code>Object.defineProperty()</code> attempts to modify the property according to the values in the descriptor and the object's current configuration. If the old descriptor had its <code>configurable</code> attribute set to <code>false</code> (the property is said to be "non-configurable"), then no attribute besides <code>writable</code> can be changed. In that case, it is also not possible to switch back and forth between the data and accessor property types.</p>
+<p>If a property is non-configurable, its <code>writable</code> attribute can only be changed to <code>false</code>.</p>
+<p>A <a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="JavaScript/Reference/Global Objects/TypeError"><code>TypeError</code></a> is thrown when attempts are made to change non-configurable property attributes (besides the <code>writable</code> attribute) unless the current and new values are the same.</p>
+<h2 id="Writable_attribute" name="Writable_attribute">Writable attribute</h2>
+<p>When the <code>writable</code> property attribute is set to <code>false</code>, the property is said to be "non-writable". It cannot be reassigned.</p>
+<h3 id="Writable_attribute-Example" name="Writable_attribute-Example">Example</h3>
+<pre class="brush: js">var o = {}; // Creates a new object
+
+Object.defineProperty(o, "a", { value : 37,
+                                writable : false });
+
+console.log(o.a); // logs 37
+o.a = 25; // No error thrown (it would throw in strict mode, even if the value had been the same)
+console.log(o.a); // logs 37. The assignment didn't work.</pre>
+<p>As seen in the example, trying to write into the non-writable property doesn't change it but doesn't throw an error either.</p>
+<h2 id="Enumerable_attribute" name="Enumerable_attribute">Enumerable attribute</h2>
+<p>The <code>enumerable</code> property attribute defines whether the property shows up in a <code><a href="/en-US/docs/JavaScript/Reference/Statements/for...in" title="JavaScript/Reference/Statements/for...in">for...in</a></code> loop and Object.keys() or not.</p>
+<h3 id="Enumerable_attribute-Example" name="Enumerable_attribute-Example">Example</h3>
+<pre class="brush: js">var o = {};
+Object.defineProperty(o, "a", { value : 1, enumerable:true });
+Object.defineProperty(o, "b", { value : 2, enumerable:false });
+Object.defineProperty(o, "c", { value : 3 }); // enumerable defaults to false
+o.d = 4; // enumerable defaults to true when creating a property by setting it
+
+for (var i in o) {    
+  console.log(i);  
+}
+// logs 'a' and 'd' (in undefined order)
+
+Object.keys(o); // ["a", "d"]
+
+o.propertyIsEnumerable('a'); // true
+o.propertyIsEnumerable('b'); // false
+o.propertyIsEnumerable('c'); // false
+</pre>
+<h2 id="Configurable_attribute" name="Configurable_attribute">Configurable attribute</h2>
+<p>The <code>configurable</code> attribute controls at the same time whether the property can be deleted from the object and whether its attributes (other than <code>writable</code>) can be changed.</p>
+<h3 id="Configurable_attribute-Example" name="Configurable_attribute-Example">Example</h3>
+<pre class="brush: js">var o = {};
+Object.defineProperty(o, "a", { get : function(){return 1;}, 
+                                configurable : false } );
+
+Object.defineProperty(o, "a", {configurable : true}); // throws a TypeError
+Object.defineProperty(o, "a", {enumerable : true}); // throws a TypeError
+Object.defineProperty(o, "a", {set : function(){}}); // throws a TypeError (set was undefined previously)
+Object.defineProperty(o, "a", {get : function(){return 1;}}); // throws a TypeError (even though the new get does exactly the same thing)
+Object.defineProperty(o, "a", {value : 12}); // throws a TypeError
+
+console.log(o.a); // logs 1
+delete o.a; // Nothing happens
+console.log(o.a); // logs 1
+</pre>
+<p>If the <code>configurable</code> attribute of <code>o.a</code> had been <code>true</code>, none of the errors would be thrown and the property would be deleted at the end.</p>
+<h2 id="Adding_properties_and_default_values" name="Adding_properties_and_default_values">Adding properties and default values</h2>
+<p>It's important to consider the way default values of attributes are applied. There is often a difference between simply using dot notation to assign a value and using <code>Object.defineProperty()</code>, as shown in the example below.</p>
+<pre class="brush: js">var o = {};
+
+o.a = 1;
+// is equivalent to :
+Object.defineProperty(o, "a", {value : 1,
+                               writable : true,
+                               configurable : true,
+                               enumerable : true});
+
+
+// On the other hand,
+Object.defineProperty(o, "a", {value : 1});
+// is equivalent to :
+Object.defineProperty(o, "a", {value : 1,
+                               writable : false,
+                               configurable : false,
+                               enumerable : false});
+</pre>
+<h2 id="Cross-browser_concerns" name="Cross-browser_concerns">Cross-browser concerns</h2>
+<h3 id="Redefining_the_length_property_of_an_Array_object" name="Redefining_the_length_property_of_an_Array_object">Redefining the <code>length</code> property of an Array object</h3>
+<p>It is possible to redefine the <code>length</code> property of arrays, but not all browsers permit this redefinition.  Firefox 4 through 22 will throw a <code>TypeError</code> on any attempt to redefine the length property of an array.  Versions of Chrome which implement <code>Object.defineProperty()</code> in some circumstances ignore a length value different from the array's current <code>length</code> property, changing writability seems to silently not work in some circumstances, and some methods like <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push" title="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push"><code>Array.prototype.push</code></a> don't respect non-writable length.  Versions of Safari which implement <code>Object.defineProperty()</code> ignore a length value different from the array's current <code>length</code> property, and attempts to change writability execute without error but do not actually change the property's writability.  Only Internet Explorer 9 and later, and Firefox 23 and later, appear to fully and correctly implement redefinition of the <code>length</code> property of arrays.  For now, don't rely on redefining the <code>length</code> property of an array to either work, or to work in a particular manner.  And even when you <em>can</em> rely on it, <a class="external" href="http://whereswalden.com/2013/08/05/new-in-firefox-23-the-length-property-of-an-array-can-be-made-non-writable-but-you-shouldnt-do-it/" title="http://whereswalden.com/2013/08/05/new-in-firefox-23-the-length-property-of-an-array-can-be-made-non-writable-but-you-shouldnt-do-it/">there's really no good reason to do so</a>.</p>
+<h3 id="Internet_Explorer_8_specific_case">Internet Explorer 8 specific case</h3>
+<p>Internet Explorer 8 implemented a <code>Object.defineProperty()</code> method that could <a class="external" href="http://msdn.microsoft.com/en-us/library/dd229916%28VS.85%29.aspx">only be used on DOM objects</a>. A few things need to be noted:</p>
+<ul>
+  <li>Trying to use <code>Object.defineProperty()</code> on native objects throws an error.</li>
+  <li>Property attributes must be set to some values. <code>true, true, true</code> for data descriptor and <code>true</code> for configurable, <code>false</code> for enumerable for accessor descriptor.(?) Any attempt to provide other value(?) will result in an error being thrown.</li>
+  <li>Reconfiguring a property requires first deleting the property. If the property isn't deleted, it stays as it was before the reconfiguration attempt.</li>
+</ul>
+<h3 id="Browser_compatibility">Browser compatibility</h3>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4 (2)</td>
+        <td>5 (previous versions untested)</td>
+        <td>9 (8, but only on DOM objects and with some non-standard behaviors. <a href="#ie8-specific">See above</a>.)</td>
+        <td>11.60</td>
+        <td>5.1 (5, but not on DOM objects)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4.0 (2)</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>9 and above</td>
+        <td>11.50</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat tables</a>.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/Enumerability_and_ownership_of_properties" title="Enumerability_and_ownership_of_properties">Enumerability and ownership of properties</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperties" title="JavaScript/Reference/Global_Objects/Object/defineProperties"><code>Object.defineProperties()</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable" title="JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable"><code>Object.propertyIsEnumerable()</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" title="JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor"><code>Object.getOwnPropertyDescriptor()</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/watch" title="JavaScript/Reference/Global_Objects/Object/watch"><code>object.watch()</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch" title="JavaScript/Reference/Global_Objects/Object/unwatch"><code>object.unwatch()</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Operators/get" title="JavaScript/Reference/Operators/get"><code>get</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Operators/set" title="JavaScript/Reference/Operators/set"><code>set</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/create" title="JavaScript/Reference/Global Objects/Object/create"><code>Object.create()</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty/Additional_examples" title="JavaScript/Reference/Global_Objects/Object/defineProperty/Additional_examples">Additional <code>Object.defineProperty</code> examples</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (8)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.8.5">JavaScript 1.8.5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/writable">writable</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object">Object</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/enumerable">enumerable</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/configurable">configurable</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object%20Methods">Object Methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/jswisher">jswisher</a>, <a href="/en-US/profiles/bradleymeck">bradleymeck</a>, <a href="/en-US/profiles/Ore4444">Ore4444</a>, <a href="/en-US/profiles/sitegui">sitegui</a>, <a href="/en-US/profiles/williamr">williamr</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/mtilchen">mtilchen</a>, <a href="/en-US/profiles/shergin">shergin</a>, <a href="/en-US/profiles/vitorcanova">vitorcanova</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Pikrass">Pikrass</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/fjsj">fjsj</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/WebReflection">WebReflection</a>, <a href="/en-US/profiles/MatrixFrog">MatrixFrog</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Waldo">Waldo</a>, 
+          <time datetime="2013-08-05T16:20:28-07:00">Aug 5, 2013 4:20:28 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Waldo">Waldo</a>, 
+            <time datetime="2013-08-05T16:20:28-07:00">Aug 5, 2013 4:20:28 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

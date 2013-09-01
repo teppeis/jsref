@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418383" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">delete</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p>The <code>delete</code> operator removes a property from an object.</p>
+<p>Unlike what common beliefs suggests, the <code>delete</code> operator has <strong>nothing</strong> to do with directly freeing memory (it only does indirectly via breaking references. See the <a href="/en-US/docs/JavaScript/Memory_Management" title="/en-US/docs/JavaScript/Memory_Management">memory management</a> page for more details).</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2" scope="row">Operator</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition:</td>
+      <td>ECMA-262 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<p><code>delete <em>expression</em></code></p>
+<p>where <em>expression</em> should evaluate to a property reference, e.g.:</p>
+<pre class="syntaxbox">delete <em>object.property</em>
+delete <em>object</em>['<em>property</em>']
+</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>object</code></dt>
+  <dd>
+    The name of an object, or an expression evaluating to an object.</dd>
+  <dt>
+    <code>property</code></dt>
+  <dd>
+    The property to delete.</dd>
+</dl>
+<h3 id="Returns" name="Returns">Returns</h3>
+<p>Throws in <a href="/en-US/docs/JavaScript/Strict_mode" title="/en-US/docs/JavaScript/Strict_mode">strict mode</a> if the property is an own non-configurable property (returns <code>false</code> in non-strict). Returns <code>true</code> in all other cases.</p>
+<h2 id="Description" name="Description">Description</h2>
+<p>If the <code>delete</code> operator succeeds, it removes the property from the object entirely. However, if a property with the same name exists on the object's prototype chain, the object will inherit that property from the prototype.</p>
+<p><code>delete</code> is only effective on an object's properties. It has no effect on variable or function names.<br/>
+  While sometimes mischaracterized as global variables, assignments that don't specify an object (e.g. <code>x = 5</code>) are actually property assignments on the global object.</p>
+<p><code>delete</code> can't remove certain properties of predefined objects (like Object, Array, Math etc). These are described in ECMAScript 5 and later as non-configurable</p>
+<pre class="brush: js">x = 42;         // creates the property x on the global object
+var y = 43;     // declares a new variable, y
+myobj = {
+  h: 4,
+  k: 5
+};
+
+delete x;       // returns true  (x is a property of the global object and can be deleted)
+delete y;       // returns false (delete doesn't affect variable names)
+delete Math.PI; // returns false (delete doesn't affect certain predefined properties)
+delete myobj.h; // returns true  (user-defined properties can be deleted)
+
+delete myobj;   // returns true  (myobj is a property of the global object, not a variable, so it can be deleted)</pre>
+<p>If the object inherits a property from a prototype, and doesn't have the property itself, the property can't be deleted by referencing the object. You can, however, delete it directly on the prototype.</p>
+<pre class="brush: js">function Foo(){}
+Foo.prototype.bar = 42;
+var foo = new Foo();
+delete foo.bar;           // returns true, but with no effect, since bar is an inherited property
+console.log(foo.bar);           // alerts 42, property still inherited
+delete Foo.prototype.bar; // deletes property on prototype
+console.log(foo.bar);           // alerts "undefined", property no longer inherited</pre>
+<h3 id="Deleting_array_elements" name="Deleting_array_elements">Deleting array elements</h3>
+<p>When you delete an array element, the array length is not affected. This holds even if you delete the last element of the array.</p>
+<p>When the <code>delete</code> operator removes an array element, that element is no longer in the array. In the following example, <code>trees[3]</code> is removed with <code>delete</code>.</p>
+<pre class="brush: js">var trees = ["redwood","bay","cedar","oak","maple"];
+
+delete trees[3];
+if (3 in trees) {
+    // this does not get executed
+}</pre>
+<p>If you want an array element to exist but have an undefined value, use the <code>undefined</code> value instead of the <code>delete</code> operator. In the following example, <code>trees[3]</code> is assigned the value undefined, but the array element still exists:</p>
+<pre class="brush: js">var trees = ["redwood","bay","cedar","oak","maple"];
+trees[3]=undefined;
+if (3 in trees) {
+    // this gets executed
+}</pre>
+<h2 id="Cross-browser_issues">Cross-browser issues</h2>
+<p>Although ECMAScript makes iteration order of objects implementation-dependent, it may appear that all major browsers support an iteration order based on the earliest added property coming first (at least for properties not on the prototype). However, in the case of Internet Explorer, when one uses <code>delete</code> on a property, some confusing behavior results, preventing other browsers from using simple objects like object literals as ordered associative arrays. In Explorer, while the property <em>value</em> is indeed set to undefined, if one later adds back a property with the same name, the property will be iterated in its <em>old</em> position--not at the end of the iteration sequence as one might expect after having deleted the property and then added it back.</p>
+<p>So if you want to simulate an ordered associative array in a cross-browser environment, you are forced to either use two separate arrays (one for the keys and the other for the values), or build an array of single-property objects, etc.</p>
+<h2 id="Specification" name="Specification">External links</h2>
+<ul>
+  <li>In depth <a class="external" href="http://perfectionkills.com/understanding-delete/">analysis on delete</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Operators">Operators</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/delete">delete</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object">Object</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/bigbossSNK">bigbossSNK</a>, <a href="/en-US/profiles/R-way">R-way</a>, <a href="/en-US/profiles/SpoilSpot">SpoilSpot</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Manuel%20Strehl">Manuel Strehl</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/jswisher">jswisher</a>, <a href="/en-US/profiles/Ruakh">Ruakh</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/madarche">madarche</a>, <a href="/en-US/profiles/Inimino">Inimino</a>, <a href="/en-US/profiles/IgorKitsa">IgorKitsa</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:45-07:00">May 28, 2013 8:33:45 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/dbruant">dbruant</a>, 
+            <time datetime="2013-02-09T08:28:11-08:00">Feb 9, 2013 8:28:11 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/delete$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

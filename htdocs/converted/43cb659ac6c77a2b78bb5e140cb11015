@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="451905" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Comparison Operators</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Operators</td>
+    </tr>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0
+        <p>JavaScript 1.3: Added the <code>===</code> and <code>!==</code> operators.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition includes all comparison operators except <code>===</code> and <code>!==</code>.
+        <p>ECMAScript 3rd Edition adds <code>===</code> and <code>!==</code>.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>JavaScript has both <a class="external" href="http://ecma-international.org/ecma-262/5.1/#sec-11.9.6" title="http://ecma-international.org/ecma-262/5.1/#sec-11.9.6">strict</a> and Type–converting (<a class="external" href="http://ecma-international.org/ecma-262/5.1/#sec-11.8.5" title="http://ecma-international.org/ecma-262/5.1/#sec-11.8.5">abstract</a>) comparisons. A strict comparison (e.g. <code>===</code>) is only true if the operands are the same Type. The more commonly used abstract comparison (e.g. <code>==</code>) converts the operands to the same Type before making the comparison. For <a class="external" href="http://ecma-international.org/ecma-262/5.1/#sec-11.8.5" title="http://ecma-international.org/ecma-262/5.1/#sec-11.8.5">relational abstract</a> comparisons (e.g. <code>&lt;=</code>), the operands are first converted to primitives, then the same Type, before comparison.</p>
+<p>Strings are compared based on standard lexicographical ordering, using Unicode values.</p>
+<p>Features of comparisons:</p>
+<ul>
+  <li>Two strings are strictly equal when they have the same sequence of characters, same length, and same characters in corresponding positions</li>
+  <li>Two numbers are strictly equal when they are numerically equal (have the same number value). <a href="/en/JavaScript/Reference/Global_Objects/NaN" title="NaN">NaN</a> is not equal to anything, including NaN. Positive and negative zeros are equal to one another</li>
+  <li>Two Boolean operands are strictly equal if both are <code>true</code> or both are <code>false</code></li>
+  <li>Two distinct objects are never equal for either strictly or abstract comparisons</li>
+  <li>An expression comparing Objects is only true if the operands reference the same Object</li>
+  <li>Null and Undefined Types are <code>==</code> (but not <code>===</code>)</li>
+</ul>
+<p>The following table describes the comparison operators:</p>
+<table class="fullwidth-table">
+  <tbody>
+    <tr>
+      <th>Operator</th>
+      <th>Description</th>
+      <th>Examples returning true<sup>1</sup></th>
+    </tr>
+    <tr>
+      <td>Equal (<code>==</code>)</td>
+      <td>If the two operands are <strong>not of the same type</strong>, JavaScript converts the operands then applies strict comparison. If either operand is <strong>a number or a boolean</strong>, the operands are converted to numbers if possible; else if either operand is<strong> a string</strong>, the other operand is converted to a string if possible. If <strong>both operands are objects</strong>, then JavaScript compares internal references which are equal when operands refer to the same object in memory.</td>
+      <td>
+        <p><code>3 == var1<br/>
+          "3" == var1<br/>
+          3 == '3'</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>Not equal (<code>!=</code>)</td>
+      <td>Returns true if the operands are not equal. If the two operands are <strong>not of the same type</strong>, JavaScript attempts to convert the operands to an appropriate type for the comparison. If <strong>both operands are objects</strong>, then JavaScript compares internal references which are not equal when operands refer to different objects in memory.</td>
+      <td>
+        <p><code>var1 != 4<br/>
+          var1 != "5"</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>Strict equal (<code>===</code>)</td>
+      <td>Returns true if the operands are strictly equal (see above) with no type conversion.</td>
+      <td>
+        <p><code>3 === var1</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>Strict not equal (<code>!==</code>)</td>
+      <td>Returns true if the operands are not equal and/or not of the same type.</td>
+      <td>
+        <p><code>var2 !== 3<br/>
+          3 !== '3'</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>Greater than (<code>&gt;</code>)</td>
+      <td>Returns true if the left operand is greater than the right operand.</td>
+      <td>
+        <p><code>var2 &gt; var1</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>Greater than or equal (<code>&gt;=</code>)</td>
+      <td>Returns true if the left operand is greater than or equal to the right operand.</td>
+      <td>
+        <p><code>var2 &gt;= var1<br/>
+          var1 &gt;= 3</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>Less than (<code>&lt;</code>)</td>
+      <td>Returns true if the left operand is less than the right operand.</td>
+      <td>
+        <p><code>var1 &lt; var2</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>Less than or equal to (<code>&lt;=</code>)</td>
+      <td>Returns true if the left operand is less than or equal to the right operand.</td>
+      <td>
+        <p><code>var1 &lt;= var2<br/>
+          var2 &lt;= 5</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><small><sup>1</sup> These examples assume that <code>var1</code> has been assigned the value 3 and <code>var2</code> has been assigned the value 4.</small></p>
+<h2 id="Using_the_Equality_Operators" name="Using_the_Equality_Operators">Using the Equality Operators</h2>
+<p>The standard equality operators (<code>==</code> and <code>!=</code>) use the Abstract Equality Comparison Algorithm to compare two operands. If the operands are of different Type, it will attempt to convert them to the same Type before making the comparison, e.g. in the expression <code>5 == '5'</code>, the string on the right is converted to Number before the comparison is made.</p>
+<p>The strict equality operators (<code>===</code> and <code>!==</code>) use the Strict Equality Comparison Algorithm and are intended for performing equality comparisons on operands of the same Type. If the operands are of different Types, the result is always <code>false</code> so <code>5 !== '5'</code>.</p>
+<p>Use strict equality operators if the operands must be of a specific Type as well as value or if the exact Type of the operands is important. Otherwise, use the standard equality operators, which allow you to compare the identity of two operands even if they are not of the same Type.</p>
+<p>When Type conversion is involved in the comparison (i.e. non–strict comparison), JavaScript converts Type String, Number, Boolean, or Object operands as follows:</p>
+<ul>
+  <li>When comparing a number and a string, the string is converted to a number value. JavaScript attempts to convert the string numeric literal to a <code>Number</code> type value. First, a mathematical value is derived from the string numeric literal. Next, this value is rounded to nearest <code>Number</code> type value.</li>
+  <li>If one of the operands is <code>Boolean</code>, the Boolean operand is converted to 1 if it is <code>true</code> and +0 if it is <code>false</code>.</li>
+  <li>If an object is compared with a number or string, JavaScript attempts to return the default value for the object. Operators attempt to convert the object to a primitive value, a <code>String</code> or <code>Number</code> value, using the <code>valueOf</code> and <code>toString</code> methods of the objects. If this attempt to convert the object fails, a runtime error is generated.</li>
+  <li>Note that an object is converted into a primitive if, and only if, its comparand is a primitive. If both operands are objects, they're compared as objects, and the equality test is true only if both refer the same object.</li>
+</ul>
+<div class="note">
+  <strong>Note:</strong> String Objects are Type Object, not String! String objects are rarely used, so the following results might be surprising:</div>
+<pre class="brush:js">'foo' === 'foo' // true as both operands are Type String (i.e. string primitives)
+var a = new String('foo');
+var b = new String('foo');
+a == b // false as a and b are Type Object <code>and reference different objects
+a === b // false as a and b are Type Object and reference different objects
+a == 'foo' // true as a and 'foo' are of a different type and, the Object (a) is converted to String 'foo' before comparison</code></pre>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/tregagnon">tregagnon</a>, <a href="/en-US/profiles/Nexus">Nexus</a>, <a href="/en-US/profiles/GavinSharp">GavinSharp</a>, <a href="/en-US/profiles/Niggler">Niggler</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Johnjbarton">Johnjbarton</a>, <a href="/en-US/profiles/Robg1">Robg1</a>, <a href="/en-US/profiles/Abdelkrim">Abdelkrim</a>, <a href="/en-US/profiles/Chris%20Chittleborough">Chris Chittleborough</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Mook">Mook</a>, <a href="/en-US/profiles/Stalve">Stalve</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/iskitz">iskitz</a>, <a href="/en-US/profiles/Jonathan_Watt">Jonathan_Watt</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Abdelkrim">Abdelkrim</a>, 
+          <time datetime="2013-08-08T05:08:35-07:00">Aug 8, 2013 5:08:35 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Abdelkrim">Abdelkrim</a>, 
+            <time datetime="2013-08-08T05:08:35-07:00">Aug 8, 2013 5:08:35 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

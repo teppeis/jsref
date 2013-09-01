@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="459731" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.match</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Used to retrieve the matches when matching a <code><em>string</em></code> against a <em>regular expression</em>.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>var </em><em>array = string</em>.match(regexp);</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>regexp</code></dt>
+  <dd>
+    A <a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp" title="JavaScript/Reference/Global Objects/RegExp">regular expression</a> object. If a non-RegExp object <code>obj</code> is passed, it is implicitly converted to a RegExp by using <code>new RegExp(obj)</code>.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>If the regular expression does not include the <code>g</code> flag, returns the same result as <a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp/exec" title="JavaScript/Reference/Global_Objects/RegExp/exec"><code><em>regexp</em>.exec(<em>string</em>)</code></a>. <span style="line-height: 1.572;">The returned </span><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" style="line-height: 1.572;" title="JavaScript/Reference/Global_Objects/Array"><code style="font-size: 14px;">Array</code></a><span style="line-height: 1.572;"> has an extra </span><code style="font-size: 14px;">input</code><span style="line-height: 1.572;"> property, which contains the regexp that generated it as a result. In addition, it has an </span><code style="font-size: 14px;">index</code><span style="line-height: 1.572;"> property, which represents the zero-based index of the match in the string.</span></p>
+<p>If the regular expression includes the <code>g</code> flag, the method returns an <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array"><code>Array</code></a> containing all matches. If there were no matches, the method returns <code>null</code>.</p>
+<div class="geckoVersionNote">
+  <div>
+    <div class="geckoVersionHeading"> 
+Gecko 8.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 8.0 / Thunderbird 8.0 / SeaMonkey 2.5)</div> 
+</div></div>
+  <p>Prior to Gecko 8.0 (Firefox 8.0 / Thunderbird 8.0 / SeaMonkey 2.5), <code>match()</code> was implemented incorrectly; when it was called with no parameters or with <code>undefined</code>, it would match against undefined, instead of always returning an empty string. This is fixed.</p>
+</div>
+<h3 id="Notes" name="Notes">Notes</h3>
+<ul>
+  <li>If you need to know if a string matches a regular expression <code>regexp</code>, use <a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp/test" title="JavaScript/Reference/Global_Objects/RegExp/test"><code><em>regexp</em>.test(<em>string</em>)</code></a>.</li>
+  <li>If you only want the first match found, you might want to use <a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp/exec" title="JavaScript/Reference/Global_Objects/RegExp/exec"><code><em>regexp</em>.exec(<em>string</em>)</code></a> instead.</li>
+  <li>See §15.5.4.10 of the ECMA-262 specification.</li>
+</ul>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_match" name="Example:_Using_match">Example: Using <code>match</code></h3>
+<p>In the following example, <code>match</code> is used to find "<code>Chapter</code>" followed by 1 or more numeric characters followed by a decimal point and numeric character 0 or more times. The regular expression includes the <code>i</code> flag so that case will be ignored.</p>
+<pre class="brush:js">var str = "For more information, see Chapter 3.4.5.1";
+var re = /(chapter \d+(\.\d)*)/i;
+var found = str.match(re);
+
+alert(found);
+</pre>
+<p>This returns the array containing Chapter 3.4.5.1,Chapter 3.4.5.1,.1</p>
+<p>"<code>Chapter 3.4.5.1</code>" is the first match and the first value remembered from <code>(Chapter \d+(\.\d)*)</code>.</p>
+<p>"<code>.1</code>" is the second value remembered from <code>(\.\d)</code>.</p>
+<h3 id="Example:_Using_global_and_ignore_case_flags_with_match" name="Example:_Using_global_and_ignore_case_flags_with_match">Example: Using global and ignore case flags with <code>match</code></h3>
+<p>The following example demonstrates the use of the global and ignore case flags with <code>match</code>. All letters A through E and a through e are returned, each its own element in the array</p>
+<pre class="brush:js">var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+var regexp = /[A-E]/gi;
+var matches_array = str.match(regexp);
+
+alert(matches_array);
+</pre>
+<p><code>matches_array</code> now equals <code>['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']</code></p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String">String</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Regular%20Expressions">Regular Expressions</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/WenbingZheng">WenbingZheng</a>, <a href="/en-US/profiles/mikemcg">mikemcg</a>, <a href="/en-US/profiles/julienw">julienw</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/carpetsmoker">carpetsmoker</a>, <a href="/en-US/profiles/ostorj">ostorj</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/mikemcg">mikemcg</a>, 
+          <time datetime="2013-08-27T15:14:45-07:00">Aug 27, 2013 3:14:45 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/mikemcg">mikemcg</a>, 
+            <time datetime="2013-08-27T15:14:45-07:00">Aug 27, 2013 3:14:45 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

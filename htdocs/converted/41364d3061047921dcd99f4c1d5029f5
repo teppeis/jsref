@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418327" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Intl.DateTimeFormat.prototype.format</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Getter; returns a function that formats a date according to the locale and formatting options of this <code>DateTimeFormat</code> object.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat" title="JavaScript/Reference/Global_Objects/DateTimeFormat"><code>DateTimeFormat</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript Internationalization API Specification, 1<sup>st</sup> Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>dateTimeFormat.format(date)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>date</code></dt>
+  <dd>
+    The date to format.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>The function returned by the <code>format</code> getter formats a date into a string according to the locale and formatting options of this <code>DateTimeFormat</code> object.</p>
+<h2 id="Examples">Examples</h2>
+<p>Use the function returned by the <code>format</code> getter for formatting a single date, here for Serbia:</p>
+<pre class="brush: js">var options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
+var dateTimeFormat = new Intl.DateTimeFormat("sr-RS", options);
+alert(dateTimeFormat.format(new Date()));
+// → "недеља, 7. април 2013."</pre>
+<p>Use the function returned by the <code>format</code> getter for formatting all dates in an array. Note that the function is bound to the <code>DateTimeFormat</code> from which it was obtained, so it can be passed directly to <code>Array.prototype.map</code>.</p>
+<pre class="brush: js">var a = [new Date(2012, 08), new Date(2012, 11), new Date(2012, 03)];
+var options = {year: "numeric", month: "long"};
+var dateTimeFormat = new Intl.DateTimeFormat("pt-BR", options);
+var formatted = a.map(dateTimeFormat.format);
+alert(formatted.join("; "));
+// → "setembro de 2012; dezembro de 2012; abril de 2012"</pre>
+<h2 id="Browser_Compatibility">Browser Compatibility</h2>
+<div>
+  <p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"> 
+    </a><ul><a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/><li class="selected"><a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul></div><p>
+</p><div id="compat-desktop">
+  <table class="compat-table"><tbody><tr><th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr><tr><td>Basic support</td>
+        <td>24</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>11</td>
+        <td>15</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr></tbody></table></div>
+<div id="compat-mobile">
+  <table class="compat-table"><tbody><tr><th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr><tr><td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>26</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr></tbody></table></div></div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleString">Date.prototype.toLocaleString</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleDateString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleDateString">Date.prototype.toLocaleDateString</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString">Date.prototype.toLocaleTimeString</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Internationalization">Internationalization</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/DateTimeFormat">DateTimeFormat</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Norbert">Norbert</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:43-07:00">May 28, 2013 8:33:43 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Norbert">Norbert</a>, 
+            <time datetime="2013-04-07T22:05:56-07:00">Apr 7, 2013 10:05:56 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/format$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

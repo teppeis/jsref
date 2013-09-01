@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418407" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">function</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>The <code>function</code> operator defines a function inside an expression.</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Operator</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.5</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262, Edition 3</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox">function [<em>name</em>]([<em>param1</em>, <em>param2</em>, ..., <em>paramN</em>]) {
+   <em>statements</em>
+}</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>name</code></dt>
+  <dd>
+    The function name. Can be omitted, in which case the function is <em>anonymous</em>. The name is only local to the function body.</dd>
+  <dt>
+    <code>paramN</code></dt>
+  <dd>
+    The name of an argument to be passed to the function. A function can have up to 255 arguments.</dd>
+  <dt>
+    <code>statements</code></dt>
+  <dd>
+    The statements which comprise the body of the function.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>A function expression is very similar to and has almost the same syntax as a function declaration (see <a href="/en-US/docs/JavaScript/Reference/Statements/function" title="JavaScript/Reference/Statements/function">function</a> for details). See <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope" title="JavaScript/Reference/Functions_and_function_scope">Functions</a> for information on the differences between function statements and function expressions.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<p>The following example defines an unnamed function and assigns it to <code>x</code>. The function returns the square of its argument:</p>
+<pre class="brush: js">var x = function(y) {
+   return y * y;
+};
+</pre>
+<h3 id="Named_function_expression">Named function expression</h3>
+<p>If you want to refer to the current function inside the function body, you need to create a named function expression. This name is then local only to the function body (scope). This also avoids using the non-standard <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments/callee" title="JavaScript/Reference/Functions and function scope/arguments/callee">arguments.callee</a> property.</p>
+<pre class="brush: js">var math = {
+  'factorial': function factorial(n) {
+    if (n &lt;= 1)
+      return 1;
+    return n * factorial(n - 1);
+  }
+};
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope" title="JavaScript/Reference/Functions_and_function_scope">Functions and function scope</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/Function"><code>Function</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/function" title="JavaScript/Reference/Statements/function"><code>function statement</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Function">Function</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Ruakh">Ruakh</a>, <a href="/en-US/profiles/tiangolo">tiangolo</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/vrana">vrana</a>, <a href="/en-US/profiles/zbuffered">zbuffered</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Chris%20Chittleborough">Chris Chittleborough</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:47-07:00">May 28, 2013 8:33:47 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-12-18T03:26:50-08:00">Dec 18, 2012 3:26:50 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/function$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

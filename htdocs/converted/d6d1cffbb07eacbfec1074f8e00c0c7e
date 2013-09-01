@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417587" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">stringify</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h3 id="Summary">Summary</h3>
+<p>Convert a value to JSON, optionally replacing values if a replacer function is specified, or optionally including only the specified properties if a replacer array is specified.</p>
+<table class="standard-table"> <thead> <tr> <th class="header">Method of <a href="/en/JavaScript/Reference/Global_Objects/JSON" title="en/JavaScript/Reference/Global_Objects/JSON"><code>JSON</code></a></th> </tr> </thead> <tbody> <tr> <td>Implemented in</td> <td>JavaScript 1.7</td> </tr> <tr> <td>ECMAScript Edition</td> <td>ECMAScript 5th Edition</td> </tr> </tbody>
+</table>
+<h3 id="Syntax">Syntax</h3>
+<p><code>JSON.stringify(<em>value</em>[, <em>replacer</em> [, <em>space</em>]])</code></p>
+<h3 id="Parameters">Parameters</h3>
+<dl> <dt><code>value</code></dt> <dd>The value to convert to a JSON string.</dd> <dt><code>replacer</code></dt> <dd>If a function, transforms values and properties encountered while stringifying; if an array, specifies the set of properties included in objects in the final string.<br/> A detailed description of the <code>replacer</code> function is provided in <a href="/En/Using_native_JSON#The_replacer_parameter" title="en/Using native JSON#The_replacer_parameter">Using native JSON#The_replacer_parameter</a>.</dd> <dt><code>space</code></dt> <dd>Causes the resulting string to be pretty-printed.</dd>
+</dl>
+<h3 id="Description">Description</h3>
+<p><code>JSON.stringify</code> converts an object to JSON notation representing it.</p>
+<pre class="brush: js">assert(JSON.stringify({}) === '{}');
+assert(JSON.stringify(true) === 'true');
+assert(JSON.stringify("foo") === '"foo"');
+assert(JSON.stringify([1, "false", false]) === '[1,"false",false]');
+assert(JSON.stringify({ x: 5 }) === '{"x":5}');
+JSON.stringify({x: 5, y: 6}); // '{"x":5,"y":6}' or '{"y":6,"x":5}'
+</pre>
+<p>Properties of non-array objects are not guaranteed to be stringified in any particular order. Do not rely on ordering of properties within the same object within the stringification.</p>
+<p>Boolean, Number, and String objects are converted to the corresponding primitive values during stringification, in accord with the traditional conversion semantics.</p>
+<p>If <code>undefined</code>, a function, or an XML value is encountered during conversion it is either omitted (when it is found in an object) or censored to null (when it is found in an array).</p>
+<h4 id="space_argument"><code>space</code> argument</h4>
+<p>The space argument may be used to control spacing in the final string. If it is a number, successive levels in the stringification will each be indented by this many space characters (up to 10). If it is a string, successive levels will indented by this string (or the first ten characters of it).</p>
+<pre class="brush: js">JSON.stringify({ a: 2 }, null, " ");   // '{\n "a": 2\n}'</pre>
+<p>Using a tab character mimics standard pretty-print appearance:</p>
+<pre class="brush: js">JSON.stringify({ uno: 1, dos : 2 }, null, '\t')
+// returns the string:
+// '{            \
+//     "uno": 1, \
+//     "dos": 2  \
+// }' </pre>
+<p> </p>
+<h4 id="toJSON_behavior">toJSON behavior</h4>
+<p>If an object being stringified has a property named <code>toJSON</code> whose value is a function, then the <code>toJSON</code> method customizes JSON stringification behavior: instead of the object being serialized, the value returned by the <code>toJSON</code> method when called will be serialized. For example:</p>
+<pre class="brush: js">var x = {
+  foo: 'foo',
+  toJSON: function () {
+    return 'bar';
+  }
+};
+var json = JSON.stringify({x: x});
+</pre>
+<p><code>json</code> will be the string <code>'{"x":"bar"}'</code>.</p>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/paul.irish">paul.irish</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:10-07:00">May 28, 2013 8:33:10 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

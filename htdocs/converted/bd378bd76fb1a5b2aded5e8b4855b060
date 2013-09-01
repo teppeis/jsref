@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418055" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">message</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h3 id="Summary">Summary</h3>
+<p>A human-readable description of the error.</p>
+<table class="standard-table"> <thead> <tr> <th class="header">Property of <a href="/en/JavaScript/Reference/Global_Objects/Error" title="en/JavaScript/Reference/Global_Objects/Error"><code>Error</code></a></th> </tr> </thead> <tbody> <tr> <td>Implemented in</td> <td>JavaScript 1.?</td> </tr> <tr> <td>ECMAScript Edition</td> <td>ECMAScript 1st Edition</td> </tr> </tbody>
+</table>
+<h3 id="Description">Description</h3>
+<p>This property contains a brief description of the error if one is available or has been set. <a href="/en/SpiderMonkey" title="en/SpiderMonkey">SpiderMonkey</a> makes extensive use of the <code>message</code> property for exceptions. The <code>message</code> property combined with the <code><a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Error/name" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Error/name">name</a></code> property is used by the <code><a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Error/toString" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Error/toString">Error.prototype.toString</a></code> method to create a string representation of the Error.</p>
+<p>By default, the <code>message</code> property is an empty string, but this behavior can be overridden for an instance by specifying a message as the first argument to the <a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Error" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Error">Error constructor</a>.</p>
+<h3 id="Examples">Examples</h3>
+<h4 id="Example.3A_Throwing_a_custom_error">Example: Throwing a custom error</h4>
+<pre class="eval">var e = new Error("Could not parse input"); // e.message is "Could not parse input"
+throw e;
+</pre>
+<h3 id="See_also">See also</h3>
+<ul> <li><a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Error/name" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Error/name">name</a></li> <li><a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Error/toString" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Error/toString">toString</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsJSVersion">NeedsJSVersion</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/Waldo">Waldo</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:31-07:00">May 28, 2013 8:33:31 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/message$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

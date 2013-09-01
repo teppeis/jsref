@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="424519" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Operators</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <dl>
+  <dd>
+    There are several special operators that do not fit into any other category:</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Arithmetic_Operators" title="en-US/docs/JavaScript/Reference/Operators/Arithmetic_Operators">Arithmetic Operators</a></dt>
+  <dd>
+    <p>(<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>++</code>, <code>--</code>, unary <code>-, unary +</code>)</p>
+    <p>Arithmetic operators take numerical values (either literals or variables) as their operands and return a single numerical value.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Assignment_Operators" title="en-US/docs/JavaScript/Reference/Operators/Assignment_Operators">Assignment Operators</a></dt>
+  <dd>
+    <p>(<code><span style="font-family: Verdana,Tahoma,sans-serif;">=, *=, /=, %=, +=, -=, &lt;&lt;=, &gt;&gt;=, &gt;&gt;&gt;=, &amp;=, ^=, |=</span></code>)</p>
+    <p>An assignment operator assigns a value to its left operand based on the value of its right operand.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Bitwise_Operators" title="en-US/docs/JavaScript/Reference/Operators/Bitwise_Operators">Bitwise Operators</a></dt>
+  <dd>
+    <p>(<code>&amp;</code>, <code>|</code>, <code>^</code>, <code>~</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code>, <code>&gt;&gt;&gt;</code>)</p>
+    <p>Bitwise operators treat their operands as a set of 32 bits (zeros and ones) and return standard JavaScript numerical values.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Comparison_Operators" title="en-US/docs/JavaScript/Reference/Operators/Comparison_Operators">Comparison Operators</a></dt>
+  <dd>
+    <p>(<code>==</code>, <code>!=</code>, <code>===</code>, <code>!==</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>)</p>
+    <p>A comparison operator compares its operands and returns a logical value based on whether the comparison is true.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Logical_Operators" title="en-US/docs/JavaScript/Reference/Operators/Logical_Operators">Logical Operators</a></dt>
+  <dd>
+    <p>(<code>&amp;&amp;</code>, <code>||</code>, <code>!</code>)</p>
+    <p>Logical operators are typically used with boolean (logical) values, and when they are, they return a boolean value.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/String_Operators" title="en-US/docs/JavaScript/Reference/Operators/String_Operators">String Operators</a></dt>
+  <dd>
+    <p>(<code>+</code> and <code>+=</code>)</p>
+    <p>The string operators concatenate two string values together, returning another string that is the union of the two strings.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Member_Operators" title="en-US/docs/JavaScript/Reference/Operators/Member_Operators">Member Operators</a></dt>
+  <dd>
+    <p>(<code>object.property</code> and <code>object["property"]</code>)</p>
+    <p>Member operators provide access to a property or method of an object.</p>
+  </dd>
+  <dt>
+    Special Operators</dt>
+  <dd>
+    <dl>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/Conditional_Operator" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/Conditional_Operator">Conditional Operator</a></dt>
+      <dd>
+        <p>(<code><em>condition</em> ? <em>ifTrue</em> : <em>ifFalse</em></code>)</p>
+        <p>The conditional operator returns one of two values based on the logical value of the condition.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/Comma_Operator" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/Comma_Operator">Comma Operator</a></dt>
+      <dd>
+        <p>(<code>,</code>)</p>
+        <p>The comma operator allows multiple expressions to be evaluated in a single statement and returns the result of the last expression.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/delete" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/delete_Operator">delete Operator</a></dt>
+      <dd>
+        <p>(<code>delete</code>)</p>
+        <p>The delete operator deletes a property from an object.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/function" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/function_Operator">function Operator</a></dt>
+      <dd>
+        <p>(<code>function</code>)</p>
+        <p>The function operator defines a function.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/get" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/get_Operator">get Operator</a></dt>
+      <dd>
+        <p>(<code>get</code>)</p>
+        <p>The get operator defines a property to be a getter.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/in" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/in_Operator">in Operator</a></dt>
+      <dd>
+        <p>(<code>in</code>)</p>
+        <p>The in operator determines whether an object has a given property.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/instanceof" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/instanceof_Operator">instanceof Operator</a></dt>
+      <dd>
+        <p>(<code>instanceof</code>)</p>
+        <p>The instanceof operator determines whether an object is an instance of another object.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Statements/let" title="/en-US/docs/JavaScript/Reference/Statements/let">let Operator</a></dt>
+      <dd>
+        <p>(<code>let</code>)</p>
+        <p>The let operator temporarily assigns a value to a variable that only effects an expression.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/new" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/new_Operator">new Operator</a></dt>
+      <dd>
+        <p>(<code>new</code>)</p>
+        <p>The new operator creates an instance of a constructor.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/set" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/set_Operator">set Operator</a></dt>
+      <dd>
+        <p>(<code>set</code>)</p>
+        <p>The set operator defines a property to be a setter.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/this" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/this_Operator">this Operator</a></dt>
+      <dd>
+        <p>(<code>this</code>)</p>
+        <p>The this operator refers to the execution context.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/typeof" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/typeof_Operator">typeof Operator</a></dt>
+      <dd>
+        <p>(<code>typeof</code>)</p>
+        <p>The typeof operator determines the type of a given object.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/void" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/void_Operator">void Operator</a></dt>
+      <dd>
+        <p>(<code>void</code>)</p>
+        <p>The void operator discards an expressions return value.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/yield" title="/en-US/docs/JavaScript/Reference/Operators/yield">yield Operator</a></dt>
+      <dd>
+        <p>(<code>yield</code>)</p>
+        <p>The yield operator determines what is returned in a generator by that generator's iterator.</p>
+      </dd>
+    </dl>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Operator_Precedence" title="en-US/docs/JavaScript/Reference/Operators/Operator_Precedence">Operator Precedence</a></dt>
+  <dd>
+    Operator precedence defines the order in which operators are evaluated.</dd>
+</dl>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/QuesoLoco">QuesoLoco</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/randykcox">randykcox</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/pig_knuckle_sandwich">pig_knuckle_sandwich</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Nanto%20vi">Nanto vi</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/newacct">newacct</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/randykcox">randykcox</a>, 
+          <time datetime="2013-06-04T14:16:37-07:00">Jun 4, 2013 2:16:37 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/randykcox">randykcox</a>, 
+            <time datetime="2013-06-04T14:16:37-07:00">Jun 4, 2013 2:16:37 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

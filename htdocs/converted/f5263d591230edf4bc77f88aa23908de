@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="453841" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">for each...in</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p/><div class="overheadIndicator deprecated deprecatedHeader"> 
+			<p>Deprecated</p> 
+		</div><p/>
+<h2 id="Summary">Summary</h2>
+<p>Iterates a specified variable over all values of object's properties. For each distinct property, a specified statement is executed.</p>
+<div class="noinclude">
+  <div class="warning">
+    <p>The for each...in statement is deprecated as the part of ECMA-357 (<a href="/en-US/docs/E4X" title="/en-US/docs/E4X">E4X</a>) standard. E4X will be disabled by default and removed in the future, but for each...in will not be disabled and removed because of backward compatibility considerations. Consider using <a href="/en-US/docs/JavaScript/Reference/Statements/for...of" title="/en-US/docs/JavaScript/Reference/Statements/for...of">for...of</a> instead. (Please refer to <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=791343" rel="external" title="">bug 791343</a>.)</p>
+  </div>
+  <div class="note">
+    <code>for each...in</code> is part of the <a class="external" href="http://www.ecma-international.org/publications/standards/Ecma-357.htm" title="http://www.ecma-international.org/publications/standards/Ecma-357.htm">ECMA-357 (E4X) standard</a>, which is not widely supported by non-Mozilla browsers, not part of the ECMAScript standard.</div>
+</div>
+<h2 id="Version_Information">Version Information</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.6" title="JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></td>
+    </tr>
+    <tr>
+      <td>ECMAScript Version:</td>
+      <td>none</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>for each (<em>variable</em> in <em>object</em>) {
+  <em>statement</em>
+}</code></pre>
+<h2 id="Parameters" name="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>variable</code></dt>
+  <dd>
+    Variable to iterate over property values, optionally declared with the <code>var</code> keyword. This variable is local to the function, not to the loop.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>object</code></dt>
+  <dd>
+    Object for which the properties are iterated.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>statement</code></dt>
+  <dd>
+    A statement to execute for each property. To execute multiple statements within the loop, use a <a href="/en-US/docs/JavaScript/Reference/Statements/block" title="JavaScript/Reference/Statements/block">block</a> statement (<code>{ ... }</code>) to group those statements.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Some built-in properties are not iterated over. These include all built-in methods of objects, e.g. <code>String</code>'s <code>indexOf</code> method. However, all user-defined properties are iterated over.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_for_each...in" name="Example:_Using_for_each...in">Example: Using <code>for each...in</code></h3>
+<p><strong>Warning:</strong> Never use a loop like this on arrays. Only use it on objects. <a href="/en-US/docs/JavaScript/Reference/Statements/for...in#Description" title="JavaScript/Reference/Statements/for...in#Description">Details</a>.</p>
+<p>The following snippet iterates over an object's properties, calculating their sum:</p>
+<pre class="brush:js">var sum = 0;
+var obj = {prop1: 5, prop2: 13, prop3: 8};
+
+for each (var item in obj) {
+  sum += item;
+}
+
+print(sum); // prints "26", which is 5+13+8</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/for...in" title="JavaScript/Reference/Statements/for...in">for...in</a> - a similar statement that iterates over the property <em>names</em>.</li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/for...of" title="/en-US/docs/JavaScript/Reference/Statements/for...of">for...of</a> - a similar statement that iterates over the property <em>values</em> but there is some behavior that is different from <code>for each...in</code> statements.</li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/for" title="JavaScript/Reference/Statements/for">for</a></li>
+  <li><a href="/en-US/docs/JavaScript/Guide/Predefined_Core_Objects#Array_Object">Array comprehensions</a> (these use <code>for each</code>)</li>
+  <li><a href="/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators" title="/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators">Iterator</a> - a function that takes a collection as an argument and allows traversal of its properties through subsequent methods</li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/E4X">E4X</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Scipion">Scipion</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/Dikrib">Dikrib</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/saneyuki_s">saneyuki_s</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Ruakh">Ruakh</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/gabriel_nahmias">gabriel_nahmias</a>, <a href="/en-US/profiles/Inimino">Inimino</a>, <a href="/en-US/profiles/Afcn007">Afcn007</a>, <a href="/en-US/profiles/Juamei">Juamei</a>, <a href="/en-US/profiles/Bzbarsky">Bzbarsky</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/gabriel_nahmias">gabriel_nahmias</a>, 
+          <time datetime="2013-08-13T17:39:51-07:00">Aug 13, 2013 5:39:51 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/gabriel_nahmias">gabriel_nahmias</a>, 
+            <time datetime="2013-08-13T17:39:51-07:00">Aug 13, 2013 5:39:51 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/for_each...in$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

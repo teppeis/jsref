@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="451975" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.prototype.concat</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Combines the text of two or more strings and returns a new string.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><em>string</em>.concat(<em>string2</em>, <em>string3</em>[, ..., <em>stringN</em>])</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>string2...string<em>N</em></code></dt>
+  <dd>
+    Strings to concatenate to this string.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p><code>concat</code> combines the text from one or more strings and returns a new string. Changes to the text in one string do not affect the other string.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_concat" name="Example:_Using_concat">Example: Using <code>concat</code></h3>
+<p>The following example combines strings into a new string.</p>
+<pre class="brush: js">var hello = "Hello, ";
+console.log(hello.concat("Kevin", " have a nice day.")); /* Hello, Kevin have a nice day. */
+</pre>
+<h2 id="Performance">Performance</h2>
+<p>It is strongly recommended that the string concatenation operators (+, +=) be used instead of this method for <a class="external" href="http://jsperf.com/concat-vs-plus-vs-join">perfomance reasons</a>.</p>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat"><code>Array.prototype.concat</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String">String</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Pointy">Pointy</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Nfroidure">Nfroidure</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Pointy">Pointy</a>, 
+          <time datetime="2013-08-08T07:30:00-07:00">Aug 8, 2013 7:30:00 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Pointy">Pointy</a>, 
+            <time datetime="2013-08-08T07:30:00-07:00">Aug 8, 2013 7:30:00 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

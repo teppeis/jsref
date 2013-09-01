@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="446907" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">this</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Introduction">Introduction</h2>
+<p>A function's <code>this</code> keyword behaves a little differently in JavaScript compared to other languages. It also has some differences between <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode" title="en-US/docs/JavaScript/Strict mode">strict mode</a> and non-strict mode.</p>
+<p>In most cases, the value of <code>this</code> is determined by how a function is called. It can't be set by assignment during execution, and it can be different each time the function is called. ES5 introduced the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/bind" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/bind">bind</a></code> method to <a href="/en-US/docs/JavaScript/Reference/Operators/this#Bound_functions" title="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Operators/Special/this#Bound_functions">set the value of a function's <code>this</code> regardless of how it's called</a>.</p>
+<h2 id="Global_context">Global context</h2>
+<p>In the global execution context (outside of any function), <code>this</code> refers to the global object, whether in strict mode or not.</p>
+<div style="margin-right: 270px;">
+  <pre class="brush:js">console.log(this.document === document); // true
+
+// In web browsers, the window object is also the global object:
+console.log(this === window); // true
+
+this.a = 37;
+console.log(window.a); // 37
+</pre>
+</div>
+<h2 id="Function_context">Function context</h2>
+<p>Inside a function, the value of <code>this</code> depends on how the function is called.</p>
+<h3 id="Simple_call">Simple call</h3>
+<pre class="brush:js">function f1(){
+  return this;
+}
+
+f1() === window; // global object
+</pre>
+<p>In this case, the value of <code>this</code> is not set by the call. Since the code is not in strict mode, the value of <code>this</code> must always be an object so it defaults to the global object.</p>
+<pre class="brush:js">function f2(){
+  "use strict"; // see strict mode
+  return this;
+}
+
+f2() === undefined;
+</pre>
+<p>In strict mode, the value of <code>this</code> remains at whatever it's set to when entering the execution context. If it's not defined, it remains undefined. It can also be set to any value, such as <code>null</code> or <code>42</code> or <code>"I am not this"</code>.</p>
+<div class="note">
+  <strong>Note:</strong> In the second example, <code>this</code> should be <a href="/en-US/docs/JavaScript/Reference/Global_Objects/undefined" title="undefined"><code>undefined</code></a>, because <code>f2</code> was called without providing any base (e.g. <code>window.f2()</code>). This feature wasn't implemented in some browsers when they first started to support <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode" title="Strict mode">strict mode</a>. As a result, they incorrectly returned the <code>window</code> object.</div>
+<h3 id="As_an_object_method">As an object method</h3>
+<p>When a function is called as a method of an object, its <code>this</code> is set to the object the method is called on.</p>
+<p>In the following example, when <code>o.f()</code> is invoked, inside the function <code>this</code> is bound to the <code>o</code> object.</p>
+<pre class="brush:js">var o = {
+  prop: 37,
+  f: function() {
+    return this.prop;
+  }
+};
+
+console.log(o.f()); // logs 37
+</pre>
+<p>Note that this behavior is not at all affected by how or where the function was defined. In the previous example, we defined the function inline as the <code>f</code> member during the definition of <code>o</code>.  However, we could have just as easily defined the function first and later attached it to <code>o.f</code>. Doing so results in the same behavior:</p>
+<pre class="brush:js">var o = {prop: 37};
+
+function independent() {
+  return this.prop;
+}
+
+o.f = independent;
+
+console.log(o.f()); // logs 37
+</pre>
+<p>This demonstrates that it matters only that the function was invoked from the <code>f</code> member of <code>o</code>.</p>
+<p>Similarly, the <code>this</code> binding is only affected by the most immediate member reference. In the following example, when we invoke the function, we call it as a method <code>g</code> of the object <code>o.b</code>. This time during execution, <code>this</code> inside the function will refer to <code>o.b</code>. The fact that the object is itself a member of <code>o</code> has no consequence; the most immediate reference is all that matters.</p>
+<pre class="brush:js">o.b = {g: independent, prop: 42};
+console.log(o.b.g()); // logs 42
+</pre>
+<h4 id="..._on_the_prototype_chain">... on the prototype chain</h4>
+<p>The same notion holds true for methods defined somewhere on the object's prototype chain. If the method is on an object's prototype chain, <code>this</code> refers to the object the method was called on, as if the method was on the object.</p>
+<pre class="brush:js">var o = {f:function(){ return this.a + this.b; }};
+var p = Object.create(o);
+p.a = 1;
+p.b = 4;
+
+console.log(p.f()); // 5
+</pre>
+<p>In this example, the object assigned to the variable <code>p</code> doesn't have its own <code>f</code> property, it inherits it from its <a href="/Prototype" title="Prototype">prototype</a>. But it doesn't matter that the lookup for <code>f</code> eventually finds a member with that name on <code>o</code>; the lookup began as a reference to <code>p.f</code>, so <code>this</code> inside the function takes the value of the object referred to as <code>p</code>. That is, since <code>f</code> is called as a method of <code>p</code>, its <code>this</code> refers to <code>p</code>. This is an interesting feature of JavaScript's prototype inheritance.</p>
+<h4 id="..._or_as_a_getter_or_setter">... or as a getter or setter</h4>
+<p>Again, the same notion holds true when a function is invoked from a getter or a setter. A function used as getter or setter has its <code>this</code> bound to the object from which the property is being set or gotten.</p>
+<pre class="brush:js">function modulus(){
+  return Math.sqrt(this.re * this.re + this.im * this.im);
+}
+
+var o = {
+  re: 1,
+  im: -1,
+  get phase(){
+    return Math.atan2(this.im, this.re);
+  }
+};
+
+Object.defineProperty(o, 'modulus', {get: modulus, enumerable:true, configurable:true});
+
+console.log(o.phase, o.modulus); // logs -0.78 1.4142
+</pre>
+<h3 id="As_a_constructor">As a constructor</h3>
+<p>When a function is used as a constructor (with the <code><a href="/en-US/docs/JavaScript/Reference/Operators/new" title="new">new</a></code> keyword), its <code>this</code> is bound to new object being constructed.</p>
+<p>Note: <span style="line-height: 1.572;">while the default for a constructor is to return the object referenced by </span><code style="font-size: 14px;">this</code><span style="line-height: 1.572;">, it can instead return some other object (if the return value  isn't an object, then the </span><code style="font-size: 14px;">this</code><span style="line-height: 1.572;"> object is returned).</span></p>
+<pre class="brush:js">/*
+ * Constructors work like this:
+ *
+ * function MyConstructor(){
+ *   // Actual function body code goes here.  Create properties on |this| as
+ *   // desired by assigning to them.  E.g.,
+ *   this.fum = "nom";
+ *   // et cetera...
+ *
+ *   // If the function has a return statement that returns an object, that
+ *   // object will be the result of the |new| expression.  Otherwise, the
+ *   // result of the expression is the object currently bound to |this|
+ *   // (i.e., the common case most usually seen).
+ * }
+ */
+
+function C(){
+  this.a = 37;
+}
+
+var o = new C();
+console.log(o.a); // logs 37
+
+
+function C2(){
+  this.a = 37;
+  return {a:38};
+}
+
+o = new C2();
+console.log(o.a); // logs 38
+</pre>
+<p>In the last example (<code>C2</code>), because an object was returned during construction, the new object that <code>this</code> was bound to simply gets discarded. (This essentially makes the statement "<code>this.a = 37;</code>" dead code. It's not exactly dead, because it gets executed, but it can be eliminated with no outside effects.)</p>
+<h3 id="call_and_apply"><code>call</code> and <code>apply</code></h3>
+<p>Where a function uses the <code>this</code> keyword in its body, its value can be bound to a particular object in the call using the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/call" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/call">call</a></code> or <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">apply</a></code> methods that all functions inherit from <code>Function.prototype</code>.</p>
+<pre class="brush:js">function add(c, d){
+  return this.a + this.b + c + d;
+}
+
+var o = {a:1, b:3};
+
+// The first parameter is the object to use as 'this', subsequent parameters are passed as 
+// arguments in the function call
+add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
+
+// The first parameter is the object to use as 'this', the second is an array whose
+// members are used as the arguments in the function call
+add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
+</pre>
+<h3 id="Bound_functions">Bound functions</h3>
+<p>ECMAScript 5 introduced <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/bind" title="en-US/docs/JavaScript/Reference/Global Objects/Function/bind">Function.prototype.bind</a></code>. Calling <code>f.bind(someObject)</code> creates a new function with the same body and scope as <code>f</code>, but where <code>this</code> occurs in the original function, in the new function it is permanently bound to the first argument of <code>bind</code>, regardless of how the function is being used.</p>
+<pre class="brush:js">function f(){
+  return this.a;
+}
+
+var g = f.bind({a:"azerty"});
+console.log(g()); // azerty
+
+var o = {a:37, f:f, g:g};
+console.log(o.f(), o.g()); // 37, azerty
+</pre>
+<h3 id="As_a_DOM_event_handler">As a DOM event handler</h3>
+<p>When a function is used as an event handler, its <code>this</code> is set to the element the event fired from (some browsers do not follow this convention for listeners added dynamically with methods other than <code>addEventListener</code>).</p>
+<pre class="brush:js">// When called as a listener, turns the related element blue
+function bluify(e){
+  console.log(this === e.currentTarget); // Always true
+  console.log(this === e.target);        // true when currentTarget and target are the same object
+  this.style.backgroundColor = '#A5D9F3';
+}
+
+// Get a list of every element in the document
+var elements = document.getElementsByTagName('*');
+
+// Add bluify as a click listener so when the element is clicked on,
+// it turns blue
+for(var i=0 ; i&lt;elements.length ; i++){
+  elements[i].addEventListener('click', bluify, false);
+}</pre>
+<h3 id="In_an_in.E2.80.93line_event_handler">In an in–line event handler</h3>
+<p>When code is called from an in–line handler, its <code>this</code> is set to the DOM element on which the listener is placed:</p>
+<pre class="brush:js">&lt;button onclick="alert(this.tagName.toLowerCase());"&gt;Show this&lt;/button&gt;
+</pre>
+<p>The above alert shows <code>button</code>. Note however that only the outer code has its <code>this</code> set this way:</p>
+<pre class="brush:js">&lt;button onclick="alert((function(){return this}}()));"&gt;Show inner this&lt;/button&gt;
+</pre>
+<p>In this case, the inner function's <code>this</code> isn't set so it returns the global/window object (i.e. the default object in non–strict mode where <code>this</code> isn't set by the call).</p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsTechnicalReview">NeedsTechnicalReview</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/RobG">RobG</a>, <a href="/en-US/profiles/XP1">XP1</a>, <a href="/en-US/profiles/yuqingalex">yuqingalex</a>, <a href="/en-US/profiles/Bburns">Bburns</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/justjust">justjust</a>, <a href="/en-US/profiles/Robg1">Robg1</a>, <a href="/en-US/profiles/icarot">icarot</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Bergi">Bergi</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Bitagenda">Bitagenda</a>, <a href="/en-US/profiles/webXL">webXL</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/kikiwiggado">kikiwiggado</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Inimino">Inimino</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/BYK">BYK</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Bergi">Bergi</a>, 
+          <time datetime="2013-07-31T07:23:49-07:00">Jul 31, 2013 7:23:49 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Bergi">Bergi</a>, 
+            <time datetime="2013-07-31T07:23:49-07:00">Jul 31, 2013 7:23:49 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/this$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

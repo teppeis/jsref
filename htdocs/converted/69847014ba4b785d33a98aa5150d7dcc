@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417775" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.split</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Splits a <code>String</code> object into an array of strings by separating the string into substrings.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.1</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>string</em>.split([<em>separator</em>][, <em>limit</em>])</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>separator</code></dt>
+  <dd>
+    Specifies the character(s) to use for separating the string. The <code>separator</code> is treated as a string or a <a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp" title="JavaScript/Reference/Global_Objects/RegExp">regular expression</a>. If <code>separator</code> is omitted, the array returned contains one element consisting of the entire string.</dd>
+  <dt>
+    <code>limit</code></dt>
+  <dd>
+    Integer specifying a limit on the number of splits to be found. The <code>split</code> method still splits on every match of <code>separator</code>, but it truncates the returned array to at most <code>limit</code> elements.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>split</code> method returns the new array.</p>
+<p>When found, <code>separator</code> is removed from the string and the substrings are returned in an array. If <code>separator</code> is omitted, the array contains one element consisting of the entire string.</p>
+<p>If <code>separator</code> is a regular expression that contains capturing parentheses, then each time separator is matched the results (including any undefined results) of the capturing parentheses are spliced into the output array. However, not all browsers support this capability.</p>
+<p/><div class="note"><strong>Note:</strong> When the string is empty, <code>split</code> returns an array containing one empty string, rather than an empty array.</div><p/>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_split" name="Example:_Using_split">Example: Using <code>split</code></h3>
+<p>The following example defines a function that splits a string into an array of strings using the specified separator. After splitting the string, the function displays messages indicating the original string (before the split), the separator used, the number of elements in the array, and the individual array elements.</p>
+<pre class="brush: js">function splitString(stringToSplit, separator) {
+  var arrayOfStrings = stringToSplit.split(separator);
+
+  print('The original string is: "' + stringToSplit + '"');
+  print('The separator is: "' + separator + '"');
+  print("The array has " + arrayOfStrings.length + " elements: ");
+
+  for (var i=0; i &lt; arrayOfStrings.length; i++)
+    print(arrayOfStrings[i] + " / ");
+}
+
+var tempestString = "Oh brave new world that has such people in it.";
+var monthString = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
+
+var space = " ";
+var comma = ",";
+
+splitString(tempestString, space);
+splitString(tempestString);
+splitString(monthString, comma);
+</pre>
+<p>This example produces the following output:</p>
+<pre>The original string is: "Oh brave new world that has such people in it."
+The separator is: " "
+The array has 10 elements: Oh / brave / new / world / that / has / such / people / in / it. /
+
+The original string is: "Oh brave new world that has such people in it."
+The separator is: "undefined"
+The array has 1 elements: Oh brave new world that has such people in it. /
+
+The original string is: "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+The separator is: ","
+The array has 12 elements: Jan / Feb / Mar / Apr / May / Jun / Jul / Aug / Sep / Oct / Nov / Dec /
+</pre>
+<h3 id="Example:_Removing_spaces_from_a_string" name="Example:_Removing_spaces_from_a_string">Example: Removing spaces from a string</h3>
+<p>In the following example, <code>split</code> looks for 0 or more spaces followed by a semicolon followed by 0 or more spaces and, when found, removes the spaces from the string. <code>nameList</code> is the array returned as a result of <code>split</code>.</p>
+<pre class="brush: js">var names = "Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand ";
+
+print(names);
+
+var re = /\s*;\s*/;
+var nameList = names.split(re);
+
+print(nameList);
+</pre>
+<p>This prints two lines; the first line prints the original string, and the second line prints the resulting array.</p>
+<pre>Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand
+Harry Trump,Fred Barney,Helen Rigby,Bill Abel,Chris Hand
+</pre>
+<h3 id="Example:_Returning_a_limited_number_of_splits" name="Example:_Returning_a_limited_number_of_splits">Example: Returning a limited number of splits</h3>
+<p>In the following example, <code>split</code> looks for 0 or more spaces in a string and returns the first 3 splits that it finds.</p>
+<pre class="brush: js">var myString = "Hello World. How are you doing?";
+var splits = myString.split(" ", 3);
+
+print(splits);
+</pre>
+<p>This script displays the following:</p>
+<pre>Hello,World.,How
+</pre>
+<h3 id="Example:_Capturing_parentheses" name="Example:_Capturing_parentheses">Example: Capturing parentheses</h3>
+<p>If <code>separator</code> contains capturing parentheses, matched results are returned in the array.</p>
+<pre class="brush: js">var myString = "Hello 1 word. Sentence number 2.";
+var splits = myString.split(/(\d)/);
+
+print(splits);
+</pre>
+<p>This script displays the following:</p>
+<pre>Hello ,1, word. Sentence number ,2,.
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<p><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/charAt" title="JavaScript/Reference/Global_Objects/String/charAt">charAt</a>, <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/indexOf" title="JavaScript/Reference/Global_Objects/String/indexOf">indexOf</a>, <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/lastIndexOf" title="JavaScript/Reference/Global_Objects/String/lastIndexOf">lastIndexOf</a>, <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/join" title="JavaScript/Reference/Global_Objects/Array/join">Array:join</a></p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Regular%20Expressions">Regular Expressions</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Np">Np</a>, <a href="/en-US/profiles/Deltab">Deltab</a>, <a href="/en-US/profiles/Rsivan">Rsivan</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/mdn@rob.dqd.com">mdn@rob.dqd.com</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/jeffozvold">jeffozvold</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Stav">Stav</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Mytto">Mytto</a>, <a href="/en-US/profiles/Peng">Peng</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/PointedEars">PointedEars</a>, <a href="/en-US/profiles/jdgrimes">jdgrimes</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Minh%20Nguyen">Minh Nguyen</a>, <a href="/en-US/profiles/Cysiek10">Cysiek10</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/Timendum">Timendum</a>, <a href="/en-US/profiles/Gerbrant">Gerbrant</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:18-07:00">May 28, 2013 8:33:18 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/jdgrimes">jdgrimes</a>, 
+            <time datetime="2013-05-24T08:58:47-07:00">May 24, 2013 8:58:47 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

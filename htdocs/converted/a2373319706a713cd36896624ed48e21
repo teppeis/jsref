@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="445939" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Array every method</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Tests whether all elements in the array pass the test implemented by the provided function.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array"><code>Array</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.6</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>array</em>.every(<em>callback</em>[, <em>thisObject</em>])</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>callback</code></dt>
+  <dd>
+    Function to test for each element.</dd>
+  <dt>
+    <code>thisObject</code></dt>
+  <dd>
+    Object to use as <code>this</code> when executing <code>callback</code>.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>every</code> method executes the provided <code>callback</code> function once for each element present in the array until it finds one where <code>callback</code> returns a <em>falsy</em> value (a value that becomes false when converted to a Boolean). If such an element is found, the <code>every</code> method immediately returns <code>false</code>. Otherwise, if <code>callback</code> returned a true value for all elements, <code>every</code> will return <code>true</code>. <code>callback</code> is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.</p>
+<p><code>callback</code> is invoked with three arguments: the value of the element, the index of the element, and the Array object being traversed.</p>
+<p>If a <code>thisObject</code> parameter is provided to <code>every</code>, it will be used as the <code>this</code> for each invocation of the <code>callback</code>. If it is not provided, or is <code>null</code>, the global object associated with <code>callback</code> is used instead.</p>
+<p><code>every</code> does not mutate the array on which it is called.</p>
+<p>The range of elements processed by <code>every</code> is set before the first invocation of <code>callback</code>. Elements which are appended to the array after the call to <code>every</code> begins will not be visited by <code>callback</code>. If existing elements of the array are changed, their value as passed to <code>callback</code> will be the value at the time <code>every</code> visits them; elements that are deleted are not visited.</p>
+<p><code>every</code> acts like the "for all" quantifier in mathematics. In particular, for an empty array, it returns true. (It is <a class="external" href="http://en.wikipedia.org/wiki/Vacuous_truth#Vacuous_truths_in_mathematics">vacuously true</a> that all elements of the <a class="external" href="http://en.wikipedia.org/wiki/Empty_set#Common_problems">empty set</a> satisfy any given condition.)</p>
+<h2 id="Compatibility" name="Compatibility">Compatibility</h2>
+<p><code>every</code> is a recent addition to the ECMA-262 standard; as such it may not be present in other implementations of the standard. You can work around this by inserting the following code at the beginning of your scripts, allowing use of <code>every</code> in implementations which do not natively support it. This algorithm is exactly the one specified in ECMA-262, 5th edition, assuming <code>Object</code> and <code>TypeError</code> have their original values and that <code>fun.call</code> evaluates to the original value of <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/call" rel="internal" style="text-decoration: none; color: rgb(4, 121, 167);">Function.prototype.call</a></code>.</p>
+
+<pre class="brush: js">if (!Array.prototype.every) {
+  Array.prototype.every = function(fun /*, thisp */) {
+    'use strict';
+    var t, len, i, thisp;
+
+    if (this == null) {
+      throw new TypeError();
+    }
+
+    t = Object(this);
+    len = t.length &gt;&gt;&gt; 0;
+    if (typeof fun !== 'function') {
+        throw new TypeError();
+    }
+
+    thisp = arguments[1];
+    for (i = 0; i &lt; len; i++) {
+      if (i in t &amp;&amp; !fun.call(thisp, t[i], i, t)) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+}
+
+</pre>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Testing_size_of_all_array_elements" name="Example:_Testing_size_of_all_array_elements">Example: Testing size of all array elements</h3>
+<p>The following example tests whether all elements in the array are bigger than 10.</p>
+<pre class="brush: js">function isBigEnough(element, index, array) {
+  return (element &gt;= 10);
+}
+var passed = [12, 5, 8, 130, 44].every(isBigEnough);
+// passed is false
+passed = [12, 54, 18, 130, 44].every(isBigEnough);
+// passed is true
+</pre>
+<h3 id="Browser_compatibility">Browser compatibility</h3>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat tables</a></p>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>9</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/some" title="Array.some">Array.some</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array%20methods">Array methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.6">JavaScript 1.6</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/cwest">cwest</a>, <a href="/en-US/profiles/Jesse">Jesse</a>, <a href="/en-US/profiles/jdalton">jdalton</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/jswisher">jswisher</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/brianrush">brianrush</a>, <a href="/en-US/profiles/joshuacc">joshuacc</a>, <a href="/en-US/profiles/m_gol">m_gol</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/PointedEars">PointedEars</a>, <a href="/en-US/profiles/Wladimir_Palant">Wladimir_Palant</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Inimino">Inimino</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+          <time datetime="2013-07-30T03:22:49-07:00">Jul 30, 2013 3:22:49 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+            <time datetime="2013-07-30T03:22:49-07:00">Jul 30, 2013 3:22:49 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

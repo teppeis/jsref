@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="453845" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Statements</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                                <p>JavaScript statements consist of keywords used with the appropriate syntax. A single statement may span multiple lines. Multiple statements may occur on a single line if each statement is separated by a semicolon. This isn't a keyword, but a group of keywords.</p>
+<p/><dl><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/block">block</a></dt><dd>A block statement is used to group zero or more statements. The block is delimited by a pair of curly brackets.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/break"><code>break</code></a></dt><dd>Terminates the current loop, switch, or label statement and transfers program control to the statement following the terminated statement.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/const"><code>const</code></a></dt><dd>Declares a read-only named constant.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/continue"><code>continue</code></a></dt><dd>Terminates execution of the statements in the current iteration of the current or labelled loop, and continues execution of the loop with the next iteration.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/debugger"><code>debugger</code></a></dt><dd>Invokes any available debugging functionality. If no debugging functionality is available, this statement has no effect.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/do...while"><code>do...while</code></a></dt><dd>Creates a loop that executes a specified statement until the test condition evaluates to false. The condition is evaluated after executing the statement, resulting in the specified statement executing at least once.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/export"><code>export</code></a></dt><dd>Allows a signed script to provide properties, functions, and objects to other signed or unsigned scripts. This feature is not in ECMA-262, Edition 3.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/for"><code>for</code></a></dt><dd>Creates a loop that consists of three optional expressions, enclosed in parentheses and separated by semicolons, followed by a statement executed in the loop.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/for_each...in"><code>for each...in</code></a></dt><dd>Iterates a specified variable over all values of object's properties. For each distinct property, a specified statement is executed.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/for...in"><code>for...in</code></a></dt><dd>Iterates over the enumerable properties of an object, in arbitrary order. For each distinct property, statements can be executed.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/for...of"><code>for...of</code></a></dt><dd>Iterates over iterable objects (including <a href="/en-US/docs/Core_JavaScript_1.5_Reference/Global_Objects/Array" title="Array">arrays</a>, array-like objects, <a href="/en-US/docs/JavaScript/Guide/Iterators_and_Generators" title="Iterators and generators">iterators and generators</a>), invoking a custom iteration hook with statements to be executed for the value of each distinct property.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/function"><code>function</code></a></dt><dd>Declares a function with the specified parameters.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/if...else"><code>if...else</code></a></dt><dd>Executes a statement if a specified condition is true. If the condition is false, another statement can be executed.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/import"><code>import</code></a></dt><dd>Allows a script to import properties, functions, and objects from a signed script that has exported the information. This feature is not in ECMA 262, Edition 3.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/label">label</a></dt><dd>Provides a statement with an identifier that you can refer to using a <code>break</code> or <code>continue</code> statement.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/let"><code>let</code></a></dt><dd>Declares a block scope local variable, optionally initializing it to a value.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/return"><code>return</code></a></dt><dd>Specifies the value to be returned by a function.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/switch"><code>switch</code></a></dt><dd>Evaluates an expression, matching the expression's value to a case label, and executes statements associated with that case.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/throw"><code>throw</code></a></dt><dd>Throws a user-defined exception.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/try...catch"><code>try...catch</code></a></dt><dd>Marks a block of statements to try, and specifies a response, should an exception be thrown.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/var"><code>var</code></a></dt><dd>Declares a variable, optionally initializing it to a value.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/while"><code>while</code></a></dt><dd>Creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/with"><code>with</code></a></dt><dd>Extends the scope chain for a statement.</dd><dt><a href="/en-US/docs/JavaScript/Reference/Statements/yield"><code>yield</code></a></dt><dd>See <a href="/en/JavaScript/New_in_JavaScript/1.7" title="en/JavaScript/New_in_JavaScript/1.7">New_in_JavaScript 1.7</a> &amp; <a href="/en/JavaScript/Guide/Iterators_and_Generators" title="Iterators and generators">Iterators and generators</a></dd></dl><p/>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/R%C3%A9f%C3%A9rence">Référence</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Reference">Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/statements">statements</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/user01">user01</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/Jeremie">Jeremie</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/deridder">deridder</a>, <a href="/en-US/profiles/Nanto%20vi">Nanto vi</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/magnetik">magnetik</a>, <a href="/en-US/profiles/IgorKitsa">IgorKitsa</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-08-13T18:15:49-07:00">Aug 13, 2013 6:15:49 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+            <time datetime="2013-08-13T18:15:49-07:00">Aug 13, 2013 6:15:49 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

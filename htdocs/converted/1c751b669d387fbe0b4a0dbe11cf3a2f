@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417915" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.preventExtensions</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></p> 
+</div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Prevents new properties from ever being added to an object (i.e. prevents future extensions to the object).</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Object.preventExtensions(<em>obj</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    obj</dt>
+  <dd>
+    The object which should be made non-extensible.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>An object is extensible if new properties can be added to it.  <code>preventExtensions</code> marks an object as no longer extensible, so that it will never have properties beyond the ones it had at the time it was marked as non-extensible.  Note that the properties of a non-extensible object, in general, may still be <em>deleted</em>. Attempting to add new properties to a non-extensible object will fail, either silently or by throwing a <a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a> (most commonly, but not exclusively, when in <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode">strict mode</a>).</p>
+<p><code>Object.preventExtensions</code> only prevents addition of own properties. Properties can still be added to the object prototype. However, calling <code>Object.preventExtensions</code> on an object will also prevent extensions on its __proto__ ( <span class="inlineIndicator deprecated deprecatedInline" title="">Deprecated</span> ) property.</p>
+<p>If there is a way to turn an extensible object to a non-extensible one, there is no way to do the opposite in ECMAScript 5</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<pre class="brush: js">// Object.preventExtensions returns the object being made non-extensible.
+var obj = {};
+var obj2 = Object.preventExtensions(obj);
+assert(obj === obj2);
+
+// Objects are extensible by default.
+var empty = {};
+assert(Object.isExtensible(empty) === true);
+
+// ...but that can be changed.
+Object.preventExtensions(empty);
+assert(Object.isExtensible(empty) === false);
+
+// Object.defineProperty throws when adding a new property to a non-extensible object.
+var nonExtensible = { removable: true };
+Object.preventExtensions(nonExtensible);
+Object.defineProperty(nonExtensible, "new", { value: 8675309 }); // throws a TypeError
+
+// In strict mode, attempting to add new properties to a non-extensible object throws a TypeError.
+function fail()
+{
+  "use strict";
+  nonExtensible.newProperty = "FAIL"; // throws a TypeError
+}
+fail();
+
+// EXTENSION (only works in engines supporting __proto__ (which is deprecated. Use Object.getPrototypeOf instead)): A non-extensible object's prototype is immutable.
+var fixed = Object.preventExtensions({});
+fixed.__proto__ = { oh: "hai" }; // throws a TypeError
+</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <div class="htab"> 
+    <a name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4 (2.0)</td>
+        <td>6</td>
+        <td>9</td>
+        <td>12.10</td>
+        <td>5.1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat table</a>.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><strong><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isExtensible"><code>Object.isExtensible</code></a></strong></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/seal"><code>Object.seal</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isSealed"><code>Object.isSealed</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/freeze"><code>Object.freeze</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isFrozen"><code>Object.isFrozen</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.8.5">JavaScript 1.8.5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object%20Methods">Object Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object">Object</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Foo">Foo</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Crash">Crash</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:24-07:00">May 28, 2013 8:33:24 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Foo">Foo</a>, 
+            <time datetime="2013-03-12T08:29:26-07:00">Mar 12, 2013 8:29:26 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="445645" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Number.toString</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns a string representing the specified Number object.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number" title="JavaScript/Reference/Global_Objects/Number"><code>Number</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.1</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>number</em>.toString( [<i>radix</i>] )</code></pre>
+<h3 id="Parameter" name="Parameter">Parameter</h3>
+<dl>
+  <dt>
+    radix</dt>
+  <dd>
+    An integer between 2 and 36 specifying the base to use for representing numeric values.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>Number</code> object overrides the <code>toString</code> method of the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a> object; it does not inherit <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="JavaScript/Reference/Global_Objects/Object/toString"><code>Object.toString</code></a>. For <code>Number</code> objects, the <code>toString</code> method returns a string representation of the object in the specified radix.</p>
+<p>The <code>toString</code> method parses its first argument, and attempts to return a string representation in the specified radix (base). For radixes above 10, the letters of the alphabet indicate numerals greater than 9. For example, for hexadecimal numbers (base 16), <code>a</code> through <code>f</code> are used.</p>
+<p>If <code>toString</code> is given a radix not between 2 and 36, an exception is thrown.</p>
+<p>If the radix is not specified, the preferred radix is assumed to be 10.</p>
+<p>If the <code>number</code> is negative, the sign is preserved. Especially if the radix is 2, it's returning the binary (zeros and ones) of the <code>number</code> preceeded by a <code>-</code> sign but the two's complement.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<pre class="brush:js">var count = 10;
+
+print( count.toString() );   // displays "10"
+print( (17).toString() );    // displays "17"
+
+var x = 6;
+
+print( x.toString(2) );      // displays "110"
+print( (254).toString(16) ); // displays "fe"
+
+
+print( (-10).toString(2) );  // displays "-1010"
+print( (-0xff).toString(2) );// displays "-11111111"
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toExponential" title="JavaScript/Reference/Global_Objects/Number/toExponential">Number.prototype.toExponential</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/ToLocaleString" title="JavaScript/Reference/Global_Objects/Number/ToLocaleString">Number.prototype.toLocaleString</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toPrecision" title="JavaScript/Reference/Global_Objects/Number/toPrecision">Number.prototype.toPrecision</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed" title="JavaScript/Reference/Global_Objects/Number/toFixed">Number.prototype.toFixed</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toSource" title="JavaScript/Reference/Global_Objects/Number/toSource">Number.prototype.toSource</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/valueOf" title="JavaScript/Reference/Global_Objects/Number/valueOf">Number.prototype.valueOf</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Number">Number</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Reference">Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Number%20Methods">Number Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/R%C3%A9f%C3%A9rence">Référence</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/kscarfone">kscarfone</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Ole%20Laursen">Ole Laursen</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Mook">Mook</a>, <a href="/en-US/profiles/royling">royling</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/kscarfone">kscarfone</a>, 
+          <time datetime="2013-07-29T09:19:32-07:00">Jul 29, 2013 9:19:32 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/kscarfone">kscarfone</a>, 
+            <time datetime="2013-07-29T09:19:32-07:00">Jul 29, 2013 9:19:32 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417371" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Date.setDate</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+
+<p>Sets the day of the month for a specified date according to local time.</p>
+
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><var>date</var>.setDate(<em>dayValue</em>) </code></pre>
+
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>dayValue</code></dt>
+  <dd>
+    An integer from 1 to 31, representing the day of the month.</dd>
+</dl>
+
+<h2 id="Description" name="Description">Description</h2>
+<p>If the parameter you specify is outside of the expected range, <code>setDate</code> attempts to update the date information in the <code>Date</code> object accordingly. For example, if you use 0 for <code>dayValue</code>, the date will be set to the last day of the previous month.</p>
+
+<h2 id="Examples" name="Examples">Examples</h2>
+
+<h3 id="Example:_Using_setDate" name="Example:_Using_setDate">Example: Using <code>setDate</code></h3>
+<p>The second statement below changes the day for <code>theBigDay</code> to July 24 from its original value.</p>
+
+<pre class="brush:js">var theBigDay = new Date("July 27, 1962 23:30:00");
+theBigDay.setDate(24);
+</pre>
+
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+<li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date/getDate" title="JavaScript/Reference/Global_Objects/Date/getDate">getDate</a>, <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date/setUTCDate" title="JavaScript/Reference/Global_Objects/Date/setUTCDate">setUTCDate</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Date">Date</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Date%20Methods">Date Methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Neil">Neil</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:00-07:00">May 28, 2013 8:33:00 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-12-02T08:54:53-08:00">Dec 2, 2012 8:54:53 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

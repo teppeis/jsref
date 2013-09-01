@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="456961" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Number</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>The <code>Number</code> JavaScript object is a wrapper object allowing you to work with numerical values. A <code>Number</code> object is created using the <code>Number()</code> constructor.</p>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox">new Number(value)</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>value</code></dt>
+  <dd>
+    The numeric value of the object being created.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The primary uses for the <code>Number</code> object are:</p>
+<p>If the argument cannot be converted into a number, it returns <code>NaN</code>.</p>
+<p>In a non-constructor context (i.e., without the <a href="/en-US/docs/JavaScript/Reference/Operators/new" title="JavaScript/Reference/Operators/Special_Operators/new_Operator">new</a> operator), <code>Number</code> can be used to perform a type conversion.</p>
+<h2 id="Properties" name="Properties">Properties</h2>
+<div>
+  <small><em>For properties available on <code>Number</code> instances, see <a class="external" href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/prototype#Properties">Properties of Number instances</a>.</em></small></div>
+<dl>
+  <dt>
+    <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON" title="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON"><code>EPSILON</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></dt>
+  <dd>
+    The smallest intervall betwee two representable numbers.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/MAX_VALUE" title="JavaScript/Reference/Global_Objects/Number/MAX_VALUE">MAX_VALUE</a></code></dt>
+  <dd>
+    The largest positive representable number. The largest negative representable number is <code>-MAX_VALUE</code>.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/MIN_VALUE" title="JavaScript/Reference/Global_Objects/Number/MIN_VALUE">MIN_VALUE</a></code></dt>
+  <dd>
+    The smallest positive representable number--that is, the positive number closest to zero (without actually being zero). The smallest negative representable number is <code>-MIN_VALUE</code>.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/NaN" title="JavaScript/Reference/Global_Objects/Number/NaN">NaN</a></code></dt>
+  <dd>
+    Special "not a number" value.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/NEGATIVE_INFINITY" title="JavaScript/Reference/Global_Objects/Number/NEGATIVE_INFINITY">NEGATIVE_INFINITY</a></code></dt>
+  <dd>
+    Special value representing negative infinity; returned on overflow.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/POSITIVE_INFINITY" title="JavaScript/Reference/Global_Objects/Number/POSITIVE_INFINITY">POSITIVE_INFINITY</a></code></dt>
+  <dd>
+    Special value representing infinity; returned on overflow.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/prototype" title="JavaScript/Reference/Global_Objects/Number/prototype">prototype</a></code></dt>
+  <dd>
+    Allows the addition of properties to a Number object.</dd>
+</dl>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Arity"><code>arity</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Caller"><code>caller</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Constructor"><code>constructor</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Length"><code>length</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Name"><code>name</code></a></div> 
+</div></div>
+<h2 id="Methods" name="Methods">Methods</h2>
+<div>
+  <small><em>For methods available on <code>Number</code> instances, see <a class="external" href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/prototype#Methods">Methods of Number instances</a>.</em></small></div>
+<dl>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/isNaN">isNaN</a></code> <span class="inlineIndicator experimental experimentalInline">Experimental</span></dt>
+  <dd>
+    Determine whether the passed value is NaN.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/isFinite" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/isFinite"><code>isFinite</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></dt>
+  <dd>
+    Determine whether the type of and the passed value itself is a finite number.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/isInteger" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/isInteger"><code>isInteger</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></dt>
+  <dd>
+    Determine whether the type of the passed value is "number" and the passed value is an integer.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toInteger" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toInteger"><code>toInteger</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></dt>
+  <dd>
+    Evaluate the passed value and convert it to an integer (or Infinity).</dd>
+</dl>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Apply"><code>apply</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Call"><code>call</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToSource"><code>toSource</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToString"><code>toString</code></a></div> 
+</div></div>
+<h2 id="Number_instances" name="Number_instances"><code>Number</code> instances</h2>
+<p>All <code>Number</code> instances inherit from <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/prototype" title="JavaScript/Reference/Global_Objects/Number/prototype">Number.prototype</a>. The prototype object of the <code>Number</code> constructor can be modified to affect all <code>Number</code> instances.</p>
+<h3 id="Properties_of_number_instance" name="Properties_of_number_instance">Properties</h3>
+<div>
+  <dl><dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toExponential" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toExponential">toExponential</a></dt>
+  <dd>
+    Returns a string representing the number in exponential notation.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed">toFixed</a></dt>
+  <dd>
+    Returns a string representing the number in fixed-point notation.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/ToLocaleString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toLocaleString">toLocaleString</a></dt>
+  <dd>
+    Returns a string with a language sensitive representation of this number. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toLocaleString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toLocaleString">Object.prototype.toLocaleString</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toPrecision" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toPrecision">toPrecision</a></dt>
+  <dd>
+    Returns a string representing the number to a specified precision in fixed-point or exponential notation.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toSource" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toSource">toSource</a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns an object literal representing the specified Number object; you can use this value to create a new object. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource">Object.prototype.toSource</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toString">toString</a></dt>
+  <dd>
+    Returns a string representing the specified object. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString">Object.prototype.toString</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/valueOf" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/valueOf">valueOf</a></dt>
+  <dd>
+    Returns the primitive value of the specified object. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf">Object.prototype.valueOf</a> method.</dd>
+</dl><div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToLocaleString"><code>toLocaleString</code></a></div> 
+</div></div></div>
+<h3 id="Methods_of_number_instance" name="Methods_of_number_instance">Methods</h3>
+<div>
+  <dl><dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toExponential" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toExponential">toExponential</a></dt>
+  <dd>
+    Returns a string representing the number in exponential notation.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed">toFixed</a></dt>
+  <dd>
+    Returns a string representing the number in fixed-point notation.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/ToLocaleString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toLocaleString">toLocaleString</a></dt>
+  <dd>
+    Returns a string with a language sensitive representation of this number. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toLocaleString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toLocaleString">Object.prototype.toLocaleString</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toPrecision" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toPrecision">toPrecision</a></dt>
+  <dd>
+    Returns a string representing the number to a specified precision in fixed-point or exponential notation.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toSource" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toSource">toSource</a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns an object literal representing the specified Number object; you can use this value to create a new object. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource">Object.prototype.toSource</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toString">toString</a></dt>
+  <dd>
+    Returns a string representing the specified object. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString">Object.prototype.toString</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/valueOf" title="/en-US/docs/JavaScript/Reference/Global_Objects/Number/valueOf">valueOf</a></dt>
+  <dd>
+    Returns the primitive value of the specified object. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf">Object.prototype.valueOf</a> method.</dd>
+</dl><div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToLocaleString"><code>toLocaleString</code></a></div> 
+</div></div></div>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_the_Number_object_to_assign_values_to_numeric_variables" name="Example:_Using_the_Number_object_to_assign_values_to_numeric_variables">Example: Using the <code>Number</code> object to assign values to numeric variables</h3>
+<p>The following example uses the <code>Number</code> object's properties to assign values to several numeric variables:</p>
+<pre class="brush: js">var biggestNum = Number.MAX_VALUE;
+var smallestNum = Number.MIN_VALUE;
+var infiniteNum = Number.POSITIVE_INFINITY;
+var negInfiniteNum = Number.NEGATIVE_INFINITY;
+var notANum = Number.NaN;
+</pre>
+<h3 id="Example:_Using_Number_to_convert_a_Date_object" name="Example:_Using_Number_to_convert_a_Date_object">Example: Integer range for <code>Number</code></h3>
+<p>The following example shows minimum and maximum integer values that can be represented as <code>Number</code> object (for details, refer to EcmaScript standard, chapter <em>8.5 The Number Type</em>):</p>
+<pre class="brush: js">var biggestInt = 9007199254740992;
+var smallestInt = -9007199254740992;
+</pre>
+<p>When parsing data that has been serialized to JSON, integer values falling out of this range can be expected to become corrupted when JSON parser coerces them to <code>Number</code> type. Using <code>String</code> instead is a possible workaround.</p>
+<h3 id="Example:_Using_Number_to_convert_a_Date_object" name="Example:_Using_Number_to_convert_a_Date_object"><span style="display: none;"> </span>Example: Using <code>Number</code> to convert a <code>Date</code> object</h3>
+<p>The following example converts the <code>Date</code> object to a numerical value using <code>Number</code> as a function:</p>
+<pre class="brush: js">var d = new Date("December 17, 1995 03:24:00");
+print(Number(d));
+</pre>
+<p>This displays "819199440000".</p>
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toSource" title="JavaScript/Reference/Global_Objects/Number/toSource">toSource()</a></code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/isNaN">isNaN()</a></code></td>
+        <td>25.0</td>
+        <td>15.0 (15)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code>isFinite()</code></td>
+        <td>25.0</td>
+        <td>16.0 (16)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code>isInteger()</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>16.0 (16)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code>toInteger()</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>16.0 (16)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON" title="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON"><code>EPSILON</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>25.0 (25)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toSource" title="JavaScript/Reference/Global_Objects/Number/toSource">toSource()</a></code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/isNaN">isNaN()</a></code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>15.0 (15)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code>isFinite()</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>16.0 (16)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code>isInteger()</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>16.0 (16)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><code>toInteger()</code></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>16.0 (16)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+      <tr>
+        <td><a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON" title="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON"><code>EPSILON</code></a> <span class="inlineIndicator experimental experimentalInline">Experimental</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>25.0 (25)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NaN" title="NaN">NaN</a></li>
+  <li>The <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math" title="Math">Math</a> global object</li>
+</ul>
+<div id="cke_pastebin" style="position: absolute; top: 2173.92px; width: 1px; height: 1px; overflow: hidden; left: -1000px;">
+   </div>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Number">Number</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Reference">Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/R%C3%A9f%C3%A9rence">Référence</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/Erik1">Erik1</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/ostorj">ostorj</a>, <a href="/en-US/profiles/Zwol">Zwol</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/topaxi">topaxi</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/orcus">orcus</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/berkerpeksag">berkerpeksag</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/Chris%20Chittleborough">Chris Chittleborough</a>, <a href="/en-US/profiles/nikhilm">nikhilm</a>, <a href="/en-US/profiles/myakura">myakura</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/kscarfone">kscarfone</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Xingxing.Xu">Xingxing.Xu</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Nfroidure">Nfroidure</a>, <a href="/en-US/profiles/secoif">secoif</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/teoli">teoli</a>, 
+          <time datetime="2013-08-21T12:54:50-07:00">Aug 21, 2013 12:54:50 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/teoli">teoli</a>, 
+            <time datetime="2013-08-21T12:54:50-07:00">Aug 21, 2013 12:54:50 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

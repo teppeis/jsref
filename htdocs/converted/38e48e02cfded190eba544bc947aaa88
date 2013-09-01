@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="438665" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Array.prototype.map()</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Creates a new array with the results of calling a provided function on every element in this array.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array"><code>Array</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.6</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>array</em>.map(<em>callback</em>[, <em>thisArg</em>])</code></pre>
+<h2 id="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>callback</code></dt>
+  <dd>
+    Function that produces an element of the new Array from an element of the current one.</dd>
+  <dt>
+    <code>thisArg</code></dt>
+  <dd>
+    Object to use as <code>this</code> when executing <code>callback</code>.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p><code>map</code> calls a provided <code>callback</code> function once for each element in an array, in order, and constructs a new array from the results. <code>callback</code> is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.</p>
+<p><code>callback</code> is invoked with three arguments: the value of the element, the index of the element, and the Array object being traversed.</p>
+<p>If a <code>thisArg</code> parameter is provided to <code>map</code>, it will be used as the <code>this</code> for each invocation of the <code>callback</code>. If it is not provided, or is <code>null</code>, the global object associated with <code>callback</code> is used instead.</p>
+<p><code>map</code> does not mutate the array on which it is called.</p>
+<p>The range of elements processed by <code>map</code> is set before the first invocation of <code>callback</code>. Elements which are appended to the array after the call to <code>map</code> begins will not be visited by <code>callback</code>. If existing elements of the array are changed, or deleted, their value as passed to <code>callback</code> will be the value at the time <code>map</code> visits them; elements that are deleted are not visited.</p>
+<h2 id="Compatibility">Compatibility</h2>
+<p><code>map</code> is a recent addition to the ECMA-262 standard; as such it may not be present in other implementations of the standard. You can work around this by inserting the following code at the beginning of your scripts, allowing use of <code>map</code> in implementations which do not natively support it. This algorithm is exactly the one specified in ECMA-262, 5th edition, assuming <code>Object</code>, <code>TypeError</code>, and <code>Array</code> have their original values and that <code>callback.call</code> evaluates to the original value of <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/call" rel="internal">Function.prototype.call</a></code>.</p>
+
+<pre class="brush: js">// Production steps of ECMA-262, Edition 5, 15.4.4.19
+// Reference: http://es5.github.com/#x15.4.4.19
+if (!Array.prototype.map) {
+  Array.prototype.map = function(callback, thisArg) {
+
+    var T, A, k;
+
+    if (this == null) {
+      throw new TypeError(" this is null or not defined");
+    }
+
+    // 1. Let O be the result of calling ToObject passing the |this| value as the argument.
+    var O = Object(this);
+
+    // 2. Let lenValue be the result of calling the Get internal method of O with the argument "length".
+    // 3. Let len be ToUint32(lenValue).
+    var len = O.length &gt;&gt;&gt; 0;
+
+    // 4. If IsCallable(callback) is false, throw a TypeError exception.
+    // See: http://es5.github.com/#x9.11
+    if (typeof callback !== "function") {
+      throw new TypeError(callback + " is not a function");
+    }
+
+    // 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
+    if (thisArg) {
+      T = thisArg;
+    }
+
+    // 6. Let A be a new array created as if by the expression new Array(len) where Array is
+    // the standard built-in constructor with that name and len is the value of len.
+    A = new Array(len);
+
+    // 7. Let k be 0
+    k = 0;
+
+    // 8. Repeat, while k &lt; len
+    while(k &lt; len) {
+
+      var kValue, mappedValue;
+
+      // a. Let Pk be ToString(k).
+      //   This is implicit for LHS operands of the in operator
+      // b. Let kPresent be the result of calling the HasProperty internal method of O with argument Pk.
+      //   This step can be combined with c
+      // c. If kPresent is true, then
+      if (k in O) {
+
+        // i. Let kValue be the result of calling the Get internal method of O with argument Pk.
+        kValue = O[ k ];
+
+        // ii. Let mappedValue be the result of calling the Call internal method of callback
+        // with T as the this value and argument list containing kValue, k, and O.
+        mappedValue = callback.call(T, kValue, k, O);
+
+        // iii. Call the DefineOwnProperty internal method of A with arguments
+        // Pk, Property Descriptor {Value: mappedValue, : true, Enumerable: true, Configurable: true},
+        // and false.
+
+        // In browsers that support Object.defineProperty, use the following:
+        // Object.defineProperty(A, Pk, { value: mappedValue, writable: true, enumerable: true, configurable: true });
+
+        // For best browser support, use the following:
+        A[ k ] = mappedValue;
+      }
+      // d. Increase k by 1.
+      k++;
+    }
+
+    // 9. return A
+    return A;
+  };      
+}
+</pre>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example.3A_Pluralizing_the_words_(strings)_in_an_array">Example: Pluralizing the words (strings) in an array</h3>
+<p>The following code creates an array of "plural" forms of nouns from an array of their singular forms.</p>
+<pre class="brush: js">function fuzzyPlural(single) {
+  var result = single.replace(/o/g, 'e');  
+  if( single === 'kangaroo'){
+    result += 'se';
+  }
+  return result; 
+}
+
+var words = ["foot", "goose", "moose", "kangaroo"];
+console.log(words.map(fuzzyPlural));
+
+// ["feet", "geese", "meese", "kangareese"]
+
+</pre>
+<h3 id="Example.3A_Mapping_an_array_of_numbers_to_an_array_of_square_roots">Example: Mapping an array of numbers to an array of square roots</h3>
+<p>The following code takes an array of numbers and creates a new array containing the square roots of the numbers in the first array.</p>
+<pre class="brush: js">var numbers = [1, 4, 9];
+var roots = numbers.map(Math.sqrt);
+/* roots is now [1, 2, 3], numbers is still [1, 4, 9] */
+</pre>
+<h3 id="Example.3A_using_map_generically">Example: using <code>map</code> generically</h3>
+<p>This example shows how to use map on a <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String">string</a> to get an array of bytes in the ASCII encoding representing the character values:</p>
+<pre class="brush: js">var map = Array.prototype.map
+var a = map.call("Hello World", function(x) { return x.charCodeAt(0); })
+// a now equals [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]
+</pre>
+<h3 id="Tricky_use_case">Tricky use case</h3>
+<p><a class="external" href="http://www.wirfs-brock.com/allen/posts/166">(inspired by this blog post)</a></p>
+<p>It is common to use the callback with one argument (the element being traversed). Some functions are also commonly used with one argument. These habits may lead to confusing behaviors.</p>
+<pre class="brush: js">// Consider:
+["1", "2", "3"].map(parseInt);
+// While one could expect [1, 2, 3]
+// The actual result is [1, NaN, NaN]
+
+// parseInt is often used with one argument, but takes two. The second being the radix
+// To the callback function, Array.prototype.map passes 3 arguments: the element, the index, the array
+// The third argument is ignored by parseInt, but not the second one, hence the possible confusion.
+// See the blog post for more details
+
+/*
+function returnInt(element){
+  return parseInt(element,10);
+}
+
+["1", "2", "3"].map(returnInt);
+// Actual result is an array of numbers (as expected)
+*/
+
+</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>9</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td/>
+        <td/>
+        <td/>
+        <td/>
+        <td/>
+        <td/>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat tables</a></p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array%20methods">Array methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.6">JavaScript 1.6</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/gr8can8dian">gr8can8dian</a>, <a href="/en-US/profiles/brad@longbrothers.net">brad@longbrothers.net</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/timemachine3030">timemachine3030</a>, <a href="/en-US/profiles/rwaldron">rwaldron</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/GlitchMr">GlitchMr</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/cwest">cwest</a>, <a href="/en-US/profiles/Anonymous">Anonymous</a>, <a href="/en-US/profiles/ericjung">ericjung</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/PointedEars">PointedEars</a>, <a href="/en-US/profiles/grbradt">grbradt</a>, <a href="/en-US/profiles/Inimino">Inimino</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/propeller">propeller</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/grbradt">grbradt</a>, 
+          <time datetime="2013-07-08T05:33:56-07:00">Jul 8, 2013 5:33:56 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/grbradt">grbradt</a>, 
+            <time datetime="2013-07-08T05:33:56-07:00">Jul 8, 2013 5:33:56 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

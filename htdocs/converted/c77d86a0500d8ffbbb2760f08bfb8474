@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="436677" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.indexOf</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns the index within the calling <code>String</code> object of the first occurrence of the specified value, starting the search at <code>fromIndex</code>,<br/>
+  returns -1 if the value is not found.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>string</em>.indexOf(<em>searchValue</em>[, <em>fromIndex</em>]</code>)</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>searchValue</code></dt>
+  <dd>
+    A string representing the value to search for.</dd>
+  <dt>
+    <code>fromIndex</code></dt>
+  <dd>
+    The location within the calling string to start the search from. It can be any integer between 0 and the length of the string. The default value is 0.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Characters in a string are indexed from left to right. The index of the first character is 0, and the index of the last character of a string called <code>stringName</code> is <code>stringName.length - 1</code>.</p>
+<pre class="brush: js">"Blue Whale".indexOf("Blue");     // returns  0
+"Blue Whale".indexOf("Blute");    // returns -1
+"Blue Whale".indexOf("Whale", 0); // returns  5
+"Blue Whale".indexOf("Whale", 5); // returns  5
+"Blue Whale".indexOf("", 9);      // returns  9
+"Blue Whale".indexOf("", 10);     // returns 10
+"Blue Whale".indexOf("", 11);     // returns 10</pre>
+<p>The <code>indexOf</code> method is case sensitive. For example, the following expression returns -1:</p>
+<pre class="brush: js">"Blue Whale".indexOf("blue") // returns -1
+</pre>
+<p>Note that '0' doesn't evaluate to <code>true</code> and '-1' doesn't evaluate to <code>false</code>. Therefore, when checking if a specific string exists within another string the correct way to check would be:</p>
+<pre class="brush: js">"Blue Whale".indexOf("Blue") != -1; // true
+"Blue Whale".indexOf("Bloe") != -1; // false</pre>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_indexOf_and_lastIndexOf" name="Example:_Using_indexOf_and_lastIndexOf">Example: Using <code>indexOf</code> and <code>lastIndexOf</code></h3>
+<p>The following example uses <code>indexOf</code> and <code>lastIndexOf</code> to locate values in the string "<code>Brave new world</code>".</p>
+<pre class="brush: js">var anyString="Brave new world"
+
+document.write(
+    "&lt;P&gt;The index of the first w from the beginning is " +
+    anyString.indexOf("w")
+); // Displays 8
+
+document.write(
+    "&lt;P&gt;The index of the first w from the end is " +
+    anyString.lastIndexOf("w")
+); // Displays 10
+
+document.write(
+    "&lt;P&gt;The index of 'new' from the beginning is " +
+    anyString.indexOf("new")
+); // Displays 6
+
+document.write(
+    "&lt;P&gt;The index of 'new' from the end is " +
+    anyString.lastIndexOf("new")
+); // Displays 6
+</pre>
+<h3 id="Example:_indexOf_and_case-sensitivity" name="Example:_indexOf_and_case-sensitivity">Example: <code>indexOf</code> and case-sensitivity</h3>
+<p>The following example defines two string variables. The variables contain the same string except that the second string contains uppercase letters. The first <code>writeln</code> method displays 19. But because the <code>indexOf</code> method is case sensitive, the string "<code>cheddar</code>" is not found in <code>myCapString</code>, so the second <code>writeln</code> method displays -1.</p>
+<pre class="brush: js">myString = "brie, pepper jack, cheddar";
+myCapString = "Brie, Pepper Jack, Cheddar";
+
+document.writeln(
+    'myString.indexOf("cheddar") is ' +
+    myString.indexOf("cheddar")
+); // Displays 19
+
+document.writeln(
+    '&lt;P&gt;myCapString.indexOf("cheddar") is ' +
+    myCapString.indexOf("cheddar")
+); // Displays -1</pre>
+<h3 id="Example:_Using_indexOf_to_count_occurrences_of_a_letter_in_a_string" name="Example:_Using_indexOf_to_count_occurrences_of_a_letter_in_a_string">Example: Using <code>indexOf</code> to count occurrences of a letter in a string</h3>
+<p>The following example sets <code>count</code> to the number of occurrences of the letter <code>x</code> in the string <code>str</code>:</p>
+<pre class="brush: js">count = 0;
+pos = str.indexOf("x");
+
+while ( pos != -1 ) {
+   count++;
+   pos = str.indexOf( "x",pos + 1 );
+}</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/charAt" title="JavaScript/Reference/Global_Objects/String/charAt">String.charAt</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/lastIndexOf" title="JavaScript/Reference/Global_Objects/String/lastIndexOf">String.lastIndexOf</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/split" title="JavaScript/Reference/Global_Objects/String/split">String.split</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf" title="JavaScript/Reference/Global Objects/Array/indexOf">Array.indexOf</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String">String</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Tetrix">Tetrix</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/secoif">secoif</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Tgr">Tgr</a>, <a href="/en-US/profiles/Husky">Husky</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/greg.cochard">greg.cochard</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/greg.cochard">greg.cochard</a>, 
+          <time datetime="2013-07-01T09:15:17-07:00">Jul 1, 2013 9:15:17 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/greg.cochard">greg.cochard</a>, 
+            <time datetime="2013-07-01T09:15:17-07:00">Jul 1, 2013 9:15:17 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

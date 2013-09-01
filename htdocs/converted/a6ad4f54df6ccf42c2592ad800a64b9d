@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418219" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">prototype</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h3 id="Summary" name="Summary">Summary</h3>
+<p>Represents the prototype for the <a href="/en/JavaScript/Reference/Global_Objects/URIError" title="en/JavaScript/Reference/Global_Objects/URIError">URIError</a> constructor.</p>
+<h3 id="Description" name="Description">Description</h3>
+<p>All <a href="/en/JavaScript/Reference/Global_Objects/URIError" title="en/JavaScript/Reference/Global_Objects/URIError"><code>URIError</code></a> instances inherit from <code>URIError.prototype</code>. You can use the prototype to add properties or methods to all instances.</p>
+<h3 id="Properties">Properties</h3>
+<dl> <dt><a href="/en/JavaScript/Reference/Global_Objects/URIError/constructor" title="en/JavaScript/Reference/Global_Objects/URIError/constructor">constructor</a></dt> <dd>Specifies the function that created an instance's prototype.</dd>
+</dl>
+<dl> <dt><a href="/en/JavaScript/Reference/Global_Objects/URIError/name" title="en/JavaScript/Reference/Global_Objects/URIError/name">name</a></dt> <dd>Error name.</dd>
+</dl>
+<div class="note"><strong>Note:</strong> Although <a href="/en/ECMAScript" title="en/ECMA-262">ECMA-262</a> specifies that <code><span class="noinclude"><a href="/en/JavaScript/Reference/Global_Objects/URIError" title="en/JavaScript/Reference/Global Objects/URIError">URIError</a></span><span class="includeonly">URIError</span> </code>should provide its own <code>message</code> property, in <a href="/en/SpiderMonkey" title="en/SpiderMonkey">SpiderMonkey</a>, it inherits <code><a href="/en/JavaScript/Reference/Global_Objects/Error/message" title="en/JavaScript/Reference/Global_Objects/Error/message">Error.prototype.message</a></code>.</div>
+<p/><div style="border: solid #ccc 1px; background: #eee; padding: 0px 10px 0px 10px; margin: 10px 0px 10px 0px;"><b>Properties inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype">Error.prototype</a></b><br/><small><a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/fileName">fileName</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/lineNumber">lineNumber</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/message">message</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/name">name</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/number">number</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/stack">stack</a></small></div><p/>
+<h3 id="Methods">Methods</h3>
+<p>Although the <code>URIError</code> prototype object does not contain any methods of its own, <code><span><a href="/en/JavaScript/Reference/Global_Objects/URIError" title="en/JavaScript/Reference/Global_Objects/URIError">URIError</a></span></code> instances do inherit some methods through the prototype chain.</p>
+<p/><div style="border: solid #ccc 1px; background: #eee; padding: 0px 10px 0px 10px; margin: 10px 0px 10px 0px;"><b>Methods inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype">Error.prototype</a></b><br/><small><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/toSource">toSource</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/toString">toString</a></small></div><p/>
+<p/><div style="border: solid #ccc 1px; background: #eee; padding: 0px 10px 0px 10px; margin: 10px 0px 10px 0px;"><b>Methods inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype">Object.prototype</a></b><br/><small><a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__defineGetter__">__defineGetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__defineSetter__">__defineSetter__</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">hasOwnProperty</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/isPrototypeOf">isPrototypeOf</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__lookupGetter__">__lookupGetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__lookupSetter__">__lookupSetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__noSuchMethod__">__noSuchMethod__</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable">propertyIsEnumerable</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch">unwatch</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf">valueOf</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/watch">watch</a></small></div><p/><h3 id="See_also" name="See_also">See also</h3>
+<ul> <li><a href="/en/JavaScript/Reference/Global_Objects/Error/prototype" title="en/JavaScript/Reference/Global_Objects/Error/prototype">Error.prototype</a></li> <li><a href="/en/JavaScript/Reference/Global_Objects/Function/prototype" title="en/JavaScript/Reference/Global_Objects/Function/prototype">Function.prototype</a></li>
+</ul>
+<div class="noinclude">
+<p/>
+</div>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:38-07:00">May 28, 2013 8:33:38 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+            <time datetime="2012-07-18T09:32:07-07:00">Jul 18, 2012 9:32:07 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError/prototype$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

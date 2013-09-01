@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417095" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">label</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+
+<p>Provides a statement with an identifier that you can refer to using a <code>break</code> or <code>continue</code> statement.</p>
+
+<div class="noinclude">
+  <p>For example, you can use a label to identify a loop, and then use the <code>break</code> or <code>continue</code> statements to indicate whether a program should interrupt the loop or continue its execution.</p>
+</div>
+
+<h2 id="Version_Information" name="Version_Information">Version Information</h2>
+
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMA Version</td>
+      <td>ECMA-262, Edition 3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+
+<pre class="syntaxbox"><em>label</em> :
+   <em>statement</em>
+</pre>
+
+
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt><code>label</code></dt>
+  <dd>Any JavaScript identifier that is not a reserved word.</dd>
+  <dt>
+    <code>statement</code></dt>
+  <dd>
+    Statements. <code>break</code> can be used with any labeled statement, and <code>continue</code> can be used with looping labeled statements.</dd>
+</dl>
+
+
+<h2 id="Avoid_using_labels" name="Avoid_using_labels">Avoid using labels</h2>
+<p>Labels are not very commonly used in JavaScript since they make programs harder to read and understand. As much as possible, avoid using labels and, depending on the cases, prefer <a href="/en-US/docs/JavaScript/Reference/Statements/function" title="function">calling functions</a> or <a href="/en-US/docs/JavaScript/Reference/Statements/throw" title="throw">throwing</a> an error.</p>
+
+<h2 id="Examples" name="Examples">Examples</h2>
+
+<h3 id="Example_1" name="Example_1"><code>continue</code> Example</h3>
+
+<pre class="brush: js">var i, j;
+
+loop1:
+for (i = 0; i &lt; 3; i++) {      //The first for statement is labeled "loop1"
+   loop2:
+   for (j = 0; j &lt; 3; j++) {   //The second for statement is labeled "loop2"
+      if (i == 1 &amp;&amp; j == 1) {
+         continue loop1;
+      } else {
+         console.log("i = " + i + ", j = " + j);
+      }
+   }
+}
+
+// Output is:
+//   "i = 0, j = 0"
+//   "i = 0, j = 1"
+//   "i = 0, j = 2"
+//   "i = 1, j = 0"
+//   "i = 2, j = 0"
+//   "i = 2, j = 1"
+//   "i = 2, j = 2"
+// Notice how it skips both "i = 1, j = 1" and "i = 1, j = 2"
+</pre>
+
+<h3 id="Example_2" name="Example_2">Example 2 <code>(continue)</code></h3>
+
+<p>Given an array of items and an array of tests, this example counts the number of items that passes all the tests.</p>
+
+<pre class="brush: js">var itemsPassed = 0;
+var i, j;
+
+top:
+for (i = 0; i &lt; items.length; i++){
+  for (j = 0; j &lt; tests.length; j++)
+    if (!tests[j].pass(items[i]))
+      continue top;
+  itemsPassed++;
+}</pre>
+
+<h3 id="Example_3" name="Example_3">Example 3 <code>(break)</code></h3>
+
+<p>Given an array of items and an array of tests, this example determines whether all items pass all tests.</p>
+
+<pre class="brush: js">var allPass = true;
+var i, j;
+
+top:
+for (i = 0; items.length; i++)
+  for (j = 0; j &lt; tests.length; i++)
+    if (!tests[j].pass(items[i])){
+      allPass = false;
+      break top;
+    }
+</pre>
+
+
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+<li><a href="/en-US/docs/JavaScript/Reference/Statements/break" title="JavaScript/Reference/Statements/break">break</a></li>
+<li><a href="/en-US/docs/JavaScript/Reference/Statements/continue" title="JavaScript/Reference/Statements/continue">continue</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/statements">statements</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Anonymous">Anonymous</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/airportyh">airportyh</a>, <a href="/en-US/profiles/nwwells">nwwells</a>, <a href="/en-US/profiles/Trinithis">Trinithis</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Ste%20Al%20Th">Ste Al Th</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:49-07:00">May 28, 2013 8:32:49 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-10-25T01:58:37-07:00">Oct 25, 2012 1:58:37 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/label$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

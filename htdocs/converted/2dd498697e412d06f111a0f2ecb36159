@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="449471" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Array.prototype.indexOf</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns the first index at which a given element can be found in the array, or -1 if it is not present.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>Array</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.6</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>array</em>.indexOf(<em>searchElement</em>[, <em>fromIndex</em>])</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>searchElement</code></dt>
+  <dd>
+    Element to locate in the array.</dd>
+  <dt>
+    <code>fromIndex</code></dt>
+  <dd>
+    <p>Default: 0 (Entire array is searched)</p>
+    The index to start the search at. If the index is greater than or equal to the array's length, -1 is returned, which means the array will not be searched. If the provided index value is a negative number, it is taken as the offset from the end of the array. Note: if the provided index is negative, the array is still searched from front to back. If the calculated index is less than 0, then the whole array will be searched.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p><code>indexOf</code> compares <code>searchElement</code> to elements of the Array using <a href="/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Using_the_Equality_Operators">strict equality</a> (the same method used by the ===, or triple-equals, operator).</p>
+<h2 id="Compatibility" name="Compatibility">Compatibility</h2>
+<p><code>indexOf</code> is a recent addition to the ECMA-262 standard; as such it may not be present in all browsers. You can work around this by utilizing the following code at the beginning of your scripts. This will allow you to use <code>indexOf</code> when there is still no native support. This algorithm matches the one specified in ECMA-262, 5th edition, assuming <code style="color: inherit; font-weight: inherit;">Object</code>, <code>TypeError</code>, <code>Number</code>, <code>Math.floor</code>, <code>Math.abs</code>, and <code>Math.max</code> have their original values.</p>
+
+<pre class="brush: js">if (!Array.prototype.indexOf) {
+  Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
+    'use strict';
+    if (this == null) {
+      throw new TypeError();
+    }
+    var n, k, t = Object(this),
+        len = t.length &gt;&gt;&gt; 0;
+
+    if (len === 0) {
+      return -1;
+    }
+    n = 0;
+    if (arguments.length &gt; 1) {
+      n = Number(arguments[1]);
+      if (n != n) { // shortcut for verifying if it's NaN
+        n = 0;
+      } else if (n != 0 &amp;&amp; n != Infinity &amp;&amp; n != -Infinity) {
+        n = (n &gt; 0 || -1) * Math.floor(Math.abs(n));
+      }
+    }
+    if (n &gt;= len) {
+      return -1;
+    }
+    for (k = n &gt;= 0 ? n : Math.max(len - Math.abs(n), 0); k &lt; len; k++) {
+      if (k in t &amp;&amp; t[k] === searchElement) {
+        return k;
+      }
+    }
+    return -1;
+  };
+}
+</pre>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_indexOf" name="Example:_Using_indexOf">Example: Using indexOf</h3>
+<p>The following example uses <code>indexOf</code> to locate values in an array.</p>
+<pre class="brush: js">var array = [2, 5, 9];
+var index = array.indexOf(2); // index is assigned 0
+index = array.indexOf(7); // index is assigned -1
+</pre>
+<h3 id="Example:_Finding_all_the_occurrences_of_an_element" name="Example:_Finding_all_the_occurrences_of_an_element">Example: Finding all the occurrences of an element</h3>
+<p>The following example uses <code>indexOf</code> to find all the indices of an element in a given array, using <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push"><code>push</code></a> to add them to another array as they are found.</p>
+<pre class="brush: js">var indices = [];
+var idx = array.indexOf(element);
+while (idx != -1) {
+    indices.push(idx);
+    idx = array.indexOf(element, idx + 1);
+}</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat tables</a></p>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>9</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf"><code>lastIndexOf()</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array%20methods">Array methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/correction">correction</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/martijntje">martijntje</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/wellington7">wellington7</a>, <a href="/en-US/profiles/Shaver">Shaver</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/Shelby">Shelby</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/aptinio">aptinio</a>, <a href="/en-US/profiles/Anonymous">Anonymous</a>, <a href="/en-US/profiles/jdalton">jdalton</a>, <a href="/en-US/profiles/dicks">dicks</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Qazzian">Qazzian</a>, <a href="/en-US/profiles/Maralbust">Maralbust</a>, <a href="/en-US/profiles/Ahr">Ahr</a>, <a href="/en-US/profiles/ktamkun">ktamkun</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/PointedEars">PointedEars</a>, <a href="/en-US/profiles/Inimino">Inimino</a>, <a href="/en-US/profiles/tw2113">tw2113</a>, <a href="/en-US/profiles/alex35">alex35</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/berkerpeksag">berkerpeksag</a>, <a href="/en-US/profiles/Maian">Maian</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+          <time datetime="2013-08-04T03:08:47-07:00">Aug 4, 2013 3:08:47 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+            <time datetime="2013-08-04T03:08:47-07:00">Aug 4, 2013 3:08:47 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

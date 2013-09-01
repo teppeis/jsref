@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="462273" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.getPrototypeOf</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.1">JavaScript 1.8.1</a></p> 
+</div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns the prototype (i.e. the internal <code>[[Prototype]]</code>) of the specified object.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.1</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Object.getPrototypeOf(<em>object</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    object</dt>
+  <dd>
+    The object whose prototype is to be returned.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Throws a <a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="JavaScript/Reference/Global Objects/TypeError"><code>TypeError</code></a> exception if the object parameter isn't an <code>Object</code>.</p>
+<h2 id="Notes" name="Notes">Notes</h2>
+<p><code>Object.getPrototypeOf()</code> is the standard implementation of the old and deprecated <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/proto" title="JavaScript/Reference/Global_Objects/Object/proto"><code><em>object</em>.__proto__</code></a> property. However it is a read-only method. <strong>Actually it is not possible to change the prototype of an instance without using the <code>__proto__</code> property.</strong><br/>
+  There is a proposal to implement a new <code>Object.setPrototypeOf(<em>object</em>, <em>prototype</em>)</code> method to the standards (see <a class="external" href="https://bugs.ecmascript.org/show_bug.cgi?id=264">ECMAScript bug 264</a>). It will be something like the following:</p>
+<pre class="brush: js">Object.setPrototypeOf = function (obj, proto) {
+  obj.__proto__ = proto;
+};</pre>
+<p>A combination of <code>Object.getPrototypeOf()</code> and <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/proto" title="JavaScript/Reference/Global_Objects/Object/proto"><code><em>object</em>.__proto__</code></a> (since there is not a <code>Object.setPrototypeOf()</code> method) allows to append a whole prototype chain to a new prototype object:</p>
+<div style="height: 600px; overflow: auto; margin-bottom: 12px;">
+  <pre class="brush: js">/**
+*** Object.setPrototypeOf(@object, @prototype)
+* Changes the prototype of an instance
+*
+**/
+
+Object.setPrototypeOf = function (oInstance, oProto) {
+  oInstance.__proto__ = oProto;
+};
+
+/**
+*** Object.appendChain(@object, @prototype)
+*
+* Appends the first non-native prototype of a chain to a new prototype.
+* Returns @object (if it was a primitive value it will transformed into an object).
+*
+*** Object.appendChain(@object [, "@arg_name_1", "@arg_name_2", "@arg_name_3", "..."], "@function_body")
+*** Object.appendChain(@object [, "@arg_name_1, @arg_name_2, @arg_name_3, ..."], "@function_body")
+*
+* Appends the first non-native prototype of a chain to the native Function.prototype object, then appends a
+* new Function(["@arg"(s)], "@function_body") to that chain.
+* Returns the function.
+*
+**/
+
+Object.appendChain = function (oChain, oProto) {
+  if (arguments.length &lt; 2) { throw new TypeError("Object.appendChain - Not enough arguments"); }
+  if (typeof oProto === "number" || typeof oProto === "boolean") { throw new TypeError("second argument to Object.appendChain must be an object or a string"); }
+
+  var oNewProto = oProto, oReturn = o2nd = oLast = oChain instanceof this ? oChain : new oChain.constructor(oChain);
+
+  for (var o1st = this.getPrototypeOf(o2nd); o1st !== Object.prototype &amp;&amp; o1st !== Function.prototype; o1st = this.getPrototypeOf(o2nd)) {
+    o2nd = o1st;
+  }
+
+  if (oProto.constructor === String) {
+    oNewProto = Function.prototype;
+    oReturn = Function.apply(null, Array.prototype.slice.call(arguments, 1));
+    this.setPrototypeOf(oReturn, oLast);
+  }
+
+  this.setPrototypeOf(o2nd, oNewProto);
+  return oReturn;
+}
+
+/**************** USAGE ****************/
+
+// First example: appending a chain to a prototype
+
+function Mammal () {
+  this.isMammal = "yes";
+}
+
+function MammalSpecies (sMammalSpecies) {
+  this.species = sMammalSpecies;
+}
+
+MammalSpecies.prototype = new Mammal();
+MammalSpecies.prototype.constructor = MammalSpecies;
+
+var oCat = new MammalSpecies("Felis");
+
+alert(oCat.isMammal); // "yes"
+
+function Animal () {
+  this.breathing = "yes";
+}
+
+Object.appendChain(oCat, new Animal());
+
+alert(oCat.breathing); // "yes"
+
+// Second example: transforming a primitive value into an instance of its constructor and append its chain to a prototype
+
+function Symbol () {
+  this.isSymbol = "yes";
+}
+
+var nPrime = 17;
+
+alert(typeof nPrime); // "number"
+
+var oPrime = Object.appendChain(nPrime, new Symbol());
+
+alert(oPrime); // "17"
+alert(oPrime.isSymbol); // "yes"
+alert(typeof oPrime); // "object"
+
+// Third example: appending a chain to the Function.prototype object and appending a new function to that chain
+
+function Person (sName) {
+  this.identity = sName;
+}
+
+var george = Object.appendChain(new Person("George"), "alert(\"Hello guys!!\");");
+
+alert(george.identity); // "George"
+george(); // "Hello guys!!"</pre>
+</div>
+<h2 id="Cross-browser_compatibility">Cross-browser compatibility</h2>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat table</a>.</p>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>3.5</td>
+        <td>5</td>
+        <td>9</td>
+        <td>12.10 (maybe earlier)</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Even though older Opera versions don't support <code>Object.getPrototypeOf()</code> yet, they do support the non-standard <code>__proto__</code> property since Opera 10.50.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isPrototypeOf" title="JavaScript/Reference/Global Objects/Object/IsPrototypeOf">isPrototypeOf</a></li>
+  <li>John Resig's post on <a class="external" href="http://ejohn.org/blog/objectgetprototypeof/" title="http://ejohn.org/blog/objectgetprototypeof/">getPrototypeOf</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (6)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/AJAX">AJAX</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object">Object</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object%20Methods">Object Methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Midnightaz">Midnightaz</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Robg1">Robg1</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/Blizzard">Blizzard</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/m_gol">m_gol</a>, <a href="/en-US/profiles/Teppeis">Teppeis</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Teppeis">Teppeis</a>, 
+          <time datetime="2013-08-31T22:37:46-07:00">Aug 31, 2013 10:37:46 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Teppeis">Teppeis</a>, 
+            <time datetime="2013-08-31T22:37:46-07:00">Aug 31, 2013 10:37:46 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

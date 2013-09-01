@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417155" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">caller</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p/><div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div><p/>
+<h3 id="Summary" name="Summary">Summary</h3>
+<p>Returns the function that invoked the specified function.</p>
+<p>This property is not part of ECMA-262 Edition 3 standard. It is implemented at least in <a href="/en/SpiderMonkey" title="en/SpiderMonkey">SpiderMonkey</a> (the JavaScript engine used in Mozilla) (see <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=65683" title="">bug  65683</a>), V8 (the JavaScript engine used in Chrome) and JScript.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Property of <a href="/en/JavaScript/Reference/Global_Objects/Function" title="en/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>none</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Description" name="Description">Description</h3>
+<p>If the function <code>f</code> was invoked by the top level code, the value of <code>f.caller</code> is <code>null</code>, otherwise it's the function that called <code>f</code></p>
+<p>This property replaces deprecated <a href="/en/JavaScript/Reference/Functions_and_function_scope/arguments/caller" title="En/Core_JavaScript_1.5_Reference/Functions_and_function_scope/arguments/caller">arguments.caller</a>.</p>
+<h3 id="Notes" name="Notes">Notes</h3>
+<p>Note that in case of recursion, you can't reconstruct the call stack using this property. Consider:</p>
+<pre class="eval">function f(n) { g(n-1) }
+function g(n) { if(n&gt;0) f(n); else stop() }
+f(2)
+</pre>
+<p>At the moment <code>stop()</code> is called the call stack will be:</p>
+<pre class="eval">f(2) -&gt; g(1) -&gt; f(1) -&gt; g(0) -&gt; stop()
+</pre>
+<p>The following is true:</p>
+<pre class="eval">stop.caller === g &amp;&amp; f.caller === g &amp;&amp; g.caller === f
+</pre>
+<p>so if you tried to get the stack trace in the <code>stop()</code> function like this:</p>
+<pre class="eval">var f = stop;
+var stack = "Stack trace:";
+while (f) {
+  stack += "\n" + f.name;
+  f = f.caller;
+}
+</pre>
+<p>the loop would never stop.</p>
+<p>The special property <code>__caller__</code>, which returned the activation object of the caller thus allowing to reconstruct the stack, was removed for security reasons.</p>
+<h3 id="Examples" name="Examples">Examples</h3>
+<h4 id="Example:_Checking_the_value_of_a_function.27s_caller_property" name="Example:_Checking_the_value_of_a_function.27s_caller_property">Example: Checking the value of a function's <code>caller</code> property</h4>
+<p>The following code checks the value a function's <code>caller</code> property.</p>
+<pre class="eval">function myFunc() {
+   if (myFunc.caller == null) {
+      return ("The function was called from the top!");
+   } else
+      return ("This function's caller was " + myFunc.caller);
+}
+</pre>
+<p> </p>
+<h3 id="Browser_Support">Browser Support</h3>
+<p>Function.caller is currently supported by all major browsers: Firefox, Safari, Chrome, Opera and IE.  <a class="external" href="http://kangax.github.com/es5-compat-table/non-standard/">ECMAScript extensions compatibility table</a>.</p>
+<p> </p>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/devongovett">devongovett</a>, <a href="/en-US/profiles/myf">myf</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Konijn">Konijn</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/paul.irish">paul.irish</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:51-07:00">May 28, 2013 8:32:51 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/myf">myf</a>, 
+            <time datetime="2012-09-17T07:56:02-07:00">Sep 17, 2012 7:56:02 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/caller$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

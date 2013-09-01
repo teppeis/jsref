@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417047" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">throw</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h2 id="Summary">Summary</h2>
+<p>Throws a user-defined exception.</p>
+<h2 id="Version_Information">Version Information</h2>
+<table class="standard-table"> <tbody> <tr> <td class="header">Statement</td> </tr> <tr> <td>Implemented in:</td> <td>JavaScript 1.4</td> </tr> <tr> <td>ECMA Version:</td> <td>ECMA-262, Edition 3</td> </tr> </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<p><code>throw <em>expression</em>; </code></p>
+<h2 id="Parameters">Parameters</h2>
+<dl> <dt><code>expression</code></dt> <dd>The expression to throw.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>Use the <code>throw</code> statement to throw an exception. When you throw an exception, <code>expression</code> specifies the value of the exception. Each of the following throws an exception:</p>
+<ul> <li><code>throw "Error2"; // generates an exception with a string value</code></li> <li><code>throw 42; // generates an exception with the value 42</code></li> <li><code>throw true; // generates an exception with the value true</code></li>
+</ul>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example.3A_Throw_an_object">Example: Throw an object</h3>
+<p>You can specify an object when you throw an exception. You can then reference the object's properties in the <code>catch</code> block. The following example creates an object <code>myUserException</code> of type <code>UserException</code> and uses it in a <code>throw</code> statement.</p>
+<pre class="brush: js">function UserException(message) {
+   this.message = message;
+   this.name = "UserException";
+}
+function getMonthName(mo) {
+   mo = mo-1; // Adjust month number for array index (1=Jan, 12=Dec)
+   var months = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+      "Aug", "Sep", "Oct", "Nov", "Dec");
+   if (months[mo] !== undefined) {
+      return months[mo];
+   } else {
+      throw new UserException("InvalidMonthNo");
+   }
+}
+
+try {
+   // statements to try
+   var myMonth = 15; // 15 is out of bound to raise the exception
+   monthName = getMonthName(myMonth);
+} catch (e) {
+   monthName = "unknown";
+   logMyErrors(e.message, e.name); // pass exception object to err handler
+}
+</pre>
+<h3 id="Example.3A_Another_example_of_throwing_an_object">Example: Another example of throwing an object</h3>
+<p>The following example tests an input string for a U.S. zip code. If the zip code uses an invalid format, the throw statement throws an exception by creating an object of type <code>ZipCodeFormatException</code>.</p>
+<pre class="brush: js">/*
+ * Creates a ZipCode object.
+ *
+ * Accepted formats for a zip code are:
+ *    12345
+ *    12345-6789
+ *    123456789
+ *    12345 6789
+ *
+ * If the argument passed to the ZipCode constructor does not
+ * conform to one of these patterns, an exception is thrown.
+ */
+
+function ZipCode(zip) {
+   zip = new String(zip);
+   pattern = /[0-9]{5}([- ]?[0-9]{4})?/;
+   if (pattern.test(zip)) {
+      // zip code value will be the first match in the string
+      this.value = zip.match(pattern)[0];
+      this.valueOf = function() {
+         return this.value
+      };
+      this.toString = function() {
+         return String(this.value)
+      };
+   } else {
+      throw new ZipCodeFormatException(zip);
+   }
+}
+
+function ZipCodeFormatException(value) {
+   this.value = value;
+   this.message = "does not conform to the expected format for a zip code";
+   this.toString = function() {
+      return this.value + this.message
+   };
+}
+
+/*
+ * This could be in a script that validates address data
+ * for US addresses.
+ */
+
+var ZIPCODE_INVALID = -1;
+var ZIPCODE_UNKNOWN_ERROR = -2;
+
+function verifyZipCode(z) {
+   try {
+      z = new ZipCode(z);
+   } catch (e) {
+      if (e instanceof ZipCodeFormatException) {
+         return ZIPCODE_INVALID;
+      } else {
+         return ZIPCODE_UNKNOWN_ERROR;
+      }
+   }
+   return z;
+}
+
+a = verifyZipCode(95060);         // returns 95060
+b = verifyZipCode(9560;)          // returns -1
+c = verifyZipCode("a");           // returns -1
+d = verifyZipCode("95060");       // returns 95060
+e = verifyZipCode("95060 1234");  // returns 95060 1234
+</pre>
+<h3 id="Example.3A_Rethrow_an_exception">Example: Rethrow an exception</h3>
+<p>You can use <code>throw</code> to rethrow an exception after you catch it. The following example catches an exception with a numeric value and rethrows it if the value is over 50. The rethrown exception propagates up to the enclosing function or to the top level so that the user sees it.</p>
+<pre class="brush: js">try {
+   throw n; // throws an exception with a numeric value
+} catch (e) {
+   if (e &lt;= 50) {
+      // statements to handle exceptions 1-50
+   } else {
+      // cannot handle this exception, so rethrow
+      throw e;
+   }
+}
+</pre>
+<h2 id="See_also">See also</h2>
+<p><a href="/en/JavaScript/Reference/Statements/try...catch" title="en/JavaScript/Reference/Statements/try...catch">try...catch</a></p>
+<p> </p>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Anonymous">Anonymous</a>, <a href="/en-US/profiles/tregagnon">tregagnon</a>, <a href="/en-US/profiles/Shiningtiti">Shiningtiti</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/safjanowski">safjanowski</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:47-07:00">May 28, 2013 8:32:47 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/throw$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

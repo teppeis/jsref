@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="436675" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">arguments</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>An <code>Array</code>-like object corresponding to the arguments passed to a function.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Variable of the function scope</th>
+    </tr>
+  </thead>
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.1</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Version</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>arguments</code> object is a local variable available within all functions; <code>arguments</code> as a property of <code>Function</code> can no longer be used.</p>
+<p>You can refer to a function's arguments within the function by using the <code>arguments</code> object. This object contains an entry for each argument passed to the function, the first entry's index starting at 0. For example, if a function is passed three arguments, you can refer to the argument as follows:</p>
+<pre><code>arguments[0]
+arguments[1]
+arguments[2]
+</code></pre>
+<p>The arguments can also be set:</p>
+<pre><code>arguments[1] = 'new value';</code></pre>
+<div class="note">
+  <strong>Note:</strong> The <a href="/en-US/docs/SpiderMonkey" title="SpiderMonkey">SpiderMonkey</a> JavaScript engine has a <a class="external link-https" href="https://bugzilla.mozilla.org/show_bug.cgi?id=292215">bug</a> in which <code>arguments[n]</code> cannot be set if <code>n</code> is greater than the number of formal or actual parameters. This has been fixed in the engine for JavaScript 1.6.</div>
+<p>The <code>arguments</code> object is not an <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="Array">Array</a></code>. It is similar to an <code>Array</code>, but does not have any <code>Array</code> properties except <code><a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments/length" title="JavaScript/Reference/Functions_and_function_scope/arguments/length">length</a></code>. For example, it does not have the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/pop" title="JavaScript/Reference/Global_Objects/Array/pop">pop</a></code> method. However it can be converted to a real <code>Array</code>:</p>
+<pre><code>var args = Array.prototype.slice.call(arguments);</code></pre>
+<p>If <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array#Array_generic_methods" title="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array#Array_generic_methods">Array generics</a> are available, one can use the following instead:</p>
+<pre><code>var args = Array.slice(arguments);</code></pre>
+<p> </p>
+<p>The <code>arguments</code> object is available only within a function body. Attempting to access the <code>arguments</code> object outside a function declaration results in an error.</p>
+<p>You can use the <code>arguments</code> object if you call a function with more arguments than it is formally declared to accept. This technique is useful for functions that can be passed a variable number of arguments. You can use <code><a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments/length" title="JavaScript/Reference/Functions_and_function_scope/arguments/length">arguments.length</a></code> to determine the number of arguments passed to the function, and then process each argument by using the <code>arguments</code> object. (To determine the number of arguments declared when a function was defined, use the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/length" title="JavaScript/Reference/Global_Objects/Function/length">Function.length</a></code> property.)</p>
+<h2 id="Properties" name="Properties">Properties</h2>
+<dl>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments/callee" title="JavaScript/Reference/Functions_and_function_scope/arguments/callee">arguments.callee</a></code></dt>
+  <dd>
+    Reference to the currently executing function.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments/caller" title="JavaScript/Reference/Functions_and_function_scope/arguments/caller">arguments.caller</a></code> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete</span></dt>
+  <dd>
+    Reference to the function that invoked the currently executing function.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments/length" title="JavaScript/Reference/Functions_and_function_scope/arguments/length">arguments.length</a></code></dt>
+  <dd>
+    Reference to the number of arguments passed to the function.</dd>
+</dl>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Defining_function_that_concatenates_several_strings" name="Example:_Defining_function_that_concatenates_several_strings">Example: Defining a function that concatenates several strings</h3>
+<p>This example defines a function that concatenates several strings. The only formal argument for the function is a string that specifies the characters that separate the items to concatenate. The function is defined as follows:</p>
+<pre class="brush:js">function myConcat(separator) {
+  var args = Array.prototype.slice.call(arguments, 1);
+  return args.join(separator);
+}</pre>
+<p>You can pass any number of arguments to this function, and it creates a list using each argument as an item in the list.</p>
+<pre class="brush:js">// returns "red, orange, blue"
+myConcat(", ", "red", "orange", "blue");
+
+// returns "elephant; giraffe; lion; cheetah"
+myConcat("; ", "elephant", "giraffe", "lion", "cheetah");
+
+// returns "sage. basil. oregano. pepper. parsley"
+myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley");</pre>
+<h3 id="Example:_Defining_a_function_that_creates_HTML_lists" name="Example:_Defining_a_function_that_creates_HTML_lists">Example: Defining a function that creates HTML lists</h3>
+<p>This example defines a function that creates a string containing HTML for a list. The only formal argument for the function is a string that is "<code>u</code>" if the list is to be unordered (bulleted), or "<code>o</code>" if the list is to be ordered (numbered). The function is defined as follows:</p>
+<pre class="brush:js">function list(type) {
+  var result = "&lt;" + type + "l&gt;&lt;li&gt;";
+  var args = Array.prototype.slice.call(arguments, 1);
+  result += args.join("&lt;/li&gt;&lt;li&gt;");
+  result += "&lt;/li&gt;&lt;/" + type + "l&gt;"; // end list
+
+  return result;
+}</pre>
+<p>You can pass any number of arguments to this function, and it adds each argument as an item to a list of the type indicated. For example:</p>
+<pre class="brush:js">var listHTML = list("u", "One", "Two", "Three");
+
+/* listHTML is:
+
+"&lt;ul&gt;&lt;li&gt;One&lt;/li&gt;&lt;li&gt;Two&lt;/li&gt;&lt;li&gt;Three&lt;/li&gt;&lt;/ul&gt;"
+
+*/</pre>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Chbok">Chbok</a>, <a href="/en-US/profiles/Prodoc">Prodoc</a>, <a href="/en-US/profiles/Ruakh">Ruakh</a>, <a href="/en-US/profiles/mjhm">mjhm</a>, <a href="/en-US/profiles/steely.wing">steely.wing</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/SujayKrishna">SujayKrishna</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/LJR">LJR</a>, <a href="/en-US/profiles/AaronAsAChimp">AaronAsAChimp</a>, <a href="/en-US/profiles/paul.irish">paul.irish</a>, <a href="/en-US/profiles/Jo-W">Jo-W</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Aaronmcadam">Aaronmcadam</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Tmm1">Tmm1</a>, <a href="/en-US/profiles/Ilidio">Ilidio</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/1212jtraceur">1212jtraceur</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Behnam">Behnam</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/steely.wing">steely.wing</a>, 
+          <time datetime="2013-07-01T09:12:59-07:00">Jul 1, 2013 9:12:59 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/steely.wing">steely.wing</a>, 
+            <time datetime="2013-07-01T09:12:59-07:00">Jul 1, 2013 9:12:59 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/arguments$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

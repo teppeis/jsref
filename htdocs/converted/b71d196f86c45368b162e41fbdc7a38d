@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="445699" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Number.isInteger</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator" style="background: #9CF49C;"> 
+    <p><strong>This is an experimental technology, part of the Harmony (EcmaScript 6) proposal.</strong><br/>Because this technology's specification has not stabilized, check the <a href="#Browser_compatibility">compatibility table</a> for usage in various browsers. Also note that the syntax and behavior of an experimental technology is subject to change in future version of browsers as the spec changes.</p> 
+</div> <div class="overheadIndicator standardNote standardNoteBlock"> 
+<p>This content covers features introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/15">Firefox 15</a></p> 
+</div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Determine whether the passed value is an integer.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of<code> <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number" title="JavaScript/Reference/Global_Objects/Number">Number</a></code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5+</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 6th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Number.isInteger(<var>testValue</var>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code><var>testValue</var></code></dt>
+  <dd>
+    The value to be tested for being an integer.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Determine whether the passed value is an integer. If the target value is an integer, return <code>true</code>, otherwise return <code>false</code>.</p>
+<h2 id="Example" name="Example">Example</h2>
+<pre class="brush:js">alert([
+  Number.isInteger(0.1),
+  Number.isInteger(1),
+  Number.isInteger(Math.PI)
+]);</pre>
+<h2 id="Polyfill" name="Polyfill">Polyfill</h2>
+<p>The following algorithm matches <a class="external" href="http://wiki.ecmascript.org/doku.php?id=harmony:number.isinteger" title="http://wiki.ecmascript.org/doku.php?id=harmony:number.isinteger">the one specified in ECMA harmony</a>:</p>
+<pre class="brush:js;">/*\
+|*|
+|*|  :: Number.isInteger() polyfill ::
+|*|
+|*|  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger
+|*|
+\*/
+
+if (!Number.isInteger) {
+  Number.isInteger = function isInteger (nVal) {
+    return typeof nVal === "number" &amp;&amp; isFinite(nVal) &amp;&amp; nVal &gt; -9007199254740992 &amp;&amp; nVal &lt; 9007199254740992 &amp;&amp; Math.floor(nVal) === nVal;
+  };
+}</pre>
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>25.0 <span class="inlineIndicator todo todoInline"><strong>FIXME:</strong> <em>? </em></span></td>
+        <td>15.0 (15)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>15.0 (15)</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p> </p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Fixit">Fixit</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Number">Number</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Reference">Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/R%C3%A9f%C3%A9rence">Référence</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/kscarfone">kscarfone</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/kscarfone">kscarfone</a>, 
+          <time datetime="2013-07-29T10:09:59-07:00">Jul 29, 2013 10:09:59 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/kscarfone">kscarfone</a>, 
+            <time datetime="2013-07-29T10:09:59-07:00">Jul 29, 2013 10:09:59 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

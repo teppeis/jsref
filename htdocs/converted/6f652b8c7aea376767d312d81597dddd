@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="426665" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Deprecated and obsolete features</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p>This appendix lists features of JavaScript that are deprecated (that is, still available but planned for removal) and obsolete (that is, no longer usable).</p>
+<h2 id="Deprecated_features">Deprecated features</h2>
+<p>These deprecated features can still be used, but should be used with caution because they are expected to be removed entirely sometime in the future. You should work to remove their use from your code.</p>
+<h3 id="RegExp_Properties" name="RegExp_Properties">RegExp properties</h3>
+<p>The following properties are deprecated. This does not affect their use in <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/replace" title="/en-US/docs/JavaScript/Reference/Global_Objects/String/replace">replacement strings</a>:</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><code>$1, ..., $9</code></td>
+      <td>
+        <p>Parenthesized substring matches, if any.</p>
+        <div class="warning">
+          <strong>Warning:</strong> Using these properties can result in problems, since browser extensions can modify them. Avoid them!</div>
+      </td>
+    </tr>
+    <tr>
+      <td><code>$_</code></td>
+      <td>See <code>input</code>.</td>
+    </tr>
+    <tr>
+      <td><code>$*</code></td>
+      <td>See <code>multiline</code>.</td>
+    </tr>
+    <tr>
+      <td><code>$&amp;</code></td>
+      <td>See <code>lastMatch</code>.</td>
+    </tr>
+    <tr>
+      <td><code>$+</code></td>
+      <td>See <code>lastParen</code>.</td>
+    </tr>
+    <tr>
+      <td><code>$`</code></td>
+      <td>See <code>leftContext</code>.</td>
+    </tr>
+    <tr>
+      <td><code>$'</code></td>
+      <td>See <code>rightContext</code>.</td>
+    </tr>
+    <tr>
+      <td><code>input</code></td>
+      <td>The string against which a regular expression is matched.</td>
+    </tr>
+    <tr>
+      <td><code>lastMatch</code></td>
+      <td>The last matched characters.</td>
+    </tr>
+    <tr>
+      <td><code>lastParen</code></td>
+      <td>The last parenthesized substring match, if any.</td>
+    </tr>
+    <tr>
+      <td><code>leftContext</code></td>
+      <td>The substring preceding the most recent match.</td>
+    </tr>
+    <tr>
+      <td><code>rightContext</code></td>
+      <td>The substring following the most recent match.</td>
+    </tr>
+  </tbody>
+</table>
+<p>The following are now properties of RegExp instances, no longer of the RegExp object:</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><code>global</code></td>
+      <td>Whether or not to test the regular expression against all possible matches in a string, or only against the first.</td>
+    </tr>
+    <tr>
+      <td><code>ignoreCase</code></td>
+      <td>Whether or not to ignore case while attempting a match in a string.</td>
+    </tr>
+    <tr>
+      <td><code>lastIndex</code></td>
+      <td>The index at which to start the next match.</td>
+    </tr>
+    <tr>
+      <td><code>multiline</code></td>
+      <td>Whether or not to search in strings across multiple lines.</td>
+    </tr>
+    <tr>
+      <td><code>source</code></td>
+      <td>The text of the pattern.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="RegExp_Methods" name="RegExp_Methods">RegExp methods</h3>
+<p>The <code>compile</code> method is deprecated.</p>
+<p>The <code>valueOf</code> method is no longer specialized for RegExp. Use <code>Object.valueOf</code>.</p>
+<h3 id="Function_properties">Function properties</h3>
+<p>The <code>caller</code> and <code>arguments</code> property are deprecated, because they leak the function caller. Instead of the arguments property, you should use the arguments object inside function closures.</p>
+<h3 id="Date_methods">Date methods</h3>
+<p><code>getYear</code> and <code>setYear</code> are affected by the Year-2000-Problem and have been subsumed by <code>getFullYear</code> and <code>setFullYear</code>. Also you should use <code>toISOString</code> instead of the deprecated  <code>toGMTString</code> method in new code.</p>
+<h3 id="Escape_Sequences" name="Escape_Sequences">Escape sequences</h3>
+<p>Octal escape sequences (\ followed by one, two, or three octal digits) are deprecated in string and regular expression literals.</p>
+<p>The <code>escape</code> and <code>unescape</code> functions are deprecated. Use <code>encodeURI</code>, <code>encodeURIComponent</code>, <code>decodeURI</code> or <code>decodeURIComponent</code> to encode and decode escape sequences for special characters.</p>
+<h2 id="Obsolete_features">Obsolete features</h2>
+<p>These obsolete features have been entirely removed from JavaScript and can no longer be used as of the indicated version of JavaScript.</p>
+<h3 id="Objects">Objects</h3>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><code>__count__</code></td>
+      <td>Returns the number of enumerable properties directly on a user-defined object.</td>
+    </tr>
+    <tr>
+      <td><code>__parent__</code></td>
+      <td>Points to an object's context.</td>
+    </tr>
+  </tbody>
+</table>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><code>eval</code></td>
+      <td>Evaluates a string of JavaScript code in the context of the specified object.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Functions">Functions</h3>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><code>arity</code></td>
+      <td>Number of formal arguments.</td>
+    </tr>
+  </tbody>
+</table>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/CacycleWP">CacycleWP</a>, <a href="/en-US/profiles/Nanto%20vi">Nanto vi</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/ethertank">ethertank</a>, 
+          <time datetime="2013-06-07T22:16:09-07:00">Jun 7, 2013 10:16:09 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-06-07T22:16:09-07:00">Jun 7, 2013 10:16:09 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="437617" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.defineProperties</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></p> 
+</div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Defines new or modifies existing properties directly on an object, returning the object.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Object.defineProperties(<em>obj</em>, <em>props</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    obj</dt>
+  <dd>
+    The object on which to define or modify properties.</dd>
+  <dt>
+    props</dt>
+  <dd>
+    An object whose own enumerable properties constitute descriptors for the properties to be defined or modified.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p><code>Object.defineProperties</code>, in essence, defines all properties corresponding to the enumerable own properties of <code>props</code> on the object <code>objrops</code> object.</p>
+<h2 id="Example">Example</h2>
+<pre class="brush: js">Object.defineProperties(obj, {
+  "property1": {
+    value: true,
+    writable: true
+  },
+  "property2": {
+    value: "Hello",
+    writable: false
+  }
+  // etc. etc.
+});</pre>
+<h2 id="Polyfill">Polyfill</h2>
+<p>Assuming a pristine execution environment with all names and properties referring to their initial values, <code>Object.defineProperties</code> is almost completely equivalent (note the comment in <code>isCallable</code>) to the following reimplementation in JavaScript:</p>
+<pre class="brush: js;highlight:[8]">function defineProperties(obj, properties) {
+  function convertToDescriptor(desc) {
+    function hasProperty(obj, prop) {
+      return Object.prototype.hasOwnProperty.call(obj, prop);
+    }
+
+    function isCallable(v) {
+      // NB: modify as necessary if other values than functions are callable.
+      return typeof v === "function";
+    }
+
+    if (typeof desc !== "object" || desc === null)
+      throw new TypeError("bad desc");
+
+    var d = {};
+
+    if (hasProperty(desc, "enumerable"))
+      d.enumerable = !!obj.enumerable;
+    if (hasProperty(desc, "configurable"))
+      d.configurable = !!obj.configurable;
+    if (hasProperty(desc, "value"))
+      d.value = obj.value;
+    if (hasProperty(desc, "writable"))
+      d.writable = !!desc.writable;
+    if ( hasProperty(desc, "get") ) {
+      var g = desc.get;
+
+      if (!isCallable(g) &amp;&amp; g !== "undefined")
+        throw new TypeError("bad get");
+      d.get = g;
+    }
+    if ( hasProperty(desc, "set") ) {
+      var s = desc.set;
+      if (!isCallable(s) &amp;&amp; s !== "undefined")
+        throw new TypeError("bad set");
+      d.set = s;
+    }
+
+    if (("get" in d || "set" in d) &amp;&amp; ("value" in d || "writable" in d))
+      throw new TypeError("identity-confused descriptor");
+
+    return d;
+  }
+
+  if (typeof obj !== "object" || obj === null)
+    throw new TypeError("bad obj");
+
+  properties = Object(properties);
+
+  var keys = Object.keys(properties);
+  var descs = [];
+
+  for (var i = 0; i &lt; keys.length; i++)
+    descs.push([keys[i], convertToDescriptor(properties[keys[i]])]);
+
+  for (var i = 0; i &lt; descs.length; i++)
+    Object.defineProperty(obj, descs[i][0], descs[i][1]);
+
+  return obj;
+}</pre>
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat tables</a>.</p>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4.0 (2)</td>
+        <td>5 (previous versions untested)</td>
+        <td>9</td>
+        <td>11.60</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4.0 (2)</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>11.50</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty" title="JavaScript/Reference/Global Objects/Object/defineProperty"><code>Object.defineProperty</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/keys" title="JavaScript/Reference/Global Objects/Object/keys"><code>Object.keys</code></a></li>
+  <li><a href="/en-US/docs/Enumerability_and_ownership_of_properties" title="Enumerability_and_ownership_of_properties">Enumerability and ownership of properties</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.8.5">JavaScript 1.8.5</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/david.schoonover@gmail.com">david.schoonover@gmail.com</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Broofa">Broofa</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/adrian_cooney">adrian_cooney</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/adrian_cooney">adrian_cooney</a>, 
+          <time datetime="2013-07-03T13:09:05-07:00">Jul 3, 2013 1:09:05 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/adrian_cooney">adrian_cooney</a>, 
+            <time datetime="2013-07-03T13:09:05-07:00">Jul 3, 2013 1:09:05 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

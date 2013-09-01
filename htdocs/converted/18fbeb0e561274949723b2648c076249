@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417071" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">function</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h2 id="Summary">Summary</h2>
+<p>Declares a function with the specified parameters.</p>
+<div class="noinclude"> <p>You can also define functions using the <code><a href="/en/JavaScript/Reference/Global_Objects/Function" title="en/JavaScript/Reference/Global_Objects/Function">Function</a></code> constructor and the <code><a href="/en/JavaScript/Reference/Operators/function" title="en/JavaScript/Reference/Operators/Special/function">function operator</a></code> (function expression).</p>
+</div>
+<h2 id="Version_Information">Version Information</h2>
+<table class="standard-table"> <tbody> <tr> <td class="header">Statement</td> </tr> <tr> <td>Implemented in</td> <td>JavaScript 1.0</td> </tr> <tr> <td>ECMAScript Edition</td> <td>ECMA-262</td> </tr> </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<pre class="eval">function <em>name</em>([<em>param</em>] [, <em>param</em>] [..., <em>param</em>]) {
+   <em>statements</em>
+}
+</pre>
+<h2 id="Parameters">Parameters</h2>
+<dl> <dt><code>name</code></dt> <dd>The function name.</dd>
+</dl>
+<dl> <dt><code>param</code></dt> <dd>The name of an argument to be passed to the function. A function can have up to 255 arguments.</dd>
+</dl>
+<dl> <dt><code>statements</code></dt> <dd>The statements which comprise the body of the function.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>To return a value, the function must have a <code><a href="/en/JavaScript/Reference/Statements/return" title="en/JavaScript/Reference/Statements/return">return</a></code> statement that specifies the value to return.</p>
+<p>A function created with the <code>function</code> statement is a <code>Function</code> object and has all the properties, methods, and behavior of <code>Function</code> objects. See <code><a href="/en/JavaScript/Reference/Global_Objects/Function" title="en/JavaScript/Reference/Global_Objects/Function">Function</a></code> for detailed information on functions.</p>
+<p>A function can also be declared inside an expression. In this case the function is usually anonymous. See <code><a href="/en/JavaScript/Reference/Operators/function" title="en/JavaScript/Reference/Operators/function">function operator</a></code> for more information about the <code>function</code> (function expression).</p>
+<p>Functions can be conditionally declared. That is, a function definition can be nested within an <code>if</code> statement. Technically, such declarations are not actually function declarations; they are function expressions.</p>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example.3A_Using_function">Example: Using <code>function</code></h3>
+<p>The following code declares a function that returns the total dollar amount of sales, when given the number of units sold of products <code>a</code>, <code>b</code>, and <code>c</code>.</p>
+<pre class="brush: js">function calc_sales(units_a, units_b, units_c) {
+   return units_a*79 + units_b * 129 + units_c * 699;
+}
+</pre>
+<h2 id="See_also">See also</h2>
+<p><code><a href="/En/Core_JavaScript_1.5_Reference/Functions" title="En/Core_JavaScript_1.5_Reference/Functions">Functions</a></code>, <code><a href="/en/JavaScript/Reference/Global_Objects/Function" title="en/JavaScript/Reference/Global_Objects/Function">Function</a></code>, <code><a href="/en/JavaScript/Reference/Operators/function" title="en/JavaScript/Reference/Operators/function">function operator</a></code></p>
+<p> </p>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/vrana">vrana</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:48-07:00">May 28, 2013 8:32:48 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/function$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418295" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Intl.Collator.prototype.resolvedOptions</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Returns a new object with properties reflecting the locale and collation options computed during initialization of this <code>Collator</code> object.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Collator" title="JavaScript/Reference/Global_Objects/Collator"><code>Collator</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript Internationalization API Specification, 1<sup>st</sup> Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>collator.resolvedOptions()</code></pre>
+<h2 id="Description">Description</h2>
+<p>Returns a new object with properties reflecting the locale and collation options computed during initialization of this <code>Collator</code> object. The object has the following properties:</p>
+<dl>
+  <dt>
+    <code>locale</code></dt>
+  <dd>
+    The BCP 47 language tag for the locale actually used. If any Unicode extension values were requested in the input BCP 47 language tag that led to this locale, the key-value pairs that were requested and are supported for this locale are included in <code>locale</code>.</dd>
+  <dt>
+    <code>usage</code></dt>
+  <dt>
+    <code>sensitivity</code></dt>
+  <dt>
+    <code>ignorePunctuation</code></dt>
+  <dd>
+    The values provided for these properties in the <code>options</code> argument or filled in as defaults.</dd>
+  <dt>
+    <code>collation</code></dt>
+  <dd>
+    The value requested using the Unicode extension key "co", if it is supported for <code>locale</code>, or "default".</dd>
+  <dt>
+    <code>numeric</code></dt>
+  <dt>
+    <code>caseFirst</code></dt>
+  <dd>
+    The values requested for these properties in the <code>options</code> argument or using the Unicode extension keys "kn" and "kf" or filled in as defaults. If the implementation does not support these properties, they are omitted.</dd>
+</dl>
+<h2 id="Browser_Compatibility">Browser Compatibility</h2>
+<div>
+  <p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"> 
+    </a><ul><a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/><li class="selected"><a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul></div><p>
+</p><div id="compat-desktop">
+  <table class="compat-table"><tbody><tr><th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr><tr><td>Basic support</td>
+        <td>24</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>11</td>
+        <td>15</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr></tbody></table></div>
+<div id="compat-mobile">
+  <table class="compat-table"><tbody><tr><th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr><tr><td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>26</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr></tbody></table></div></div>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Internationalization">Internationalization</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Collator">Collator</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Norbert">Norbert</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:42-07:00">May 28, 2013 8:33:42 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Norbert">Norbert</a>, 
+            <time datetime="2013-04-08T17:25:39-07:00">Apr 8, 2013 5:25:39 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator/resolvedOptions$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

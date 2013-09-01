@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417579" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Array.prototype</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Represents the prototype for the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array">Array</a> constructor.</p>
+<h2 id="Description" name="Description">Description</h2>
+<p><a class="internal" href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global Objects/Array"><code>Array</code></a> instances inherit from <code>Array.prototype</code>. As with all constructors, you can change the constructor's prototype object to make changes to all <code>Array</code> instances.</p>
+<h2 id="Properties">Properties</h2>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/constructor" title="JavaScript/Reference/Global_Objects/Array/constructor">constructor</a></dt>
+  <dd>
+    Specifies the function that creates an object's prototype.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/length" title="JavaScript/Reference/Global_Objects/Array/length">length</a></dt>
+  <dd>
+    Reflects the number of elements in an array.</dd>
+</dl>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/DefineGetter"><code>__defineGetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/DefineSetter"><code>__defineSetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/HasOwnProperty"><code>hasOwnProperty</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/IsPrototypeOf"><code>isPrototypeOf</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/LookupGetter"><code>__lookupGetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/LookupSetter"><code>__lookupSetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/NoSuchMethod"><code>__noSuchMethod__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/PropertyIsEnumerable"><code>propertyIsEnumerable</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToSource"><code>toSource</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToLocaleString"><code>toLocaleString</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToString"><code>toString</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Unwatch"><code>unwatch</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ValueOf"><code>valueOf</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Watch"><code>watch</code></a></div> 
+</div></div>
+<h2 id="Methods">Methods</h2>
+<h3 id="Mutator_methods">Mutator methods</h3>
+<p>These methods modify the array:</p>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/pop" title="JavaScript/Reference/Global_Objects/Array/pop">pop</a></dt>
+  <dd>
+    Removes the last element from an array and returns that element.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/push" title="JavaScript/Reference/Global_Objects/Array/push">push</a></dt>
+  <dd>
+    Adds one or more elements to the end of an array and returns the new length of the array.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/reverse" title="JavaScript/Reference/Global_Objects/Array/reverse">reverse</a></dt>
+  <dd>
+    Reverses the order of the elements of an array -- the first becomes the last, and the last becomes the first.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/shift" title="JavaScript/Reference/Global_Objects/Array/shift">shift</a></dt>
+  <dd>
+    Removes the first element from an array and returns that element.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/sort" title="JavaScript/Reference/Global_Objects/Array/sort">sort</a></dt>
+  <dd>
+    Sorts the elements of an array in place and returns the array.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/splice" title="JavaScript/Reference/Global_Objects/Array/splice">splice</a></dt>
+  <dd>
+    Adds and/or removes elements from an array.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/unshift" title="JavaScript/Reference/Global_Objects/Array/unshift">unshift</a></dt>
+  <dd>
+    Adds one or more elements to the front of an array and returns the new length of the array.</dd>
+</dl>
+<h3 id="Accessor_methods">Accessor methods</h3>
+
+<p>These methods do not modify the array and return some representation of the array.</p>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/concat" title="JavaScript/Reference/Global_Objects/Array/concat">concat</a></dt>
+  <dd>
+    Returns a new array comprised of this array joined with other array(s) and/or value(s).</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/join" title="JavaScript/Reference/Global_Objects/Array/join">join</a></dt>
+  <dd>
+    Joins all elements of an array into a string.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/slice" title="JavaScript/Reference/Global_Objects/Array/slice">slice</a></dt>
+  <dd>
+    Extracts a section of an array and returns a new array.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/toSource" title="JavaScript/Reference/Global_Objects/Array/toSource">toSource</a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns an array literal representing the specified array; you can use this value to create a new array. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource" title="JavaScript/Reference/Global_Objects/Object/toSource">Object.prototype.toSource</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/toString" title="JavaScript/Reference/Global_Objects/Array/toString">toString</a></dt>
+  <dd>
+    Returns a string representing the array and its elements. Overrides the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="JavaScript/Reference/Global_Objects/Object/toString">Object.prototype.toString</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf" title="JavaScript/Reference/Global_Objects/Array/indexOf">indexOf</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></span></dt>
+  <dd>
+    Returns the first (least) index of an element within the array equal to the specified value, or -1 if none is found.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/lastIndexOf" title="JavaScript/Reference/Global_Objects/Array/lastIndexOf">lastIndexOf</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></span></dt>
+  <dd>
+    Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found.</dd>
+</dl>
+<h3 id="Iteration_methods">Iteration methods</h3>
+<p>Several methods take as arguments functions to be called back while processing the array. When these methods are called, the <code>length</code> of the array is sampled, and any element added beyond this length from within the callback is not visited. Other changes to the array (setting the value of or deleting an element) may affect the results of the operation if the method visits the changed element afterwards. While the specific behavior of these methods in such cases is well-defined, you should not rely upon it so as not to confuse others who might read your code. If you must mutate the array, copy into a new array instead.</p>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach" title="JavaScript/Reference/Global_Objects/Array/forEach">forEach</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></span></dt>
+  <dd>
+    Calls a function for each element in the array.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/every" title="JavaScript/Reference/Global_Objects/Array/every">every</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></span></dt>
+  <dd>
+    Returns true if every element in this array satisfies the provided testing function.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/some" title="JavaScript/Reference/Global_Objects/Array/some">some</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></span></dt>
+  <dd>
+    Returns true if at least one element in this array satisfies the provided testing function.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/filter" title="JavaScript/Reference/Global_Objects/Array/filter">filter</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></span></dt>
+  <dd>
+    Creates a new array with all of the elements of this array for which the provided filtering function returns true.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/map" title="JavaScript/Reference/Global_Objects/Array/map">map</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></span></dt>
+  <dd>
+    Creates a new array with the results of calling a provided function on every element in this array.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/Reduce" title="JavaScript/Reference/Objects/Array/reduce">reduce</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8">JavaScript 1.8</a></span></dt>
+  <dd>
+    Apply a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/ReduceRight" title="JavaScript/Reference/Objects/Array/reduceRight">reduceRight</a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8">JavaScript 1.8</a></span></dt>
+  <dd>
+    Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it to a single value.</dd>
+</dl>
+<h3 id="Generic_methods">Generic methods</h3>
+<p>Many methods on the JavaScript Array object are designed to be generally applied to all objects which "look like" Arrays. That is, they can be used on any object which has a <code>length</code> property, and which can usefully be accessed using numeric property names (as with <code>array[5]</code> indexing). <span class="comment">TODO: give examples with Array.prototype.forEach.call, and adding the method to an object like <a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/JavaArray" title="JavaScript/Reference/Global_Objects/JavaArray">JavaArray</a> or <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String">String</a>.</span> Some methods, such as <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/join" title="JavaScript/Reference/Global_Objects/Array/join">join</a></code>, only read the <code>length</code> and numeric properties of the object they are called on. Others, like <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/reverse" title="JavaScript/Reference/Global_Objects/Array/reverse">reverse</a></code>, require that the object's numeric properties and <code>length</code> be mutable; these methods can therefore not be called on objects like <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String">S</a><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String">tring</a></code>, which does not permit its <code>length</code> property or synthesized numeric properties to be set. </p>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/concat" title="JavaScript/Reference/Global_Objects/Array/concat">concat</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/join" title="JavaScript/Reference/Global_Objects/Array/join">join</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/pop" title="JavaScript/Reference/Global_Objects/Array/pop">pop</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/push" title="JavaScript/Reference/Global_Objects/Array/push">push</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/reverse" title="JavaScript/Reference/Global_Objects/Array/reverse">reverse</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/shift" title="JavaScript/Reference/Global_Objects/Array/shift">shift</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/slice" title="JavaScript/Reference/Global_Objects/Array/slice">slice</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/sort" title="JavaScript/Reference/Global_Objects/Array/sort">sort</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/splice" title="JavaScript/Reference/Global_Objects/Array/splice">splice</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/toSource" title="JavaScript/Reference/Global_Objects/Array/toSource">toSource</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/toString" title="JavaScript/Reference/Global_Objects/Array/toString">toString</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/unshift" title="JavaScript/Reference/Global_Objects/Array/unshift">unshift</a></li>
+</ul>
+<div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.6">JavaScript 1.6</a></p> 
+</div></div>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/every" title="JavaScript/Reference/Global_Objects/Array/every">every</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/filter" title="JavaScript/Reference/Global_Objects/Array/filter">filter</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach" title="JavaScript/Reference/Global_Objects/Array/forEach">forEach</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf" title="JavaScript/Reference/Global_Objects/Array/indexOf">indexOf</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/lastIndexOf" title="JavaScript/Reference/Global_Objects/Array/lastIndexOf">lastIndexOf</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/map" title="JavaScript/Reference/Global_Objects/Array/map">map</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/some" title="JavaScript/Reference/Global_Objects/Array/some">some</a></li>
+</ul>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/DefineGetter"><code>__defineGetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/DefineSetter"><code>__defineSetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/HasOwnProperty"><code>hasOwnProperty</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/IsPrototypeOf"><code>isPrototypeOf</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/LookupGetter"><code>__lookupGetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/LookupSetter"><code>__lookupSetter__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/NoSuchMethod"><code>__noSuchMethod__</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/PropertyIsEnumerable"><code>propertyIsEnumerable</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToLocaleString"><code>toLocaleString</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Unwatch"><code>unwatch</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ValueOf"><code>valueOf</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Watch"><code>watch</code></a></div> 
+</div></div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array">JavaScript Reference:Global Objects:Array</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/prototype" title="JavaScript/Reference/Global_Objects/Function/prototype">Function.prototype</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:09-07:00">May 28, 2013 8:33:09 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Nickolay">Nickolay</a>, 
+            <time datetime="2013-03-22T14:33:06-07:00">Mar 22, 2013 2:33:06 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

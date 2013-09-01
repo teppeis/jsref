@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417779" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.charCodeAt</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns the numeric Unicode value of the character at the given index (except for unicode codepoints &gt; 0x10000).</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>string</em>.charCodeAt(<em>index</em>)</code></pre>
+<h2 id="Parameters" name="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>index</code></dt>
+  <dd>
+    An integer greater than or equal to 0 and less than the length of the string; if it is not a number, it defaults to 0.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Unicode code points range from 0 to 1,114,111<!-- 0x10FFFF -->. The first 128 Unicode code points are a direct match of the ASCII character encoding. For information on Unicode, see the <a href="/en-US/docs/JavaScript/Guide/Obsolete_Pages/Unicode" title="JavaScript/Guide/Unicode">JavaScript/ Guide</a>.</p>
+<p>Note that <code>charCodeAt</code> will always return a value that is less than 65,536. This is because the higher code points are represented by a pair of (lower valued) "surrogate" pseudo-characters which are used to comprise the real character. Because of this, in order to examine or reproduce the full character for individual characters of value 65,536 and above, for such characters, it is necessary to retrieve not only <code>charCodeAt(i)</code>, but also <code>charCodeAt(i+1)</code> (as if examining/reproducing a string with two letters). See <a href="/fckeditor.html?InstanceName=editarea&amp;Toolbar=MDC#Example_2.3a.c2.a0Getting_whole_characters" title="fckeditor.html?InstanceName=editarea&amp;Toolbar=MDC#Example_2.3a.c2.a0Getting_whole_characters">example 2</a> and 3 below.</p>
+<p><code>charCodeAt</code> returns <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NaN" title="JavaScript/Reference/Global_Properties/NaN">NaN</a></code> if the given index is not greater than 0 or is greater than the length of the string.</p>
+<h2 id="Backward_Compatibility" name="Backward_Compatibility">Backward Compatibility</h2>
+<h3 id="JavaScript_1.2" name="JavaScript_1.2">JavaScript 1.2</h3>
+<p>The <code>charCodeAt</code> method returns a number indicating the ISO-Latin-1 codeset value of the character at the given index. The ISO-Latin-1 codeset ranges from 0 to 255. The first 0 to 127 are a direct match of the ASCII character set.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_charCodeAt" name="Example:_Using_charCodeAt">Example 1: Using <code>charCodeAt</code></h3>
+<p>The following example returns 65, the Unicode value for A.</p>
+<pre>"ABC".charCodeAt(0) // returns 65
+</pre>
+<h3 id="Example_2.3A_Fixing_charCodeAt_to_handle_non-Basic-Multilingual-Plane_characters_if_their_presence_earlier_in_the_string_is_unknown">Example 2: Fixing charCodeAt to handle non-Basic-Multilingual-Plane characters if their presence earlier in the string is unknown</h3>
+<p>This version might be used in for loops and the like when it is unknown whether non-BMP characters exist before the specified index position.</p>
+<pre class="brush:js">function fixedCharCodeAt (str, idx) {
+    // ex. fixedCharCodeAt ('\uD800\uDC00', 0); // 65536
+    // ex. fixedCharCodeAt ('\uD800\uDC00', 1); // 65536
+    idx = idx || 0;
+    var code = str.charCodeAt(idx);
+    var hi, low;
+    if (0xD800 &lt;= code &amp;&amp; code &lt;= 0xDBFF) { // High surrogate (could change last hex to 0xDB7F to treat high private surrogates as single characters)
+        hi = code;
+        low = str.charCodeAt(idx+1);
+        if (isNaN(low)) {
+            throw 'High surrogate not followed by low surrogate in fixedCharCodeAt()';
+        }
+        return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;
+    }
+    if (0xDC00 &lt;= code &amp;&amp; code &lt;= 0xDFFF) { // Low surrogate
+        // We return false to allow loops to skip this iteration since should have already handled high surrogate above in the previous iteration
+        return false;
+        /*hi = str.charCodeAt(idx-1);
+        low = code;
+        return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;*/
+    }
+    return code;
+} 
+</pre>
+<h3 id="Example_3.3A_Fixing_charCodeAt_to_handle_non-Basic-Multilingual-Plane_characters_if_their_presence_earlier_in_the_string_is_known">Example 3: Fixing charCodeAt to handle non-Basic-Multilingual-Plane characters if their presence earlier in the string is known</h3>
+<pre class="brush:js">function knownCharCodeAt (str, idx) {
+    str += '';
+    var code,
+        end = str.length;
+
+    var surrogatePairs = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+    while ((surrogatePairs.exec(str)) != null) {
+        var li = surrogatePairs.lastIndex;
+        if (li - 2 &lt; idx) {
+            idx++;
+        }
+        else {
+            break;
+        }
+    }
+
+    if (idx &gt;= end || idx &lt; 0) {
+        return NaN;
+    }
+
+    code = str.charCodeAt(idx);
+
+    var hi, low;
+    if (0xD800 &lt;= code &amp;&amp; code &lt;= 0xDBFF) {
+        hi = code;
+        low = str.charCodeAt(idx+1); // Go one further, since one of the "characters" is part of a surrogate pair
+        return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;
+    }
+    return code;
+}
+
+</pre>
+<h3 id="Example_4.3A_ES_6_codePointAt_shim">Example 4: ES 6 <code>codePointAt</code> shim</h3>
+<pre class="brush:js">// ex. '\uD800\uDC00'.codePointAt(0); // 65536
+</pre>
+<pre class="brush:js">/**
+* (c) 2012 Steven Levithan &lt;http://slevithan.com/&gt;
+* MIT license
+*/
+if (!String.prototype.codePointAt) {
+    String.prototype.codePointAt = function (pos) {
+        pos = isNaN(pos) ? 0 : pos;
+        var str = String(this),
+            code = str.charCodeAt(pos),
+            next = str.charCodeAt(pos + 1);
+        // If a surrogate pair
+        if (0xD800 &lt;= code &amp;&amp; code &lt;= 0xDBFF &amp;&amp; 0xDC00 &lt;= next &amp;&amp; next &lt;= 0xDFFF) {
+            return ((code - 0xD800) * 0x400) + (next - 0xDC00) + 0x10000;
+        }
+        return code;
+    };
+}</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/fromCharCode" title="JavaScript/Reference/Global_Objects/String/fromCharCode">fromCharCode</a>, <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/charAt" title="JavaScript/Reference/Global_Objects/String/charAt">charAt</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Unicode">Unicode</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Libra.zhu">Libra.zhu</a>, <a href="/en-US/profiles/Levon">Levon</a>, <a href="/en-US/profiles/HeroreV">HeroreV</a>, <a href="/en-US/profiles/Sephr">Sephr</a>, <a href="/en-US/profiles/Inimino">Inimino</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/BijuGC">BijuGC</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/chienpo">chienpo</a>, <a href="/en-US/profiles/greggman">greggman</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:18-07:00">May 28, 2013 8:33:18 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/chienpo">chienpo</a>, 
+            <time datetime="2013-03-05T16:06:40-08:00">Mar 5, 2013 4:06:40 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="458091" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.prototype</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Represents the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object">Object</a> prototype object.</p>
+<h2 id="Description" name="Description">Description</h2>
+<p>All objects in JavaScript are descended from <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a> Object; all objects inherit methods and properties from <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype" title="JavaScript/Reference/Global_Objects/Object/prototype">Object.prototype</a> <code>Object.prototype</code>, although they may be overridden (except an <code>Object</code> with a <code>null</code> prototype, i.e. <code>Object.create(null)</code>). For example, other constructors' prototypes override the <code>constructor</code> property and provide their own <code>toString</code> methods. Changes to the <code>Object</code> prototype object are propagated to all objects unless the properties and methods subject to those changes are overridden further along the prototype chain.</p>
+<h2 id="Properties">Properties</h2>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/constructor" title="JavaScript/Reference/Global_Objects/Object/constructor"><code>constructor</code></a></dt>
+  <dd>
+    Specifies the function that creates an object's prototype.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/count" title="JavaScript/Reference/Global_Objects/Object/count"><code>__count__</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete since <a href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Returns the number of enumerable properties directly on a user-defined object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/Parent" title="JavaScript/Reference/Global_Objects/Object/parent"><code>__parent__</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete since <a href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Points to an object's context.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/proto" title="JavaScript/Reference/Global_Objects/Object/proto"><code>__proto__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Points to the object which was used as prototype when the object was instantiated.</dd>
+</dl>
+<h2 id="Methods">Methods</h2>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineGetter" title="JavaScript/Reference/Global_Objects/Object/defineGetter"><code>__defineGetter__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Associates a function with a property that, when accessed, executes that function and returns its return value.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineSetter" title="JavaScript/Reference/Global_Objects/Object/defineSetter"><code>__defineSetter__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Associates a function with a property that, when set, executes that function which modifies the property.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/eval" title="JavaScript/Reference/Global_Objects/Object/eval"><code>eval</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete since <a href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Evaluates a string of JavaScript code in the context of the specified object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/hasOwnProperty" title="JavaScript/Reference/Global_Objects/Object/hasOwnProperty"><code>hasOwnProperty</code></a></dt>
+  <dd>
+    Returns a boolean indicating whether an object contains the specified property as a direct property of that object and not inherited through the prototype chain.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isPrototypeOf" title="JavaScript/Reference/Global_Objects/Object/isPrototypeOf"><code>isPrototypeOf</code></a></dt>
+  <dd>
+    Returns a boolean indication whether the specified object is in the prototype chain of the object this method is called upon.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/lookupGetter" title="JavaScript/Reference/Global_Objects/Object/lookupGetter"><code>__lookupGetter__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns the function associated with the specified property by the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineGetter" title="JavaScript/Reference/Global_Objects/Object/defineGetter">__defineGetter__</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/lookupSetter" title="JavaScript/Reference/Global_Objects/Object/lookupSetter"><code>__lookupSetter__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns the function associated with the specified property by the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineSetter" title="JavaScript/Reference/Global_Objects/Object/defineSetter">__defineSetter__</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/noSuchMethod" title="JavaScript/Reference/Global_Objects/Object/noSuchMethod"><code>__noSuchMethod__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Allows a function to be defined that will be executed when an undefined object member is called as a method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable" title="JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable"><code>propertyIsEnumerable</code></a></dt>
+  <dd>
+    Returns a boolean indicating if the internal <a href="/en-US/docs/ECMAScript_DontEnum_attribute" title="ECMAScript_DontEnum_attribute">ECMAScript DontEnum attribute</a> is set.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource" title="JavaScript/Reference/Global_Objects/Object/toSource"><code>toSource</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns string containing the source of an object literal representing the object that this method is called upon; you can use this value to create a new object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toLocaleString" title="JavaScript/Reference/Global_Objects/Object/toLocaleString"><code>toLocaleString</code></a></dt>
+  <dd>
+    Calls <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="JavaScript/Reference/Global_Objects/Object/toString"><code>toString</code></a>.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="JavaScript/Reference/Global_Objects/Object/toString"><code>toString</code></a></dt>
+  <dd>
+    Returns a string representation of the object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch" title="JavaScript/Reference/Global_Objects/Object/unwatch"><code>unwatch</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Removes a watchpoint from a property of the object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf" title="JavaScript/Reference/Global_Objects/Object/valueOf"><code>valueOf</code></a></dt>
+  <dd>
+    Returns the primitive value of the specified object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/watch" title="JavaScript/Reference/Global_Objects/Object/watch"><code>watch</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Adds a watchpoint to a property of the object.</dd>
+</dl>
+<h2 id="Examples">Examples</h2>
+<p>Since Javascript doesn't exactly have sub-class objects, prototype is a useful workaround to make a "base class" object of certain functions that act as objects. For example:</p>
+<pre class="brush: js">var Person = function() {
+    this.canTalk = true;
+    this.greet = function() {
+        if (this.canTalk) {
+            console.log("Hi, I'm " + this.name);
+        }
+    };
+};
+
+var Employee = function(name, title) {
+    this.name = name;
+    this.title = title;
+    this.greet = function() {
+        if (this.canTalk) {
+            console.log("Hi, I'm " + this.name + ", the " + this.title);
+        }
+    };
+};
+Employee.prototype = new Person();
+
+var Customer = function(name) {
+    this.name = name;
+};
+Customer.prototype = new Person();
+
+var Mime = function(name) {
+    this.name = name;
+    this.canTalk = false;
+};
+Mime.prototype = new Person();
+
+var bob = new Employee('Bob','Builder');
+var joe = new Customer('Joe');
+var rg = new Employee('Red Green','Handyman');
+var mike = new Customer('Mike');
+var mime = new Mime('Mime');
+bob.greet();
+joe.greet();
+rg.greet();
+mike.greet();
+mime.greet();
+</pre>
+<p>This will output:</p>
+<p>Hi, I'm Bob, the Builder<br/>
+  Hi, I'm Joe<br/>
+  Hi, I'm Red Green, the Handyman<br/>
+  Hi, I'm Mike</p>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/luke32j@msn.com">luke32j@msn.com</a>, <a href="/en-US/profiles/alex.w.y">alex.w.y</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/XOffshore">XOffshore</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/wizard04">wizard04</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/mking">mking</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/mking">mking</a>, 
+          <time datetime="2013-08-24T10:58:57-07:00">Aug 24, 2013 10:58:57 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/mking">mking</a>, 
+            <time datetime="2013-08-24T10:58:57-07:00">Aug 24, 2013 10:58:57 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

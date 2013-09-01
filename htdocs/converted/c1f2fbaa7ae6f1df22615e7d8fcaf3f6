@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417123" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">import</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h2 id="Summary">Summary</h2>
+<p>Allows a script to import properties, functions, and objects from a signed script that has exported the information. This feature is not in ECMA 262, Edition 3.</p>
+<h2 id="Version_Information">Version Information</h2>
+<table class="fullwidth-table"> <tbody> <tr> <td class="header">Statement</td> </tr> <tr> <td>Implemented in:</td> <td>JavaScript 1.2, NES 3.0</td> </tr> </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<p><code>import <em>objectName</em>.<em>name1</em>, <em>objectName</em>.<em>name2</em>, ..., <em>objectName</em>.<em>nameN</em>; </code></p>
+<p><code>import <em>objectName</em>.<em>*</em>; </code></p>
+<h2 id="Parameters">Parameters</h2>
+<dl> <dt><code>objectName</code></dt> <dd>Name of the object that will receive the imported names.</dd>
+</dl>
+<dl> <dt><code>nameN</code></dt> <dd>Property, function, or object to be imported.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>The <code>objectName</code> parameter is the name of the object that will receive the imported names. For example, if <code>f</code> and <code>p</code> have been exported, and if <code>obj</code> is an object from the importing script, the following code makes <code>f</code> and <code>p</code> accessible in the importing script as properties of <code>obj</code>.</p>
+<pre class="eval">import obj.f, obj.p;
+</pre>
+<p>The first syntax imports the specified properties, functions, and objects from the exported script.</p>
+<p>The second syntax imports all properties, functions, and objects from the exported script.</p>
+<p>Typically, information in a signed script is available only to scripts signed by the same principals. By exporting (using the <code><a href="/en/JavaScript/Reference/Statements/export" title="en/JavaScript/Reference/Statements/export">export</a></code> statement) properties, functions, or objects, a signed script makes this information available to any script (signed or unsigned). The receiving script uses the <code>import</code> statement to access the information.</p>
+<p>The script must load the export script into a window, frame, or layer before it can import and use any exported properties, functions, and objects.</p>
+<h2 id="See_also">See also</h2>
+<p><a href="/en/JavaScript/Reference/Statements/export" title="en/JavaScript/Reference/Statements/export">export</a></p>
+<p> </p>
+
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:50-07:00">May 28, 2013 8:32:50 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/import$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

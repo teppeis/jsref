@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418379" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Arithmetic Operators</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p>Arithmetic operators take numerical values (either literals or variables) as their operands and return a single numerical value. The standard arithmetic operators are addition (+), subtraction (-), multiplication (*), and division (/).</p>
+<p>These operators work as they do in most other programming languages when used with floating point numbers (in particular, note that division by zero produces <a class="internal" href="/en/JavaScript/Reference/Global_Objects/Infinity" title="en/Core JavaScript 1.5 Reference/Global Properties/Infinity"><code>+/-Infinity</code></a>). For example:</p>
+<pre class="eval">1 / 2      // returns 0.5 in JavaScript
+1 / 2      // returns 0 in Java (neither number is explicitly a floating point number)
+
+1.0 / 2.0  // returns 0.5 in both JavaScript and Java
+
+2.0 / 0    // returns Infinity in Javascript
+2.0 / 0.0  // returns Infinity too
+2.0 / -0.0 // returns -Infinity in Javascript
+
+</pre>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Operators</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id=".25_.28Modulus.29" name=".25_.28Modulus.29"> % (Remainder)</h2>
+<p>The remainder operator is used as follows:</p>
+<p><code><em>var1</em> % <em>var2</em> </code></p>
+<p>The remainder operator returns the first operand modulo the second operand, that is, <code>var1</code> modulo <code>var2</code>, in the preceding statement, where <code>var1</code> and <code>var2</code> are variables. The modulo function is the integer remainder of dividing <code>var1</code> by <code>var2</code>. For example, <code>12 % 5</code> returns <code>2</code>. The result will have the same sign as <em>var1</em>; that is, <code>-1 % 2</code> returns <code>-1</code>.</p>
+<p><a class="external" href="http://wiki.ecmascript.org/doku.php?id=strawman:modulo_operator" title="http://wiki.ecmascript.org/doku.php?id=strawman:modulo_operator">There is a proposal to get an actual modulo operator in a future version of ECMAScript</a></p>
+<h2 id=".2B.2B_.28Increment.29" name=".2B.2B_.28Increment.29">++ (Increment)</h2>
+<p>The increment operator is used as follows:</p>
+<p><code><em>var</em>++</code> or <code>++<em>var</em></code></p>
+<p>This operator increments (adds one to) its operand and returns a value. If used postfix, with operator after operand (for example, x++), then it returns the value before incrementing. If used prefix with operator before operand (for example, ++x), then it returns the value after incrementing.</p>
+<p>For example, if <code>x</code> is three, then the statement <code>y = x++</code> sets <code>y</code> to 3 and increments <code>x</code> to 4. If <code>x</code> is 3, then the statement <code>y = ++x</code> increments <code>x</code> to 4 and sets <code>y</code> to 4.</p>
+<h2 id="--_.28Decrement.29" name="--_.28Decrement.29">-- (Decrement)</h2>
+<p>The decrement operator is used as follows:</p>
+<p><code><em>var</em>--</code> or <code>--<em>var</em></code></p>
+<p>This operator decrements (subtracts one from) its operand and returns a value. If used postfix (for example, x--), then it returns the value before decrementing. If used prefix (for example, --x), then it returns the value after decrementing.</p>
+<p>For example, if <code>x</code> is three, then the statement <code>y = x--</code> sets <code>y</code> to 3 and decrements <code>x</code> to 2. If <code>x</code> is 3, then the statement <code>y = --x</code> decrements <code>x</code> to 2 and sets <code>y</code> to 2.</p>
+<h2 id="-_.28Unary_Negation.29" name="-_.28Unary_Negation.29">- (Unary Negation)</h2>
+<p>The unary negation operator precedes its operand and negates it. For example, <code>y = -x</code> negates the value of <code>x</code> and assigns that to <code>y</code>; that is, if <code>x</code> were 3, <code>y</code> would get the value -3 and <code>x</code> would retain the value 3.</p>
+<h2 id="-_.28Unary_Plus.29" name="-_.28Unary_Plus.29">+ (Unary Plus)</h2>
+<p>The unary plus operator precedes its operand and evaluates to its operand but attempts to converts it into a number, if it isn't already. For example, <code>y = +x</code> takes the value of <code>x</code> and assigns that to <code>y</code>; that is, if <code>x</code> were 3, <code>y</code> would get the value 3 and <code>x</code> would retain the value 3; but if x were the string "3", y would also get the value 3. Although unary negation (-) also can convert non-numbers, unary plus is the fastest and preferred way of converting something into a number, because it does not perform any other operations on the number. It can convert string representations of integers and floats, as well as the non-string values true, false, and null. Integers in both decimal and hexadecimal ("0x"-prefixed) formats are supported. Negative numbers are supported (though not for hex). If it cannot parse a particular value, it will evaluate to NaN.</p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/kellyselden">kellyselden</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Luca.greco">Luca.greco</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Tgr">Tgr</a>, <a href="/en-US/profiles/newacct">newacct</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/epascarello">epascarello</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:45-07:00">May 28, 2013 8:33:45 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/epascarello">epascarello</a>, 
+            <time datetime="2013-05-13T06:21:55-07:00">May 13, 2013 6:21:55 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

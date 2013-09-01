@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417599" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">prototype</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Represents the prototype for the <a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a> constructor.</p>
+<h2 id="Description" name="Description">Description</h2>
+<p><a class="internal" href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global Objects/Boolean"><code>Boolean</code></a> instances inherit from <a class="internal" href="/en/JavaScript/Reference/Global_Objects/Boolean/prototype" title="en/JavaScript/Reference/Global Objects/Boolean/Prototype"><code>Boolean.prototype</code></a>. You can use the constructor's prototype object to add properties or methods to all <code>Boolean</code> instances.</p>
+<h2 id="Properties">Properties</h2>
+<dl>
+  <dt>
+    <a href="/en/JavaScript/Reference/Global_Objects/Boolean/constructor" title="en/JavaScript/Reference/Global_Objects/Boolean/constructor"><code>constructor</code></a></dt>
+  <dd>
+    Returns the function that created an instance's prototype. This is the <a class="internal" href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global Objects/Boolean"><code>Boolean</code></a> function by default.</dd>
+</dl>
+<div>
+  <div style="border: 1px solid rgb(204, 204, 204); margin: 10px 0px; padding: 0px 10px; background: rgb(238, 238, 238) none repeat scroll 0% 0%;"> 
+ 
+<span style="font-weight: bold;">Properties inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></span>:<br/> 
+ 
+<span style="font-size: smaller;"><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Constructor"><code>constructor</code></a></span> 
+</div></div>
+<h2 id="Methods">Methods</h2>
+<dl>
+  <dt>
+    <a href="/en/JavaScript/Reference/Global_Objects/Boolean/toSource" title="en/JavaScript/Reference/Global_Objects/Boolean/toSource">toSource</a></dt>
+  <dd>
+    Returns a string containing the source of the <a class="internal" href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global Objects/Boolean"><code>Boolean</code></a> object; you can use this string to create an equivalent object. Overrides the <a href="/en/JavaScript/Reference/Global_Objects/Object/toSource" title="en/JavaScript/Reference/Global_Objects/Object/toSource"><code>Object.prototype.toSource</code></a> method.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en/JavaScript/Reference/Global_Objects/Boolean/toString" title="en/JavaScript/Reference/Global_Objects/Boolean/toString"><code>toString</code></a></dt>
+  <dd>
+    Returns a string of either "true" or "false" depending upon the value of the object. Overrides the <a href="/en/JavaScript/Reference/Global_Objects/Object/toString" title="en/JavaScript/Reference/Global_Objects/Object/toString"><code>Object.prototype.toString</code></a>method.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en/JavaScript/Reference/Global_Objects/Boolean/valueOf" title="en/JavaScript/Reference/Global_Objects/Boolean/valueOf"><code>valueOf</code></a></dt>
+  <dd>
+    Returns the primitive value of the <a class="internal" href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global Objects/Boolean"><code>Boolean</code></a> object. Overrides the <a href="/en/JavaScript/Reference/Global_Objects/Object/valueOf" title="en/JavaScript/Reference/Global_Objects/Object/valueOf"><code>Object.prototype.valueOf</code></a> method.</dd>
+</dl>
+<div>
+  <div style="border: 1px solid rgb(204, 204, 204); margin: 10px 0px; padding: 0px 10px; background: rgb(238, 238, 238) none repeat scroll 0% 0%;"> 
+ 
+<span style="font-weight: bold;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></span>:<br/> 
+ 
+<span style="font-size: smaller;"><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToSource"><code>toSource</code></a></span> 
+</div></div>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Wampa">Wampa</a>, <a href="/en-US/profiles/delae">delae</a>, <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:10-07:00">May 28, 2013 8:33:10 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/lmorchard">lmorchard</a>, 
+            <time datetime="2012-07-26T17:39:21-07:00">Jul 26, 2012 5:39:21 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean/prototype$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

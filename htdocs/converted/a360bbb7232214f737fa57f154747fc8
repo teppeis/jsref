@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="432485" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Conditional Operator</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>The conditional operator is the only JavaScript operator that takes three operands. This operator is frequently used as a shortcut for the <code>if</code> statement.</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Operator</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<p><code><em>condition</em> ? <em>expr1</em> : <em>expr2</em> </code></p>
+<h2 id="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>condition</code></dt>
+  <dd>
+    An expression that evaluates to <code>true</code> or <code>false</code>.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>expr1</code>, <code>expr2</code></dt>
+  <dd>
+    Expressions with values of any type.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>If <code>condition</code> is <code>true</code>, the operator returns the value of <code>expr1</code>; otherwise, it returns the value of <code>expr2</code>. For example, to display a different message based on the value of the <code>isMember</code> variable, you could use this statement:</p>
+<pre class="brush: js">document.write ("The fee is " + (isMember ? "$2.00" : "$10.00"))
+</pre>
+<p>You can also assign variables depending on a ternary result:</p>
+<pre class="brush: js">var elvisLives = Math.PI &gt; 4 ? "Yep" : "Nope";</pre>
+<p>Multiple ternary evaluations are also possible (note: the conditional operator is right associative):</p>
+<pre class="brush: js">var hadRelations = false,
+  isSure = false,
+  presidentQuote = hadRelations ? "Had relations" : isSure ? "Did not have relations" : "I admit";
+  
+console.log( presidentQuote ); // Prints "I admit" in the console</pre>
+<p>You can also use ternary evaluations in free space in order to do different operations:</p>
+<pre class="brush: js">var bStop = false, nAge = 16;
+
+nAge &gt; 18 ? location.assign("continue.html") : bStop = true;
+</pre>
+<p>You can also do more than one single operation per case, separating them with a comma:</p>
+<pre class="brush: js">var bStop = false, nAge = 23;
+
+nAge &gt; 18 ? (
+    alert("Ok, you can go."),
+    location.assign("continue.html")
+) : (
+    bStop = true,
+    alert("Sorry, your are too much young!")
+);
+</pre>
+<p>You can also do more than one operation during the assignation of a value. In this case, the last comma-separated value of the parenthesis will be the value to be assigned.</p>
+<pre class="brush: js">var nAge = 16;
+
+var sURL = nAge &gt; 18 ? (
+    alert("Ok, you can go."), // alert returns "undefined", but it will be ignored because isn't the last comma-separated value of the parenthesis
+    "continue.html" // the value to be assigned if nAge &gt; 18
+) : (
+    alert("You are too much young!"),
+    alert("Sorry :-("),
+    // etc. etc.
+    "stop.html" // the value to be assigned if !(nAge &gt; 18)
+);
+
+location.assign(sURL); // "stop.html"</pre>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Operators">Operators</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ternary">ternary</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ArthurOgawa">ArthurOgawa</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Toutenrab">Toutenrab</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/hitautodestruct">hitautodestruct</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/ethertank">ethertank</a>, 
+          <time datetime="2013-06-21T16:22:52-07:00">Jun 21, 2013 4:22:52 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-06-21T16:22:53-07:00">Jun 21, 2013 4:22:53 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

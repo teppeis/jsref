@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="431421" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">toLocaleFormat</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p><div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div><p/>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Converts a date to a string using the specified formatting.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en/JavaScript/Reference/Global_Objects/Date" title="en/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.6</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<p><code><em>dateObj</em>.toLocaleFormat(<em>formatString</em>)</code></p>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>formatString</code></dt>
+  <dd>
+    A format string in the same format expected by the <code><a class="external" href="http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html">strftime()</a></code> function in C.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>toLocaleFormat()</code> provides greater software control over the formatting of the generated date and/or time. Names for months and days of the week are localized using the operating system's locale. However, ordering of the day and month and other localization tasks are not handled automatically since you have control over the order in which they occur.You should take care that the format string is localized properly according to the user's system settings. Be aware that the locale used is not necessarily the same as the locale of the browser. Extension and XulRunner developers should know that just loading the format string from a <code>.dtd</code> or <code>.properties</code> file using a <code><a class="external" rel="freelink">chrome://</a><em>somedomain</em>/locale/</code><em><code>somefile.ext</code></em> URI should be <strong>avoided</strong>, as the <code>dtd</code>/<code>properties</code> file and the <code>toLocaleFormat</code> method does not not necessarily use the same locale, which could result in odd looking or even ambiguous or unreadable dates. Also note that the behavior of the used locale depends on the platform, and the user might customize the locale used, so using the system locale the choose the format string might in some cases not even be adequate. You might consider using some of the more general <code>toLocale*</code> methods of the <code>Date</code> object or doing your own custom localization of the date to be displayed using some of the <code>get*</code> methods of the <code>Date</code> object instead of using this method.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_toLocaleFormat" name="Example:_Using_toLocaleFormat">Example: Using <code>toLocaleFormat</code></h3>
+<pre class="eval">var today = new Date();
+var date = today.toLocaleFormat("%A, %B %e, %Y"); // Bad example
+</pre>
+<p>In this example, <code>toLocaleFormat()</code> returns a string such as "Wednesday, October 3, 2007". Note that the format string in this example is not properly localized, which will result in the problems described above.</p>
+<h2 id="Browser_Compatibility" name="Browser_Compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_Also" name="See_Also">See Also</h2>
+<ul>
+  <li><a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toLocaleString" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toLocaleString">toLocaleString</a></li>
+  <li><a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toLocaleDateString" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toLocaleDateString">toLocaleDateString</a></li>
+  <li><a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toLocaleTimeString" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toLocaleTimeString">toLocaleTimeString</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Reference">Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsCompatTable">NeedsCompatTable</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Dikrib">Dikrib</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/brianpeiris">brianpeiris</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/fusionchess">fusionchess</a>, 
+          <time datetime="2013-06-19T19:08:34-07:00">Jun 19, 2013 7:08:34 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/fusionchess">fusionchess</a>, 
+            <time datetime="2013-06-19T19:08:34-07:00">Jun 19, 2013 7:08:34 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleFormat$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

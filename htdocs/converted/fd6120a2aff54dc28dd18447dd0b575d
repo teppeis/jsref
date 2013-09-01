@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="457923" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Function.prototype.bind</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p/><div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></p> 
+</div><p/>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Creates a new function that, when called, has its <code>this</code> keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="en/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<p><code><em>fun</em>.bind(<em>thisArg</em>[, <em>arg1</em>[, <em>arg2</em>[, ...]]])</code></p>
+<h2 id="Parameters" name="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>thisArg</code></dt>
+  <dd>
+    The value to be passed as the <code>this</code> parameter to the target function when the bound function is called. The value is ignored if the bound function is constructed using the <a href="/en-US/docs/JavaScript/Reference/Operators/new" title="en/JavaScript/Reference/Operators/Special Operators/new Operator"><code>new</code> operator</a>.</dd>
+  <dt>
+    <code>arg1, arg2, ...</code></dt>
+  <dd>
+    Arguments to prepend to arguments provided to the bound function when invoking the target function.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>bind()</code> function creates a new function (a <strong>bound function</strong>) with the same function body (internal <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/call" title="Call">Call</a> attribute in ECMAScript 5 terms) as the function it is being called on (the bound function's <strong>target function</strong>) with the <code>this</code> value bound to the first argument of <code>bind()</code>, which cannot be overridden. <code>bind()</code> also accepts leading default arguments to provide to the target function when the bound function is called. A bound function may also be constructed using the <code>new</code> operator: doing so acts as though the target function had instead been constructed. The provided <code>this</code> value is ignored, while prepended arguments are provided to the emulated function.</p>
+<h2 id="Compatibility" name="Compatibility">Compatibility</h2>
+<p>The <code>bind</code> function is a recent addition to ECMA-262, 5th edition; as such it may not be present in all browsers. You can partially work around this by inserting the following code at the beginning of your scripts, allowing use of much of the functionality of <code>bind()</code> in implementations that do not natively support it.</p>
+<pre class="brush: js">if (!Function.prototype.bind) {
+  Function.prototype.bind = function (oThis) {
+    if (typeof this !== "function") {
+      // closest thing possible to the ECMAScript 5 internal IsCallable function
+      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var aArgs = Array.prototype.slice.call(arguments, 1), 
+        fToBind = this, 
+        fNOP = function () {},
+        fBound = function () {
+          return fToBind.apply(this instanceof fNOP &amp;&amp; oThis
+                                 ? this
+                                 : oThis,
+                               aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+
+    return fBound;
+  };
+}
+</pre>
+<p>Some of the many differences (there may well be others, as this list does not seriously attempt to be exhaustive) between this algorithm and the specified algorithm are:</p>
+<ul>
+  <li>The partial implementation relies <code>Array.prototype.slice</code>, <code>Array.prototype.concat</code>, <code>Function.prototype.call</code> and <code>Function.prototype.apply</code>, built-in methods to have their original values.</li>
+  <li>The partial implementation creates functions that do not have immutable "poison pill" <code>caller</code> and <code>arguments</code> properties that throw a <code>TypeError</code> upon get, set, or deletion. (This could be added if the implementation supports <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty" title="en/JavaScript/Reference/Global Objects/Object/defineProperty"><code>Object.defineProperty</code></a>, or partially implemented [without throw-on-delete behavior] if the implementation supports the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineGetter" title="en/JavaScript/Reference/Global Objects/Object/defineGetter"><code>__defineGetter__</code></a> and <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineSetter" title="en/JavaScript/Reference/Global Objects/Object/defineSetter"><code>__defineSetter__</code></a> extensions.)</li>
+  <li>The partial implementation creates functions that have a <code>prototype</code> property. (Proper bound functions have none.)</li>
+  <li>The partial implementation creates bound functions whose <code>length</code> property does not agree with that mandated by ECMA-262: it creates functions with length 0, while a full implementation, depending on the length of the target function and the number of pre-specified arguments, may return a non-zero length.</li>
+</ul>
+<p>If you choose to use this partial implementation, <strong>you must not rely on those cases where behavior deviates from ECMA-262, 5th edition!</strong> With some care, however (and perhaps with additional modification to suit specific needs), this partial implementation may be a reasonable bridge to the time when <code>bind()</code> is widely implemented according to the specification.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Creating_a_bound_function">Creating a bound function</h3>
+<p>The simplest use of <code>bind()</code> is to make a function that, no matter how it is called, is called with a particular <code>this</code> value. A common mistake for new JavaScript programmers is to extract a method from an object, then to later call that function and expect it to use the original object as its <code>this</code> (e.g. by using that method in callback-based code). Without special care, however, the original object is usually lost. Creating a bound function from the function, using the original object, neatly solves this problem:</p>
+<pre class="brush: js">var x = 9; 
+var module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
+
+module.getX(); // 81
+
+var getX = module.getX;
+getX(); // 9, because in this case, "this" refers to the global object
+
+// create a new function with 'this' bound to module
+var boundGetX = getX.bind(module);
+boundGetX(); // 81
+</pre>
+<h3 id="Partial_Functions">Partial Functions</h3>
+<p>The next simplest use of <code>bind()</code> is to make a function with pre-specified initial arguments. These arguments (if any) follow the provided <code>this</code> value and are then inserted at the start of the arguments passed to the target function, followed by the arguments passed to the bound function, whenever the bound function is called.</p>
+<pre class="brush: js">function list() {
+  return Array.prototype.slice.call(arguments);
+}
+
+var list1 = list(1, 2, 3); // [1, 2, 3]
+
+//  Create a function with a preset leading argument
+var leadingZeroList = list.bind(undefined, 37);
+
+var list2 = leadingZeroList(); // [37]
+var list3 = leadingZeroList(1, 2, 3); // [37, 1, 2, 3]
+</pre>
+<h3 id="With_setTimeout">With setTimeout</h3>
+<p>By default within <a href="/en-US/docs/Web/API/window.setTimeout" title="Calls a function or executes a code snippet after a specified delay."><code>window.setTimeout()</code></a>, the <code>this</code> keyword will be set to the <a href="/en-US/docs/Web/API/window" title="This section provides a brief reference for all of the methods, properties, and events available through the DOM window object. The window object implements the Window interface, which in turn inherits from the AbstractView interface. Some additional global functions, namespaces objects, interfaces, and constructors, not typically associated with the window, but available on it, are listed in the JavaScript Reference and DOM Reference."><code>window</code></a> (or <code>global</code>) object. When working with class methods that require <code>this</code> to refer to class instances, you may explicitly bind <code>this</code> to the callback function, in order to maintain the instance.</p>
+<pre class="brush: js">function LateBloomer() {
+  this.petalCount = Math.ceil( Math.random() * 12 ) + 1;
+}
+
+// declare bloom after a delay of 1 second
+LateBloomer.prototype.bloom = function() {
+  window.setTimeout( this.declare.bind( this ), 1000 );
+};
+
+LateBloomer.prototype.declare = function() {
+  console.log('I am a beautiful flower with ' + this.petalCount + ' petals!');
+};
+</pre>
+<h3 id="Bound_functions_used_as_constructors">Bound functions used as constructors</h3>
+<div class="warning">
+  <strong>Warning:</strong> This section demonstrates JavaScript capabilities and documents some edge cases of the <code>bind()</code> method. The methods shown below are not the best way to do things and probably should not be used in any production environment.</div>
+<p>Bound functions are automatically suitable for use with the <code>new</code> operator to construct new instances created by the target function. When a bound function is used to construct a value, the provided <code>this</code> is ignored. However, provided arguments are still prepended to the constructor call:</p>
+<pre class="brush: js">function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Point.prototype.toString = function() { 
+  return this.x + "," + this.y; 
+};
+
+var p = new Point(1, 2);
+p.toString(); // "1,2"
+
+
+var emptyObj = {};
+var YAxisPoint = Point.bind(emptyObj, 0 /* x */);
+var YAxisPoint = Point.bind(null,0 /*x*/); //doesn't support in the above polyfill //work fine with native bind
+
+var axisPoint = new YAxisPoint(5);
+axisPoint.toString(); //  "0,5"
+
+axisPoint instanceof Point; // true
+axisPoint instanceof YAxisPoint; // true
+new Point(17, 42) instanceof YAxisPoint; // false 
+</pre>
+<p>Note that you need do nothing special to create a bound function for use with <code>new</code>. The corollary is that you need do nothing special to create a bound function to be called plainly, even if you would rather require the bound function to only be called using <code>new</code>.</p>
+<pre class="brush: js">// Example can be run directly in your JavaScript console
+// ...continuing from above
+
+// Can still be called as a normal function (although usually this is undesired)
+YAxisPoint(13);
+
+emptyObj.x + "," + emptyObj.y;
+// &gt;  "0,13"
+</pre>
+<p>If you wish to support use of a bound function only using <code>new</code>, or only by calling it, the target function must enforce that restriction.</p>
+<h3 id="Supplemental" name="Supplemental">Creating shortcuts</h3>
+<div>
+  <p><code>bind()</code> is also helpful in cases where you want to create a shortcut to a function which requires a specific <code>this</code> value.</p>
+  <p>Take <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/slice" title="slice"><code>Array.prototype.slice</code></a>, for example, which you want to use for converting an array-like object to a real array. You could create a shortcut like this:</p>
+  <pre class="brush: js">var slice = Array.prototype.slice;
+
+// ...
+
+slice.call(arguments);</pre>
+  <p>With <code>bind()</code>, this can be simplified. In the following piece of code, <code>slice</code> is a bound function to the <code>call()</code> function of <code>Function.prototype</code>, with the <code>this</code> value set to the <code>slice()</code> function of <code>Array.prototype</code>. This means that additional <code>call()</code> calls can be eliminated:</p>
+  <pre class="brush: js">var unboundSlice = Array.prototype.slice; // same as "slice" in the previous example
+var slice = Function.prototype.call.bind(unboundSlice);
+
+// ...
+
+slice(arguments);
+</pre>
+</div>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>7</td>
+        <td>4.0 (2)</td>
+        <td>9</td>
+        <td>11.60</td>
+        <td>5.1.4</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4.0</td>
+        <td>0.16</td>
+        <td>4.0 (2)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>11.50</td>
+        <td>6.0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat tables</a>.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply" title="en/JavaScript/Reference/Global Objects/Function/apply">Function.prototype.apply</a></code></li>
+  <li><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/call" title="en/JavaScript/Reference/Global Objects/Function/call">Function.prototype.call</a></code></li>
+  <li><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/slice" title="en/JavaScript/Reference/Global_Objects/Array/slice">Array.prototype.slice</a></code></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.8.5">JavaScript 1.8.5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Functions">Functions</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Ripter">Ripter</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/miketaylr">miketaylr</a>, <a href="/en-US/profiles/myhere">myhere</a>, <a href="/en-US/profiles/pimvdb">pimvdb</a>, <a href="/en-US/profiles/stylechen">stylechen</a>, <a href="/en-US/profiles/slippyd">slippyd</a>, <a href="/en-US/profiles/XP1">XP1</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Shaver">Shaver</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/rwaldron">rwaldron</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Robg1">Robg1</a>, <a href="/en-US/profiles/scribu">scribu</a>, <a href="/en-US/profiles/Fatbrain">Fatbrain</a>, <a href="/en-US/profiles/kangax">kangax</a>, <a href="/en-US/profiles/techlivezheng">techlivezheng</a>, <a href="/en-US/profiles/hay">hay</a>, <a href="/en-US/profiles/desandro">desandro</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/disnet">disnet</a>, <a href="/en-US/profiles/juanantonioruz">juanantonioruz</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/leobalter">leobalter</a>, <a href="/en-US/profiles/ebidel">ebidel</a>, <a href="/en-US/profiles/Savetheclocktower">Savetheclocktower</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/yuan">yuan</a>, <a href="/en-US/profiles/Gelus">Gelus</a>, <a href="/en-US/profiles/rajamony">rajamony</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/Brendan">Brendan</a>, <a href="/en-US/profiles/BYK">BYK</a>, <a href="/en-US/profiles/RickB">RickB</a>, <a href="/en-US/profiles/ZeD">ZeD</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+          <time datetime="2013-08-23T21:51:52-07:00">Aug 23, 2013 9:51:52 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+            <time datetime="2013-08-23T21:51:52-07:00">Aug 23, 2013 9:51:52 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="430189" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Function.prototype.toString</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns a string representing the source code of the function.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/Function"><code>Function</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.1</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox">function.toString(indentation)</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    indentation <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span> <span class="inlineIndicator obsolete obsoleteInline" title="(Firefox 17 / Thunderbird 17 / SeaMonkey 2.14)">Obsolete since Gecko 17</span></dt>
+  <dd>
+    The amount of spaces to indent the string representation of the source code. If <code>indentation</code> is less than or equal to <code>-1</code>, most unnecessary spaces are removed.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/Function">Function</a></code> object overrides the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="JavaScript/Reference/Global_Objects/Object/toString">toString</a></code> method inherited from <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object">Object</a></code>; it does not inherit <code>Object.prototype.toString</code>. For <code>Function</code> objects, the <code>toString</code> method returns a string representation of the object in the form of a function declaration. That is, toString decompiles the function, and the string returned includes the <code>function</code> keyword, the argument list, curly braces, and the source of the function body.</p>
+<p>JavaScript calls the <code>toString</code> method automatically when a <code>Function</code> is to be represented as a text value, e.g. when a function is concatenated with a string.</p>
+<h2 id="Notes" name="Notes">Notes</h2>
+<p>Since Firefox 17, <code>Function.prototype.toString()</code> has been implemented by saving function's source, the decompiler was removed.so we dont't need <code>indentation</code> parameter any more. See bug <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=761723" title="https://bugzilla.mozilla.org/show_bug.cgi?id=761723">https://bugzilla.mozilla.org/show_bug.cgi?id=761723</a></p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="JavaScript/Reference/Global_Objects/Object/toString"><code>Object.prototype.toString</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Function">Function</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ogonkov">ogonkov</a>, <a href="/en-US/profiles/Rob%20W">Rob W</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/SphinxKnight">SphinxKnight</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Sephr">Sephr</a>, <a href="/en-US/profiles/dblackshell">dblackshell</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/techlivezheng">techlivezheng</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/SphinxKnight">SphinxKnight</a>, 
+          <time datetime="2013-06-15T11:22:47-07:00">Jun 15, 2013 11:22:47 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/SphinxKnight">SphinxKnight</a>, 
+            <time datetime="2013-06-15T11:22:47-07:00">Jun 15, 2013 11:22:47 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/toString$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

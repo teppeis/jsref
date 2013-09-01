@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="443373" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.prototype.substr</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h3 id="Summary" name="Summary">Summary</h3>
+<p>Returns the characters in a string beginning at the specified location through the specified number of characters.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en/JavaScript/Reference/Global_Objects/String" title="en/JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>None, although ECMAScript 3rd Edition has a non-normative section suggesting uniform semantics</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Syntax" name="Syntax">Syntax</h3>
+<p><code><em>string</em>.substr(<em>start</em>[, <em>length</em>])</code></p>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>start</code></dt>
+  <dd>
+    Location at which to begin extracting characters.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>length</code></dt>
+  <dd>
+    The number of characters to extract.</dd>
+</dl>
+<h3 id="Description" name="Description">Description</h3>
+<p><code>start</code> is a character index. The index of the first character is 0, and the index of the last character is 1 less than the length of the string. <code>substr</code> begins extracting characters at <code>start</code> and collects <code>length</code> characters (unless it reaches the end of the string first, in which case it will return fewer).</p>
+<p>If <code>start</code> is positive and is greater than or equal to the length of the string, <code>substr</code> returns an empty string.</p>
+<p>If <code>start</code> is negative, <code>substr</code> uses it as a character index from the end of the string. If <code>start</code> is negative and <code>abs(start)</code> is larger than the length of the string, <code>substr</code> uses 0 as the start index. Note: the described handling of negative values of the <code>start</code> argument is not supported by Microsoft JScript .</p>
+<p>If <code>length</code> is 0 or negative, <code>substr</code> returns an empty string. If <code>length</code> is omitted, <code>substr</code> extracts characters to the end of the string.</p>
+<h3 id="Description" name="Description">Compatibility</h3>
+<p>Microsoft's JScript does not support negative values for the start index. If you wish to make use of this feature, you can use the following compatibilty code to work around this bug:</p>
+<pre class="brush: js">// only run when the substr function is broken
+if ('ab'.substr(-1) != 'b')
+{
+  /**
+   *  Get the substring of a string
+   *  @param  {integer}  start   where to start the substring
+   *  @param  {integer}  length  how many characters to return
+   *  @return {string}
+   */
+  String.prototype.substr = function(substr) {
+    return function(start, length) {
+      // did we get a negative start, calculate how much it is from the beginning of the string
+      if (start &lt; 0) start = this.length + start;
+      
+      // call the original function
+      return substr.call(this, start, length);
+    }
+  }(String.prototype.substr);
+}</pre>
+<p>Examples</p>
+<h4 id="Example:_Using_substr" name="Example:_Using_substr">Example: Using <code>substr</code></h4>
+<p>Consider the following script:</p>
+<pre class="eval">// assumes a print function is defined
+var str = "abcdefghij";
+print("(1,2): "    + str.substr(1,2));
+print("(-3,2): "   + str.substr(-3,2));
+print("(-3): "     + str.substr(-3));
+print("(1): "      + str.substr(1));
+print("(-20, 2): " + str.substr(-20,2));
+print("(20, 2): "  + str.substr(20,2));
+</pre>
+<p>This script displays:</p>
+<pre class="eval">(1,2): bc
+(-3,2): hi
+(-3): hij
+(1): bcdefghij
+(-20, 2): ab
+(20, 2):
+</pre>
+<h3 id="See_also" name="See_also">See also</h3>
+<ul>
+  <li><code><a class="internal" href="/en/JavaScript/Reference/Global_Objects/String/slice" style="text-decoration: none; color: rgb(4, 137, 183) !important; cursor: default;" title="En/Core JavaScript 1.5 Reference/Global Objects/String/Slice">slice()</a></code></li>
+  <li><code><a href="/en/JavaScript/Reference/Global_Objects/String/substring" title="en/Core_JavaScript_1.5_Reference/Global_Objects/String/substring">substring()</a></code></li>
+</ul>
+<p> </p>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/kiteroa">kiteroa</a>, <a href="/en-US/profiles/rudiedirkx">rudiedirkx</a>, <a href="/en-US/profiles/Jd">Jd</a>, <a href="/en-US/profiles/MrWeeble">MrWeeble</a>, <a href="/en-US/profiles/Mmorearty">Mmorearty</a>, <a href="/en-US/profiles/Thorn">Thorn</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/martijntje">martijntje</a>, <a href="/en-US/profiles/Sephr">Sephr</a>, <a href="/en-US/profiles/Julien.stuby">Julien.stuby</a>, <a href="/en-US/profiles/Ruakh">Ruakh</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/rudiedirkx">rudiedirkx</a>, 
+          <time datetime="2013-07-24T12:14:57-07:00">Jul 24, 2013 12:14:57 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/rudiedirkx">rudiedirkx</a>, 
+            <time datetime="2013-07-24T12:14:58-07:00">Jul 24, 2013 12:14:58 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

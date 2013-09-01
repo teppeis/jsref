@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417647" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">toFixed</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h3 id="Summary" name="Summary">Summary</h3>
+<p>Formats a number using fixed-point notation</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en/JavaScript/Reference/Global_Objects/Number" title="en/JavaScript/Reference/Global_Objects/Number"><code>Number</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Syntax" name="Syntax">Syntax</h3>
+<p><code><em>number</em>.toFixed( [<i>digits</i>] )</code></p>
+<h3 id="Parameter" name="Parameter">Parameter</h3>
+<dl>
+  <dt>
+    digits</dt>
+  <dd>
+    The number of digits to appear after the decimal point; this may be a value between 0 and 20, inclusive, and implementations may optionally support a larger range of values. If this argument is omitted, it is treated as 0.</dd>
+</dl>
+<h3 id="Returns" name="Returns">Returns</h3>
+<p>A string representation of <code>number</code> that does not use exponential notation and has exactly <code>digits</code> digits after the decimal place. The number is rounded if necessary, and the fractional part is padded with zeros if necessary so that it has the specified length. If <code>number</code> is greater than 1e+21, this method simply calls <code>Number.toString()</code> and returns a string in exponential notation.</p>
+<h3 id="Throws" name="Throws">Throws</h3>
+<dl>
+  <dt>
+    RangeError</dt>
+  <dd>
+    If digits is too small or too large. Values between 0 and 20, inclusive, will not cause a <code>RangeError</code>. Implementations are allowed to support larger and smaller values as well.</dd>
+</dl>
+<dl>
+  <dt>
+    TypeError</dt>
+  <dd>
+    If this method is invoked on an object that is not a <code>Number</code>.</dd>
+</dl>
+<h3 id="Example" name="Example">Example</h3>
+<pre>var n = 12345.6789;
+
+n.toFixed();              // Returns "12346": note rounding, no fractional part
+
+n.toFixed(1);             // Returns "12345.7": note rounding
+
+n.toFixed(6);             // Returns "12345.678900": note added zeros
+
+(1.23e+20).toFixed(2);    // Returns "123000000000000000000.00"
+
+(1.23e-10).toFixed(2);    // Returns "0.00"
+
+2.34.toFixed(1);          // Returns "2.3"
+
+-2.34.toFixed(1);         // Returns -2.3 (due to operator precedence, negative numbers don't return a string...)
+
+(-2.34).toFixed(1);       // Returns "-2.3" (...unless you use parentheses)
+
+</pre>
+<h3 id="See_Also" name="See_Also">See Also</h3>
+<p><a href="/en/JavaScript/Reference/Global_Objects/Number/toExponential" title="en/JavaScript/Reference/Global_Objects/Number/toExponential">Number.toExponential()</a>, <a href="/en/JavaScript/Reference/Global_Objects/Number/ToLocaleString" title="en/JavaScript/Reference/Global_Objects/Number/ToLocaleString">Number.toLocaleString()</a>, <a href="/en/JavaScript/Reference/Global_Objects/Number/toPrecision" title="en/JavaScript/Reference/Global_Objects/Number/toPrecision">Number.toPrecision()</a>, <a href="/en/JavaScript/Reference/Global_Objects/Number/toString" title="en/JavaScript/Reference/Global_Objects/Number/toString">Number.toString()</a>, <a href="/en/JavaScript/Reference/Global_Objects/Number/toSource" title="en/JavaScript/Reference/Global_Objects/Number/toSource">Number.toSource()</a>, <a href="/en/JavaScript/Reference/Global_Objects/Number/valueOf" title="en/JavaScript/Reference/Global_Objects/Number/valueOf">Number.valueOf()</a></p>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Cleaner1912">Cleaner1912</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/speaktorob">speaktorob</a>, <a href="/en-US/profiles/SonjaElen">SonjaElen</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:13-07:00">May 28, 2013 8:33:13 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/speaktorob">speaktorob</a>, 
+            <time datetime="2012-09-26T01:15:14-07:00">Sep 26, 2012 1:15:14 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

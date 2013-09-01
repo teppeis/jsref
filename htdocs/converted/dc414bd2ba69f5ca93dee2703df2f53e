@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417135" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">return</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Specifies the value to be returned by a function.</p>
+<h2 id="Version_Information">Version Information</h2>
+<table class="fullwidth-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.0, NES 2.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<p><code>return [<i>expression</i>]; </code></p>
+<h2 id="Parameters" name="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>expression</code></dt>
+  <dd>
+    The expression to return. If omitted, <code>undefined</code> is returned instead.</dd>
+</dl>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_return" name="Example:_Using_return">Example: Using <code>return</code></h3>
+<p>The following function returns the square of its argument, <code>x</code>, where <code>x</code> is a number.</p>
+<pre class="eval">function square(x) {
+   return x * x;
+}
+</pre>
+<h3 id="Example:_Interrupt_a_function" name="Example:_Interrupt_a_function">Example: Interrupt a function</h3>
+<p>A function immediately stops at the point where <code>return</code> is called.</p>
+<pre>function counter() {
+  for (var count=1; ; count++) {  // infinite loop
+    document.write (count+"A-");  // until 5
+      if (count == 5) {
+        return;
+      }
+      document.write (count+"B&lt;br&gt;");  // until 4
+    }
+  document.write (count+"C");  // never appears
+}
+counter();
+</pre>
+<p>Output:</p>
+<pre>1A-1B
+2A-2B
+3A-3B
+4A-4B
+5A-</pre>
+<p><code>return;</code>  <code>return true;</code>  <code>return false;</code>  or  <code>return {variable};</code>  all have the same effect of breaking the function.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<p><a href="/en-US/docs/Core_JavaScript_1.5_Reference/Functions" title="En/Core_JavaScript_1.5_Reference/Functions">Functions</a></p>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/michelesalvador">michelesalvador</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:50-07:00">May 28, 2013 8:32:50 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/trevorh">trevorh</a>, 
+            <time datetime="2012-10-12T05:05:31-07:00">Oct 12, 2012 5:05:31 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/return$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

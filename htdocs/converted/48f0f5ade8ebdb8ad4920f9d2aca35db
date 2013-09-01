@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418375" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Assignment Operators</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>An assignment operator assigns a value to its left operand based on the value of its right operand.</p>
+<table class="fullwidth-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Operators</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<p>The basic assignment operator is equal (<code>=</code>), which assigns the value of its right operand to its left operand. That is, <code>x = y</code> assigns the value of <code>y</code> to <code>x</code>. The other assignment operators are usually shorthand for standard operations, as shown in the following table.</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <th>Shorthand operator</th>
+      <th>Meaning</th>
+    </tr>
+    <tr>
+      <td><code>x += y</code></td>
+      <td><code>x = x + y</code></td>
+    </tr>
+    <tr>
+      <td><code>x -= y</code></td>
+      <td><code>x = x - y</code></td>
+    </tr>
+    <tr>
+      <td><code>x *= y</code></td>
+      <td><code>x = x * y</code></td>
+    </tr>
+    <tr>
+      <td><code>x /= y</code></td>
+      <td><code>x = x / y</code></td>
+    </tr>
+    <tr>
+      <td><code>x %= y</code></td>
+      <td><code>x = x % y</code></td>
+    </tr>
+    <tr>
+      <td><code>x &lt;&lt;= y</code></td>
+      <td><code>x = x &lt;&lt; y</code></td>
+    </tr>
+    <tr>
+      <td><code>x &gt;&gt;= y</code></td>
+      <td><code>x = x &gt;&gt; y</code></td>
+    </tr>
+    <tr>
+      <td><code>x &gt;&gt;&gt;= y</code></td>
+      <td><code>x = x &gt;&gt;&gt; y</code></td>
+    </tr>
+    <tr>
+      <td><code>x &amp;= y</code></td>
+      <td><code>x = x &amp; y</code></td>
+    </tr>
+    <tr>
+      <td><code>x ^= y</code></td>
+      <td><code>x = x ^ y</code></td>
+    </tr>
+    <tr>
+      <td><code>x |= y</code></td>
+      <td><code>x = x | y</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>In unusual situations, the assignment operator is not identical to the Meaning expression in this table. When the left operand of an assignment operator itself contains an assignment operator, the left operand is evaluated only once. For example:</p>
+<pre>a[i++] += 5 //i is evaluated only once
+a[i++] = a[i++] + 5 //i is evaluated twice
+</pre>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:45-07:00">May 28, 2013 8:33:45 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/trevorh">trevorh</a>, 
+            <time datetime="2012-09-30T03:48:11-07:00">Sep 30, 2012 3:48:11 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

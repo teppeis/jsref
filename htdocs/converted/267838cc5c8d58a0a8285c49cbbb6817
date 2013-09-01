@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418127" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Math.min</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns the smallest of zero or more numbers.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math" title="JavaScript/Reference/Global_Objects/Math"><code>Math</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Math.min([<em>value1</em>[,<em>value2</em>[, ...]]]) </code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>value1, value2, ...</code></dt>
+  <dd>
+    Numbers.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Because <code>min</code> is a static method of <code>Math</code>, you always use it as <code>Math.min()</code>, rather than as a method of a <code>Math</code> object you created.</p>
+<p>If no arguments are given, the result is <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Infinity" title="JavaScript/Reference/Global_Objects/Infinity">Infinity</a></code>.</p>
+<p>If at least one of arguments cannot be converted to a number, the result is <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NaN" title="JavaScript/Reference/Global_Objects/NaN">NaN</a></code>.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_Math.min" name="Example:_Using_Math.min">Example: Using <code>Math.min</code></h3>
+<p>This finds the min of x and y and assigns it to z:</p>
+<pre class="brush:js">var x = 10, y = -20;
+var z = Math.min(x, y);
+</pre>
+<h3 id="Example.3A_Clipping_a_value_with_Math.min" name="Example.3A_Clipping_a_value_with_Math.min">Example: Clipping a value with <code>Math.min</code></h3>
+<p><code>Math.min</code> is often used to clip a value so that it is always less than or equal to a boundary. For instance, this</p>
+<pre class="brush:js">var x = f(foo);
+
+if (x &gt; boundary)
+    x = boundary;
+</pre>
+<p>may be written as this</p>
+<pre class="brush:js">var x = Math.min(f(foo), boundary);</pre>
+<div>
+  <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math/max" title="JavaScript/Reference/Global_Objects/Math/max">Math.max</a></code> can be used in a similar way to clip a value at the other end.</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math/max" title="JavaScript/Reference/Global_Objects/Math/max"><code>Math.max</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Math">Math</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/SylvainPasche">SylvainPasche</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Ole%20Laursen">Ole Laursen</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Kyodev">Kyodev</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:34-07:00">May 28, 2013 8:33:34 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-10-05T23:20:41-07:00">Oct 5, 2012 11:20:41 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

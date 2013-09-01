@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417943" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.isPrototypeOf</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Tests for an object in another object's prototype chain.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript ?</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>prototype</em>.isPrototypeOf(<em>object</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    prototype</dt>
+  <dd>
+    an object to be tested against each link in the prototype chain of the <strong>object</strong> argument
+    <div class="note">
+      <em>Notes:</em> <code>isPrototypeOf</code> differs from <a href="/en-US/docs/JavaScript/Reference/Operators/Special_Operators/instanceof_Operator">instanceof operator</a>. In the expression <code>object instanceof AFunction</code>, the <code>object</code> prototype chain is checked against <code>AFunction.prototype</code>, not against <code>AFunction</code> itself</div>
+  </dd>
+  <dt>
+    object</dt>
+  <dd>
+    the object whose prototype chain will be searched</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p><code>isPrototypeOf</code> allows you to check whether or not an object exists within another object's prototype chain.</p>
+<p>For example, consider the following prototype chain:</p>
+<pre class="brush: js">function Fee() {
+  // . . .
+}
+
+function Fi() {
+  // . . .
+}
+Fi.prototype = new Fee();
+
+function Fo() {
+  // . . .
+}
+Fo.prototype = new Fi();
+
+function Fum() {
+  // . . .
+}
+Fum.prototype = new Fo();</pre>
+<p>Later on down the road, if you instantiate <code>Fum</code> and need to check if <code>Fi</code>'s prototype exists within the <code>Fum</code> prototype chain, you could do this:</p>
+<pre class="brush: js">var fum = new Fum();
+. . .
+
+if (Fi.prototype.isPrototypeOf(fum)) {
+  // do something safe
+}</pre>
+<p>This, along with the <code>instanceof</code> operator particularly comes in handy if you have code that can only function when dealing with objects descended from a specific prototype chain, e.g., to guarantee that certain methods or properties will be present on that object.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Operators/instanceof" title="JavaScript/Reference/Operators/Special_Operators/instanceof_Operator">instanceof</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/GetPrototypeOf" title="JavaScript/Reference/Global Objects/Object/GetPrototypeOf">getPrototypeOf</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object">Object</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Trollll">Trollll</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Johnjbarton">Johnjbarton</a>, <a href="/en-US/profiles/jasssonpet">jasssonpet</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/pig_knuckle_sandwich">pig_knuckle_sandwich</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/mimiz33">mimiz33</a>, <a href="/en-US/profiles/LJR">LJR</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/angusc">angusc</a>, <a href="/en-US/profiles/Haluk">Haluk</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:26-07:00">May 28, 2013 8:33:26 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/jasssonpet">jasssonpet</a>, 
+            <time datetime="2013-04-20T17:13:48-07:00">Apr 20, 2013 5:13:48 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isPrototypeOf$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

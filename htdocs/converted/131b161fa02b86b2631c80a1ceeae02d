@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417087" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">try...catch</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Marks a block of statements to try, and specifies a response, should an exception be thrown.</p>
+<h2 id="Version_Information">Version Information</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.4
+        <p>JavaScript 1.5, NES 6.0: Added multiple catch clauses and conditional clauses (Netscape extension).</p>
+      </td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262, Edition 3</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="eval">try {
+   <em>try_statements</em>
+}
+[catch (<em>exception_var_1</em> if <em>condition_1</em>) {
+   <em>catch_statements_1</em>
+}]
+...
+[catch (<em>exception_var_2</em>) {
+   <em>catch_statements_2</em>
+}]
+[finally {
+   <em>finally_statements</em>
+}]
+</pre>
+<h2 id="Parameters" name="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>try_statements</code></dt>
+  <dd>
+    The statements to be executed.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>catch_statements_1</code>, <code>catch_statements_2</code></dt>
+  <dd>
+    Statements that are executed if an exception is thrown in the <code>try</code> block.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>exception_var_1</code>, <code>exception_var_2</code></dt>
+  <dd>
+    An identifier to hold an exception object for the associated <code>catch</code> clause.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>condition_1</code></dt>
+  <dd>
+    A conditional expression.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>finally_statements</code></dt>
+  <dd>
+    Statements that are executed after the <code>try</code> statement completes. These statements execute regardless of whether or not an exception was thrown or caught.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>try</code> statement consists of a <code>try</code> block, which contains one or more statements, and at least one <code>catch</code> clause or a <code>finally</code> clause, or both. That is, there are three forms of the <code>try</code> statement:</p>
+<ol>
+  <li><code>try...catch</code></li>
+  <li><code>try...finally</code></li>
+  <li><code>try...catch...finally</code></li>
+</ol>
+<p>A <code>catch</code> clause contain statements that specify what to do if an exception is thrown in the <code>try</code> block. That is, you want the <code>try</code> block to succeed, and if it does not succeed, you want control to pass to the <code>catch</code> block. If any statement within the <code>try</code> block (or in a function called from within the <code>try</code> block) throws an exception, control immediately shifts to the <code>catch</code> clause. If no exception is thrown in the <code>try</code> block, the <code>catch</code> clause is skipped.</p>
+<p>The <code>finally</code> clause executes after the <code>try</code> block and <code>catch</code> clause(s) execute but before the statements following the <code>try</code> statement. It always executes, regardless of whether or not an exception was thrown or caught.</p>
+<p>You can nest one or more <code>try</code> statements. If an inner <code>try</code> statement does not have a <code>catch</code> clause, the enclosing <code>try</code> statement's <code>catch</code> clause is entered.</p>
+<p>You also use the <code>try</code> statement to handle Java exceptions. See the <a href="/en/JavaScript/Guide" title="en/JavaScript/Guide">Core JavaScript 1.5 Guide</a> for information on Java exceptions.</p>
+<h3 id="Unconditional_catch_clause" name="Unconditional_catch_clause">Unconditional <code>catch</code> clause</h3>
+<p>When a single, unconditional <code>catch</code> clause is used, the <code>catch</code> block is entered when any exception is thrown. For example, when the exception occurs in the following code, control transfers to the <code>catch</code> clause.</p>
+<pre class="brush: js">try {
+   throw "myException"; // generates an exception
+}
+catch (e) {
+   // statements to handle any exceptions
+   logMyErrors(e); // pass exception object to error handler
+}
+</pre>
+<h3 id="Conditional_catch_clauses" name="Conditional_catch_clauses">Conditional <code>catch</code> clauses</h3>
+<p>You can also use one or more conditional <code>catch</code> clauses to handle specific exceptions. In this case, the appropriate <code>catch</code> clause is entered when the specified exception is thrown. In the following example, code in the <code>try</code> block can potentially throw three exceptions: <code>TypeError</code>, <code>RangeError</code>, and <code>EvalError</code>. When an exception occurs, control transfers to the appropriate <code>catch</code> clause. If the exception is not one of the specified exceptions and an unconditional <code>catch</code> clause is found, control transfers to that <code>catch</code> clause.</p>
+<p>If you use an unconditional <code>catch</code> clause with one or more conditional <code>catch</code> clauses, the unconditional <code>catch</code> clause must be specified last. Otherwise, the unconditional <code>catch</code> clause will intercept all types of exception before they can reach the conditional ones.</p>
+<pre class="brush: js">try {
+   myroutine(); // may throw three exceptions
+} catch (e if e instanceof TypeError) {
+   // statements to handle TypeError exceptions
+} catch (e if e instanceof RangeError) {
+   // statements to handle RangeError exceptions
+} catch (e if e instanceof EvalError) {
+   // statements to handle EvalError exceptions
+} catch (e) {
+   // statements to handle any unspecified exceptions
+   logMyErrors(e); // pass exception object to error handler
+}
+</pre>
+<p>Note: This functionality is not part of the ECMAScript specification.</p>
+<h3 id="The_exception_identifier" name="The_exception_identifier">The exception identifier</h3>
+<p>When an exception is thrown in the <code>try</code> block, <em><code>exception_var</code></em> (e.g. the <code>e</code> in <code>catch (e)</code>) holds the value specified by the <code>throw</code> statement. You can use this identifier to get information about the exception that was thrown.</p>
+<p>This identifier is local to the <code>catch</code> clause. That is, it is created when the <code>catch</code> clause is entered, and after the <code>catch</code> clause finishes executing, the identifier is no longer available.</p>
+<h3 id="The_finally_clause" name="The_finally_clause">The <code>finally</code> clause</h3>
+<p>The <code>finally</code> clause contains statements to execute after the <code>try</code> block and <code>catch</code> clause(s) execute but before the statements following the <code>try</code> statement. The <code>finally</code> clause executes regardless of whether or not an exception is thrown. If an exception is thrown, the statements in the <code>finally</code> clause execute even if no <code>catch</code> clause handles the exception.</p>
+<p>You can use the <code>finally</code> clause to make your script fail gracefully when an exception occurs; for example, you may need to release a resource that your script has tied up. The following example opens a file and then executes statements that use the file (server-side JavaScript allows you to access files). If an exception is thrown while the file is open, the <code>finally</code> clause closes the file before the script fails.</p>
+<pre class="brush: js">openMyFile()
+try {
+   // tie up a resource
+   writeMyFile(theData);
+}
+finally {
+   closeMyFile(); // always close the resource
+}
+</pre>
+<h2 id="Examples" name="Examples">Examples</h2>
+<p>See the examples for <a href="/en/JavaScript/Reference/Statements/throw" title="en/JavaScript/Reference/Statements/throw">throw</a>.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en/JavaScript/Reference/Statements/throw" title="en/JavaScript/Reference/Statements/throw">throw</a></li>
+  <li><a href="/en/JavaScript/Reference/Global_Objects/Error" title="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Error">Error</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Dietrich">Dietrich</a>, <a href="/en-US/profiles/secoif">secoif</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Niggler">Niggler</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Nanto%20vi">Nanto vi</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/madarche">madarche</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:48-07:00">May 28, 2013 8:32:48 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/trevorh">trevorh</a>, 
+            <time datetime="2013-03-05T17:43:25-08:00">Mar 5, 2013 5:43:25 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/try...catch$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

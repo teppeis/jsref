@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="430473" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.startsWith</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div><div class="overheadIndicator" style="background: #9CF49C;"> 
+    <p><strong>This is an experimental technology, part of the Harmony (EcmaScript 6) proposal.</strong><br/>Because this technology's specification has not stabilized, check the <a href="#Browser_compatibility">compatibility table</a> for usage in various browsers. Also note that the syntax and behavior of an experimental technology is subject to change in future version of browsers as the spec changes.</p> 
+</div> <div class="overheadIndicator standardNote standardNoteBlock"> 
+<p>This content covers features introduced in <a href="https://developer.mozilla.org/en-US/docs/Firefox_17_for_developers">Firefox 17</a></p> 
+</div></div>
+
+<p>Determines whether a string begins with the characters of another string, returning <code>true</code> or <code>false</code> as appropriate.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2" scope="row">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/String">String</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5+</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>None (Harmony Proposal)</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code class="brush:js;">var <var>startsWith</var> = <em>str</em>.startsWith(<em>searchString</em> [, <em>position</em>])</code>;</pre>
+<h3 id="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>searchString</code></dt>
+  <dd>
+    The characters to be searched for at the start of this string.</dd>
+  <dt>
+    <code>position</code></dt>
+  <dd>
+    The position in this string at which to begin searching for <code><var>searchString</var></code>; defaults to 0.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>This method lets you determine whether or not a string begins with another string.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<pre class="brush:js;">var str = "To be, or not to be, that is the question.";
+
+alert(str.startsWith("To be"));         // true
+alert(str.startsWith("not to be"));     // false
+alert(str.startsWith("not to be", 10)); // true</pre>
+<h2 id="See also" name="See also">Polyfill</h2>
+<p>You can polyfill String.startsWith with the following snippet:</p>
+
+<pre class="brush: js">if (!String.prototype.startsWith) {
+  Object.defineProperty(String.prototype, 'startsWith', {
+    enumerable: false,
+    configurable: false,
+    writable: false,
+    value: function (searchString, position) {
+      position = position || 0;
+      return this.indexOf(searchString, position) === position;
+    }
+  });
+}</pre>
+
+
+<h2 id="See also" name="See also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/endsWith">String.endsWith</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String">String</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Havvy">Havvy</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/williamr">williamr</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/ethertank">ethertank</a>, 
+          <time datetime="2013-06-16T18:13:29-07:00">Jun 16, 2013 6:13:29 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-06-16T18:13:29-07:00">Jun 16, 2013 6:13:29 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

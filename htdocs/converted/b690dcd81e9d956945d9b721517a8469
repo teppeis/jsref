@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="457985" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.getOwnPropertyDescriptor</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></p> 
+</div></div>
+<p>Returns a property descriptor for an <dfn>own property</dfn> (that is, one directly present on an object, not present by dint of being along an object's prototype chain) of a given object.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Object.getOwnPropertyDescriptor(<em>obj</em>, <em>prop</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>obj</code></dt>
+  <dd>
+    The object in which to look for the property.</dd>
+  <dt>
+    <code>prop</code></dt>
+  <dd>
+    The name of the property whose description is to be retrieved</dd>
+</dl>
+<h3 id="Return_value">Return value</h3>
+<p>A property descriptor of the given property if it exists on the object, <code>undefined</code> otherwise.</p>
+<h2 id="Description" name="Description">Description</h2>
+<p>This method permits examination of the precise description of a property. A <dfn>property</dfn> in JavaScript consists of a string-valued name and a property descriptor. Further information about property descriptor types and their attributes can be found in <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty#Description" title="JavaScript/Reference/Global_Objects/Object/defineProperty#Description"><code>Object.defineProperty</code></a>.</p>
+<p>A <dfn>property descriptor</dfn> is a record with some of the following attributes:</p>
+<dl>
+  <dt>
+    <code><strong>value</strong></code></dt>
+  <dd>
+    The value associated with the property (data descriptors only).</dd>
+  <dt>
+    <code><strong>writable</strong></code></dt>
+  <dd>
+    <code>true</code> if and only if the value associated with the property may be changed (data descriptors only).</dd>
+  <dt>
+    <code><strong>get</strong></code></dt>
+  <dd>
+    A function which serves as a getter for the property, or <code>undefined</code> if there is no getter (accessor descriptors only).</dd>
+  <dt>
+    <code><strong>set</strong></code></dt>
+  <dd>
+    A function which serves as a setter for the property, or <code>undefined</code> if there is no setter (accessor descriptors only).</dd>
+  <dt>
+    <code><strong>configurable</strong></code></dt>
+  <dd>
+    <code>true</code> if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object.</dd>
+  <dt>
+    <code><strong>enumerable</strong></code></dt>
+  <dd>
+    <code>true</code> if and only if this property shows up during enumeration of the properties on the corresponding object.</dd>
+</dl>
+<h2 id="Examples" name="Examples">Examples</h2>
+<pre class="brush: js">var o, d;
+
+o = { get foo() { return 17; } };
+d = Object.getOwnPropertyDescriptor(o, "foo");
+// d is { configurable: true, enumerable: true, get: /*the getter function*/, set: undefined }
+
+o = { bar: 42 };
+d = Object.getOwnPropertyDescriptor(o, "bar");
+// d is { configurable: true, enumerable: true, value: 42, writable: true }
+
+o = {};
+Object.defineProperty(o, "baz", { value: 8675309, writable: false, enumerable: false });
+d = Object.getOwnPropertyDescriptor(o, "baz");
+// d is { value: 8675309, writable: false, enumerable: false, configurable: false }</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat table</a>.</p>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4 (2.0)</td>
+        <td>5</td>
+        <td>8</td>
+        <td>12 alpha</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty" title="JavaScript/ Reference/Global Objects/Object/defineProperty">Object.defineProperty</a></code></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object%20Methods">Object Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object">Object</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/pashak">pashak</a>, <a href="/en-US/profiles/BrianDiPalma">BrianDiPalma</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/Crash">Crash</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/dbruant">dbruant</a>, 
+          <time datetime="2013-08-24T05:31:35-07:00">Aug 24, 2013 5:31:35 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/dbruant">dbruant</a>, 
+            <time datetime="2013-08-24T05:31:35-07:00">Aug 24, 2013 5:31:35 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

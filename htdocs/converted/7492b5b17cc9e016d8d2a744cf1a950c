@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418035" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Error</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Creates an error object.</p>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox">new Error([<em>message</em>[, <em>fileName</em>[, <i>lineNumber</i>]]])</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt><code>message</code></dt>
+  <dd>Human-readable description of the error</dd>
+
+  <dt><code>fileName</code> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>The value for the <code>fileName</code> property on the created <code>Error</code> object. Defaults to the name of the file containing the code that called the <code> Error()</code> constructor.</dd>
+
+  <dt><code>lineNumber </code><span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>The value for the <code>lineNumber</code> property on the created <code>Error</code> object. Defaults to the line number containing the <code>Error()</code> constructor invokation.</dd>
+</dl>
+
+
+<h2 id="Description" name="Description">Description</h2>
+<p>Runtime errors result in new <code>Error</code> objects being created and thrown.</p>
+<p>This page documents the use of the <code>Error</code> object itself and its use as a constructor function. For a list of properties and methods inherited by <code>Error</code> instances, see <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype" title="JavaScript/Reference/Global_Objects/Error/prototype">Error.prototype</a>.</p>
+<h3 id="Error_types" name="Error_types">Error types</h3>
+<p>Besides the generic <code>Error</code> constructor, there are six other core error constructors in JavaScript. For client-side exceptions, see <a href="/en-US/docs/JavaScript/Guide/Statements#Exception_Handling_Statements" title="JavaScript/Guide/Statements#Exception Handling Statements">Exception Handling Statements</a>.</p>
+<dl>
+  <dt><a href="/en-US/docs/JavaScript/Reference/Global_Objects/EvalError" title="JavaScript/Reference/Global_Objects/EvalError">EvalError</a></dt>
+  <dd>Creates an instance representing an error that occurs regarding the global function <a href="/en-US/docs/JavaScript/Reference/Global_Objects/eval" title="JavaScript/Reference/Global_Functions/eval">eval()</a></dd>
+
+  <dt><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RangeError" title="JavaScript/Reference/Global_Objects/RangeError">RangeError</a></dt>
+  <dd>Creates an instance representing an error that occurs when a numeric variable or parameter is outside of its valid range</dd>
+
+  <dt><a href="/en-US/docs/JavaScript/Reference/Global_Objects/ReferenceError" title="JavaScript/Reference/Global_Objects/ReferenceError">ReferenceError</a></dt>
+  <dd>Creates an instance representing an error that occurs when de-referencing an invalid reference</dd>
+
+  <dt><a href="/en-US/docs/JavaScript/Reference/Global_Objects/SyntaxError" title="JavaScript/Reference/Global_Objects/SyntaxError">SyntaxError</a></dt>
+  <dd>Creates an instance representing a syntax error that occurs while parsing code in <a href="/en-US/docs/JavaScript/Reference/Global_Objects/eval" title="JavaScript/Reference/Global_Functions/eval">eval()</a></dd>
+
+  <dt><a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="JavaScript/Reference/Global_Objects/TypeError">TypeError</a></dt>
+  <dd>Creates an instance representing an error that occurs when a variable or parameter is not of a valid type</dd>
+
+  <dt><a href="/en-US/docs/JavaScript/Reference/Global_Objects/URIError" title="JavaScript/Reference/Global_Objects/URIError">URIError</a></dt>
+  <dd>Creates an instance representing an error that occurs when <a href="/en-US/docs/JavaScript/Reference/Global_Objects/encodeURI" title="JavaScript/Reference/Global_Functions/encodeURI">encodeURI()</a> or <a href="/en-US/docs/JavaScript/Reference/Global_Objects/decodeURI" title="JavaScript/Reference/Global_Functions/decodeURI">decodeURI()</a> are passed invalid parameters</dd>
+</dl>
+
+
+<h2 id="Properties" name="Properties">Properties</h2>
+<div><small><em>For properties available on <code>Error</code> instances, see <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype#Properties">Properties of Error instances</a>.</em></small></div>
+<dl>
+  <dt><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype" title="JavaScript/Reference/Global_Objects/Error/prototype">prototype</a></dt>
+  <dd>Allows the addition of properties to <code>Error</code> instances.</dd>
+</dl>
+
+<div><div class="inheritsbox template-jsInherits" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;"> 
+	<div style="font-weight: 700;">Properties inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/prototype">Function.prototype</a></div> 
+	<div><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/caller">caller</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/constructor">constructor</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/length">length</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/name">name</a></div> 
+</div></div>
+
+
+
+
+
+<h2 id="Methods" name="Methods">Methods</h2>
+<p><small><em>For methods available on <code>Error</code> instances, see <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype#Methods">Methods of Error instances</a>.</em></small></p>
+<p>The global <code>Error</code> object contains no methods of its own, however, it does inherit some methods through the prototype chain.</p>
+
+
+<div><div class="inheritsbox template-jsInherits" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;"> 
+	<div style="font-weight: 700;">Methods inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/prototype">Function.prototype</a></div> 
+	<div><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">apply</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/call">call</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/toSource">toSource</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/toString">toString</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/valueOf">valueOf</a></div> 
+</div></div>
+<div><div class="inheritsbox template-jsInherits" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;"> 
+	<div style="font-weight: 700;">Methods inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype">Object.prototype</a></div> 
+	<div><a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__defineGetter__">__defineGetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__defineSetter__">__defineSetter__</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">hasOwnProperty</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/isPrototypeOf">isPrototypeOf</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__lookupGetter__">__lookupGetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__lookupSetter__">__lookupSetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__noSuchMethod__">__noSuchMethod__</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable">propertyIsEnumerable</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch">unwatch</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/watch">watch</a></div> 
+</div></div>
+
+<h2 id="Error_instances" name="Error_instances"><code>Error</code> instances</h2>
+
+
+<p/><p>All <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error" title="JavaScript/Reference/Global_Objects/Error"><code>Error</code></a> instances and instances of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error#Error_types" title="JavaScript/Reference/Global_Objects/Error#Error_types">non-generic errors</a> inherit from <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype" title="JavaScript/Reference/Global_Objects/Error/prototype"><code>Error.prototype</code></a>. As with all constructor functions, you can use the prototype of the constructor to add properties or methods to all instances created with that constructor.</p><p/>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Throwing_a_generic_error" name="Example:_Throwing_a_generic_error">Example: Throwing a generic error</h3>
+<p>Usually you create an Error object with the intention of raising it using the <a href="/en-US/docs/JavaScript/Reference/Statements/throw" title="JavaScript/Reference/Statements/throw">throw</a> keyword. You can handle the error using the <a href="/en-US/docs/JavaScript/Reference/Statements/try...catch" title="JavaScript/Reference/Statements/try...catch">try...catch</a> construct:</p>
+<pre class="brush: js">try {
+  throw new Error("Whoops!");
+} catch (e) {
+  alert(e.name + ": " + e.message);
+}
+</pre>
+<h3 id="Example:_Handling_a_specific_error" name="Example:_Handling_a_specific_error">Example: Handling a specific error</h3>
+<p><span class="comment">this should probably be removed</span> You can choose to handle only specific error types by testing the error type with the error's <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/constructor" title="JavaScript/Reference/Global_Objects/Object/constructor">constructor</a> property or, if you're writing for modern JavaScript engines, <a href="/en-US/docs/JavaScript/Reference/Operators/instanceof" title="JavaScript/Reference/Operators/Special_Operators/instanceof_Operator">instanceof</a> keyword:</p>
+<pre class="brush: js">try {
+  foo.bar();
+} catch (e) {
+  if (e instanceof EvalError) {
+    alert(e.name + ": " + e.message);
+  } else if (e instanceof RangeError) {
+    alert(e.name + ": " + e.message);
+  }
+  // ... etc
+}
+</pre>
+<h3 id="Custom_Error_Types">Custom Error Types</h3>
+<p>You might want to define your own error types deriving from <code>Error</code> to be able to <code>throw new MyError()</code> and use <code>instanceof MyError</code> to check the kind of error in the exception handler. The common way to do this is demonstrated below.</p>
+<div class="warning">
+  <p>Note that the thrown <code>MyError</code> will report incorrect <code>lineNumber</code> and <code>fileName</code> at least in Firefox.</p>
+</div>
+<p>See also the <a class="external" href="http://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript" title="http://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript">"What's a good way to extend Error in JavaScript?" discussion on Stackoverflow</a>.</p>
+<pre class="brush: js">// Create a new object, that prototypally inherits from the Error constructor.
+function MyError(message) {
+  this.name = "MyError";
+  this.message = message || "Default Message";
+}
+MyError.prototype = new Error();
+MyError.prototype.constructor = MyError;
+
+try {
+  throw new MyError();
+} catch (e) {
+  console.log(e.name);     // "MyError"
+  console.log(e.message);  // "Default Message"
+}
+
+try {
+  throw new MyError("custom message");
+} catch (e) {
+  console.log(e.name);     // "MyError"
+  console.log(e.message);  // "custom message"
+}
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype" title="JavaScript/Reference/Global_Objects/Error/prototype">Error.prototype</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/throw" title="JavaScript/Reference/Statements/throw">throw</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/try...catch" title="JavaScript/Reference/Statements/try...catch">try...catch</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/domenic@domenicdenicola.com">domenic@domenicdenicola.com</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/timemachine3030">timemachine3030</a>, <a href="/en-US/profiles/dgchurchill">dgchurchill</a>, <a href="/en-US/profiles/JustinLudwig">JustinLudwig</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Sephr">Sephr</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/davidbourguignon">davidbourguignon</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Allanbonadio">Allanbonadio</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/secoif">secoif</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:30-07:00">May 28, 2013 8:33:30 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-04-27T15:11:44-07:00">Apr 27, 2013 3:11:44 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417899" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.seal</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></p> 
+</div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Object.seal(<em>obj</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    obj</dt>
+  <dd>
+    The object which should be sealed.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>By default, objects are <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isExtensible" title="JavaScript/Reference/Global Objects/Object/isExtensible">extensible</a> (new properties can be added to them). Sealing an object prevents new properties from being added and marks all existing properties as non-configurable. This has the effect of making the set of properties on the object fixed and immutable. Making all properties non-configurable also prevents them from being converted from data properties to accessor properties and vice versa, but it does not prevent the values of data properties from being changed. Attempting to delete or add properties to a sealed object, or to convert a data property to accessor or vice versa, will fail, either silently or by throwing a <code>TypeError</code> (most commonly, although not exclusively, when in <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode" title="JavaScript/Strict mode">strict mode</a> code).</p>
+<p>The prototype chain remains untouched. However, the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/proto" title="JavaScript/Reference/Global Objects/Object/proto">__proto__</a> ( <span class="inlineIndicator deprecated deprecatedInline" title="">Deprecated</span> ) property is sealed as well.</p>
+<h3 id="Examples" name="Examples">Examples</h3>
+<pre class="brush: js">var obj = {
+    prop: function () {},
+    foo: "bar"
+  };
+
+// New properties may be added, existing properties may be changed or removed
+obj.foo = "baz";
+obj.lumpy = "woof";
+delete obj.prop;
+
+var o = Object.seal(obj);
+
+assert(o === obj);
+assert(Object.isSealed(obj) === true);
+
+// Changing property values on a sealed object still works.
+obj.foo = "quux";
+
+// But you can't convert data properties to accessors, or vice versa.
+Object.defineProperty(obj, "foo", { get: function() { return "g"; } }); // throws a TypeError
+
+// Now any changes, other than to property values, will fail.
+obj.quaxxor = "the friendly duck"; // silently doesn't add the property
+delete obj.foo; // silently doesn't delete the property
+
+// ...and in strict mode such attempts will throw TypeErrors
+function fail() {
+  "use strict";
+  delete obj.foo; // throws a TypeError
+  obj.sparky = "arf"; // throws a TypeError
+}
+fail();
+
+// Attempted additions through Object.defineProperty will also throw
+Object.defineProperty(obj, "ohai", { value: 17 }); // throws a TypeError
+Object.defineProperty(obj, "foo", { value: "eit" }); // changes existing property value</pre>
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4 (2.0)</td>
+        <td>6</td>
+        <td>9</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td>5.1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat table</a>.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><strong><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isSealed" title="JavaScript/Reference/Global Objects/Object/isSealed"><code>Object.isSealed</code></a></strong></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/preventExtensions" title="JavaScript/Reference/Global Objects/Object/preventExtensions"><code>Object.preventExtensions</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isExtensible" title="JavaScript/Reference/Global Objects/Object/isExtensible"><code>Object.isExtensible</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/freeze" title="JavaScript/Reference/Global Objects/Object/freezed"><code>Object.freeze</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isFrozen" title="JavaScript/Reference/Global Objects/Object/isFrozen"><code>Object.isFrozen</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.8.5">JavaScript 1.8.5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object">Object</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/trupanka">trupanka</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/XP1">XP1</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:23-07:00">May 28, 2013 8:33:23 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/trupanka">trupanka</a>, 
+            <time datetime="2013-02-02T15:00:25-08:00">Feb 2, 2013 3:00:25 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

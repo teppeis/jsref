@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="428353" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.prototype.search</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Executes the search for a match between a regular expression and this <code>String</code> object.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><var>string</var>.search(<var>regexp</var>)</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>regexp</code></dt>
+  <dd>
+    A <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">regular expression</a> object. If a non-RegExp object <code>obj</code> is passed, it is implicitly converted to a RegExp by using <code>new RegExp(obj)</code>.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>If successful, search returns the index of the regular expression inside the string. Otherwise, it returns -1.</p>
+<p>When you want to know whether a pattern is found in a string use <code>search</code> (similar to the regular expression <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test"><code>test</code></a> method); for more information (but slower execution) use <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match"><code>match</code></a> (similar to the regular expression <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec"><code>exec</code></a> method).</p>
+<div class="geckoVersionNote">
+  <div>
+    <div class="geckoVersionHeading"> 
+Gecko 8.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 8.0 / Thunderbird 8.0 / SeaMonkey 2.5)</div> 
+</div></div>
+  <p>Prior to Gecko 8.0 (Firefox 8.0 / Thunderbird 8.0 / SeaMonkey 2.5), <code>search()</code> was implemented incorrectly; when it was called with no parameters or with <code>undefined</code>, it would match against the string "undefined", instead of matching against the empty string. This is fixed; now <code>"a".search()</code> and <code>"a".search(undefined)</code> correctly return 0.</p>
+</div>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_search" name="Example:_Using_search">Example: Using <code>search</code></h3>
+<p>The following example prints a message which depends on the success of the test.</p>
+<pre class="brush:js">function testinput(re, str){
+  if (str.search(re) != -1){
+    midstring = " contains ";
+  } else {
+    midstring = " does not contain ";
+  }
+  document.write (str + midstring + re);
+}</pre>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String">String</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Regular%20Expressions">Regular Expressions</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/nathansearles">nathansearles</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Awesome">Awesome</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/ethertank">ethertank</a>, 
+          <time datetime="2013-06-09T00:28:49-07:00">Jun 9, 2013 12:28:49 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-06-09T00:28:49-07:00">Jun 9, 2013 12:28:49 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

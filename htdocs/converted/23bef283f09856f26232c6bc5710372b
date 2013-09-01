@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="454559" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">JavaScript Reference</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="About_this_Reference" name="About_this_Reference"><a href="/en-US/docs/Web/JavaScript/Reference/About" title="Web/JavaScript/Reference/About">About this Reference</a></h2>
+<div>
+  <p>The JavaScript Reference serves as a repository of facts about the JavaScript language. The entire language is described here in detail. As you write JavaScript code, you'll refer to these pages often (thus the title "JavaScript Reference"). If you're learning JavaScript, or need help understanding some of its capabilities or features, check out the <a href="/en-US/docs/Web/JavaScript/Guide" title="/en-US/docs/Web/JavaScript/Guide">JavaScript Guide</a>. </p>
+<h2 id="What_you_should_already_know">What you should already know</h2>
+<p>The JavaScript language is intended to be used within some larger environment, be it a browser, server-side scripts, or similar. For the most part, this reference attempts to be environment-agnostic and does not target a web browser environment. For demonstration purposes, this reference uses a function, <code>println</code>, which is not part of JavaScript and can be mapped to environment-specific functionality to display given values. For example, in a web browser <code>println</code> might have been defined as follows:</p>
+<div style="overflow: hidden;">
+  <pre class="brush: js">function println(string) {
+  window.alert(string);
+}</pre>
+</div>
+<p>Mapping to equivalent functionality in other environments is left as an exercise for the reader.</p>
+<h2 id="Formatting_conventions">Formatting conventions</h2>
+<p>This reference includes descriptive syntax sections to demonstrate appropriate or common usage of the subject of documentation. Within these sections, all text literals to be reproduced verbatim are non-italicized, with the exception of ellipses. Words in italics represent user-defined names or statements. Any portions enclosed in square brackets (<em><code>[</code></em> and <em><code>]</code></em>) are optional. A comma-delimited sequence that includes an ellipsis (<code>...</code>) indicates that the sequence is a list and all items in the sequence except the first are optional (e.g. only <code>param1</code> is required in "<code>param1, param2, ..., paramN</code>").</p>
+<h2 id="JavaScript_history">JavaScript history</h2>
+<p>Recent versions of Mozilla-based browsers support newer versions of JavaScript. The following table lists the JavaScript version supported by different Mozilla-based browser versions.</p>
+<p>Browsers that do not support at least JavaScript 1.5 are very rare today, since JavaScript 1.5 was introduced back in 1999. If you're interested in historic information, please refer to the Wikipedia article on <a class="external" href="http://en.wikipedia.org/wiki/ECMAScript">ECMAScript</a>.</p>
+<h3 id="JavaScript.2FBrowser_support_history">JavaScript/Browser support history</h3>
+<table class="standard-table"><thead><tr><th scope="col">JavaScript (<a href="/en-US/docs/SpiderMonkey" title="en-US/docs/SpiderMonkey">SpiderMonkey</a>) version</th>
+      <th scope="col">Mozilla release</th>
+      <th scope="col"><a href="/en-US/docs/Gecko" title="en-US/docs/Gecko">Gecko</a> version</th>
+    </tr></thead><tbody><tr><td><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.5" title="en-US/docs/JavaScript/New in JavaScript/1.5">JavaScript 1.5</a></td>
+      <td>Navigator 6.0, Mozilla Application Suite, Firefox 1.0</td>
+      <td>Gecko 0.6x-1.7</td>
+    </tr><tr><td><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.6" title="en-US/docs/JavaScript/New in JavaScript/1.6">JavaScript 1.6</a></td>
+      <td>Firefox 1.5</td>
+      <td>Gecko 1.8</td>
+    </tr><tr><td><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.7" title="en-US/docs/JavaScript/New in JavaScript/1.7">JavaScript 1.7</a></td>
+      <td>Firefox 2</td>
+      <td>Gecko 1.8.1</td>
+    </tr><tr><td><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.8" title="en-US/docs/JavaScript/New in JavaScript/1.8">JavaScript 1.8</a></td>
+      <td>Firefox 3</td>
+      <td>Gecko 1.9</td>
+    </tr><tr><td><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.5" title="en-US/docs/JavaScript/New in JavaScript/1.8.5">JavaScript 1.8.5</a></td>
+      <td>Firefox 4</td>
+      <td>Gecko 2.0</td>
+    </tr><tr><td><a href="/en-US/docs/Firefox_17_for_developers#JavaScript">JavaScript 1.8.6</a></td>
+      <td>Firefox 17</td>
+      <td>Gecko 17</td>
+    </tr></tbody></table><h2 id="Where_to_find_JavaScript_information">Where to find JavaScript information</h2>
+<p>JavaScript documentation of core language features (pure <a href="/en-US/docs/JavaScript/Language_Resources" title="en-US/docs/JavaScript/Language Resources">ECMAScript</a>, for the most part) includes the following:</p>
+<ul><li>The <a href="/en-US/docs/JavaScript/Guide" title="en-US/docs/JavaScript/Guide">JavaScript Guide</a></li>
+  <li>The <a href="/en-US/docs/JavaScript/Reference" title="en-US/docs/JavaScript/Reference">JavaScript Reference</a></li>
+</ul><p>If you are new to JavaScript, start with the <a href="/en-US/docs/JavaScript/Guide" title="en-US/docs/JavaScript/Guide">Guide</a>. Once you have a firm grasp of the fundamentals, you can use the <a href="/en-US/docs/JavaScript/Reference" title="en-US/docs/JavaScript/Reference">Reference</a> to get more details on individual objects and language constructs.</p></div>
+<h2 id="Global_Objects"><a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects" title="Web/JavaScript/Reference/Global_Objects">Global Objects</a></h2>
+<div>
+  <h3 id="General-purpose_constructors">General-purpose constructors</h3>
+  <ul><li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array">Array</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" title="JavaScript/Reference/Global_Objects/Boolean">Boolean</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date" title="JavaScript/Reference/Global_Objects/Date">Date</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/Function">Function</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Iterator" title="JavaScript/Reference/Global_Objects/Iterator">Iterator</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number" title="JavaScript/Reference/Global_Objects/Number">Number</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object">Object</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp" title="JavaScript/Reference/Global_Objects/RegExp">RegExp</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String">String</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Proxy" title="/en-US/docs/JavaScript/Reference/Global_Objects/Proxy">Proxy</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/ParallelArray" title="/en-US/docs/JavaScript/Reference/Global_Objects/ParallelArray">ParallelArray</a></li>
+  </ul><h3 id="Typed_array_constructors">Typed array constructors</h3>
+  <ul><li><a href="/en-US/docs/JavaScript_typed_arrays/ArrayBuffer" title="JavaScript_typed_arrays/ArrayBuffer">ArrayBuffer</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/DataView" title="/en-US/docs/JavaScript_typed_arrays/DataView">DataView</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Float32Array" title="JavaScript_typed_arrays/Float32Array">Float32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Float64Array" title="JavaScript_typed_arrays/Float64Array">Float64Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int16Array" title="JavaScript_typed_arrays/Int16Array">Int16Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int32Array" title="JavaScript_typed_arrays/Int32Array">Int32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int8Array" title="JavaScript_typed_arrays/Int8Array">Int8Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint16Array" title="JavaScript_typed_arrays/int16Array">Uint16Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint32Array" title="JavaScript_typed_arrays/Uint32Array">Uint32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint8Array" title="JavaScript_typed_arrays/int8Array">Uint8Array</a></li>
+    <li><a class="new" href="/en-US/docs/JavaScript_typed_arrays/Uint8ClampedArray" title="JavaScript_typed_arrays/Uint8ClampedArray">Uint8ClampedArray</a></li>
+  </ul><h3 id="Internationalization_constructors">Internationalization constructors</h3>
+  <ul><li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Collator" title="JavaScript/Reference/Global_Objects/Collator">Intl.Collator</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat" title="JavaScript/Reference/Global_Objects/DateTimeFormat">Intl.DateTimeFormat</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat" title="JavaScript/Reference/Global_Objects/NumberFormat">Intl.NumberFormat</a></li>
+  </ul><h3 id="Error_constructors">Error constructors</h3>
+  <ul><li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error" title="JavaScript/Reference/Global_Objects/Error">Error</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/EvalError" title="JavaScript/Reference/Global_Objects/EvalError">EvalError</a></li>
+    <li><a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/InternalError" title="JavaScript/Reference/Global_Objects/InternalError">InternalError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RangeError" title="JavaScript/Reference/Global_Objects/RangeError">RangeError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/ReferenceError" title="JavaScript/Reference/Global_Objects/ReferenceError">ReferenceError</a></li>
+    <li><a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/StopIteration" title="JavaScript/Reference/Global_Objects/StopIteration">StopIteration</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/SyntaxError" title="JavaScript/Reference/Global_Objects/SyntaxError">SyntaxError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="JavaScript/Reference/Global_Objects/TypeError">TypeError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/URIError" title="JavaScript/Reference/Global_Objects/URIError">URIError</a></li>
+  </ul><h3 id="Non-constructor_functions">Non-constructor functions</h3>
+  <ul><li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/decodeURI" title="JavaScript/Reference/Global_Objects/decodeURI">decodeURI</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/decodeURIComponent" title="JavaScript/Reference/Global_Objects/decodeURIComponent">decodeURIComponent</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/encodeURI" title="JavaScript/Reference/Global_Objects/encodeURI">encodeURI</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/encodeURIComponent" title="JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/eval" title="JavaScript/Reference/Global_Objects/eval">eval</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/isFinite" title="JavaScript/Reference/Global_Objects/isFinite">isFinite</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/isNaN" title="JavaScript/Reference/Global_Objects/isNaN">isNaN</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/parseFloat" title="JavaScript/Reference/Global_Objects/parseFloat">parseFloat</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/parseInt" title="JavaScript/Reference/Global_Objects/parseInt">parseInt</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/uneval" title="JavaScript/Reference/Global_Objects/uneval">uneval</a></li>
+  </ul><h3 id="Other">Other</h3>
+  <ul><li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Infinity" title="JavaScript/Reference/Global_Objects/Infinity">Infinity</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl" title="JavaScript/Reference/Global_Objects/Intl">Intl</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/JSON" title="JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math" title="JavaScript/Reference/Global_Objects/Math">Math</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NaN" title="JavaScript/Reference/Global_Objects/NaN">NaN</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/undefined" title="JavaScript/Reference/Global_Objects/undefined">undefined</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/null" title="/en-US/docs/JavaScript/Reference/Global_Objects/null">null</a></li>
+  </ul></div>
+<h2 id="Functions" name="Functions"><a href="/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope" title="Web/JavaScript/Reference/Functions_and_function_scope">Functions and function scope</a></h2>
+
+<ul>
+  <li><code><a href="/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/arguments" title="Web/JavaScript/Reference/Functions_and_function_scope/arguments">arguments</a></code></li>
+  <li><a href="/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode" title="Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">Strict mode</a></li>
+</ul>
+<h2 id="Statements" name="Statements"><a href="/en-US/docs/Web/JavaScript/Reference/Statements" title="Web/JavaScript/Reference/Statements">Statements</a></h2>
+<div>
+  <p>JavaScript statements consist of keywords used with the appropriate syntax. A single statement may span multiple lines. Multiple statements may occur on a single line if each statement is separated by a semicolon. This isn't a keyword, but a group of keywords.</p>
+<p/><dl><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/block">block</a></dt><dd>A block statement is used to group zero or more statements. The block is delimited by a pair of curly brackets.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/break"><code>break</code></a></dt><dd>Terminates the current loop, switch, or label statement and transfers program control to the statement following the terminated statement.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/const"><code>const</code></a></dt><dd>Declares a read-only named constant.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/continue"><code>continue</code></a></dt><dd>Terminates execution of the statements in the current iteration of the current or labelled loop, and continues execution of the loop with the next iteration.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/debugger"><code>debugger</code></a></dt><dd>Invokes any available debugging functionality. If no debugging functionality is available, this statement has no effect.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/do...while"><code>do...while</code></a></dt><dd>Creates a loop that executes a specified statement until the test condition evaluates to false. The condition is evaluated after executing the statement, resulting in the specified statement executing at least once.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/export"><code>export</code></a></dt><dd>Allows a signed script to provide properties, functions, and objects to other signed or unsigned scripts. This feature is not in ECMA-262, Edition 3.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/for"><code>for</code></a></dt><dd>Creates a loop that consists of three optional expressions, enclosed in parentheses and separated by semicolons, followed by a statement executed in the loop.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/for_each...in"><code>for each...in</code></a></dt><dd>Iterates a specified variable over all values of object's properties. For each distinct property, a specified statement is executed.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/for...in"><code>for...in</code></a></dt><dd>Iterates over the enumerable properties of an object, in arbitrary order. For each distinct property, statements can be executed.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/for...of"><code>for...of</code></a></dt><dd>Iterates over iterable objects (including <a href="/en-US/docs/Core_JavaScript_1.5_Reference/Global_Objects/Array" title="Array">arrays</a>, array-like objects, <a href="/en-US/docs/JavaScript/Guide/Iterators_and_Generators" title="Iterators and generators">iterators and generators</a>), invoking a custom iteration hook with statements to be executed for the value of each distinct property.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/function"><code>function</code></a></dt><dd>Declares a function with the specified parameters.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/if...else"><code>if...else</code></a></dt><dd>Executes a statement if a specified condition is true. If the condition is false, another statement can be executed.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/import"><code>import</code></a></dt><dd>Allows a script to import properties, functions, and objects from a signed script that has exported the information. This feature is not in ECMA 262, Edition 3.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/label">label</a></dt><dd>Provides a statement with an identifier that you can refer to using a <code>break</code> or <code>continue</code> statement.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/let"><code>let</code></a></dt><dd>Declares a block scope local variable, optionally initializing it to a value.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/return"><code>return</code></a></dt><dd>Specifies the value to be returned by a function.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/switch"><code>switch</code></a></dt><dd>Evaluates an expression, matching the expression's value to a case label, and executes statements associated with that case.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/throw"><code>throw</code></a></dt><dd>Throws a user-defined exception.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/try...catch"><code>try...catch</code></a></dt><dd>Marks a block of statements to try, and specifies a response, should an exception be thrown.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/var"><code>var</code></a></dt><dd>Declares a variable, optionally initializing it to a value.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/while"><code>while</code></a></dt><dd>Creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.</dd><dt><a href="/en-US/docs/Web/JavaScript/Reference/Statements/with"><code>with</code></a></dt><dd>Extends the scope chain for a statement.</dd><dt><a href="/en-US/docs/JavaScript/Reference/Statements/yield"><code>yield</code></a></dt><dd>See <a href="/en/JavaScript/New_in_JavaScript/1.7" title="en/JavaScript/New_in_JavaScript/1.7">New_in_JavaScript 1.7</a> &amp; <a href="/en/JavaScript/Guide/Iterators_and_Generators" title="Iterators and generators">Iterators and generators</a></dd></dl><p/></div>
+<h2 id="Operators" name="Operators"><a href="/en-US/docs/Web/JavaScript/Reference/Operators" title="Web/JavaScript/Reference/Operators">Operators and other keywords</a></h2>
+<div>
+  <dl><dd>
+    There are several special operators that do not fit into any other category:</dd>
+</dl><dl><dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Arithmetic_Operators" title="en-US/docs/JavaScript/Reference/Operators/Arithmetic_Operators">Arithmetic Operators</a></dt>
+  <dd>
+    <p>(<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>++</code>, <code>--</code>, unary <code>-, unary +</code>)</p>
+    <p>Arithmetic operators take numerical values (either literals or variables) as their operands and return a single numerical value.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Assignment_Operators" title="en-US/docs/JavaScript/Reference/Operators/Assignment_Operators">Assignment Operators</a></dt>
+  <dd>
+    <p>(<code><span style="font-family: Verdana,Tahoma,sans-serif;">=, *=, /=, %=, +=, -=, &lt;&lt;=, &gt;&gt;=, &gt;&gt;&gt;=, &amp;=, ^=, |=</span></code>)</p>
+    <p>An assignment operator assigns a value to its left operand based on the value of its right operand.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Bitwise_Operators" title="en-US/docs/JavaScript/Reference/Operators/Bitwise_Operators">Bitwise Operators</a></dt>
+  <dd>
+    <p>(<code>&amp;</code>, <code>|</code>, <code>^</code>, <code>~</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code>, <code>&gt;&gt;&gt;</code>)</p>
+    <p>Bitwise operators treat their operands as a set of 32 bits (zeros and ones) and return standard JavaScript numerical values.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Comparison_Operators" title="en-US/docs/JavaScript/Reference/Operators/Comparison_Operators">Comparison Operators</a></dt>
+  <dd>
+    <p>(<code>==</code>, <code>!=</code>, <code>===</code>, <code>!==</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>)</p>
+    <p>A comparison operator compares its operands and returns a logical value based on whether the comparison is true.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Logical_Operators" title="en-US/docs/JavaScript/Reference/Operators/Logical_Operators">Logical Operators</a></dt>
+  <dd>
+    <p>(<code>&amp;&amp;</code>, <code>||</code>, <code>!</code>)</p>
+    <p>Logical operators are typically used with boolean (logical) values, and when they are, they return a boolean value.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/String_Operators" title="en-US/docs/JavaScript/Reference/Operators/String_Operators">String Operators</a></dt>
+  <dd>
+    <p>(<code>+</code> and <code>+=</code>)</p>
+    <p>The string operators concatenate two string values together, returning another string that is the union of the two strings.</p>
+  </dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Member_Operators" title="en-US/docs/JavaScript/Reference/Operators/Member_Operators">Member Operators</a></dt>
+  <dd>
+    <p>(<code>object.property</code> and <code>object["property"]</code>)</p>
+    <p>Member operators provide access to a property or method of an object.</p>
+  </dd>
+  <dt>
+    Special Operators</dt>
+  <dd>
+    <dl><dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/Conditional_Operator" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/Conditional_Operator">Conditional Operator</a></dt>
+      <dd>
+        <p>(<code><em>condition</em> ? <em>ifTrue</em> : <em>ifFalse</em></code>)</p>
+        <p>The conditional operator returns one of two values based on the logical value of the condition.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/Comma_Operator" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/Comma_Operator">Comma Operator</a></dt>
+      <dd>
+        <p>(<code>,</code>)</p>
+        <p>The comma operator allows multiple expressions to be evaluated in a single statement and returns the result of the last expression.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/delete" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/delete_Operator">delete Operator</a></dt>
+      <dd>
+        <p>(<code>delete</code>)</p>
+        <p>The delete operator deletes a property from an object.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/function" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/function_Operator">function Operator</a></dt>
+      <dd>
+        <p>(<code>function</code>)</p>
+        <p>The function operator defines a function.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/get" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/get_Operator">get Operator</a></dt>
+      <dd>
+        <p>(<code>get</code>)</p>
+        <p>The get operator defines a property to be a getter.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/in" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/in_Operator">in Operator</a></dt>
+      <dd>
+        <p>(<code>in</code>)</p>
+        <p>The in operator determines whether an object has a given property.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/instanceof" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/instanceof_Operator">instanceof Operator</a></dt>
+      <dd>
+        <p>(<code>instanceof</code>)</p>
+        <p>The instanceof operator determines whether an object is an instance of another object.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Statements/let" title="/en-US/docs/JavaScript/Reference/Statements/let">let Operator</a></dt>
+      <dd>
+        <p>(<code>let</code>)</p>
+        <p>The let operator temporarily assigns a value to a variable that only effects an expression.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/new" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/new_Operator">new Operator</a></dt>
+      <dd>
+        <p>(<code>new</code>)</p>
+        <p>The new operator creates an instance of a constructor.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/set" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/set_Operator">set Operator</a></dt>
+      <dd>
+        <p>(<code>set</code>)</p>
+        <p>The set operator defines a property to be a setter.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/this" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/this_Operator">this Operator</a></dt>
+      <dd>
+        <p>(<code>this</code>)</p>
+        <p>The this operator refers to the execution context.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/typeof" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/typeof_Operator">typeof Operator</a></dt>
+      <dd>
+        <p>(<code>typeof</code>)</p>
+        <p>The typeof operator determines the type of a given object.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/void" title="en-US/docs/JavaScript/Reference/Operators/Special_Operators/void_Operator">void Operator</a></dt>
+      <dd>
+        <p>(<code>void</code>)</p>
+        <p>The void operator discards an expressions return value.</p>
+      </dd>
+      <dt>
+        <a href="/en-US/docs/JavaScript/Reference/Operators/yield" title="/en-US/docs/JavaScript/Reference/Operators/yield">yield Operator</a></dt>
+      <dd>
+        <p>(<code>yield</code>)</p>
+        <p>The yield operator determines what is returned in a generator by that generator's iterator.</p>
+      </dd>
+    </dl></dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Operators/Operator_Precedence" title="en-US/docs/JavaScript/Reference/Operators/Operator_Precedence">Operator Precedence</a></dt>
+  <dd>
+    Operator precedence defines the order in which operators are evaluated.</dd>
+</dl></div>
+<h2 id="Comments" name="Comments">Comments</h2>
+<ul>
+  <li><a href="/en-US/docs/Web/JavaScript/Reference/Code_comments" title="Web/JavaScript/Reference/Code comments">Code comments</a> (<code>//</code> and <code>/* */</code>)</li>
+</ul>
+<h2 id="E4X" name="E4X"><a href="/en-US/docs/E4X" title="E4X">E4X (extension)</a><span class="inlineIndicator deprecated deprecatedInline" title="">Deprecated</span></h2>
+<p>Global statements:</p>
+<ul>
+  <li><a href="/en-US/docs/E4X/Processing_XML_with_E4X#Handling_namespaces" title="JavaScript/ Guide/Processing XML with E4X#Handling namespaces">default XML namespace</a></li>
+</ul>
+<p>Global functions:</p>
+<ul>
+  <li><a class="new" href="/en-US/docs/E4X:isXMLName" title="E4X:isXMLName">isXMLName()</a></li>
+</ul>
+<p>Global constructors:</p>
+<ul>
+  <li><a class="new" href="/en-US/docs/E4X:Namespace" title="E4X:Namespace">Namespace()</a></li>
+  <li><a class="new" href="/en-US/docs/E4X:QName" title="E4X:QName">QName()</a></li>
+  <li><a class="new" href="/en-US/docs/E4X:XML" title="E4X:XML">XML()</a></li>
+  <li><a class="new" href="/en-US/docs/E4X:XMLList" title="E4X:XMLList">XMLList()</a></li>
+</ul>
+<h2 id="Appendix_A_-_Reserved_Words" name="Appendix_A_-_Reserved_Words"><a href="/en-US/docs/JavaScript/Reference/Reserved_Words" title="JavaScript/Reference/Reserved_Words">Appendix A - Reserved Words</a></h2>
+<h2 id="Appendix_B_-_Deprecated_Features" name="Appendix_B_-_Deprecated_Features"><a href="/en-US/docs/JavaScript/Reference/Deprecated_and_obsolete_features" title="JavaScript/Reference/Deprecated_Features">Appendix B - Deprecated Features</a></h2>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Takenbot">Takenbot</a>, <a href="/en-US/profiles/Cnmahj">Cnmahj</a>, <a href="/en-US/profiles/DavidCary">DavidCary</a>, <a href="/en-US/profiles/gsvelto">gsvelto</a>, <a href="/en-US/profiles/Vin%C3%ADcius%20Albuquerque">Vinícius Albuquerque</a>, <a href="/en-US/profiles/Jeremie">Jeremie</a>, <a href="/en-US/profiles/user01">user01</a>, <a href="/en-US/profiles/Dionys">Dionys</a>, <a href="/en-US/profiles/syssgx">syssgx</a>, <a href="/en-US/profiles/Dyhan81">Dyhan81</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/HeroreV">HeroreV</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/m@tteo78">m@tteo78</a>, <a href="/en-US/profiles/MattBrubeck">MattBrubeck</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/raztus">raztus</a>, <a href="/en-US/profiles/emilNikolov">emilNikolov</a>, <a href="/en-US/profiles/Stav">Stav</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/ananta_eka">ananta_eka</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Timmi">Timmi</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/deridder">deridder</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Norbert">Norbert</a>, <a href="/en-US/profiles/Wladimir_Palant">Wladimir_Palant</a>, <a href="/en-US/profiles/Niklas">Niklas</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/saneyuki_s">saneyuki_s</a>, <a href="/en-US/profiles/skorpan">skorpan</a>, <a href="/en-US/profiles/Paul.heartj">Paul.heartj</a>, <a href="/en-US/profiles/Momoass">Momoass</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/raztus">raztus</a>, 
+          <time datetime="2013-08-15T13:03:32-07:00">Aug 15, 2013 1:03:32 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/raztus">raztus</a>, 
+            <time datetime="2013-08-15T13:03:32-07:00">Aug 15, 2013 1:03:32 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

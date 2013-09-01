@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417979" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">__noSuchMethod__</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div><div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div></div>
+
+
+<h2 id="Summary" name="Summary">Summary</h2>
+
+<p>Executes a function when a non-existent method is called on an object.</p>
+
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript ?</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+
+<pre class="syntaxbox"><code><em>obj</em>.__noSuchMethod__ = <em>fun</em></code></pre>
+
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt><code>fun</code></dt>
+  <dd>a function that takes the form</dd>
+  <dd>
+<pre><code>function (<em>id</em>, <em>args</em>) { . . . }</code></pre>
+    <dl>
+      <dt>
+        <code>id</code></dt>
+      <dd>
+        the name of the non-existent method that was called</dd>
+      <dt>
+        <code>args</code></dt>
+      <dd>
+        an array of the arguments passed to the method</dd>
+    </dl>
+  </dd>
+</dl>
+
+
+<h2 id="Description" name="Description">Description</h2>
+
+<p>By default, an attempt to call a method that doesn't exist on an object results in a <a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="JavaScript/Reference/Global_Objects/TypeError">TypeError</a> being thrown. This behavior can be circumvented by defining a function at that object's <code>__noSuchMethod__</code> member. The function takes two arguments, the first is the name of the method attempted and the second is an array of the arguments that were passed in the method call. The second argument is an actual array (that is, it inherits through the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/prototype" title="JavaScript/Reference/Global_Objects/Array/prototype">Array prototype</a> chain) and not the array-like <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments" title="JavaScript/Reference/Functions/arguments">arguments object</a>.</p>
+
+<p>If this method cannot be called, either as if <code>undefined</code> by default, if deleted, or if manually set to a non-function, the JavaScript engine will revert to throwing <code>TypeError</code>s.</p>
+
+
+<h2 id="Example" name="Example">Example</h2>
+
+<p><code>__noSuchMethod__</code> can be used to simulate multiple inheritance.</p>
+
+<p>An example of code that implements a primitive form of multiple inheritance is shown below.</p>
+
+<pre class="brush: js">// Doesn't work with multiple inheritance objects as parents
+
+function noMethod(name, args) {
+  var parents=this.__parents_;
+  
+  // Go through all parents
+  
+  for (var i=0;i&lt;parents.length;i++) {
+    // If we find a function on the parent, we call it
+    if (typeof parents[i][name] =="function") {
+      return parents[i][name].apply(this, args);
+    }
+  }
+  
+  // If we get here, the method hasn't been found
+  
+  throw new TypeError;
+}
+
+// Used to add a parent for multiple inheritance
+
+function addParent(obj, parent) {
+  // If the object isn't initialized, initialize it
+  
+  if (!obj.__parents_) {
+    obj.__parents_=[];
+    obj.__noSuchMethod__=noMethod;
+  }
+  
+  // Add the parent
+  
+  obj.__parents_.push(parent);
+}
+</pre>
+
+<p>An example of using this idea is shown below.</p>
+
+<pre class="brush: js">// Example base class 1
+
+function NamedThing(name){
+  this.name=name;
+}
+
+NamedThing.prototype = {
+  getName: function() {return this.name;},
+  setName: function(newName) {this.name=newName;}
+}
+
+//Example base class 2
+
+function AgedThing(age){
+  this.age=age;
+}
+
+AgedThing.prototype = {
+  getAge: function(){return this.age;},
+  setAge: function(age){this.age=age;}
+}
+
+// Child class. inherits from NamedThing and AgedThing as well as defining address
+
+function Person(name, age, address){
+  addParent(this, NamedThing.prototype);
+  NamedThing.call(this, name);
+  addParent(this, AgedThing.prototype);
+  AgedThing.call(this, age);
+  this.address=address;
+}
+
+Person.prototype = {
+  getAddr: function() {return this.address;},
+  setAddr: function(addr) {this.address=addr;}
+}
+
+var bob=new Person("bob", 25, "New York");
+
+console.log("getAge is "+(("getAge" in bob)?"in":"not in")+" bob");
+console.log("bob's age is: "+bob.getAge());
+console.log("getName is "+(("getName" in bob)?"in":"not in")+" bob");
+console.log("bob's name is: "+bob.getName());
+console.log("getAddr is "+(("getAddr" in bob)?"in":"not in")+" bob");
+console.log("bob's address is: "+bob.getAddr());</pre>
+
+<!-- languages({
+"fr": "fr/R\u00e9f\u00e9rence_de_JavaScript_1.5_Core/Objets_globaux/Object/noSuchMethod"
+}) -->
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/tmim">tmim</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Potappo">Potappo</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:28-07:00">May 28, 2013 8:33:28 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-10-06T00:27:37-07:00">Oct 6, 2012 12:27:37 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/noSuchMethod$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

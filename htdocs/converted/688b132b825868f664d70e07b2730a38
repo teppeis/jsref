@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="435019" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Member Operators</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Member operators provide access to an object's properties and methods.</p>
+<p>One can think of an object as an <em>associative array</em> (a.k.a. <em>map</em>, <em>dictionary</em>, <em>hash</em>, <em>lookup table</em>). The <em>keys</em> in this array are the names of object members. It's typical when speaking of an object's members to make a distinction between properties and methods. However, the property/method distinction is little more than a convention. A method is simply a property with a <a href="/en/JavaScript/Reference/Functions_and_function_scope" title="en/JavaScript/Reference/Functions_and_function_scope">function</a> as its value.</p>
+<p>There are two ways to access object members: dot notation and bracket notation (a.k.a. subscript operator).</p>
+<p/><div class="note"><strong>Note:</strong> The <a href="/en/ECMAScript" title="en/ECMAScript">ECMAScript</a> specification labels these operators as "property accessors" rather than "member operators". Given the property/method distinction above, however, we will use "member" as an inclusive term for properties and methods, for the sake of clarity.</div><p/>
+<h2 id="Dot_notation" name="Dot_notation">Dot notation</h2>
+<pre>get = object.property;
+object.property = set;
+</pre>
+<p><code>property</code> must be a valid JavaScript identifier, i.e. a sequence of alphanumerical characters, also including the underscore ("<code>_</code>") and dollar sign ("<code>$</code>"), that cannot start with a number. For example, <code>object.$1</code> is valid, while <code>object.1</code> is not.</p>
+<p>Example:</p>
+<pre>document.createElement('pre');
+</pre>
+<p>Here, the method named "createElement" is retrieved from <code>document</code> and is called.</p>
+<h2 id="Bracket_notation" name="Bracket_notation">Bracket notation</h2>
+<pre>get = object[property_name];
+object[property_name] = set;
+</pre>
+<p><code>property_name</code> is a string. The string does not have to be a valid identifier; it can have any value, e.g. "1foo", "!bar!", or even " " (a space).</p>
+<p>Example:</p>
+<pre>document['createElement']('pre');
+</pre>
+<p>This does the exact same thing as the previous example.</p>
+<h2 id="Property_names" name="Property_names">Property names</h2>
+<p>Property names must be strings. This means that non-string objects cannot be used as keys in the object. Any non-string object, including a number, is typecasted into a string via the <a href="/en/JavaScript/Reference/Global_Objects/Object/toString" title="en/JavaScript/Reference/Global_Objects/Object/toString">toString</a> method.</p>
+<p>Examples:</p>
+<pre>var object = {};
+object['1'] = 'value';
+alert(object[1]);
+</pre>
+<p>This outputs "value", since 1 is typecasted into '1'.</p>
+<pre>var foo = {unique_prop: 1}, bar = {unique_prop: 2}, object = {};
+object[foo] = 'value';
+alert(object[bar]);
+</pre>
+<p>This also outputs "value", since both foo and bar are converted to the same string. In the <a href="/en/SpiderMonkey" title="en/SpiderMonkey">SpiderMonkey</a> JavaScript engine, this string would be "[object Object]".</p>
+<h2 id="Method_binding" name="Method_binding">Method binding</h2>
+<p>A method is not bound to the object that it is a method of. Specifically, <code>this</code> is not fixed in a method, i.e. <code>this</code> does not necessarily refer to an object containing the method. <code>this</code> is instead "passed" by the function call.</p>
+<p>See <a href="/en/JavaScript/Reference/Operators/Special/this#Method_binding" title="en/JavaScript/Reference/Operators/Special/this#Method_binding">method binding</a>.</p>
+<h2 id="Note_on_eval" name="Note_on_eval">Note on <code>eval</code></h2>
+<p>JavaScript novices often make the mistake of using <a href="/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval" title="en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">eval</a> where the bracket notation can be used instead. For example, the following syntax is often seen in many scripts.</p>
+<pre>x = eval('document.form_name.' + strFormControl + '.value');
+</pre>
+<p><code>eval</code> is slow and should be avoided whenever possible. It is better to use the bracket notation instead:</p>
+<pre>x = document.form_name[strFormControl].value;
+</pre>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/inglor">inglor</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/TotalAMD">TotalAMD</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/TotalAMD">TotalAMD</a>, 
+          <time datetime="2013-06-26T05:56:06-07:00">Jun 26, 2013 5:56:06 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/TotalAMD">TotalAMD</a>, 
+            <time datetime="2013-06-26T05:56:06-07:00">Jun 26, 2013 5:56:06 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/Member_Operators$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

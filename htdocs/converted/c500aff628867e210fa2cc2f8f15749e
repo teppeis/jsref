@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="442599" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">stack</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Description">Description</h2>
+<p>This non-standard property of <a href="/en/JavaScript/Reference/Global_Objects/Error" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Error">Error</a> objects offers a trace of which functions were called, in what order, from which line and file, and with what arguments. The stack string proceeds from the most recent calls to earlier ones, leading back to the original global scope call.</p>
+<p>Each step will be separated by a newline, with the first part of the line being the function name (if not a call from the global scope), then by an at (@) sign, the file location (except when the function is the error constructor as the error is being thrown), a colon, and, if there is a file location, the line number. (Note that the Error object also possesses the <code>fileName</code>, <code>lineNumber</code> and <code>columnNumber</code> properties for retrieving these from the error thrown (but only the error, and not its trace).)</p>
+<p>Note that this is the format used by Firefox. There is no standard formatting. However, Safari 6+ and Opera 12- uses a very similar format. Browsers using the V8 JavaScript engine (such as Chrome, Opera 15+, Android Browser) and IE10+, on the other hand, uses a different format (see these MSDN <a class="external" href="http://msdn.microsoft.com/en-us/library/windows/apps/hh699850.aspx" title="http://msdn.microsoft.com/en-us/library/windows/apps/hh699850.aspx">error.stack</a> docs).</p>
+<p>Prior to Firefox 14 (<a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=744842">bug 744842</a>), the function name would be followed by the argument values converted to string in parentheses immediately before the at (@) sign. While an object (or array, etc.) would appear in the converted form <code>"[object Object]"</code>, and as such could not be evaluated back into the actual objects, scalar values could be retrieved (though it may be—it is still possible in Firefox 14—easier to use <code>arguments.callee.caller.arguments</code>, as could the function name be retrieved by <code>arguments.callee.caller.name</code>). <code>"undefined"</code> is listed as <code>"(void 0)"</code>. Note that if string arguments were passed in with values such as <code>"@"</code>, <code>"("</code>, <code>")"</code> (or if in file names), you could not easily rely on these for breaking the line into its component parts. Thus, in Firefox 14 and later this is less of an issue.</p>
+<h2 id="Example">Example</h2>
+<p>The following HTML markup demonstrates the use of <code>stack</code> property.</p>
+<pre class="brush: html">&lt;!DOCTYPE HTML&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;Stack Trace Example&lt;/title&gt;
+&lt;body&gt;
+    &lt;script&gt;
+        function trace() {
+            try {
+                throw new Error("myError");
+            }
+            catch(e) {
+                alert(e.stack);
+            }
+        }
+        function b() {
+            trace();
+        }
+        function a() {
+            b(3, 4, "\n\n", undefined, {});
+        }
+        a("first call, firstarg");
+    &lt;/script&gt;
+</pre>
+<p>Assuming the above markup is saved as C:\example.html on a Windows file system and opened in Firefox 14 or later it produces an alert message box with the following text:</p>
+<pre><samp>
+trace@file:///C:/example.html:9
+b@file:///C:/example.html:16
+a@file:///C:/example.html:19
+@file:///C:/example.html:21
+</samp></pre>
+<p>Firefox 13 and earlier would instead produce the following text:</p>
+<pre><samp>
+Error("myError")@:0
+trace()@file:///C:/example.html:9
+b(3,4,"\n\n",(void 0),[object Object])@file:///C:/example.html:16
+a("first call, firstarg")@file:///C:/example.html:19
+@file:///C:/example.html:21
+</samp></pre>
+<h2 id="Browser_Compatibility">Browser Compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>IE10</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>Safari 6</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>Android 4 (perhaps Android 3, but not Android 2)</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>Safari 6</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<p><a href="/en/Components.stack" title="en/Components.stack">Components.stack</a></p>
+<p>External projects: <a class="external link-https" href="https://github.com/csnover/TraceKit/">TraceKit</a> and <a class="external link-https" href="https://github.com/eriwen/javascript-stacktrace">javascript-stacktrace</a></p>
+<p>MSDN: <a class="external" href="http://msdn.microsoft.com/en-us/library/windows/apps/hh699850.aspx" title="http://msdn.microsoft.com/en-us/library/windows/apps/hh699850.aspx">error.stack</a> docs</p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsJSVersion">NeedsJSVersion</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/lydell">lydell</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/user01">user01</a>, <a href="/en-US/profiles/paul.irish">paul.irish</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/lydell">lydell</a>, 
+          <time datetime="2013-07-20T14:05:40-07:00">Jul 20, 2013 2:05:40 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/lydell">lydell</a>, 
+            <time datetime="2013-07-20T14:05:40-07:00">Jul 20, 2013 2:05:40 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/Stack$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="457561" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">__proto__</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  See the ES6 approved <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf" title="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf">Object.setPrototypeOf</a> for a better support.</div>
+<div>
+  <div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div></div>
+<p>An Object's <code>__proto__</code> property references the same object as its internal <code>[[Prototype]]</code> (often referred to as "the prototype"), which may be an object or, as in the default case of <code>Object.prototype.__proto__,</code> <code>null </code>. This property is an abstraction error, because a property with the same name, but some other value, could be defined on the object too. If there is a need to reference an object's prototype, the preferred method is to use <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/GetPrototypeOf" title="JavaScript/Reference/Global Objects/Object/GetPrototypeOf">Object.getPrototypeOf</a></code>.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Property of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript ?</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<p>A <code>__proto__</code> pseudo property has been included in §B.3.1 of the draft ECMAScript ed. 6 specification (note that the specification codifies what is already in implementations and what websites may currently rely on).</p>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>var proto = <em>obj</em>.__proto__;</code></pre>
+<p>Note: that is two underscores, followed by the five characters "proto", followed by two more underscores.</p>
+<h2 id="Description" name="Description">Description</h2>
+<p>When an object is created, its <code>__proto__</code> property is set to reference the same object as its internal <code>[[Prototype]]</code> (i.e. its constructor's <code>prototype</code> object).  Assigning a new value to <code>__proto__</code> also changes the value of the internal <code>[[Prototype]]</code> property, except where the object is non–extensible.</p>
+<p>To understand how prototypes are used for inheritance, see the MDN article <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Inheritance_and_the_prototype_chain" title="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Inheritance_and_the_prototype_chain">Inheritance and the prototype chain</a>.</p>
+<h2 id="Example" name="Example">Example</h2>
+<p>In the following, a new instance of <code>Employee</code> is created, then tested to show that its <code>__proto__</code> is the same object as its constructor's <code>prototype</code>.</p>
+<pre class="brush: js">// Declare a function to be used as a constructor
+function Employee() {
+  /* initialise instance */
+}
+
+// Create a new instance of Employee
+var fred = new Employee();
+
+// Test equivalence
+fred.__proto__ === Employee.prototype; // true
+</pre>
+<p>At this point, <code>fred</code> inherits from <code>Employee</code>, however assigning a different object to <code>fred.__proto__</code> can change that:</p>
+<pre class="brush: js">// Assign a new object to __proto__
+fred.__proto__ = Object.prototype;
+</pre>
+<p>Now <code>fred</code> no longer inherits from <code>Employee.prototype</code>, but directly from <code>Object.prototype</code>, and loses the properties it originally inherited from <code>Employee.prototype</code>.</p>
+<p>However, this only applies to <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isExtensible" title="JavaScript/Reference/Global Objects/Object/isExtensible">extensible</a> objects, a non–extensible object's <code style="color: inherit; font-weight: inherit;">__proto__</code> property cannot be changed:</p>
+<pre class="brush: js">var obj = {};
+Object.preventExtensions(obj);
+
+obj.__proto__ = {}; // throws a TypeError
+</pre>
+<p>Note that even <code>Object.prototype</code>'s <code>__proto__</code> property can be redefined as long as the chain leads to null:</p>
+<pre class="brush: js">var b = {};
+
+Object.prototype.__proto__ = {
+    hi: function () {alert('hi');},
+    __proto__: null
+};
+
+ 
+b.hi();
+</pre>
+<p class="brush: js">If <code>Object.prototype</code>'s <code>__proto__</code> had not been set to <code>null</code>, or had not been set to another object whose prototype chain did not eventually lead explicitly to <code>null</code>, a "cyclic __proto__ value" TypeError would result since the chain must eventually lead to <code>null</code> (as it normally does on <code>Object.prototype</code>).</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/Parent" title="__parent__ | JavaScript | MDN">__parent__</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Inheritance_and_the_prototype_chain" title="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Inheritance_and_the_prototype_chain">Inheritance and the prototype chain</a></li>
+  <li><a class="external" href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts" title="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">Ecma–262 Edition 6 drafts</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsJSVersion">NeedsJSVersion</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Object">Object</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/coeurl">coeurl</a>, <a href="/en-US/profiles/Johnjbarton">Johnjbarton</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/Joriki">Joriki</a>, <a href="/en-US/profiles/zhurizhe">zhurizhe</a>, <a href="/en-US/profiles/WebReflection">WebReflection</a>, <a href="/en-US/profiles/Robg1">Robg1</a>, <a href="/en-US/profiles/BenB">BenB</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/hdon">hdon</a>, <a href="/en-US/profiles/stepnem">stepnem</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/WebReflection">WebReflection</a>, 
+          <time datetime="2013-08-22T21:30:08-07:00">Aug 22, 2013 9:30:08 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/WebReflection">WebReflection</a>, 
+            <time datetime="2013-08-22T21:30:08-07:00">Aug 22, 2013 9:30:08 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

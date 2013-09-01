@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417283" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">setYear</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p>
+</p><div class="deprecatedHeader"> 
+      <p style="margin: 4px 0px 4px 0px;">Deprecated</p> 
+    </div>
+<p/>
+<h3 id="Summary">Summary</h3>
+<p>Sets the year for a specified date according to local time.</p>
+<table class="standard-table"> <thead> <tr> <th class="header">Method of <a href="/en/JavaScript/Reference/Global_Objects/Date" title="en/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a></th> </tr> </thead> <tbody> <tr> <td>Implemented in</td> <td>JavaScript 1.0</td> </tr> <tr> <td>ECMAScript Edition</td> <td>ECMAScript 1st Edition</td> </tr> </tbody>
+</table><h3 id="_Syntax_"> Syntax </h3>
+<p><code>
+setYear(<i>yearValue</i>)
+</code>
+</p>
+<h3 id="_Parameters_"> Parameters </h3>
+<dl><dt> <code>yearValue</code> </dt><dd> An integer.
+</dd></dl>
+<h3 id="_Description_"> Description </h3>
+<p><code>setYear</code> is no longer used and has been replaced by the <code>setFullYear</code> method.
+</p><p>If <code>yearValue&lt;/code. is a number between 0 and 99 (inclusive), then the year for &lt;code&gt;dateObjectName</code> is set to 1900 + <code>yearValue</code>. Otherwise, the year for <code>dateObjectName</code> is set to <code>yearValue</code>.
+</p><p>To take into account years before and after 2000, you should use <code><a href="en/Core_JavaScript_1.5_Reference/Objects/Date/setFullYear">setFullYear</a></code> instead of <code><a href="en/Core_JavaScript_1.5_Reference/Objects/Date/setYear">setYear</a></code> so that the year is specified in full.
+</p>
+<h3 id="_Examples_"> Examples </h3>
+<h4 id="_Example.3A_Using_setYear_"> Example: Using <code>setYear</code> </h4>
+<p>The first two lines set the year to 1996. The third sets the year to 2000.
+</p>
+<pre>theBigDay.setYear(96)
+theBigDay.setYear(1996)
+theBigDay.setYear(2000)
+</pre>
+<h3 id="_See_Also_"> See Also </h3>
+<p><a href="en/Core_JavaScript_1.5_Reference/Objects/Date/getYear">getYear</a>,
+<a href="en/Core_JavaScript_1.5_Reference/Objects/Date/setFullYear">setFullYear</a>,
+<a href="en/Core_JavaScript_1.5_Reference/Objects/Date/setUTCFullYear">setUTCFullYear</a>
+</p>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Prodoc">Prodoc</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:56-07:00">May 28, 2013 8:32:56 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setYear$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

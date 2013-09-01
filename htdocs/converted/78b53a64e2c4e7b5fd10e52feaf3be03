@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417591" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">JSON.parse</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Parse a string as JSON, optionally transforming the value produced by parsing.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/JSON" title="JavaScript/Reference/Global_Objects/JSON"><code>JSON</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.7</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>JSON.parse(<em>text</em>[, <em>reviver</em>])</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>text</code></dt>
+  <dd>
+    The string to parse as JSON.  See the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/JSON" title="JavaScript/Reference/Global Objects/JSON">JSON</a> object for a description of JSON syntax.</dd>
+  <dt>
+    <code>reviver</code></dt>
+  <dd>
+    If a function, prescribes how the value originally produced by parsing is transformed, before being returned.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>JSON.parse parses a string as JSON and returns the parsed value.</p>
+<pre class="brush: js">JSON.parse('{}'); // {}
+JSON.parse('true'); // true
+JSON.parse('"foo"'); // "foo"
+JSON.parse('[1, 5, "false"]'); // [1, 5, "false"]
+JSON.parse('null'); // null
+</pre>
+<p>If a reviver is specified, the value computed by parsing is <em>transformed</em> before being returned. Specifically, the computed value, and all its properties (beginning with the most nested properties and proceeding to the original value itself), are individually run through the reviver, which is called with the object containing the property being processed as <code>this</code> and with the property name as a string and the property value as arguments. If the reviver function returns <code>undefined </code>(or returns no value, e.g. if execution falls off the end of the function), the property is deleted from the object. Otherwise the property is redefined to be the return value.</p>
+<p>The reviver is ultimately called with the empty string and the topmost value to permit transformation of the topmost value.  Be certain to handle this case properly, usually by returning the provided value, or <code>JSON.parse</code> will return <code>undefined</code>.</p>
+<pre class="brush: js">var transformed =
+  JSON.parse('{"p": 5}', function(k, v) { if (k === "") return v; return v * 2; });
+// transformed is { p: 10 }
+</pre>
+<p>If the string to parse is not valid JSON, a SyntaxError exception is thrown.</p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JSON">JSON</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/marcello.nuccio">marcello.nuccio</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:10-07:00">May 28, 2013 8:33:10 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-04-27T14:22:00-07:00">Apr 27, 2013 2:22:00 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

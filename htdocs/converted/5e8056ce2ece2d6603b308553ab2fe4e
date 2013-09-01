@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417115" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">break</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Terminates the current loop, switch, or label statement and transfers program control to the statement following the terminated statement.</p>
+
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0, NES 2.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMA-262 (for the unlabeled version)<br/>
+        ECMA-262, Edition 3 (for the labeled version)</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>break [label];</code></pre>
+<h3 id="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>label</code></dt>
+  <dd>
+    Identifier associated with the label of the statement.  If the statement is not a loop or switch, this is required.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>The <code>break</code> statement includes an optional label that allows the program to break out of a labeled statement. The <code>break</code> statement needs to be nested within this labelled statement. The labelled statement can be any <a class="internal" href="/en-US/docs/JavaScript/Reference/Statements/block" title="JavaScript/Reference/Statements/Block">block</a> statement; it does not have to be preceded by a loop statement.</p>
+<h2 id="Example">Example</h2>
+<p>The following function has a <code>break</code> statement that terminates the <code><a href="/en-US/docs/JavaScript/Reference/Statements/while" title="JavaScript/Reference/Statements/while">while</a></code> loop when <code>i</code> is 3, and then returns the value 3 * <code>x</code>.</p>
+<pre class="brush:js;highlight:[6];">function testBreak(x) {
+   var i = 0;
+
+   while (i &lt; 6) {
+      if (i == 3) {
+         break;
+      }
+      i += 1;
+   }
+   return i * x;
+}</pre>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/continue" title="JavaScript/Reference/Statements/continue"><code>continue</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/label" title="JavaScript/Reference/Statements/label"><code>label</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/switch" title="JavaScript/Reference/Statements/switch"><code>switch</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/statements">statements</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/user01">user01</a>, <a href="/en-US/profiles/Jesdisciple">Jesdisciple</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Nanto%20vi">Nanto vi</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Bitwiseplatypus">Bitwiseplatypus</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:49-07:00">May 28, 2013 8:32:49 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-04-27T07:48:25-07:00">Apr 27, 2013 7:48:25 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/break$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

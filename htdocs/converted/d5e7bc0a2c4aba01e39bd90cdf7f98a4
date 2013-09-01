@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="447669" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Iterator</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div class="warning">
+  The Iterator constructor is an ancient SpiderMonkey specific feature. For future-facing usages, consider using <a href="/en-US/docs/Web/JavaScript/Reference/Statements/for...of" title="/en-US/docs/Web/JavaScript/Reference/Statements/for...of">for..of</a> loops and the <a class="external" href="http://wiki.ecmascript.org/doku.php?id=harmony:iterators" title="http://wiki.ecmascript.org/doku.php?id=harmony:iterators">iterator</a> protocol</div>
+<h2 id="Summary">Summary</h2>
+<p>The Iterator function.</p>
+<h2 id="Properties">Properties</h2>
+<h2 id="Methods">Methods</h2>
+<dl>
+  <dt>
+    <code>next ( )</code></dt>
+</dl>
+<dl>
+  <dd>
+    Returns an item .</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>An overview of the usage is available on the <a href="/en-US/docs/JavaScript/Guide/Iterators_and_Generators" title="/en-US/docs/JavaScript/Guide/Iterators_and_Generators">Iterators and Generators</a> page.</p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsContent">NeedsContent</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/R%C3%A9f%C3%A9rence">Référence</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Reference">Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/BrianDiPalma">BrianDiPalma</a>, <a href="/en-US/profiles/casinocorley">casinocorley</a>, <a href="/en-US/profiles/kscarfone">kscarfone</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/kscarfone">kscarfone</a>, 
+          <time datetime="2013-08-01T11:08:35-07:00">Aug 1, 2013 11:08:35 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/kscarfone">kscarfone</a>, 
+            <time datetime="2013-08-01T11:08:35-07:00">Aug 1, 2013 11:08:35 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

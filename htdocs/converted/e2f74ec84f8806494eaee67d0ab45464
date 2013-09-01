@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417055" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">for...of</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div style="overflow: hidden; margin: 10px 0; padding: 0 10px; background: #9CF49C; text-align: center;"> 
+    <p style="margin: 4px 0;"><strong>This is an experimental technology, part of the Harmony (EcmaScript 6) proposal.</strong><br/>Because this technology's specification has not stabilized, check the <a href="#Browser_compatibility">compatibility table</a> for usage in various browsers. Also note that the syntax and behavior of an experimental technology is subject to change in future version of browsers as the spec changes.</p> 
+</div></div>
+<h2 id="Summary">Summary</h2>
+<p>Iterates over iterable objects (including <a href="/en-US/docs/Core_JavaScript_1.5_Reference/Global_Objects/Array" title="Array">arrays</a>, array-like objects, <a href="/en-US/docs/JavaScript/Guide/Iterators_and_Generators" title="Iterators and generators">iterators and generators</a>), invoking a custom iteration hook with statements to be executed for the value of each distinct property.</p>
+<h2 id="Version_Information">Version Information</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMAScript 6th Edition proposal</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<pre class="syntaxbox">for (<em>variable</em> of <em>object</em>)
+  <em>statement</em>
+</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>variable</code></dt>
+  <dd>
+    On each iteration a value of a different property is assigned to <em>variable</em>.</dd>
+  <dt>
+    <code>object</code></dt>
+  <dd>
+    Object whose enumerable properties are iterated.</dd>
+</dl>
+<h2 id="Examples">Examples</h2>
+<p>The following example shows the difference between a <code>for...of</code> loop and a <code><a href="/en-US/docs/JavaScript/Reference/Statements/for...in" title="en-US/docs/JavaScript/Reference/Statements/for...in">for...in</a></code> loop. While <code>for...in</code> iterates over property names, <code>for...of</code> iterates over property values:</p>
+<pre class="brush:js">let arr = [ 3, 5, 7 ];
+arr.foo = "hello";
+
+for (let i in arr) {
+   console.log(i); // logs "0", "1", "2", "foo"
+}
+
+for (let i of arr) {
+   console.log(i); // logs "3", "5", "7"
+}
+</pre>
+<p>Iterating over DOM collections like <a href="/en-US/docs/DOM/NodeList" title="/en-US/docs/DOM/NodeList"><code>NodeList</code></a>: the following example adds a <code>read</code> class to paragraphs that are direct descendants of an article:</p>
+<pre class="brush:js">let articleParagraphs = document.querySelectorAll("article &gt; p");
+
+for (let paragraph of articleParagraphs) {
+  paragraph.classList.add("read");
+}
+</pre>
+<p>You can also iterate over generators:</p>
+<pre class="brush:js">// NOTE: "function*" is not supported yet in Firefox.
+// Remove the asterisk in order for this code to work in Firefox 13
+
+function* fibonacci() { // a generator function
+    let [prev, curr] = [0, 1];
+    for (;;) {
+        [prev, curr] = [curr, prev + curr];
+        yield curr;
+    }
+}
+
+for (let n of fibonacci()) {
+    // truncate the sequence at 1000
+    if (n &gt; 1000)
+        break;
+    print(n);
+}
+</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>13.0 (13) <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=699565" title="">bug 699565</a></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td>13.0 (13) <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=699565" title="">bug 699565</a></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Statements/for_each...in" title="en/JavaScript/Reference/Statements/for_each...in">for each...in</a> - a similar statement, but iterates over the values of object's properties, rather than the property names themselves. (<a href="https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.6" title="en/New_in_JavaScript_1.6">New in JavaScript 1.6</a> but deprecated)</li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach" title="en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach"><code>Array.forEach()</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript6">ECMAScript6</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/etlovett">etlovett</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Dao">Dao</a>, <a href="/en-US/profiles/mnoorenberghe">mnoorenberghe</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/madarche">madarche</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:47-07:00">May 28, 2013 8:32:47 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/teoli">teoli</a>, 
+            <time datetime="2012-12-11T07:49:22-08:00">Dec 11, 2012 7:49:22 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/for...of$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

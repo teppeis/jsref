@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418387" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">instanceof</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>The <code>instanceof</code> operator tests whether an object has in its prototype chain the <code>prototype</code> property of a constructor.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2" scope="row">Operator</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.4</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition:</td>
+      <td>ECMA-262 ? Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre><code><em>object</em> instanceof <em>constructor</em></code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>object</code></dt>
+  <dd>
+    The object to test.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>constructor</code></dt>
+  <dd>
+    Function to test against</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>instanceof</code> operator tests presence of <code>constructor.prototype</code> in <code>object</code> prototype chain.</p>
+<pre class="brush: js">function C(){} // defining a constructor
+function D(){} // defining another constructor
+
+var o = new C();
+o instanceof C; // true, because: Object.getPrototypeOf(o) === C.prototype
+o instanceof D; // false, because D.prototype is nowhere in o's prototype chain
+o instanceof Object; // true, because:
+C.prototype instanceof Object // true
+
+C.prototype = {};
+var o2 = new C();
+o2 instanceof C; // true
+o instanceof C; // false, because C.prototype is nowhere in o's prototype chain anymore
+
+D.prototype = new C(); // use inheritance
+var o3 = new D();
+o3 instanceof D; // true
+o3 instanceof C; // true
+</pre>
+<p>Note that if the value of an <code>instanceof</code> test can change based on changes to the <code>prototype</code> property of constructors, it cannot be changed by changing an object prototype, because changing an object prototype is not possible in standard ECMAScript. It is however possible using the non-standard <code>__proto__</code> pseudo-property.</p>
+<h3 id="instanceof_and_multiple_context_(e.g._frames_or_windows)"><code>instanceof</code> and multiple context (e.g. frames or windows)</h3>
+<p>Different scope have different execution environments. This means that they have different built-ins (different global object, different constructors, etc.). This may result in unexpected results. For instance, <code>[] instanceof window.frames[0].Array</code> will return <code>false</code>, because <code>Array.prototype !== </code><code>window.frames[0].Array</code> and arrays inherit from the former. This may not make sense at first but when you start dealing with multiple frames or windows in your script and pass objects from one context to another via functions, this will be a valid and strong issue. For instance, you can securely check if a given object is in fact an Array using <code>Array.isArray(myObj)</code></p>
+<div class="note">
+  <strong>Note for Mozilla developers:</strong><br/>
+  In code using XPCOM <code>instanceof</code> has special effect: <code>obj instanceof </code><em><code>xpcomInterface</code></em> (e.g. <code>Components.interfaces.nsIFile</code>) calls <code>obj.QueryInterface(<em>xpcomInterface</em>)</code> and returns <code>true</code> if QueryInterface succeeded. A side effect of such call is that you can use <em><code>xpcomInterface</code></em>'s properties on <code>obj</code> after a successful <code>instanceof</code> test. Unlike standard JavaScript globals, the test <code>obj instanceof xpcomInterface </code>works as expected even if <code>obj</code> is from a different scope.</div>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Demonstrating_that_String_and_Date_are_of_type_Object" name="Example:_Demonstrating_that_String_and_Date_are_of_type_Object">Example: Demonstrating that <code>String</code> and <code>Date</code> are of type <code>Object</code></h3>
+<p>The following code uses <code>instanceof</code> to demonstrate that <code>String</code> and <code>Date</code> objects are also of type <code>Object</code> (they are derived from <code>Object</code>).</p>
+<pre class="brush: js">var myString = new String();
+var myDate = new Date();
+
+myString instanceof String; // returns true
+myString instanceof Object; // returns true
+myString instanceof Date;   // returns false
+
+myDate instanceof Date;     // returns true
+myDate instanceof Object;   // returns true
+myDate instanceof String;   // returns false
+</pre>
+<h3 id="Example:_Demonstrating_that_mycar_is_of_type_Car_and_type_Object" name="Example:_Demonstrating_that_mycar_is_of_type_Car_and_type_Object">Example: Demonstrating that <code>mycar</code> is of type <code>Car</code> and type <code>Object</code></h3>
+<p>The following code creates an object type <code>Car</code> and an instance of that object type, <code>mycar</code>. The <code>instanceof</code> operator demonstrates that the <code>mycar</code> object is of type <code>Car</code> and of type <code>Object</code>.</p>
+<pre class="brush: js">function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+var mycar = new Car("Honda", "Accord", 1998);
+var a = mycar instanceof Car;    // returns true
+var b = mycar instanceof Object; // returns true
+</pre>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Operators/typeof" title="/en-US/docs/JavaScript/Reference/Operators/typeof">typeof</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsContent">NeedsContent</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Skierpage">Skierpage</a>, <a href="/en-US/profiles/sitegui">sitegui</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/BYK">BYK</a>, <a href="/en-US/profiles/Nanto%20vi">Nanto vi</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/gentooboontoo">gentooboontoo</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Jminta">Jminta</a>, <a href="/en-US/profiles/OsamaBinLogin">OsamaBinLogin</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:46-07:00">May 28, 2013 8:33:46 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/gentooboontoo">gentooboontoo</a>, 
+            <time datetime="2012-09-05T05:29:27-07:00">Sep 5, 2012 5:29:27 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/instanceof$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

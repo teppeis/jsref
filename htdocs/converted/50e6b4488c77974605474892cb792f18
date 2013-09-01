@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418311" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Intl.NumberFormat.prototype.supportedLocalesOf</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Returns an array containing those of the provided locales that are supported in number formatting without having to fall back to the runtime's default locale.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat" title="JavaScript/Reference/Global_Objects/NumberFormat"><code>NumberFormat</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript Internationalization API Specification, 1<sup>st</sup> Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Intl.NumberFormat.</code>supportedLocalesOf<code>(locales [, options])</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>locales</code></dt>
+  <dd>
+    A string with a BCP 47 language tag, or an array of such strings. For the general form of the <code>locales</code> argument, see the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation" title="/Intl#Locale_identification_and_negotiation">Intl page</a>.</dd>
+  <dt>
+    <code>options</code></dt>
+  <dd>
+    <p>An object that may have the following property:</p>
+    <dl>
+      <dt>
+        <code>localeMatcher</code></dt>
+      <dd>
+        The locale matching algorithm to use. Possible values are "lookup" and "best fit"; the default is "best fit". For information about this option, see the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation" title="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation">Intl page</a>.</dd>
+    </dl>
+  </dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>Returns an array with a subset of the language tags provided in <code>locales</code>. The language tags returned are those for which the runtime supports a locale in number formatting that the locale matching algorithm used considers a match, so that it wouldn't have to fall back to the default locale.</p>
+<h2 id="Examples">Examples</h2>
+<p>Assuming a runtime that supports Indonesian and German but not Balinese in number formatting, <code>supportedLocalesOf</code> returns the Indonesian and German language tags unchanged, even though pinyin collation is neither relevant to number formatting nor used with Indonesian, and a specialized German for Indonesia is unlikely to be supported. Note the specification of the "lookup" algorithm here – a "best fit" matcher might decide that Indonesian is an adequate match for Balinese since most Balinese speakers also understand Indonesian, and therefore return the Balinese language tag as well.</p>
+<pre class="brush: js">var locales = ["ban", "id-u-co-pinyin", "de-ID"];
+var options = {localeMatcher: "lookup"};
+alert(Intl.NumberFormat.supportedLocalesOf(locales, options).join(", "));
+// → "id-u-co-pinyin, de-ID"</pre>
+<h2 id="Browser_Compatibility">Browser Compatibility</h2>
+<div>
+  <p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"> 
+    </a><ul><a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/><li class="selected"><a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul></div><p>
+</p><div id="compat-desktop">
+  <table class="compat-table"><tbody><tr><th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr><tr><td>Basic support</td>
+        <td>24</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>11</td>
+        <td>15</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr></tbody></table></div>
+<div id="compat-mobile">
+  <table class="compat-table"><tbody><tr><th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr><tr><td>Basic support</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>26</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr></tbody></table></div></div>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Internationalization">Internationalization</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NumberFormat">NumberFormat</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Norbert">Norbert</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:42-07:00">May 28, 2013 8:33:42 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Norbert">Norbert</a>, 
+            <time datetime="2013-04-08T00:30:19-07:00">Apr 8, 2013 12:30:19 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/supportedLocalesOf$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

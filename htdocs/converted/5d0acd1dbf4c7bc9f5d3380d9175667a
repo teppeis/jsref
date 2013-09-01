@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="439839" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.prototype.localeCompare</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Returns a number indicating whether a reference string comes before or after or is the same as the given string in sort order. The new <code>locales</code> and <code>options</code> arguments let applications specify the language whose sort order should be used and customize the behavior of the function. In older implementations, which ignore the <code>locales</code> and <code>options</code> arguments, the locale and sort order used are entirely implementation dependent.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td rowspan="2">ECMAScript Edition</td>
+      <td>ECMAScript Language Specification, 3<sup>rd</sup> Edition</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Internationalization API Specification, 1<sup>st</sup> Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>string</em>.localeCompare(compareString [, locales [, options]])</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<p>Check the <a href="#Browser_Compatibility" title="#Browser_Compatibility">Browser compatibility</a> section to see which browsers support the <code>locales</code> and <code>options</code> arguments, and the <a href="#Example:_Checking_for_support_for_locales_and_options_arguments">Example: Checking for support for <code>locales</code> and <code>options</code> arguments</a> for feature detection.</p>
+<dl>
+  <dt>
+    <code>compareString</code></dt>
+  <dd>
+    The string against which the referring string is comparing</dd>
+</dl>
+<div>
+  <dl><dt>
+    <code>locales</code></dt>
+  <dd>
+    <p>A string with a BCP 47 language tag, or an array of such strings. For the general form and interpretation of the <code>locales</code> argument, see the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation" title="/Intl#Locale_identification_and_negotiation">Intl page</a>. The following Unicode extension keys are allowed:</p>
+    <dl><dt>
+        co</dt>
+      <dd>
+        Variant collations for certain locales. Possible values include: "big5han", "dict", "direct", "ducet", "gb2312", "phonebk", "phonetic", "pinyin", "reformed", "searchjl", "stroke", "trad", "unihan". The "standard" and "search" values are ignored; they are replaced by the <code>options</code> property <code>usage</code> (see below).</dd>
+      <dt>
+        kn</dt>
+      <dd>
+        Whether numeric collation should be used, such that "1" &lt; "2" &lt; "10". Possible values are "true" and "false". This option can be set through an <code>options</code> property or through a Unicode extension key; if both are provided, the <code>options</code> property takes precedence.</dd>
+      <dt>
+        kf</dt>
+      <dd>
+        Whether upper case or lower case should sort first. Possible values are "upper", "lower", or "false" (use the locale's default). This option can be set through an <code>options</code> property or through a Unicode extension key; if both are provided, the <code>options</code> property takes precedence.</dd>
+    </dl></dd>
+  <dt>
+    <code>options</code></dt>
+  <dd>
+    <p>An object with some or all of the following properties:</p>
+    <dl><dt>
+        <code>localeMatcher</code></dt>
+      <dd>
+        The locale matching algorithm to use. Possible values are "lookup" and "best fit"; the default is "best fit". For information about this option, see the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation" title="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation">Intl page</a>.</dd>
+      <dt>
+        <code>usage</code></dt>
+      <dd>
+        Whether the comparison is for sorting or for searching for matching strings. Possible values are "sort" and "search"; the default is "sort".</dd>
+      <dt>
+        <code>sensitivity</code></dt>
+      <dd>
+        Which differences in the strings should lead to non-zero result values. Possible values are:
+        <ul><li>"base": Only strings that differ in base letters compare as unequal. Examples: a ≠ b, a = á, a = A.</li>
+          <li>"accent": Only strings that differ in base letters or accents and other diacritic marks compare as unequal. Examples: a ≠ b, a ≠ á, a = A.</li>
+          <li>"case": Only strings that differ in base letters or case compare as unequal. Examples: a ≠ b, a = á, a ≠ A.</li>
+          <li>"variant": Strings that differ in base letters, accents and other diacritic marks, or case compare as unequal. Other differences may also be taken into consideration. Examples: a ≠ b, a ≠ á, a ≠ A.</li>
+        </ul><p>The default is "variant" for usage "sort"; it's locale dependent for usage "search".</p>
+      </dd>
+      <dt>
+        <code>ignore­Punctua­tion</code></dt>
+      <dd>
+        Whether punctuation should be ignored. Possible values are <code>true</code> and <code>false</code>; the default is <code>false</code>.</dd>
+      <dt>
+        <code>numeric</code></dt>
+      <dd>
+        Whether numeric collation should be used, such that "1" &lt; "2" &lt; "10". Possible values are <code>true</code> and <code>false</code>; the default is <code>false</code>. This option can be set through an <code>options</code> property or through a Unicode extension key; if both are provided, the <code>options</code> property takes precedence. Implementations are not required to support this property.</dd>
+      <dt>
+        <code>caseFirst</code></dt>
+      <dd>
+        Whether upper case or lower case should sort first. Possible values are "upper", "lower", or "false" (use the locale's default); the default is "false". This option can be set through an <code>options</code> property or through a Unicode extension key; if both are provided, the <code>options</code> property takes precedence. Implementations are not required to support this property.</dd>
+    </dl></dd>
+</dl></div>
+<h2 id="Description" name="Description">Description</h2>
+<p>Returns a number indicating whether a reference string comes before or after or is the same as the given string in sort order. Returns a negative number if the string occurs earlier in a sort than <code>compareString</code>, returns a positive number if the string occurs afterwards in such a sort, and returns 0 if they occur at the same level.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_localeCompare" name="Example:_Using_localeCompare">Example: Using <code>localeCompare</code></h3>
+<p>The following example demonstrates the different potential results for a string occurring before, after, or at the same level as another:</p>
+<pre class="brush: js">alert('a'.localeCompare('c')); // -2, or -1, or some other negative value
+alert('c'.localeCompare('a')); // 2, or 1, or some other positive value
+alert('a'.localeCompare('a')); // 0
+</pre>
+<p>Note that the results shown in the code above can vary between browsers and browser versions. This is because the values are implementation-specific. That is, the specification requires only that the before and after values are negative and positive.</p>
+<h3 id="Example:_Checking_for_support_for_locales_and_options_arguments" name="Example:_Checking_for_support_for_locales_and_options_arguments">Example: Checking for support for <code>locales</code> and <code>options</code> arguments</h3>
+<p>The <code>locales</code> and <code>options</code> arguments are not supported in all browsers yet. To check whether an implementation supports them already, you can use the requirement that illegal language tags are rejected with a <code>RangeError</code> exception:</p>
+<pre class="brush: js">function localeCompareSupportsLocales() {
+    try {
+        "a".localeCompare​("b", "i");
+    } catch (e) {
+        return e​.name === "RangeError";
+    }
+    return false;
+}
+</pre>
+<h3 id="Example:_Using_locales" name="Example:_Using_locales">Example: Using <code>locales</code></h3>
+<p>The results provided by <code>localeCompare</code> vary between languages. In order to get the sort order of the language used in the user interface of your application, make sure to specify that language (and possibly some fallback languages) using the <code>locales</code> argument:</p>
+<pre class="brush: js">alert('ä'.localeCompare('z', 'de')); // a negative value: in German, ä sorts with a
+alert('ä'.localeCompare('z', 'sv')); // a positive value: in Swedish, ä sorts after z
+</pre>
+<h3 id="Example:_Using_options" name="Example:_Using_options">Example: Using <code>options</code></h3>
+<p>The results provided by <code>localeCompare</code> can be customized using the <code>options</code> argument:</p>
+<pre class="brush: js">// in German, ä has a as the base letter
+alert('ä'.localeCompare('a', 'de', {sensitivity: "base"})); // 0
+
+// in Swedish, ä and a are separate base letters
+alert('ä'.localeCompare('a', 'sv', {sensitivity: "base"})); // a positive value
+</pre>
+<h2 id="Performance">Performance</h2>
+<p>When comparing large numbers of strings, such as in sorting large arrays, it is better to create an <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Collator" title="/en-US/docs/JavaScript/Reference/Global_Objects/Collator"><code>Intl.Collator</code></a> object and use the function provided by its <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Collator/compare" title="/en-US/docs/JavaScript/Reference/Global_Objects/Collator/compare"><code>compare</code></a> property.</p>
+<h2 id="Browser_Compatibility" name="Browser_Compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>locales</code> and <code>options</code> arguments</td>
+        <td>24</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>11</td>
+        <td>15</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>locales</code> and <code>options</code> arguments</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>26</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Collator" title="JavaScript/Reference/Global_Objects/Collator">Intl.Collator</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String">String</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Internationalization">Internationalization</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/LouisLazaris">LouisLazaris</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/edorivai">edorivai</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Norbert">Norbert</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Norbert">Norbert</a>, 
+          <time datetime="2013-07-11T17:25:31-07:00">Jul 11, 2013 5:25:31 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Norbert">Norbert</a>, 
+            <time datetime="2013-07-11T17:25:31-07:00">Jul 11, 2013 5:25:31 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="446343" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">sticky</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h3 id="Summary" name="Summary">Summary</h3>
+<p>Reflects whether or not the search is sticky (searches in strings only from the index indicated by the <code>lastIndex</code> property of this regular expression).</p>
+<table class="fullwidth-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Property of <a href="en/Core_JavaScript_1.5_Reference/Objects/RegExp">RegExp</a> instances</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p><b>Static</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.8: <code>sticky</code> is a property of a <code>RegExp</code> instance, not the <code>RegExp</code> object.</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Description" name="Description">Description</h3>
+<p><code>sticky</code> is a property of an individual regular expression object.</p>
+<p>The value of <code>sticky</code> is true if the "<code>y</code>" flag was used; otherwise, false. The "<code>y</code>" flag indicates that it matches only from the index indicated by the <code>lastIndex</code> property of this regular expression in the target string (and does not attempt to match from any later indexes). This allows the match-only-at-start capabilities of the character "<code>^</code>" to effectively be used at any location in a string by changing the value of the <code>lastIndex</code> property.</p>
+<p>You cannot change this property directly.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_a_regular_expression_with_the_.22sticky.22_flag" name="Example:_Using_a_regular_expression_with_the_.22sticky.22_flag">Example: Using a regular expression with the "sticky" flag</h3>
+<p>This example demonstrates how one could use the sticky flag on regular expressions to match individual lines of multiline input.</p>
+<pre class="brush: js">var text = "First line\nsecond line";
+var regex = /(\S+) line\n?/y;
+
+var match = regex.exec(text);
+print(match[1]);  // prints "First"
+print(regex.lastIndex); // prints 11
+
+var match2 = regex.exec(text);
+print(match2[1]); // prints "Second"
+print(regex.lastIndex); // prints "22"
+
+var match3 = regex.exec(text);
+print(match3 === null); // prints "true"
+</pre>
+<p>One can test at runtime whether the sticky flag is supported, using <code>try { … } catch { … }</code>. For this, either an <code>eval(…)</code> expression or the <code>RegExp(<var>regex-string</var>, <var>flags-string</var>)</code> syntax must be used (since the <code>/<var>regex</var>/<var>flags</var></code> notation is processed at compile-time, so it throws an exception before the <code>catch</code> block is encountered). For example:</p>
+<pre class="brush: js">var supports_sticky;
+try { RegExp('','y'); supports_sticky = true; }
+catch(e) { supports_sticky = false; }
+alert(supports_sticky); // alerts "false" in Firefox 2, "true" in Firefox 3+
+</pre>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/R%C3%A9f%C3%A9rence">Référence</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Reference">Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ostorj">ostorj</a>, <a href="/en-US/profiles/kscarfone">kscarfone</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/kscarfone">kscarfone</a>, 
+          <time datetime="2013-07-30T16:54:26-07:00">Jul 30, 2013 4:54:26 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/kscarfone">kscarfone</a>, 
+            <time datetime="2013-07-30T16:54:26-07:00">Jul 30, 2013 4:54:26 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/sticky$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

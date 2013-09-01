@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417127" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">while</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox">while (<em>condition</em>) {
+  <em>statement</em>
+}</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>condition</code></dt>
+  <dd>
+    An expression evaluated before each pass through the loop. If this condition evaluates to true, <code>statement</code> is executed. When condition evaluates to false, execution continues with the statement after the <code>while</code> loop.</dd>
+  <dt>
+    <code>statement</code></dt>
+  <dd>
+    A statement that is executed as long as the condition evaluates to true. To execute multiple statements within the loop, use a <a href="/en-US/docs/JavaScript/Reference/Statements/block" title="JavaScript/Reference/Statements/block">block</a> statement (<code>{ ... }</code>) to group those statements.</dd>
+</dl>
+<h2 id="Examples" name="Examples">Examples</h2>
+<p>The following <code>while</code> loop iterates as long as <code>n</code> is less than three.</p>
+<pre class="brush:js">var n = 0;
+var x = 0;
+
+while (n &lt; 3) {
+  n++;
+  x += n;
+}</pre>
+<p>Each iteration, the loop increments <code>n</code> and adds it to <code>x</code>. Therefore, <code>x</code> and <code>n</code> take on the following values:</p>
+<ul>
+  <li>After the first pass: <code>n</code> = 1 and <code>x</code> = 1</li>
+  <li>After the second pass: <code>n</code> = 2 and <code>x</code> = 3</li>
+  <li>After the third pass: <code>n</code> = 3 and <code>x</code> = 6</li>
+</ul>
+<p>After completing the third pass, the condition <code>n</code> &lt; 3 is no longer true, so the loop terminates.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/do...while" title="JavaScript/Reference/Statements/do...while">do...while</a>, <a href="/en-US/docs/JavaScript/Reference/Statements/for" title="JavaScript/Reference/Statements/for">for</a></li>
+</ul>
+<!--languages( { "fr": "fr/R\u00e9f\u00e9rence_de_JavaScript_1.5_Core/Instructions/while" } )-->
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/dronov">dronov</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/RJacinto">RJacinto</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:50-07:00">May 28, 2013 8:32:50 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-12-22T06:47:42-08:00">Dec 22, 2012 6:47:42 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/while$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

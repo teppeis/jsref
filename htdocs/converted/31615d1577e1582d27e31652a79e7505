@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417963" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.toString</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns a string representing the object.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>object</em>.toString()</code></pre>
+<h2 id="Description" name="Description">Description</h2>
+<p>Every object has a <code>toString()</code> method that is automatically called when the object is to be represented as a text value or when an object is referred to in a manner in which a string is expected. By default, the <code>toString()</code> method is inherited by every object descended from <code>Object</code>. If this method is not overridden in a custom object, <code>toString()</code> returns "[object <em>type</em>]", where <code><em>type</em></code> is the object type. The following code illustrates this:</p>
+<pre class="brush:js">var o = new Object();
+o.toString();           // returns [object Object]</pre>
+<div class="note">
+  Starting in JavaScript 1.8.5 <code>toString()</code> called on <code>null</code> returns <code>[object <em>Null</em>]</code>, and <code>undefined</code> returns <code>[object <em>Undefined</em>]</code>, as defined in the 5th Edition of ECMAScript and a subsequent Errata. See <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString#Using_toString_to_detect_object_type" title="JavaScript/Reference/Global Objects/Object/toString#Using toString to detect object type">Using toString to detect object type</a>.</div>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Overriding_the_default_toString_method" name="Overriding_the_default_toString_method">Overriding the default <code>toString</code> method</h3>
+<p>You can create a function to be called in place of the default <code>toString()</code> method. The <code>toString()</code> method takes no arguments and should return a string. The <code>toString()</code> method you create can be any value you want, but it will be most useful if it carries information about the object.</p>
+<p>The following code defines the <code>Dog</code> object type and creates <code>theDog</code>, an object of type <code>Dog</code>:</p>
+<pre class="brush: js">function Dog(name,breed,color,sex) {
+   this.name=name;
+   this.breed=breed;
+   this.color=color;
+   this.sex=sex;
+}
+
+theDog = new Dog("Gabby","Lab","chocolate","female");</pre>
+<p>If you call the <code>toString()</code> method on this custom object, it returns the default value inherited from <code>Object</code>:</p>
+<pre>theDog.toString(); //returns [object Object]</pre>
+<p>The following code creates and assigns <code>dogToString()</code> to override the default <code>toString()</code> method. This function generates a string containing the name, breed, color, and sex of the object, in the form "<code>property = value;</code>".</p>
+<pre class="brush: js">Dog.prototype.toString = function dogToString() {
+  var ret = "Dog " + this.name + " is a " + this.sex + " " + this.color + " " + this.breed;
+  return ret;
+}</pre>
+<p>With the preceding code in place, any time <code>theDog</code> is used in a string context, JavaScript automatically calls the <code>dogToString()</code> function, which returns the following string:</p>
+<pre>Dog Gabby is a female chocolate Lab</pre>
+<h3 id="Using_toString_to_detect_object_type" name="Using_toString_to_detect_object_type">Using toString() to detect object class</h3>
+<p><code>toString()</code> can be used with every object and allows you to get its class. To use the <code>Object.prototype.toString()</code> with every object, you need to call <code>Function.prototype.call()</code> or <code>Function.prototype.apply()</code> on it, passing the object you want to inspect as the first parameter called <code>thisArg</code>.</p>
+<pre class="brush: js">var toString = Object.prototype.toString;
+
+toString.call(new Date); // [object Date]
+toString.call(new String); // [object String]
+toString.call(Math); // [object Math]
+
+//Since JavaScript 1.8.5
+toString.call(undefined); // [object Undefined]
+toString.call(null); // [object Null]
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource" title="JavaScript/Reference/Global_Objects/Object/toSource">Object.toSource</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf" title="JavaScript/Reference/Global_Objects/Object/valueOf">Object.valueOf</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Taken">Taken</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/tokuhirom">tokuhirom</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Wyvernoid">Wyvernoid</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:27-07:00">May 28, 2013 8:33:27 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-10-06T00:37:34-07:00">Oct 6, 2012 12:37:34 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

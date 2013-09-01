@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417431" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">toString</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p>
+ </p>
+<h3 id="_Summary_"> Summary </h3>
+<p>Returns a string representing the specified object.
+</p>
+<table class="standard-table"> <thead> <tr> <th class="header">Method of <a href="/en/JavaScript/Reference/Global_Objects/RegExp"><code>RegExp</code></a></th> </tr> </thead> <tbody> <tr> <td>Implemented in</td> <td>JavaScript 1.1</td> </tr> <tr> <td>ECMAScript Edition</td> <td>ECMAScript 3rd Edition</td> </tr> </tbody>
+</table> <h3 id="_Syntax_"> Syntax </h3>
+<p><code><em>regexp</em>.toString()</code>
+</p>
+<h3 id="_Parameters_"> Parameters </h3>
+<p>None.
+</p>
+<h3 id="_Description_"> Description </h3>
+<p>The <code>RegExp</code> object overrides the <code>toString</code> method of the <code><a href="/en/JavaScript/Reference/Global_Objects/Object" title="en/JavaScript/Reference/Global_Objects/Object">Object</a></code> object; it does not inherit <code><a href="/en/JavaScript/Reference/Global_Objects/Object/toString" title="en/JavaScript/Reference/Global_Objects/Object/toString">Object.toString</a></code>. For <code>RegExp</code> objects, the <code>toString</code> method returns a string representation of the regular expression.
+</p>
+<h3 id="_Examples_"> Examples </h3>
+<h4 id="_Example.3A_Using_toString_"> Example: Using <code>toString</code> </h4>
+<p>The following example displays the string value of a <code>RegExp</code> object:
+</p>
+<pre>myExp = new RegExp("a+b+c");
+alert(myExp.toString());       // displays "/a+b+c/"
+</pre>
+<h3 id="_See_Also_"> See Also </h3>
+<p><a href="/en/JavaScript/Reference/Global_Objects/Object/toString" title="en/JavaScript/Reference/Global_Objects/Object/toString">Object.prototype.toString</a>
+</p>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:03-07:00">May 28, 2013 8:33:03 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/toString$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

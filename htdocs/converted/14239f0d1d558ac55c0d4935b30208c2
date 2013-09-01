@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417983" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.isExtensible</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator jsMinVerHeader standardNote"> 
+<p>Introduced in <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></p> 
+</div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Determines if an object is extensible (whether it can have new properties added to it).</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Object.isExtensible(<em>obj</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    obj</dt>
+  <dd>
+    The object which should be checked.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Objects are extensible by default: they can have new properties added to them, and (in engines that support <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/proto" title="JavaScript/Reference/Global Objects/Object/proto">__proto__</a></code> <span class="inlineIndicator deprecated deprecatedInline" title="">Deprecated</span> their __proto__ property) can be modified. An object can be marked as non-extensible using <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/preventExtensions" title="JavaScript/Reference/Global Objects/Object/preventExtensions"><code>Object.preventExtensions</code></a>, <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/seal" title="JavaScript/Reference/Global Objects/Object/seal"><code>Object.seal</code></a>, or <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/freeze" title="JavaScript/Reference/Global Objects/Object/freezed"><code>Object.freeze</code></a>.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<pre class="brush: js">// New objects are extensible.
+var empty = {};
+assert(Object.isExtensible(empty) === true);
+
+// ...but that can be changed.
+Object.preventExtensions(empty);
+assert(Object.isExtensible(empty) === false);
+
+// Sealed objects are by definition non-extensible.
+var sealed = Object.seal({});
+assert(Object.isExtensible(sealed) === false);
+
+// Frozen objects are also by definition non-extensible.
+var frozen = Object.freeze({});
+assert(Object.isExtensible(frozen) === false);
+</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <div class="htab"> 
+    <a name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox (Gecko)</th>
+        <th>Chrome</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>4 (2.0)</td>
+        <td>6</td>
+        <td>9</td>
+        <td>12</td>
+        <td>5.1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>Android</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat table</a>.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><strong><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/preventExtensions" title="JavaScript/Reference/Global Objects/Object/preventExtensions"><code>Object.preventExtensions</code></a></strong></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/seal" title="JavaScript/Reference/Global Objects/Object/seal"><code>Object.seal</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isSealed" title="JavaScript/Reference/Global Objects/Object/isSealed"><code>Object.isSealed</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/freeze" title="JavaScript/Reference/Global Objects/Object/freezed"><code>Object.freeze</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isFrozen" title="JavaScript/Reference/Global Objects/Object/isFrozen"><code>Object.isFrozen</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.8.5">JavaScript 1.8.5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/JamesWatts">JamesWatts</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/gugu">gugu</a>, <a href="/en-US/profiles/Crash">Crash</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:28-07:00">May 28, 2013 8:33:28 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-12-23T06:53:19-08:00">Dec 23, 2012 6:53:19 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isExtensible$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417063" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">var</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Declares a variable, optionally initializing it to a value.</p>
+<h2 id="Version_Information">Version Information</h2>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.0, NES 2.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<p><code>var <em>varname1 [</em>= <em>value1 [</em>, <em>varname2 [</em>, <em>varname3 ... [</em>, <em>varnameN]]]]</em>;</code></p>
+<h2 id="Parameters" name="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>varnameN</code></dt>
+  <dd>
+    Variable name. It can be any legal identifier.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>valueN</code></dt>
+  <dd>
+    Initial value of the variable. It can be any legal expression.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The scope of a variable declared with <code>var</code> is the enclosing function or, for variables declared outside a function, the global scope (which is bound to the global object).</p>
+<p>Using <code>var</code> outside a function is optional; assigning a value to an undeclared variable implicitly declares it as a global variable (it is now a property of the global object). The difference is that a declared variable is a non-configurable property of the global object while an undeclared is configurable.</p>
+<pre class="brush: js">var a = 1;
+b = 2;
+
+delete this.a; // Throws a TypeError in strict mode. Fails silently otherwise.
+delete this.b;
+
+console.log(a, b); // Throws a ReferenceError. Since the 'b' property doesn't exist in the global object,
+// the 'b' variable stops being a variable
+</pre>
+<p>Consequently, it is recommended to always declare your variables, regardless of being in the global scope or in a function</p>
+<p>Failure to declare the variable in these cases will very likely lead to unexpected results. For that reason, in ECMAScript 5 <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode" title="Strict mode">strict mode</a>, assigning a value an undeclared variable inside a function throws an error.</p>
+<h3 id="var_hoisting">var hoisting</h3>
+<p>In JavaScript, variable can be declared after being used.</p>
+<pre class="brush: js">bla = 2
+var bla;
+// ...
+
+// is implicitly understood as:
+
+var bla;
+bla = 2;
+</pre>
+<p>For that reason, it is recommended to always declare variable at the top of functions. Otherwise, it may lead to confusing cases:</p>
+<pre class="brush: js">var cells = document.getElementsByTagName('td');
+
+for(var i=0; i&lt;cells.length; i++){
+  var cell = cells[i];
+  cell.addEventListener('click', function(){
+    cell.style.backgroundColor = '#00F'; // which 'cell' ?
+  }, false);
+}
+</pre>
+<p>Here, while the intention is to capture the 'local' cell within the loop, what happened is the following:</p>
+<pre class="brush: js">var i, cell;
+var cells = document.getElementsByTagName('td');
+
+for(i=0; i&lt;cells.length; i++){
+  cell = cells[i];
+  cell.addEventListener('click', function(){
+    cell.style.backgroundColor = '#00F';
+  }, false);
+}
+</pre>
+<p>The 'cell' captured in the event listener is the global 'cell' variable which, at the end of the loop contains the last cell traversed in the loop. Consequently, clicking on any cell will only affect the last cell.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<p>Declaring and initializing two variables:</p>
+<pre class="brush: js">var a = 0, b = 0;
+</pre>
+<p>Assigning 2 variables with single string value.</p>
+<pre class="brush: js">var a = "A";
+var b = a;
+
+// Equivalent to:
+
+var a, b = a = "A";
+</pre>
+<p>Be careful of the order though:</p>
+<pre class="brush: js">var x = y, y = 'A';
+console.log(x + y); // undefinedA
+
+// Here, x is declared. y declaration (but not initialisation!) is hoisted
+// so, at the time of "x = y", y is declared (no ReferenceError is thrown) and its value is 'undefined'
+// then, y is assigned its value.
+// Consequently, after the first line, x === undefined &amp;&amp; y === 'A'. Hence the concatenation
+</pre>
+<p>Be careful of initialization of several variables:</p>
+<pre class="brush: js">var x = 0;
+
+function f(){
+  var x = y = 1; // x is declared locally. y is not!
+}
+f();
+
+console.log(x, y); // 0, 1
+// x is the global one as expected
+// y leaked outside of the function, though!
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/let" title="en/JavaScript/Reference/Statements/let"><code>let</code></a></li>
+  <li><code><a href="/en-US/docs/JavaScript/Reference/Statements/const" title="en/Core_JavaScript_1.5_Reference/Statements/const">const</a></code></li>
+  <li><a class="external" href="http://blog.safeshepherd.com/post/12175941935/how-one-missing-var-ruined-our-launch" title="http://blog.safeshepherd.com/post/12175941935/how-one-missing-var-ruined-our-launch">How One Missing `var` Ruined our Launch</a>.</li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/user01">user01</a>, <a href="/en-US/profiles/Anonymous">Anonymous</a>, <a href="/en-US/profiles/Takenbot">Takenbot</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/Julien.stuby">Julien.stuby</a>, <a href="/en-US/profiles/bobbykjack">bobbykjack</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Vdragon">Vdragon</a>, <a href="/en-US/profiles/RJacinto">RJacinto</a>, <a href="/en-US/profiles/shulbert">shulbert</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Matej%20Lednar">Matej Lednar</a>, <a href="/en-US/profiles/icarot">icarot</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:47-07:00">May 28, 2013 8:32:47 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/icarot">icarot</a>, 
+            <time datetime="2013-05-18T02:59:59-07:00">May 18, 2013 2:59:59 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/var$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

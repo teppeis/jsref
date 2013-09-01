@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417823" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">String.link</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Creates an <a class="external" href="http://www.w3.org/TR/html401/struct/links.html#adef-href">HTML hypertext link</a> that requests another URL.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en/JavaScript/Reference/Global_Objects/String"><code>String</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>none</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>link(<em>hrefAttribute</em>) </code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>hrefAttribute</code></dt>
+  <dd>
+    Any string that specifies the <code>HREF</code> of the <code>A</code> tag; it should be a valid URL (relative or absolute), with any <code>&amp;</code> characters escaped as <code>&amp;amp;</code>, and any <code>"</code> characters escaped as <code>&amp;quot;</code>. <span class="inlineIndicator standardNote standardNoteInline">New in <a class="external" href="http://developer.mozilla.org/en-US/docs/Firefox_17_for_developers">Firefox 17</a></span> The <strong>"</strong> (quotation mark) is now automatically replaced by its HTML reference character <code>&amp;quot;</code></dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Use the <code>link</code> method to create an HTML snippet for a hypertext link. The returned string can then be added to the document via <code><a href="/en-US/docs/DOM/document.write" title="/en-US/docs/DOM/document.write">document.write</a></code> or <code><a href="/en-US/docs/DOM/element.innerHTML" title="/en-US/docs/DOM/element.innerHTML">element.innerHTML</a></code>.</p>
+<p>Links created with the <code>link</code> method become elements in the <code>links</code> array of the <code>document</code> object. See <code><a href="/en-US/docs/DOM/document.links" title="/en-US/docs/DOM/document.links">document.links</a></code>.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_link" name="Example:_Using_link">Example: Using <code>link</code></h3>
+<p>The following example displays the word "MDN" as a hypertext link that returns the user to the MOZILLA DEVELOPER NETWORK</p>
+<pre class="brush:js">var hotText = "MDN";
+var URL = "https://developer.mozilla.org/";
+
+document.write("Click to return to " + hotText.link(URL));</pre>
+<p>This example produces the same output as the following HTML:</p>
+<pre>Click to return to &lt;a href="https://developer.mozilla.org/"&gt;MDN&lt;/a&gt;</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/anchor" title="String.anchor | JavaScript | MDN">String.anchor</a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/String%20Methods">String Methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/mathiasbynens">mathiasbynens</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Prodoc">Prodoc</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:20-07:00">May 28, 2013 8:33:20 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/evilpie">evilpie</a>, 
+            <time datetime="2012-12-11T11:21:02-08:00">Dec 11, 2012 11:21:02 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/link$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417427" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">RegExp.exec</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Executes a search for a match in a specified string. Returns a result array, or <code>null</code>.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp" title="JavaScript/Reference/Global_Objects/RegExp"><code>RegExp</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>result</em> = <em>regexp</em>.exec(<em>str</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>regexp</code></dt>
+  <dd>
+    The name of the regular expression. It can be a variable name or a literal.</dd>
+  <dt>
+    <code>str</code></dt>
+  <dd>
+    The string against which to match the regular expression.</dd>
+</dl>
+<h3 id="Description" name="Description">Return value</h3>
+<p>If the match succeeds, the <code>exec</code> method returns an array and updates properties of the regular expression object. The returned array has the matched text as the first item, and then one item for each capturing parenthesis that matched containing the text that was captured.</p>
+<p>If the match fails, the <code>exec</code> method returns <code>null</code>.</p>
+<p>If you are executing a match simply to find true or false, use the <code>RegExp</code> <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp/test" title="JavaScript/Reference/Global_Objects/RegExp/test">test</a></code> method or the <code>String</code> <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/search" title="JavaScript/Reference/Global_Objects/String/search">search</a></code> method.</p>
+<p>Consider the following example:</p>
+<pre class="brush: js">// Match one d followed by one or more b's followed by one d
+// Remember matched b's and the following d
+// Ignore case
+var re = /d(b+)(d)/ig;
+var result = re.exec("cdbBdbsbz");
+</pre>
+<p>The following table shows the results for this script:</p>
+<table class="fullwidth-table">
+  <tbody>
+    <tr>
+      <td class="header">Object</td>
+      <td class="header">Property/Index</td>
+      <td class="header">Description</td>
+      <td class="header">Example</td>
+    </tr>
+    <tr>
+      <td rowspan="4"><code>result</code></td>
+      <td><code>[0]</code></td>
+      <td>The last matched characters</td>
+      <td><code>dbBd</code></td>
+    </tr>
+    <tr>
+      <td><code>[1], ...[<i>n</i>]</code></td>
+      <td>The parenthesized substring matches, if any. The number of possible parenthesized substrings is unlimited.</td>
+      <td><code>[1] = bB<br/>
+        [2] = d</code></td>
+    </tr>
+    <tr>
+      <td><code>index</code></td>
+      <td>The 0-based index of the match in the string.</td>
+      <td><code>1</code></td>
+    </tr>
+    <tr>
+      <td><code>input</code></td>
+      <td>The original string.</td>
+      <td><code>cdbBdbsbz</code></td>
+    </tr>
+    <tr>
+      <td rowspan="5"><code>re</code></td>
+      <td><code>lastIndex</code></td>
+      <td>The index at which to start the next match.</td>
+      <td><code>5</code></td>
+    </tr>
+    <tr>
+      <td><code>ignoreCase</code></td>
+      <td>Indicates if the "<code>i</code>" flag was used to ignore case.</td>
+      <td><code>true</code></td>
+    </tr>
+    <tr>
+      <td><code>global</code></td>
+      <td>Indicates if the "<code>g</code>" flag was used for a global match.</td>
+      <td><code>true</code></td>
+    </tr>
+    <tr>
+      <td><code>multiline</code></td>
+      <td>Indicates if the "<code>m</code>" flag was used to search in strings across multiple line.</td>
+      <td><code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>source</code></td>
+      <td>The text of the pattern.</td>
+      <td><code>d(b+)(d)</code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Notes">Notes</h2>
+<h3 id="Finding_successive_matches">Finding successive matches</h3>
+<p>If your regular expression uses the "<code>g</code>" flag, you can use the <code>exec</code> method multiple times to find successive matches in the same string. When you do so, the search starts at the substring of <code>str</code> specified by the regular expression's <code>lastIndex</code> property (<code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp/test" title="JavaScript/Reference/Global_Objects/RegExp/test">test</a></code> will also advance the <code>lastIndex</code> property). For example, assume you have this script:</p>
+<pre class="brush: js">var myRe = /ab*/g;
+var str = "abbcdefabh";
+var myArray;
+while ((myArray = myRe.exec(str)) !== null)
+{
+  var msg = "Found " + myArray[0] + ".  ";
+  msg += "Next match starts at " + myRe.lastIndex;
+  console.log(msg);
+}
+</pre>
+<p>This script displays the following text:</p>
+<pre>Found abb. Next match starts at 3
+Found ab. Next match starts at 9
+</pre>
+<p>Note: Do not place the regular expression literal (or <code>RegExp</code> constructor) within the <code>while</code> condition or it will create an infinite loop if there is a match due to the <code>lastIndex</code> property being reset upon each iteration.</p>
+<h3 id="Using_exec()_with_RegExp_literals">Using exec() with RegExp literals</h3>
+<p>You can also use <code>exec()</code> without creating a RegExp object:</p>
+<pre class="brush: js">var matches = /(hello \S+)/.exec('This is a hello world!');
+alert(matches[1]);</pre>
+<p>This will display an alert containing 'hello world!';</p>
+<h3 id="Calling_exec()_with_no_parameters_in_old_Gecko_versions">Calling exec() with no parameters in old Gecko versions</h3>
+<div class="geckoVersionNote">
+  <p/><div class="geckoVersionHeading"> 
+Gecko 8.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 8.0 / Thunderbird 8.0 / SeaMonkey 2.5)</div> 
+</div><p/>
+  <p>Prior to Gecko 8.0 (Firefox 8.0 / Thunderbird 8.0 / SeaMonkey 2.5), <code>exec()</code> was implemented incorrectly; when it was called with no parameters, it would match against the value of the previous input (RegExp.input property) instead of against the string "undefined". This is fixed; now <code>/undefined/.exec()</code> correctly results in <code>['undefined']</code>, instead of an error.</p>
+</div>
+<p> </p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Regular%20Expressions">Regular Expressions</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Pbb">Pbb</a>, <a href="/en-US/profiles/Deltab">Deltab</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/SylvainPasche">SylvainPasche</a>, <a href="/en-US/profiles/danieljohansson">danieljohansson</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/jablko">jablko</a>, <a href="/en-US/profiles/feystorm">feystorm</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Ziesemer">Ziesemer</a>, <a href="/en-US/profiles/SteveL">SteveL</a>, <a href="/en-US/profiles/~s.o.s~">~s.o.s~</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Dynamis">Dynamis</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Bzbarsky">Bzbarsky</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:02-07:00">May 28, 2013 8:33:02 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Nickolay">Nickolay</a>, 
+            <time datetime="2013-02-24T06:56:13-08:00">Feb 24, 2013 6:56:13 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

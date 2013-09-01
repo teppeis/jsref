@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="439837" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Number.prototype.toLocaleString</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns a string with a language sensitive representation of this number. The new <code>locales</code> and <code>options</code> arguments let applications specify the language whose formatting conventions should be used and customize the behavior of the function. In older implementations, which ignore the <code>locales</code> and <code>options</code> arguments, the locale used and the form of the string returned are entirely implementation dependent.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en/JavaScript/Reference/Global_Objects/Number" title="en/JavaScript/Reference/Global_Objects/Number"><code>Number</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.5</td>
+    </tr>
+    <tr>
+      <td rowspan="2">ECMAScript Edition</td>
+      <td>ECMAScript Language Specification, 3<sup>rd</sup> Edition</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Internationalization API Specification, 1<sup>st</sup> Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>number</em>.toLocaleString(</code><code>[locales [, options]])</code></pre>
+<h3 id="Parameters">Parameters</h3>
+<p>Check the <a href="#Browser_Compatibility" title="#Browser_Compatibility">Browser compatibility</a> section to see which browsers support the <code>locales</code> and <code>options</code> arguments, and the <a href="#Example:_Checking_for_support_for_locales_and_options_arguments">Example: Checking for support for <code>locales</code> and <code>options</code> arguments</a> for feature detection.</p>
+<p/><dl><dt>
+    <code>locales</code></dt>
+  <dd>
+    <p>A string with a BCP 47 language tag, or an array of such strings. For the general form and interpretation of the <code>locales</code> argument, see the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation" title="/Intl#Functionality_common_to_internationalization_constructors">Intl page</a>. The following Unicode extension key is allowed:</p>
+    <dl><dt>
+        nu</dt>
+      <dd>
+        The numbering system to be used. Possible values include: "arab", "arabext", "bali", "beng", "deva", "fullwide", "gujr", "guru", "hanidec", "khmr", "knda", "laoo", "latn", "limb", "mlym", "mong", "mymr", "orya", "tamldec", "telu", "thai", "tibt".</dd>
+    </dl></dd>
+  <dt>
+    <code>options</code></dt>
+  <dd>
+    <p>An object with some or all of the following properties:</p>
+    <dl><dt>
+        <code>localeMatcher</code></dt>
+      <dd>
+        The locale matching algorithm to use. Possible values are "lookup" and "best fit"; the default is "best fit". For information about this option, see the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation" title="/en-US/docs/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation">Intl page</a>.</dd>
+      <dt>
+        <code>style</code></dt>
+      <dd>
+        The formatting style to use. Possible values are "decimal" for plain number formatting, "currency" for currency formatting, and "percent" for percent formatting; the default is "decimal".</dd>
+      <dt>
+        <code>currency</code></dt>
+      <dd>
+        The currency to use in currency formatting. Possible values are the ISO 4217 currency codes, such as "USD" for the US dollar, "EUR" for the euro, or "CNY" for the Chinese RMB - see the <a class="external" href="http://www.currency-iso.org/en/home/tables/table-a1.html" title="http://www.currency-iso.org/en/home/tables/table-a1.html">Current currency &amp; funds code list</a>. There is no default value; if the <code>style</code> is "currency", the <code>currency</code> property must be provided.</dd>
+      <dt>
+        <code>currencyDisplay</code></dt>
+      <dd>
+        How to display the currency in currency formatting. Possible values are "symbol" to use a localized currency symbol such as €, "code" to use the ISO currency code, "name" to use a localized currency name such as "dollar"; the default is "symbol".</dd>
+      <dt>
+        <code>useGrouping</code></dt>
+      <dd>
+        Whether to use grouping separators, such as thousands separators or thousand/lakh/crore separators. Possible values are <code>true</code> and <code>false</code>; the default is <code>true</code>.</dd>
+    </dl><p>The following properties fall into two groups: <code>minimumIntegerDigits</code>, <code>minimumFractionDigits</code>, and <code>maximumFractionDigits</code> in one group, <code>minimumSignificantDigits</code> and <code>maximumSignificantDigits</code> in the other. If at least one property from the second group is defined, then the first group is ignored.</p>
+    <dl><dt>
+        <code>minimumIntegerDigits</code></dt>
+      <dd>
+        The minimum number of integer digits to use. Possible values are from 1 to 21; the default is 1.</dd>
+      <dt>
+        <code>minimumFractionDigits</code></dt>
+      <dd>
+        The minimum number of fraction digits to use. Possible values are from 0 to 20; the default for plain number and percent formatting is 0; the default for currency formatting is the number of minor unit digits provided by the <a class="external" href="http://www.currency-iso.org/en/home/tables/table-a1.html" title="http://www.currency-iso.org/en/home/tables/table-a1.html">ISO 4217 currency code list</a> (2 if the list doesn't provide that information).</dd>
+      <dt>
+        <code>maximumFractionDigits</code></dt>
+      <dd>
+        The maximum number of fraction digits to use. Possible values are from 0 to 20; the default for plain number formatting is the larger of <code>minimumFractionDigits</code> and 3; the default for currency formatting is the larger of <code>minimumFractionDigits</code> and the number of minor unit digits provided by the <a class="external" href="http://www.currency-iso.org/en/home/tables/table-a1.html" title="http://www.currency-iso.org/en/home/tables/table-a1.html">ISO 4217 currency code list</a> (2 if the list doesn't provide that information); the default for percent formatting is the larger of <code>minimumFractionDigits</code> and 0.</dd>
+      <dt>
+        <code>minimumSignificantDigits</code></dt>
+      <dd>
+        The minimum number of significant digits to use. Possible values are from 1 to 21; the default is 1.</dd>
+      <dt>
+        <code>maximumSignificantDigits</code></dt>
+      <dd>
+        The maximum number of significant digits to use. Possible values are from 1 to 21; the default is <code>minimumSignificantDigits</code>.</dd>
+    </dl></dd>
+</dl><p/>
+<h2 id="Examples" name="Examples">Examples</h2>
+<p>In basic use without specifying a locale, a formatted string in the default locale and with default options is returned.</p>
+<pre class="brush: js">var number = 3500;
+
+console.log(number.toLocaleString()); // Displays "3,500" if in U.S. English locale
+</pre>
+<h3 id="Example:_Checking_for_support_for_locales_and_options_arguments" name="Example:_Checking_for_support_for_locales_and_options_arguments">Example: Checking for support for <code>locales</code> and <code>options</code> arguments</h3>
+<p>The <code>locales</code> and <code>options</code> arguments are not supported in all browsers yet. To check whether an implementation supports them already, you can use the requirement that illegal language tags are rejected with a <code>RangeError</code> exception:</p>
+<pre class="brush: js">function toLocaleStringSupportsLocales() {
+    var number = 0;
+    try {
+        number.toLocaleString("i");
+    } catch (e) {
+        return e​.name === "RangeError";
+    }
+    return false;
+}
+</pre>
+<h3 id="Example:_Using_locales" name="Example:_Using_locales">Example: Using <code>locales</code></h3>
+<p>This example shows some of the variations in localized number formats. In order to get the format of the language used in the user interface of your application, make sure to specify that language (and possibly some fallback languages) using the <code>locales</code> argument:</p>
+<pre class="brush: js">var number = 123456.789;
+
+// German uses comma as decimal separator and period for thousands
+alert(number.toLocaleString("de-DE"));
+// → 123.456,789
+
+// Arabic in most Arabic speaking countries uses real Arabic digits
+alert(number.toLocaleString("ar-EG"));
+// → ١٢٣٤٥٦٫٧٨٩
+
+// India uses thousands/lakh/crore separators
+alert(number.toLocaleString("en-IN"));
+// → 1,23,456.789
+
+// the nu extension key requests a numbering system, e.g. Chinese decimal
+alert(number.toLocaleString("zh-Hans-CN-u-nu-hanidec"));
+// → 一二三,四五六.七八九
+
+// when requesting a language that may not be supported, such as
+// Balinese, include a fallback language, in this case Indonesian
+alert(number.toLocaleString(["ban", "id"]));
+// → 123.456,789
+</pre>
+<h3 id="Example:_Using_options" name="Example:_Using_options">Example: Using <code>options</code></h3>
+<p>The results provided by <code>toLocaleString</code> can be customized using the <code>options</code> argument:</p>
+<pre class="brush: js">var number = 123456.789;
+
+// request a currency format
+alert(number.toLocaleString("de-DE", {style: "currency", currency: "EUR"}));
+// → 123.456,79 €
+
+// the Japanese yen doesn't use a minor unit
+alert(number.toLocaleString("ja-JP", {style: "currency", currency: "JPY"}))
+// → ￥123,457
+
+// limit to three significant digits
+alert(number.toLocaleString("en-IN", {maximumSignificantDigits: 3}));
+// → 1,23,000
+</pre>
+<h2 id="Performance" name="Performance">Performance</h2>
+<p>When formatting large numbers of numbers, it is better to create an <a href="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat" title="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat"><code>Intl.NumberFormat</code></a> object and use the function provided by its <a href="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat/format" title="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat/format"><code>format</code></a> property.</p>
+<h2 id="Browser_Compatibility" name="Browser_Compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>locales</code> and <code>options</code> arguments</td>
+        <td>24</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>11</td>
+        <td>15</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><code>locales</code> and <code>options</code> arguments</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td>26</td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat" title="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat">Intl.NumberFormat</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toString" title="JavaScript/Reference/Global_Objects/Number/toString">Number.toString()</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Internationalization">Internationalization</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Number%20Methods">Number Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Number">Number</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/aseville">aseville</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Norbert">Norbert</a>, <a href="/en-US/profiles/Nfroidure">Nfroidure</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Norbert">Norbert</a>, 
+          <time datetime="2013-07-11T17:24:12-07:00">Jul 11, 2013 5:24:12 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Norbert">Norbert</a>, 
+            <time datetime="2013-07-11T17:24:12-07:00">Jul 11, 2013 5:24:12 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

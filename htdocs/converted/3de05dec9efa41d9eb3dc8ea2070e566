@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417539" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Array push method</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Mutates an array by appending the given elements and returning the new length of the array.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en/JavaScript/Reference/Global_Objects/Array" title="en/JavaScript/Reference/Global_Objects/Array"><code>Array</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>array</em>.push(<em>element1</em>, ..., <em>elementN</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>element1, ..., element<em>N</em></code></dt>
+  <dd>
+    The elements to add to the end of the array.</dd>
+</dl>
+<h2 id="Returns">Returns</h2>
+<p>The new <code><a href="/en/JavaScript/Reference/Global_Objects/Array/length" title="en/JavaScript/Reference/Global_Objects/Array/length">length</a></code> property of the object upon which the method was called.</p>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>push</code> method is useful for easily appending values to an array.</p>
+<p><code>push</code> is intentionally generic. This method can be <a href="/en/JavaScript/Reference/Global_Objects/Function/call" title="en/JavaScript/Reference/Global_Objects/Function/call">called</a> or <a href="/en/JavaScript/Reference/Global_Objects/Function/apply" title="en/JavaScript/Reference/Global_Objects/Function/apply">applied</a> to objects resembling arrays. The <code>push</code> method relies on a <code>length</code> property to determine where to start inserting the given values. If the <code>length</code> property cannot be converted into a number, the index used is 0. This includes the possibility of <code>length</code> being nonexistent, in which case <code>length</code> will also be created.</p>
+<p>The only native, array-like objects are <a href="/En/Core_JavaScript_1.5_Reference/Global_Objects/String" title="En/Core_JavaScript_1.5_Reference/Global_Objects/String">strings</a>, although they are not suitable in applications of this method, as strings are immutable.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Adding_elements_to_an_array" name="Example:_Adding_elements_to_an_array">Example: Adding elements to an array</h3>
+<p>The following code creates the <code>sports</code> array containing two elements, then appends two elements to it. After the code executes, <code>sports</code> contains 4 elements: "soccer", "baseball", "football" and "swimming".</p>
+<pre class="brush: js">var sports = ["soccer", "baseball"];
+sports.push("football", "swimming");
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en/JavaScript/Reference/Global_Objects/Array/pop" title="en/JavaScript/Reference/Global_Objects/Array/pop">pop</a></li>
+  <li><a href="/en/JavaScript/Reference/Global_Objects/Array/shift" title="en/JavaScript/Reference/Global_Objects/Array/shift">shift</a></li>
+  <li><a href="/en/JavaScript/Reference/Global_Objects/Array/unshift" title="en/JavaScript/Reference/Global_Objects/Array/unshift">unshift</a></li>
+  <li><a href="/en/JavaScript/Reference/Global_Objects/Array/concat" title="en/JavaScript/Reference/Global_Objects/Array/concat">concat</a></li>
+</ul>
+<!--languages({
+"fr": "fr/R\u00e9f\u00e9rence_de_JavaScript_1.5_Core/Objets_globaux/Array/push",
+})-->
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array%20methods">Array methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/mfollett">mfollett</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/thelastnode">thelastnode</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Displague">Displague</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Ggranum">Ggranum</a>, <a href="/en-US/profiles/madarche">madarche</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:07-07:00">May 28, 2013 8:33:07 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-10-20T13:55:51-07:00">Oct 20, 2012 1:55:51 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

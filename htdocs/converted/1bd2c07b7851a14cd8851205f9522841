@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418143" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Math.round</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns the value of a number rounded to the nearest integer.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math"><code>Math</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Math.round(<em>x</em>) </code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>x</code></dt>
+  <dd>
+    A number.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>If the fractional portion of <code>number</code> is .5 or greater, the argument is rounded to the next higher integer. If the fractional portion of <code>number</code> is less than .5, the argument is rounded to the next lower integer.</p>
+<p>Because <code>round</code> is a static method of <code>Math</code>, you always use it as <code>Math.round()</code>, rather than as a method of a <code>Math</code> object you created.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_Math.round" name="Example:_Using_Math.round">Example: Using <code>Math.round</code></h3>
+<pre class="brush:js">// Returns the value 20
+x = Math.round(20.49);
+
+// Returns the value 21
+x = Math.round(20.5);
+
+// Returns the value -20
+x = Math.round(-20.5);
+
+// Returns the value -21
+x = Math.round(-20.51)</pre>
+<h3 id="Example:_Decimal_rounding" name="Example:_Decimal_rounding">Example: Decimal rounding</h3>
+<pre class="brush:js">// Closure
+(function(){
+
+	/**
+	 * Decimal adjustment of a number.
+	 *
+	 * @param	{String}	type	The type of adjustment.
+	 * @param	{Number}	value	The number.
+	 * @param	{Integer}	exp		The exponent (the 10 logarithm of the adjustment base).
+	 * @returns	{Number}			The adjusted value.
+	 */
+	function decimalAdjust(type, value, exp) {
+		// If the exp is undefined or zero...
+		if (typeof exp === 'undefined' || +exp === 0) {
+			return Math[type](value);
+		}
+		value = +value;
+		exp = +exp;
+		// If the value is not a number or the exp is not an integer...
+		if (isNaN(value) || !(typeof exp === 'number' &amp;&amp; exp % 1 === 0)) {
+			return NaN;
+		}
+		// Shift
+		value = value.toString().split('e');
+		value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+		// Shift back
+		value = value.toString().split('e');
+		return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+	}
+
+	// Decimal round
+	if (!Math.round10) {
+		Math.round10 = function(value, exp) {
+			return decimalAdjust('round', value, exp);
+		};
+	}
+	// Decimal floor
+	if (!Math.floor10) {
+		Math.floor10 = function(value, exp) {
+			return decimalAdjust('floor', value, exp);
+		};
+	}
+	// Decimal ceil
+	if (!Math.ceil10) {
+		Math.ceil10 = function(value, exp) {
+			return decimalAdjust('ceil', value, exp);
+		};
+	}
+
+})();
+
+// Round
+Math.round10(55.55, -1); // 55.6
+Math.round10(55.549, -1); // 55.5
+Math.round10(55, 1); // 60
+Math.round10(54.9, 1); // 50
+Math.round10(-55.55, -1); // -55.5
+Math.round10(-55.551, -1); // -55.6
+Math.round10(-55, 1); // -50
+Math.round10(-55.1, 1); // -60
+// Floor
+Math.floor10(55.59, -1); // 55.5
+Math.floor10(59, 1); // 50
+Math.floor10(-55.51, -1); // -55.6
+Math.floor10(-51, 1); // -60
+// Ceil
+Math.ceil10(55.51, -1); // 55.6
+Math.ceil10(51, 1); // 60
+Math.ceil10(-55.59, -1); // -55.5
+Math.ceil10(-59, 1); // -50
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math/abs">Math.abs</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math/ceil">Math.ceil</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math/floor">Math.floor</a></li>
+</ul>
+<!-- languages({
+	"fr": "fr/R\u00e9f\u00e9rence_de_JavaScript_1.5_Core/Objets_globaux/Math/round"
+}) -->
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Math">Math</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Math%20Methods">Math Methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/haasz">haasz</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/crumpled">crumpled</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Naesten">Naesten</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Kyodev">Kyodev</a>, <a href="/en-US/profiles/Webmonkey">Webmonkey</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:35-07:00">May 28, 2013 8:33:35 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/haasz">haasz</a>, 
+            <time datetime="2013-03-07T16:38:31-08:00">Mar 7, 2013 4:38:31 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

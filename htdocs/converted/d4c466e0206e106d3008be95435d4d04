@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417939" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Additional examples</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p>This page provides additional examples for <a href="/en/JavaScript/Reference/Global_Objects/Object/defineProperty" title="defineProperty">Object.defineProperty</a></p>
+<h2 id="Using_binary_flags_instead_of_a_property_descriptor_object">Using binary flags instead of a property descriptor object</h2>
+<p>If you have to define many properties through the <code>Object.defineProperty()</code> method, you can use the same descriptor object for each property, redefining it from time to time through <a href="/en/JavaScript/Reference/Operators/Bitwise_Operators#Signed_32-bit_integers" title="en/JavaScript/Reference/Operators/Bitwise_Operators#Signed_32-bit_integers">binary flags</a>.</p>
+<pre class="brush: js">var oDesc = {};
+function setProp (nMask, oObj, sKey, vVal_fGet, fSet) {
+  if (nMask &amp; 8) {
+    // accessor descriptor
+    if (vVal_fGet) {
+      oDesc.get = vVal_fGet;
+    } else {
+      delete oDesc.get;
+    }
+    if (fSet) {
+      oDesc.set = fSet;
+    } else {
+      delete oDesc.set;
+    }
+    delete oDesc.value;
+    delete oDesc.writable;
+  } else {
+    // data descriptor
+    if (arguments.length &gt; 3) {
+      oDesc.value = vVal_fGet;
+    } else {
+      delete oDesc.value;
+    }
+    oDesc.writable = Boolean(nMask &amp; 4);
+    delete oDesc.get;
+    delete oDesc.set;
+  }
+  oDesc.enumerable = Boolean(nMask &amp; 1);
+  oDesc.configurable = Boolean(nMask &amp; 2);
+  Object.defineProperty(oObj, sKey, oDesc);
+  return oObj;
+}
+
+/*
+* :: function setProp ::
+*
+* nMask is a bitmask:
+*  flag 0x1: property is enumerable,
+*  flag 0x2: property is configurable,
+*  flag 0x4: property is writable,
+*  flag 0x8: property is accessor descriptor.
+* oObj is the object on which to define the property;
+* sKey is the name of the property to be defined or modified;
+* vVal_fGet is the value to assign to a data descriptor or the getter function to assign to an accessor descriptor (depending on the bitmask);
+* fSet is the setter function to assign to an accessor descriptor;
+*
+* Bitmask possible values:
+*
+*  0  : readonly data descriptor - not configurable, not enumerable (0000).
+*  1  : readonly data descriptor - not configurable, enumerable (0001).
+*  2  : readonly data descriptor - configurable, not enumerable (0010).
+*  3  : readonly data descriptor - configurable, enumerable (0011).
+*  4  : writable data descriptor - not configurable, not enumerable (0100).
+*  5  : writable data descriptor - not configurable, enumerable (0101).
+*  6  : writable data descriptor - configurable, not enumerable (0110).
+*  7  : writable data descriptor - configurable, enumerable (0111).
+*  8  : accessor descriptor - not configurable, not enumerable (1000).
+*  9  : accessor descriptor - not configurable, enumerable (1001).
+*  10 : accessor descriptor - configurable, not enumerable (1010).
+*  11 : accessor descriptor - configurable, enumerable (1011).
+*
+*  Note: If the flag 0x8 is setted to "accessor descriptor" the flag 0x4 (writable)
+*  will be ignored. If not, the fSet argument will be ignored.
+*/
+
+// creating a new empty object
+var myObj = {};
+
+// adding a writable data descriptor - not configurable, not enumerable
+setProp(4, myObj, "myNumber", 25);
+
+// adding a readonly data descriptor - not configurable, enumerable
+setProp(1, myObj, "myString", "Hello world!");
+
+// adding an accessor descriptor - not configurable, enumerable
+setProp(9, myObj, "myArray", function() {
+  for (var iBit = 0, iFlag = 1, aBoolArr = [false];
+        iFlag &lt; this.myNumber + 1 || (this.myNumber &amp; iFlag); iFlag = iFlag &lt;&lt; 1) {
+    aBoolArr[iBit++] = Boolean(this.myNumber &amp; iFlag);
+  }
+  return aBoolArr;
+}, function(aNewMask) {
+  for (var nNew = 0, iBit = 0; iBit &lt; aNewMask.length; iBit++) {
+    nNew |= Boolean(aNewMask[iBit]) &lt;&lt; iBit;
+  }
+  this.myNumber = nNew;
+});
+
+// adding a writable data descriptor (undefined value) - configurable, enumerable
+setProp(7, myObj, "myUndefined");
+
+// adding an accessor descriptor (only getter) - configurable, enumerable
+setProp(11, myObj, "myDate", function() { return new Date(); });
+
+// adding an accessor descriptor (only setter) - not configurable, not enumerable
+setProp(8, myObj, "myAlert", null, function(sTxt) { alert(sTxt); });
+
+myObj.myAlert = myObj.myDate.toLocaleString() + "\n\n" + myObj.myString +
+      "\nThe number " + myObj.myNumber + " represents the following bitmask: " +
+      myObj.myArray.join(", ") + ".";
+
+// listing the enumerable properties
+var sList = "Here are the enumerable properties of myObj object:\n";
+for (var sProp in myObj) {
+    sList += "\nmyObj." + sProp + " =&gt; " + myObj[sProp] + ";"
+}
+
+alert(sList);
+</pre>
+<h2 id="Create_a_new_non-native_Object.setProperty()_method">Create a new non-native <code>Object.setProperty()</code> method</h2>
+<p>You can do the same thing with a descriptor object obtained through an anonymous constructor and an <code>Object</code>'s custom method named <code>setProperty()</code>:</p>
+<pre class="brush: js">// creating a new Object method named Object.setProperty()
+
+new (function() {
+  var oDesc = this;
+  Object.setProperty = function (nMask, oObj, sKey, vVal_fGet, fSet) {
+    if (nMask &amp; 8) {
+      // accessor descriptor
+      if (vVal_fGet) {
+        oDesc.get = vVal_fGet;
+      } else {
+        delete oDesc.get;
+      }
+      if (fSet) {
+        oDesc.set = fSet;
+      } else {
+        delete oDesc.set;
+      }
+      delete oDesc.value;
+      delete oDesc.writable;
+    } else {
+      // data descriptor
+      if (arguments.length &gt; 3) {
+        oDesc.value = vVal_fGet;
+      } else {
+        delete oDesc.value;
+      }
+      oDesc.writable = Boolean(nMask &amp; 4);
+      delete oDesc.get;
+      delete oDesc.set;
+    }
+    oDesc.enumerable = Boolean(nMask &amp; 1);
+    oDesc.configurable = Boolean(nMask &amp; 2);
+    Object.defineProperty(oObj, sKey, oDesc);
+    return oObj;
+  };
+})();
+
+// creating a new empty object
+var myObj = {};
+
+// adding a writable data descriptor - not configurable, not enumerable
+Object.setProperty(4, myObj, "myNumber", 25);
+
+// adding a readonly data descriptor - not configurable, enumerable
+Object.setProperty(1, myObj, "myString", "Hello world!");
+
+// etc. etc. 
+</pre>
+<div class="note">
+  <strong>Note:</strong> The <code>Object.setProperty()</code> method could be also a proposal for a possible new JavaScript native method (see <a class="external" href="https://bugs.ecmascript.org/show_bug.cgi?id=335" rel="external" title="ECMAScript bug 335">ECMAScript bug 335</a>).</div>
+<h5 id="Syntax" name="Syntax">Syntax</h5>
+<p><code>Object.setProperty(<em>bitmask</em>, <em>obj</em>, <em>prop</em>[, <em>value/getter</em>[, <em>setter</em>]])</code></p>
+<h5 id="Parameters" name="Parameters">Parameters</h5>
+<dl>
+  <dt>
+    <code>bitmask</code></dt>
+  <dd>
+    The descriptor bitmask (see below).</dd>
+  <dt>
+    <code>obj</code></dt>
+  <dd>
+    The object on which to define the property.</dd>
+  <dt>
+    <code>prop</code></dt>
+  <dd>
+    The name of the property to be defined or modified.</dd>
+  <dt>
+    <code>value/getter</code></dt>
+  <dd>
+    The value to assign to a data descriptor or the getter function to assign to an accessor descriptor (depends on the bitmask).</dd>
+  <dt>
+    <code>setter</code></dt>
+  <dd>
+    The setter function to assign to an accessor descriptor. If the flag <code>0x8</code> is setted to <em>data descriptor</em> this argument will be ignored.</dd>
+</dl>
+<h3 id="Description">Description</h3>
+<p>The non-native <code>Object.setProperty()</code> method works like the native <code>Object.defineProperty()</code> method, except for the descriptor object which is replaced with a descriptor bitmask. The <code>bitmask</code> argument has the following structure:</p>
+<dl>
+  <dt>
+    flag <code>0x1</code></dt>
+  <dd>
+    The property is enumerable.</dd>
+  <dt>
+    flag <code>0x2</code></dt>
+  <dd>
+    The property is configurable.</dd>
+  <dt>
+    flag <code>0x4</code></dt>
+  <dd>
+    The property is writable.</dd>
+  <dt>
+    flag <code>0x8</code></dt>
+  <dd>
+    The property is an accessor descriptor.</dd>
+</dl>
+<p>So, the descriptor bitmask can have these possible numeric values:</p>
+<ul>
+  <li><strong><code>0</code></strong>: The bitmask represents a readonly <em>data</em> descriptor - not configurable, not enumerable (<code>0000</code>).</li>
+  <li><strong><code>1</code></strong>: The bitmask represents a readonly <em>data</em> descriptor - not configurable, enumerable (<code>0001</code>).</li>
+  <li><strong><code>2</code></strong>: The bitmask represents a readonly <em>data</em> descriptor - configurable, not enumerable (<code>0010</code>).</li>
+  <li><strong><code>3</code></strong>: The bitmask represents a readonly <em>data</em> descriptor - configurable, enumerable (<code>0011</code>).</li>
+  <li><strong><code>4</code></strong>: The bitmask represents a writable <em>data</em> descriptor - not configurable, not enumerable (<code>0100</code>).</li>
+  <li><strong><code>5</code></strong>: The bitmask represents a writable <em>data</em> descriptor - not configurable, enumerable (<code>0101</code>).</li>
+  <li><strong><code>6</code></strong>: The bitmask represents a writable <em>data</em> descriptor - configurable, not enumerable (<code>0110</code>).</li>
+  <li><strong><code>7</code></strong>: The bitmask represents a writable <em>data</em> descriptor - configurable, enumerable (<code>0111</code>).</li>
+  <li><strong><code>8</code></strong>: The bitmask represents an <em>accessor</em> descriptor - not configurable, not enumerable (<code>1000</code>).</li>
+  <li><strong><code>9</code></strong>: The bitmask represents an <em>accessor</em> descriptor - not configurable, enumerable (<code>1001</code>).</li>
+  <li><strong><code>10</code></strong> : The bitmask represents an <em>accessor</em> descriptor - configurable, not enumerable (<code>1010</code>).</li>
+  <li><strong><code>11</code></strong> : The bitmask represents an <em>accessor</em> descriptor - configurable, enumerable (<code>1011</code>).</li>
+</ul>
+<div class="note">
+  <strong>Note:</strong> If the flag <code>0x8</code> is set to <em>accessor descriptor</em> the flag <code>0x4</code> (<em>writable</em>) will be ignored. If not, the setter argument will be ignored.</div>
+<h2 id="HTMLSelectElement.selectedIndex_implementation">HTMLSelectElement.selectedIndex implementation</h2>
+<p>You can use the <code>Object.defineProperty()</code> method with native objects also. The following example shows how to implement the <a href="/en-US/docs/DOM/HTMLSelectElement" title="/en-US/docs/DOM/HTMLSelectElement"><code>HTMLSelectElement</code></a>'s <code>selectedIndex</code> property in radio button groups.</p>
+<pre class="brush: html">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;title&gt;Radio group selectedIndex example&lt;/title&gt;
+&lt;script type="text/javascript"&gt;
+Object.defineProperty(NodeList.prototype, "selectedIndex", {
+  get: function() {
+    var nIndex = this.length - 1;
+    while (nIndex &gt; -1 &amp;&amp; !this[nIndex].checked) {
+      nIndex--;
+    }
+    return nIndex;
+  },
+  
+  set: function(nNewIndex) {
+    if (isNaN(nNewIndex)) {
+      return;
+    }
+    var nOldIndex = this.selectedIndex;
+    if (nOldIndex &gt; -1) {
+      this[nOldIndex].checked = false;
+    }
+    if (nNewIndex &gt; -1) {
+      this[nNewIndex].checked = true;
+    }
+  },
+  
+  enumerable: true,
+  configurable: false
+});
+
+// try it!
+function checkForm() {
+  var nSelectedIndex = document.myForm.myRadioGroup.selectedIndex;
+  if (nSelectedIndex &lt; 0) {
+    alert("Select a gadget!!");
+    return false;
+  }
+  alert("Congratulations!! You selected the " + document.myForm.myRadioGroup[nSelectedIndex].value + ".");
+  return true;
+}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;					
+  &lt;form name="myForm" onsubmit="return(checkForm());"&gt;
+    &lt;fieldset&gt;&lt;legend&gt;Select a gadget&lt;/legend&gt;
+      &lt;p&gt;&lt;input type="radio" name="myRadioGroup" id="ourShirt" value="shirt" /&gt; &lt;label for="ourShirt"&gt;shirt&lt;/label&gt;&lt;br /&gt;
+      &lt;input type="radio" name="myRadioGroup" id="ourPants" value="pants" /&gt; &lt;label for="ourPants"&gt;pants&lt;/label&gt;&lt;br /&gt;
+      &lt;input type="radio" name="myRadioGroup" id="ourBelt" value="belt" /&gt; &lt;label for="ourBelt"&gt;belt&lt;/label&gt;&lt;br /&gt;
+      &lt;input type="radio" name="myRadioGroup" id="ourShoes" value="shoes" /&gt; &lt;label for="ourShoes"&gt;shoes&lt;/label&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;span style="cursor:pointer;text-decoration:underline;color:#0000ff;" onclick="document.myForm.myRadioGroup.selectedIndex=2;"&gt;Select our favorite gadget ;-)&lt;/span&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;input type="submit" value="Order!" /&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Property">Property</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/royling">royling</a>, <a href="/en-US/profiles/rober7106tn6">rober7106tn6</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/rsneekes">rsneekes</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:26-07:00">May 28, 2013 8:33:26 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/rober7106tn6">rober7106tn6</a>, 
+            <time datetime="2013-05-24T22:41:11-07:00">May 24, 2013 10:41:11 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty/Additional_examples$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

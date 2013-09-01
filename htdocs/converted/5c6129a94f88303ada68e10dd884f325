@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="448867" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">toGMTString</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p/><div class="overheadIndicator deprecated deprecatedHeader"> 
+			<p>Deprecated</p> 
+		</div><p/>
+<h3 id="Summary" name="Summary">Summary</h3>
+<p>Converts a date to a string, using Internet GMT conventions.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en/JavaScript/Reference/Global_Objects/Date" title="en/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="Syntax" name="Syntax">Syntax</h3>
+<p><code>toGMTString() </code></p>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<p>None.</p>
+<h3 id="Description" name="Description">Description</h3>
+<div class="note">
+  <code>toGMTString</code> is deprecated and should no longer be used, it's only there for backwards compatibility, use <a href="/en/JavaScript/Reference/Global_Objects/Date/toUTCString" title="en/JavaScript/Reference/Global Objects/Date/toUTCString">toUTCString</a> instead.</div>
+<p>The exact format of the value returned by <code>toGMTString</code> varies according to the platform and browser, in general it should represent a human readable date string.</p>
+<h3 id="Examples" name="Examples">Examples</h3>
+<h4 id="Example:_Using_toGMTString" name="Example:_Using_toGMTString">Example: Using <code>toGMTString</code></h4>
+<p>In the following example, today is a <code>Date</code> object:</p>
+<pre>today.toGMTString()
+</pre>
+<p>In this example, the <code>toGMTString</code> method converts the date to GMT (UTC) using the operating system's time-zone offset and returns a string value that is similar to the following form. The exact format depends on the platform.</p>
+<pre>Mon, 18 Dec 1995 17:28:35 GMT
+</pre>
+<h3 id="See_Also" name="See_Also">See Also</h3>
+<p><a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toLocaleString" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toLocaleString">toLocaleString</a>, <a href="/en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toUTCString" title="en/Core_JavaScript_1.5_Reference/Global_Objects/Date/toUTCString">toUTCString</a></p>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Dikrib">Dikrib</a>, <a href="/en-US/profiles/Prodoc">Prodoc</a>, <a href="/en-US/profiles/sheshbabu">sheshbabu</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/sheshbabu">sheshbabu</a>, 
+          <time datetime="2013-08-03T07:22:45-07:00">Aug 3, 2013 7:22:45 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/sheshbabu">sheshbabu</a>, 
+            <time datetime="2013-08-03T07:22:45-07:00">Aug 3, 2013 7:22:45 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toGMTString$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="454305" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">typeof</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>The <code>typeof</code> operator returns a string indicating the type of the unevaluated operand.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col">Operator</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.1</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262 (and ECMA-357 for E4X objects)</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<p>The <code>typeof</code> operator is followed by its operand:</p>
+<pre><code>typeof <code><em>operand</em></code></code></pre>
+<p><span style="font-family: Georgia, Times, 'Times New Roman', serif; font-size: 1.428em; line-height: 1.572;">Parameters</span></p>
+<p><code><em>operand</em></code> is an expression representing the object or primitive whose type is to be returned.</p>
+<h2 id="Description">Description</h2>
+<p>This table summarizes the possible return values of <code>typeof</code>:</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <th scope="col">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Undefined</td>
+      <td><code>"undefined"</code></td>
+    </tr>
+    <tr>
+      <td>Null</td>
+      <td><code>"object"</code></td>
+    </tr>
+    <tr>
+      <td>Boolean</td>
+      <td><code>"boolean"</code></td>
+    </tr>
+    <tr>
+      <td>Number</td>
+      <td><code>"number"</code></td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td><code>"string"</code></td>
+    </tr>
+    <tr>
+      <td>Host object (provided by the JS environment)</td>
+      <td><em>Implementation-dependent</em></td>
+    </tr>
+    <tr>
+      <td>Function object (implements [[Call]] in ECMA-262 terms)</td>
+      <td><code>"function"</code></td>
+    </tr>
+    <tr>
+      <td>E4X XML object</td>
+      <td><code>"xml"</code></td>
+    </tr>
+    <tr>
+      <td>E4X XMLList object</td>
+      <td><code>"xml"</code></td>
+    </tr>
+    <tr>
+      <td>Any other object</td>
+      <td><code>"object"</code></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Examples">Examples</h2>
+<h3 id="Normal_cases">Normal cases</h3>
+<pre class="brush:js">// Numbers
+typeof 37 === 'number';
+typeof 3.14 === 'number';
+typeof Math.LN2 === 'number';
+typeof Infinity === 'number';
+typeof NaN === 'number'; // Despite being "Not-A-Number"
+typeof Number(1) === 'number'; // but never use this form!
+
+// Strings
+typeof "" === 'string';
+typeof "bla" === 'string';
+typeof (typeof 1) === 'string'; // typeof always return a string
+typeof String("abc") === 'string'; // but never use this form!
+
+// Booleans
+typeof true === 'boolean';
+typeof false === 'boolean';
+typeof Boolean(true) === 'boolean'; // but never use this form!
+
+// Undefined
+typeof undefined === 'undefined';
+typeof blabla === 'undefined'; // an undefined variable
+
+// Objects
+typeof {a:1} === 'object';
+typeof [1, 2, 4] === 'object'; // use Array.isArray or Object.prototype.toString.call to differentiate regular objects from arrays
+typeof new Date() === 'object';
+
+typeof new Boolean(true) === 'object'; // this is confusing. Don't use!
+typeof new Number(1) === 'object'; // this is confusing. Don't use!
+typeof new String("abc") === 'object';  // this is confusing. Don't use!
+
+// Functions
+typeof function(){} === 'function';
+typeof Math.sin === 'function';
+</pre>
+<h3 id="null"><code>null</code></h3>
+<pre class="brush:js">typeof null === 'object'; // This stands since the beginning of JavaScript
+</pre>
+<p>In the first implementation of JavaScript, JavaScript values were represented as a type tag and a value. The type tag for objects was 0. <code>null</code> was represented as the NULL pointer (0x00 is most platforms). Consequently, null had 0 as type tag, hence the bogus <code>typeof</code> return value. (reference needed)</p>
+<p>A fix was proposed for ECMAScript (via an opt-in), but <a class="external" href="http://wiki.ecmascript.org/doku.php?id=harmony:typeof_null">was rejected</a>. It would have resulted in <code>typeof null === 'null'</code>.</p>
+<h3 id="Regular_expressions">Regular expressions</h3>
+<p>Callable regular expressions were a non-standard addition in some browsers (need reference to say which).</p>
+<pre class="brush:js">typeof /s/ === 'function'; // Chrome 1-12 ... // Non-conform to ECMAScript 5.1
+typeof /s/ === 'object'; // Firefox 5+ ...    // Conform to ECMAScript 5.1
+</pre>
+<h3 id="Other_quirks">Other quirks</h3>
+<h4 id="alert_in_old_Internet_Explorer_versions"><code>alert</code> in old Internet Explorer versions</h4>
+<p>On IE 6, 7 and 8, <code>typeof alert === 'object'</code></p>
+<div class="note">
+  <p>Note: Not a quirk. It's telling the truth. Lots of old IE host objects are objects not functions</p>
+</div>
+<h2 id="Specification">Specification</h2>
+<p><a class="external" href="http://ecma-international.org/ecma-262/5.1/#sec-11.4.3">ECMA-262 section 11.4.3</a></p>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Operators/instanceof" title="/en-US/docs/JavaScript/Reference/Operators/instanceof">instanceof</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Skierpage">Skierpage</a>, <a href="/en-US/profiles/Hamstersoup">Hamstersoup</a>, <a href="/en-US/profiles/Saming">Saming</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/jeffozvold">jeffozvold</a>, <a href="/en-US/profiles/xGTing">xGTing</a>, <a href="/en-US/profiles/jonfen">jonfen</a>, <a href="/en-US/profiles/another_sam">another_sam</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/angusc">angusc</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/IgorKitsa">IgorKitsa</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/gentooboontoo">gentooboontoo</a>, <a href="/en-US/profiles/Bzbarsky">Bzbarsky</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/xGTing">xGTing</a>, 
+          <time datetime="2013-08-15T05:53:23-07:00">Aug 15, 2013 5:53:23 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/xGTing">xGTing</a>, 
+            <time datetime="2013-08-15T05:53:23-07:00">Aug 15, 2013 5:53:23 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Operators/typeof$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

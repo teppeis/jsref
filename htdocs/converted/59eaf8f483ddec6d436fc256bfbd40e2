@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417051" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">for...in</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+
+<p>Iterates over the enumerable properties of an object, in arbitrary order. For each distinct property, statements can be executed.</p>
+
+
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th colspan="2">Statement</th>
+    </tr>
+  </thead><tbody>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+
+<pre class="syntaxbox">for (<var>variable</var> in <var>object</var>) {
+  <i>...</i>
+}</pre>
+
+
+
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt><code>variable</code></dt>
+  <dd>A different property name is assigned to <em>variable</em> on each iteration.</dd>
+  <dt><code>object</code></dt>
+  <dd>Object whose enumerable properties are iterated.</dd>
+</dl>
+
+
+
+
+<h2 id="Description" name="Description">Description</h2>
+<p>A <code>for...in</code> loop does not iterate over non–enumerable properties. Objects created from built–in constructors like Array and Object have inherited non–enumerable properties from <code>Object.prototype</code> and <code>String.prototype</code> that are not enumerable, such as <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String">String</a></code>'s <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String/indexOf">indexOf</a></code> method or <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object">Object</a></code>'s <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString">toString</a></code> method. The loop will iterate over all enumerable properties of the object itself and those the object inherits from its constructor's prototype (properties closer to the object in the prototype chain override prototypes' properties).</p>
+<p>A <code>for...in</code> loop iterates over the properties of an object in an arbitrary order (see the <a href="/en-US/docs/JavaScript/Reference/Operators/delete#Cross-browser_issues">delete operator</a> for more on why one cannot depend on the seeming orderliness of iteration, at least in a cross-browser setting). If a property is modified in one iteration and then visited at a later time, its value in the loop is its value at that later time. A property that is deleted before it has been visited will not be visited later. Properties added to the object over which iteration is occurring may either be visited or omitted from iteration. In general it is best not to add, modify or remove properties from the object during iteration, other than the property currently being visited. There is no guarantee whether or not an added property will be visited, whether a modified property (other than the current one) will be visited before or after it is modified, or whether a deleted property will be visited before it is deleted.</p>
+<div class="note" id="hasOwnPropertyNote">
+  <p>If you only want to consider properties attached to the object itself, and not its prototypes, use <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames">getOwnPropertyNames</a> or perform a <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">hasOwnProperty</a> check (<a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable">propertyIsEnumerable</a> can also be used). Alternatively, if you know there won't be any outside code interference, you can extend built-in prototypes with a check method.</p>
+</div>
+<div class="note" id="arrayNote">
+  <p><strong><code>for..in</code> should not be used to iterate over an <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array">Array</a> where index order is important.</strong> Array indexes are just enumerable properties with integer names and are otherwise identical to general Object properties. There is no guarantee that <code>for...in</code> will return the indexes in any particular order and it will return all enumerable properties, including those with non–integer names and those that are inherited.</p>
+  <p>Because the order of iteration is implementation dependent, iterating over an array may not visit elements in a consistent order. Therefore it is better to use a <a href="/en-US/docs/JavaScript/Reference/Statements/for">for</a> loop with a numeric index (or <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach">Array.forEach</a> or the non-standard <code><a href="/en-US/docs/JavaScript/Reference/Statements/for...of">for...of</a></code> loop) when iterating over arrays where the order of access is important.</p>
+</div>
+<h2 id="Example" name="Example">Examples</h2>
+<p>The following function takes as its arguments an object and the object's name. It then iterates over all the object's enumerable properties and returns a string of the property names and their values.</p>
+<pre class="brush: js">var o = {a:1, b:2, c:3};
+
+function show_props(obj, objName) {
+  var result = "";
+    
+  for (var prop in obj) {
+    result += objName + "." + prop + " = " + obj[prop] + "\n";
+  }
+    
+  return result;
+}
+
+alert(show_props(o, "o")); /* alerts: o.a = 1 o.b = 2 o.c = 3 */ 
+</pre>
+<p>The following function illustrates the use of hasOwnProperty: the inherited properties are not displayed.</p>
+<pre class="brush: js">var triangle = {a:1, b:2, c:3};
+
+function ColoredTriangle() {
+  this.color = "red";
+}
+
+ColoredTriangle.prototype = triangle;
+
+function show_own_props(obj, objName) {
+  var result = "";
+    
+  for (var prop in obj) {
+    if( obj.hasOwnProperty( prop ) ) {
+      result += objName + "." + prop + " = " + obj[prop] + "\n";
+    } 
+  }
+    
+  return result;
+}
+
+o = new ColoredTriangle();
+alert(show_own_props(o, "o")); /* alerts: o.color = red */ 
+</pre>
+
+<h3 id="Iterating_over_only">Iterating over only</h3>
+<p><span class="inlineIndicator todo todoInline"><strong>FIXME:</strong> <em/></span></p>
+
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/for...of"><code>for...of</code></a> - a similar statement that iterates over the property <em>values</em></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/for_each...in"><code>for each...in</code></a> - a similar statement, but iterates over the values of object's properties, rather than the property names themselves (<a href="/en-US/docs/JavaScript/New_in_JavaScript/1.6">New in JavaScript 1.6</a> but deprecated)</li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/for">for</a></li>
+  <li><a href="/en-US/docs/JavaScript/Guide/Iterators_and_Generators">Generator expressions</a> (uses the <code>for...in</code> syntax)</li>
+  <li><a href="/en-US/docs/Enumerability_and_ownership_of_properties">Enumerability and ownership of properties</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames"><code>getOwnPropertyNames</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/hasOwnProperty"><code>hasOwnProperty</code></a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach"><code>Array.prototype.forEach</code></a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/FarSeeing">FarSeeing</a>, <a href="/en-US/profiles/karbassi">karbassi</a>, <a href="/en-US/profiles/Flaki">Flaki</a>, <a href="/en-US/profiles/RobG">RobG</a>, <a href="/en-US/profiles/Ruakh">Ruakh</a>, <a href="/en-US/profiles/bjelline">bjelline</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Tmetro">Tmetro</a>, <a href="/en-US/profiles/Shelby">Shelby</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Mortchek">Mortchek</a>, <a href="/en-US/profiles/Grauw">Grauw</a>, <a href="/en-US/profiles/bigbossSNK">bigbossSNK</a>, <a href="/en-US/profiles/ScottHyndman">ScottHyndman</a>, <a href="/en-US/profiles/quinnirill">quinnirill</a>, <a href="/en-US/profiles/neilerdwien">neilerdwien</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/magnetik">magnetik</a>, <a href="/en-US/profiles/Markh">Markh</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Scipion">Scipion</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/outis">outis</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/niels_bom">niels_bom</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/secoif">secoif</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/madarche">madarche</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:47-07:00">May 28, 2013 8:32:47 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-05-21T02:00:05-07:00">May 21, 2013 2:00:05 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/for...in$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

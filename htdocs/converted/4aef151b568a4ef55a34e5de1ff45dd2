@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417595" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Boolean</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>The <code>Boolean</code> object is an object wrapper for a boolean value.</p>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>new Boolean(<em>value</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>value</code></dt>
+  <dd>
+    The initial value of the <code>Boolean</code> object.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The value passed as the first parameter is converted to a boolean value, if necessary. If value is omitted or is <code>0</code>, <code>-0</code>, <code>null</code>, <code>false</code>, <code>NaN</code>, <code>undefined</code>, or the empty string (""), the object has an initial value of false. All other values, including any object or the string <code>"false"</code>, create an object with an initial value of true.</p>
+<p>Do not confuse the primitive Boolean values true and false with the true and false values of the Boolean object.</p>
+<p>Any object whose value is not <code>undefined</code> or <code>null</code>, including a Boolean object whose value is false, evaluates to true when passed to a conditional statement. For example, the condition in the following if statement evaluates to true:</p>
+<pre class="brush: js">x = new Boolean(false);
+if (x) {
+  // . . . this code is executed
+}
+</pre>
+<p>This behavior does not apply to Boolean primitives. For example, the condition in the following if statement evaluates to <code>false</code>:</p>
+<pre class="brush: js">x = false;
+if (x) {
+  // . . . this code is not executed
+}
+</pre>
+<p>Do not use a <code>Boolean</code> object to convert a non-boolean value to a boolean value. Instead, use Boolean as a function to perform this task:</p>
+<pre class="brush: js">x = Boolean(expression);     // preferred
+x = new Boolean(expression); // don't use
+</pre>
+<p>If you specify any object, including a Boolean object whose value is false, as the initial value of a Boolean object, the new Boolean object has a value of true.</p>
+<pre class="brush: js">myFalse = new Boolean(false);   // initial value of false
+g = new Boolean(myFalse);       // initial value of true
+myString = new String("Hello"); // string object
+s = new Boolean(myString);      // initial value of true
+</pre>
+<p>Do not use a Boolean object in place of a Boolean primitive.</p>
+<h2 id="Properties" name="Properties">Properties</h2>
+<p><small><em>For properties available on <code>Boolean</code> instances, see <a class="external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean/prototype#Properties">Properties of Boolean instances</a>.</em></small></p>
+<p><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean/prototype" title="JavaScript/Reference/Global_Objects/Boolean/prototype">prototype</a>: Defines a property that is shared by all Boolean objects.</p>
+<p/><div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a class="external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Arity"><code>arity</code></a>, <a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Caller"><code>caller</code></a>, <a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Constructor"><code>constructor</code></a>, <a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Length"><code>length</code></a>, <a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Name"><code>name</code></a></div> 
+</div><p/>
+<h2 id="Methods" name="Methods">Methods</h2>
+<p><small><em>For methods available on <code>Boolean</code> instances, see <a class="external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean/prototype#Methods">Methods of Boolean instances</a>.</em></small></p>
+<p>The global <code>Boolean</code> object contains no methods of its own, however, it does inherit some methods through the prototype chain.</p>
+<p/><div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a class="external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Apply"><code>apply</code></a>, <a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Call"><code>call</code></a>, <a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToSource"><code>toSource</code></a>, <a class="internal external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToString"><code>toString</code></a></div> 
+</div><p/>
+<h2 id="Boolean_instances" name="Boolean_instances"><code>Boolean</code> instances</h2>
+<p>All <code>Boolean</code> instances inherit from <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean/prototype" title="JavaScript/Reference/Global_Objects/Boolean/prototype"><code>Boolean.prototype</code></a>. As with all constructors, the prototype object dictates instances' inherited properties and methods.</p>
+<h3 id="Properties">Properties</h3>
+<p/><dl><dt>
+    <a href="/en/JavaScript/Reference/Global_Objects/Boolean/constructor" title="en/JavaScript/Reference/Global_Objects/Boolean/constructor"><code>constructor</code></a></dt>
+  <dd>
+    Returns the function that created an instance's prototype. This is the <a class="internal" href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global Objects/Boolean"><code>Boolean</code></a> function by default.</dd>
+</dl><div>
+  <div style="border: 1px solid rgb(204, 204, 204); margin: 10px 0px; padding: 0px 10px; background: rgb(238, 238, 238) none repeat scroll 0% 0%;"> 
+ 
+<span style="font-weight: bold;">Properties inherited from  <a class="external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></span>:<br/><span style="font-size: smaller;"><a class="external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Constructor"><code>constructor</code></a></span> 
+</div></div><p/>
+<h3 id="Methods">Methods</h3>
+<p/><dl><dt>
+    <a href="/en/JavaScript/Reference/Global_Objects/Boolean/toSource" title="en/JavaScript/Reference/Global_Objects/Boolean/toSource">toSource</a></dt>
+  <dd>
+    Returns a string containing the source of the <a class="internal" href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global Objects/Boolean"><code>Boolean</code></a> object; you can use this string to create an equivalent object. Overrides the <a href="/en/JavaScript/Reference/Global_Objects/Object/toSource" title="en/JavaScript/Reference/Global_Objects/Object/toSource"><code>Object.prototype.toSource</code></a> method.</dd>
+</dl><dl><dt>
+    <a href="/en/JavaScript/Reference/Global_Objects/Boolean/toString" title="en/JavaScript/Reference/Global_Objects/Boolean/toString"><code>toString</code></a></dt>
+  <dd>
+    Returns a string of either "true" or "false" depending upon the value of the object. Overrides the <a href="/en/JavaScript/Reference/Global_Objects/Object/toString" title="en/JavaScript/Reference/Global_Objects/Object/toString"><code>Object.prototype.toString</code></a>method.</dd>
+</dl><dl><dt>
+    <a href="/en/JavaScript/Reference/Global_Objects/Boolean/valueOf" title="en/JavaScript/Reference/Global_Objects/Boolean/valueOf"><code>valueOf</code></a></dt>
+  <dd>
+    Returns the primitive value of the <a class="internal" href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global Objects/Boolean"><code>Boolean</code></a> object. Overrides the <a href="/en/JavaScript/Reference/Global_Objects/Object/valueOf" title="en/JavaScript/Reference/Global_Objects/Object/valueOf"><code>Object.prototype.valueOf</code></a> method.</dd>
+</dl><div>
+  <div style="border: 1px solid rgb(204, 204, 204); margin: 10px 0px; padding: 0px 10px; background: rgb(238, 238, 238) none repeat scroll 0% 0%;"> 
+ 
+<span style="font-weight: bold;">Methods inherited from  <a class="external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></span>:<br/><span style="font-size: smaller;"><a class="external" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToSource"><code>toSource</code></a></span> 
+</div></div>
+<p/>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Creating_Boolean_objects_with_an_initial_value_of_false" name="Creating_Boolean_objects_with_an_initial_value_of_false">Creating <code>Boolean</code> objects with an initial value of false</h3>
+<pre class="brush: js">var bNoParam = new Boolean();
+var bZero = new Boolean(0);
+var bNull = new Boolean(null);
+var bEmptyString = new Boolean("");
+var bfalse = new Boolean(false);
+</pre>
+<h3 id="Creating_Boolean_objects_with_an_initial_value_of_true" name="Creating_Boolean_objects_with_an_initial_value_of_true">Creating <code>Boolean</code> objects with an initial value of true</h3>
+<pre class="brush: js">var btrue = new Boolean(true);
+var btrueString = new Boolean("true");
+var bfalseString = new Boolean("false");
+var bSuLin = new Boolean("Su Lin");
+</pre>
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>6.0</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean/toSource" title="JavaScript/Reference/Global_Objects/Boolean/toSource">toSource()</a></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+      <tr>
+        <td><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean/toSource" title="JavaScript/Reference/Global_Objects/Boolean/toSource">toSource()</a></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+        <td><span style="color: #f00;">Not supported</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean/prototype" title="JavaScript/Reference/Global_Objects/Boolean/prototype">Boolean.prototype</a></li>
+  <li><a class="external" href="http://en.wikipedia.org/wiki/Boolean_data_type">Boolean data type</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/secoif">secoif</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/xiongxin">xiongxin</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/berkerpeksag">berkerpeksag</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/cbier90">cbier90</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:10-07:00">May 28, 2013 8:33:10 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/cbier90">cbier90</a>, 
+            <time datetime="2013-05-13T09:39:21-07:00">May 13, 2013 9:39:21 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

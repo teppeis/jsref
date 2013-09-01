@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="443005" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">if...else</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Executes a statement if a specified condition is true. If the condition is false, another statement can be executed.</p>
+<h2 id="Version_Information">Version Information</h2>
+<table>
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.0, NES 2.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="eval">if (<em>condition</em>)
+   <em>statement1</em>
+[else
+   <em>statement2</em>]
+</pre>
+<h2 id="Parameters" name="Parameters">Parameters</h2>
+<dl>
+  <dt>
+    <code>condition</code></dt>
+  <dd>
+    An expression that evaluates to true or false.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>statement1</code></dt>
+  <dd>
+    Statement that is executed if <code>condition</code> evaluates to true. Can be any statement, including further nested <code>if</code> statements. To execute multiple statements, use a <a href="/en/JavaScript/Reference/Statements/block" title="en/JavaScript/Reference/Statements/block">block</a> statement ({ ... }) to group those statements.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>statement2</code></dt>
+  <dd>
+    Statement that is executed if <code>condition</code> evaluates to false and the <code>else</code> clause exists. Can be any statement, including block statements and further nested <code>if</code> statements.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Multiple <code>if...else</code> statements can be nested to create an <code>else if</code> clause:</p>
+<pre class="eval">if (<em>condition1</em>)
+   <em>statement1</em>
+else if (<em>condition2</em>)
+   <em>statement2</em>
+else if (<em>condition3</em>)
+   <em>statement3</em>
+...
+else
+   <em>statementN</em>
+</pre>
+<p>To see how this works, this is how it would look like if the nesting were properly indented:</p>
+<pre class="eval">if (<em>condition1</em>)
+   <em>statement1</em>
+else
+   if (<em>condition2</em>)
+      <em>statement2</em>
+   else
+      if (<em>condition3</em>)
+...
+</pre>
+<p>To execute multiple statements within a clause, use a block statement (<code>{ ... }</code>) to group those statements. In general, it is a good practice to always use block statements, especially in code involving nested <code>if</code> statements:</p>
+<pre class="eval">if (<em>condition</em>) {
+   <em>statements1</em>
+} else {
+   <em>statements2</em>
+}
+</pre>
+<p>Do not confuse the primitive boolean values <code>true</code> and <code>false</code> with the true and false values of the <a href="/en/JavaScript/Reference/Global_Objects/Boolean" title="en/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> object. Any value that is not <code>undefined</code>, <code>null</code>, <code>0</code>, <code>NaN</code>, or the empty string (<code>""</code>), and any object, including a Boolean object whose value is false, evaluates to true when passed to a conditional statement. For example:</p>
+<pre class="brush: js">var b = new Boolean(false);
+if (b) // this condition evaluates to true
+</pre>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_if...else" name="Example:_Using_if...else">Example: Using <code>if...else</code></h3>
+<pre class="brush: js">if (cipher_char == from_char) {
+   result = result + to_char;
+   x++;
+} else {
+   result = result + clear_char;
+}
+</pre>
+<h3 id="Example:_Assignment_within_the_conditional_expression" name="Example:_Assignment_within_the_conditional_expression">Example: Assignment within the conditional expression</h3>
+<p>It is advisable to not use simple assignments in a conditional expression, because the assignment can be confused with equality when glancing over the code. For example, do not use the following code:</p>
+<pre class="brush: js">if (x = y) {
+   /* do the right thing */
+}
+</pre>
+<p>If you need to use an assignment in a conditional expression, a common practice is to put additional parentheses around the assignment. For example:</p>
+<pre class="brush: js">if ((x = y)) {
+   /* do the right thing */
+}
+</pre>
+<p> </p>
+<p> </p>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/else">else</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Conditionals">Conditionals</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/if">if</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/tregagnon">tregagnon</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/ben545">ben545</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Lonnen">Lonnen</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/tregagnon">tregagnon</a>, 
+          <time datetime="2013-07-23T00:51:11-07:00">Jul 23, 2013 12:51:11 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/tregagnon">tregagnon</a>, 
+            <time datetime="2013-07-23T00:51:11-07:00">Jul 23, 2013 12:51:11 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/if...else$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

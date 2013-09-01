@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="421745" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Creates an object wrapper.</p>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>new Object( <em>[ value ]</em> )</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    value</dt>
+  <dd>
+    Any value.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>Object</code> constructor creates an object wrapper for the given value. If the value is <code>null</code> or <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/undefined" title="JavaScript/Reference/Global_Properties/undefined">undefined</a></code>, it will create and return an empty object, otherwise, it will return an object of a type that corresponds to the given value.</p>
+<p>When called in a non-constructor context, <code>Object</code> behaves identically.</p>
+<h2 id="Properties" name="Properties">Properties</h2>
+<p><small><em>For properties available on <code>Object</code> instances, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype#Properties">Properties of Object instances</a>.</em></small></p>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype" title="JavaScript/Reference/Global_Objects/Object/prototype">prototype</a></dt>
+  <dd>
+    Allows the addition of properties to all objects of type Object.</dd>
+</dl>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Arity"><code>arity</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Caller"><code>caller</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Constructor"><code>constructor</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Length"><code>length</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Name"><code>name</code></a></div> 
+</div></div>
+<h2 id="Methods" name="Methods">Methods</h2>
+<div>
+  <small><em>For methods available on <code>Object</code> instances, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype#Methods">Methods of Object instances</a>.</em></small></div>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/create" title="JavaScript/Reference/Global Objects/Object/Create"><code>create</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Creates a new object with the specified prototype object and properties.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperty" title="JavaScript/Reference/Global Objects/Object/DefineProperty"><code>defineProperty</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Adds the named property described by a given descriptor to an object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineProperties" title="JavaScript/Reference/Global Objects/Object/DefineProperties"><code>defineProperties</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Adds the named properties described by the given descriptors to an object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" title="JavaScript/Reference/Global Objects/Object/GetOwnPropertyDescriptor"><code>getOwnPropertyDescriptor</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Returns a property descriptor for a named property on an object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/keys" title="JavaScript/Reference/Global Objects/Object/keys"><code>keys</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Returns an array containing the names of all of the given object's <strong>own</strong> enumerable properties.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" title="JavaScript/Reference/Global Objects/Object/getOwnPropertyNames"><code>getOwnPropertyNames</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Returns an array containing the names of all of the given object's <strong>own</strong> enumerable and non-enumerable properties.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/GetPrototypeOf" title="JavaScript/Reference/Global Objects/Object/getPrototypeOf"><code>getPrototypeOf</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.1">JavaScript 1.8.1</a></span></dt>
+  <dd>
+    Returns the prototype of the specified object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/preventExtensions" title="JavaScript/ Reference/Global Objects/Object/preventExtensions"><code>preventExtensions</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Prevents any extensions of an object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isExtensible" title="JavaScript/ Reference/Global Objects/Object/isExtensible"><code>isExtensible</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Determine if extending of an object is allowed.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/seal" title="JavaScript/ Reference/Global Objects/Object/seal"><code>seal</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Prevents other code from deleting properties of an object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/is" title="JavaScript/ Reference/Global Objects/Object/is"><code>is</code></a> <span class="inlineIndicator standardNote standardNoteInline">New in <a href="https://developer.mozilla.org/en-US/docs/Firefox_22_for_developers">Firefox 22</a></span></dt>
+  <dd>
+    Compares if two values are distinguishable (ie. the same)</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isSealed" title="JavaScript/ Reference/Global Objects/Object/isSealed"><code>isSealed</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Determine if an object is sealed.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/freeze" title="JavaScript/ Reference/Global Objects/Object/freezed"><code>freeze</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Freezes an object: other code can't delete or change any properties.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isFrozen" title="JavaScript/ Reference/Global Objects/Object/isFrozen"><code>isFrozen</code></a> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Determine if an object was frozen.</dd>
+</dl>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Apply"><code>apply</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Call"><code>call</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToSource"><code>toSource</code></a>, <a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/ToString"><code>toString</code></a></div> 
+</div></div>
+<h2 id="Object_instances" name="Object_instances"><code>Object</code> instances</h2>
+<p>All objects in JavaScript are descended from <code>Object</code>; all objects inherit methods and properties from <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype" title="JavaScript/Reference/Global_Objects/Object/prototype">Object.prototype</a></code>, although they may be overridden. For example, other constructors' prototypes override the <code>constructor</code> property and provide their own <code>toString</code> methods. Changes to the <code>Object</code> prototype object are propagated to all objects unless the properties and methods subject to those changes are overridden further along the prototype chain.</p>
+<h3 id="Properties_of_Object_instances" name="Properties_of_Object_instances">Properties</h3>
+<div>
+  <dl><dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/constructor" title="JavaScript/Reference/Global_Objects/Object/constructor"><code>constructor</code></a></dt>
+  <dd>
+    Specifies the function that creates an object's prototype.</dd>
+  <dt>
+    <a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/count" title="JavaScript/Reference/Global_Objects/Object/count"><code>__count__</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete since <a href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Returns the number of enumerable properties directly on a user-defined object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/Parent" title="JavaScript/Reference/Global_Objects/Object/parent"><code>__parent__</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete since <a href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Points to an object's context.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/proto" title="JavaScript/Reference/Global_Objects/Object/proto"><code>__proto__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Points to the object which was used as prototype when the object was instantiated.</dd>
+</dl></div>
+<h3 id="Methods_of_Object_instances" name="Methods_of_Object_instances">Methods</h3>
+<div>
+  <dl><dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineGetter" title="JavaScript/Reference/Global_Objects/Object/defineGetter"><code>__defineGetter__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Associates a function with a property that, when accessed, executes that function and returns its return value.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineSetter" title="JavaScript/Reference/Global_Objects/Object/defineSetter"><code>__defineSetter__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Associates a function with a property that, when set, executes that function which modifies the property.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/eval" title="JavaScript/Reference/Global_Objects/Object/eval"><code>eval</code></a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete since <a href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Evaluates a string of JavaScript code in the context of the specified object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/hasOwnProperty" title="JavaScript/Reference/Global_Objects/Object/hasOwnProperty"><code>hasOwnProperty</code></a></dt>
+  <dd>
+    Returns a boolean indicating whether an object contains the specified property as a direct property of that object and not inherited through the prototype chain.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/isPrototypeOf" title="JavaScript/Reference/Global_Objects/Object/isPrototypeOf"><code>isPrototypeOf</code></a></dt>
+  <dd>
+    Returns a boolean indication whether the specified object is in the prototype chain of the object this method is called upon.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/lookupGetter" title="JavaScript/Reference/Global_Objects/Object/lookupGetter"><code>__lookupGetter__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns the function associated with the specified property by the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineGetter" title="JavaScript/Reference/Global_Objects/Object/defineGetter">__defineGetter__</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/lookupSetter" title="JavaScript/Reference/Global_Objects/Object/lookupSetter"><code>__lookupSetter__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns the function associated with the specified property by the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/defineSetter" title="JavaScript/Reference/Global_Objects/Object/defineSetter">__defineSetter__</a> method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/noSuchMethod" title="JavaScript/Reference/Global_Objects/Object/noSuchMethod"><code>__noSuchMethod__</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Allows a function to be defined that will be executed when an undefined object member is called as a method.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable" title="JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable"><code>propertyIsEnumerable</code></a></dt>
+  <dd>
+    Returns a boolean indicating if the internal <a href="/en-US/docs/ECMAScript_DontEnum_attribute" title="ECMAScript_DontEnum_attribute">ECMAScript DontEnum attribute</a> is set.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource" title="JavaScript/Reference/Global_Objects/Object/toSource"><code>toSource</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns string containing the source of an object literal representing the object that this method is called upon; you can use this value to create a new object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toLocaleString" title="JavaScript/Reference/Global_Objects/Object/toLocaleString"><code>toLocaleString</code></a></dt>
+  <dd>
+    Calls <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="JavaScript/Reference/Global_Objects/Object/toString"><code>toString</code></a>.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="JavaScript/Reference/Global_Objects/Object/toString"><code>toString</code></a></dt>
+  <dd>
+    Returns a string representation of the object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch" title="JavaScript/Reference/Global_Objects/Object/unwatch"><code>unwatch</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Removes a watchpoint from a property of the object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf" title="JavaScript/Reference/Global_Objects/Object/valueOf"><code>valueOf</code></a></dt>
+  <dd>
+    Returns the primitive value of the specified object.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/watch" title="JavaScript/Reference/Global_Objects/Object/watch"><code>watch</code></a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Adds a watchpoint to a property of the object.</dd>
+</dl></div>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example.3A_Using_Object_given_undefined_and_null_types" name="Example.3A_Using_Object_given_undefined_and_null_types">Example: Using <code>Object</code> given <code>undefined</code> and <code>null</code> types</h3>
+<p>The following examples store an empty <code>Object</code> object in <code>o</code>:</p>
+<pre class="brush: js">var o = new Object();
+</pre>
+<pre class="brush: js">var o = new Object(undefined);
+</pre>
+<pre class="brush: js">var o = new Object(null);
+</pre>
+<h3 id="Example.3A_Using_Object_to_create_Boolean_objects">Example: Using <code>Object</code> to create <code>Boolean</code> objects</h3>
+<p>The following examples store <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" title="JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code> objects in <code>o</code>:</p>
+<pre class="brush: js">// equivalent to o = new Boolean(true);
+var o = new Object(true);
+</pre>
+<pre class="brush: js">// equivalent to o = new Boolean(false);
+var o = new Object(Boolean());
+</pre>
+<h2 id="Browser_Compatibility" name="Browser_Compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p> </p>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsMobileBrowserCompatibility">NeedsMobileBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsBrowserCompatibility">NeedsBrowserCompatibility</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/Seant23">Seant23</a>, <a href="/en-US/profiles/mholland1337">mholland1337</a>, <a href="/en-US/profiles/saneyuki_s">saneyuki_s</a>, <a href="/en-US/profiles/mspreij">mspreij</a>, <a href="/en-US/profiles/syssgx">syssgx</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Dougwright">Dougwright</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/Donspeck">Donspeck</a>, <a href="/en-US/profiles/Jonathan_Watt">Jonathan_Watt</a>, <a href="/en-US/profiles/PaulNovitski">PaulNovitski</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/BenB">BenB</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/mspreij">mspreij</a>, 
+          <time datetime="2013-05-30T09:18:38-07:00">May 30, 2013 9:18:38 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/mspreij">mspreij</a>, 
+            <time datetime="2013-05-30T09:18:38-07:00">May 30, 2013 9:18:38 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

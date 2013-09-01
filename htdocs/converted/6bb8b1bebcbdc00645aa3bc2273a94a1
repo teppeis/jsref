@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="438759" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">arguments.callee</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Syntax" name="Syntax">Summary</h2>
+<p>Specifies the currently executing function.</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Property of <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments" title="JavaScript/Reference/Functions_and_function_scope/arguments">arguments</a></td>
+    </tr>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Description" name="Description">Description</h2>
+<p><code>callee</code> is a property of the <code>arguments</code> object. It can be used to refer to the currently executing function inside the function body of that function. This is for example useful when you don't know the name of this function, which is for example the case with anonymous functions.</p>
+<div class="note">
+  <strong>Note:</strong> You should avoid using <code>arguments.callee()</code> and just give every function (expression) a name.</div>
+<div class="warning">
+  <strong>Warning:</strong> The 5th edition of ECMAScript forbids use of <code>arguments.callee()</code> in <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode" title="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode">strict mode</a>.</div>
+<h3 id="Example.3A_Using_arguments.callee_in_an_anonymous_recursive_function" name="Example.3A_Using_arguments.callee_in_an_anonymous_recursive_function">Example: Using <code>arguments.callee</code> in an anonymous recursive function</h3>
+<p>A recursive function must be able to refer to itself. Typically, a function refers to itself by its name. However, an anonymous function does not have a name, and if there is no accessible variable referring to it, i.e. the function is not assigned to any variable, the function cannot refer to itself. (Anonymous functions can be created by a <a href="/en-US/docs/JavaScript/Reference/Operators/function" title="JavaScript/Reference/Operators/Special/function">function expression</a> or the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/Function"><code>Function</code> constructor</a>.) This is where <code>arguments.callee</code> comes in.</p>
+<p>The following example defines a function, which, in turn, defines and returns a factorial function. This example isn't very practical, and there are nearly no cases where the same result can not be achieved with <a href="/en-US/docs/JavaScript/Reference/Operators/function" title="JavaScript/Reference/Operators/Special/function">named function expressions</a>.</p>
+<pre class="brush: js">function create() {
+   return function(n) {
+      if (n &lt;= 1)
+         return 1;
+      return n * arguments.callee(n - 1);
+   };
+}
+
+var result = create()(5); // returns 120 (5 * 4 * 3 * 2 * 1)</pre>
+<h2 id="Why_was_arguments.callee_deprecated.3F">Why was <code>arguments.callee</code> deprecated?</h2>
+<p>(adapted from <a class="external" href="http://stackoverflow.com/a/235760/578288" title="http://stackoverflow.com/a/235760/578288">a Stack Overflow answer by olliej</a>)</p>
+<p>Early versions of JavaScript did not allow named function expressions, and for this reason you could not make a recursive function expression.</p>
+<p>For example, this syntax worked:</p>
+<pre class="brush: js">function factorial (n) {
+    return !(n &gt; 1) ? 1 : factorial(n - 1) * n;
+}
+
+[1,2,3,4,5].map(factorial);</pre>
+<p>but:</p>
+<pre class="brush: js">[1,2,3,4,5].map(function (n) {
+    return !(n &gt; 1) ? 1 : /* what goes here? */ (n - 1) * n;
+});</pre>
+<p>did not. To get around this <code>arguments.callee</code> was added so you could do</p>
+<pre class="brush: js">[1,2,3,4,5].map(function (n) {
+    return !(n &gt; 1) ? 1 : arguments.callee(n - 1) * n;
+});</pre>
+<p>However this was actually a really bad solution as this (in conjunction with other <code>arguments</code>, <code>callee</code>, and <code>caller</code> issues) make inlining and tail recursion impossible in the general case (you can achieve it in select cases through tracing etc, but even the best code is sub optimal due to checks that would not otherwise be necessary). The other major issue is that the recursive call will get a different <code>this</code> value, eg.</p>
+<pre class="brush: js">var global = this;
+
+var sillyFunction = function (recursed) {
+    if (!recursed) { return arguments.callee(true); }
+    if (this !== global) {
+        alert("This is: " + this);
+    } else {
+        alert("This is the global");
+    }
+}
+
+sillyFunction();</pre>
+<p>ECMAScript 3 resolved these issues by allowing named function expressions. For example:</p>
+<pre class="brush: js">[1,2,3,4,5].map(function factorial (n) {
+    return !(n &gt; 1) ? 1 : factorial(n-1)*n;
+});</pre>
+<p>This has numerous benefits</p>
+<ul>
+  <li>the function can be called like any other from inside your code</li>
+  <li>it does not pollute the namespace</li>
+  <li>the value of <code>this</code> does not change</li>
+  <li>it's more performant (accessing the arguments object is expensive)</li>
+</ul>
+<p>Another feature that was deprecated was <code>arguments.callee.caller</code>, or more specifically <code>Function.caller</code>. Why is is this? Well, at any point in time you can find the deepest caller of any function on the stack, and as I said above looking at the call stack has one single major effect: It makes a large number of optimizations impossible, or much much more difficult. For example, if you cannot guarantee that a function <code>f</code> will not call an unknown function it is not possible to inline <code>f</code>. Basically it means that any call site that may have been trivially inlinable accumulates a large number of guards, take:</p>
+<pre class="brush: js">function f (a, b, c, d, e) { return a ? b * c : d * e; }</pre>
+<p>If the JavaScript interpreter cannot guarantee that all the provided arguments are numbers at the point that the call is made, it needs to either insert checks for all the arguments before the inlined code, or it cannot inline the function. Now in this particular case a smart interpreter should be able to rearrange the checks to be more optimal and not check any values that would not be used. However in many cases that's just not possible and therefore it becomes impossible to inline.</p>
+<h2 id="A_use_of_arguments.callee_with_no_good_alternative">A use of <code>arguments.callee</code> with no good alternative</h2>
+<p>However, in a case like the following, there are not alternatives to <code>arguments.callee</code>, so its deprecation could be a bug (see <a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=725398" rel="external" title="">bug 725398</a>):</p>
+<pre class="brush: js">function createPerson (sIdentity) {
+    var oPerson = new Function("alert(arguments.callee.identity);");
+    oPerson.identity = sIdentity;
+    return oPerson;
+}
+
+var john = createPerson("John Smith");
+
+john();</pre>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsEditorialReview">NeedsEditorialReview</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsTechnicalReview">NeedsTechnicalReview</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/stommepoes">stommepoes</a>, <a href="/en-US/profiles/myf">myf</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Prodoc">Prodoc</a>, <a href="/en-US/profiles/jez0990">jez0990</a>, <a href="/en-US/profiles/AaronAsAChimp">AaronAsAChimp</a>, <a href="/en-US/profiles/fusionchess">fusionchess</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/angusc">angusc</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/roryokane">roryokane</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/roryokane">roryokane</a>, 
+          <time datetime="2013-07-08T10:28:46-07:00">Jul 8, 2013 10:28:46 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/roryokane">roryokane</a>, 
+            <time datetime="2013-07-08T10:28:46-07:00">Jul 8, 2013 10:28:46 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/arguments/callee$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="439271" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">ParallelArray</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p/><div class="banner geckoVersionBadge"> 
+<div class="bannerHeading">Requires Gecko 17.0 (Firefox 17.0 / Thunderbird 17.0 / SeaMonkey 2.14)</div> 
+<div class="bannerText"/> 
+</div><p/>
+<p/><div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div><p/>
+<div class="geckoVersionNote">
+  <p/><div class="geckoVersionHeading"> 
+Gecko 22.0 note 
+<div style="font-size: 9px; line-height: 1; font-style: italic;">(Firefox 22.0 / Thunderbird 22.0 / SeaMonkey 2.19)</div> 
+</div><p/>
+  <p>This object is now disabled in the Beta, Release and ESR channels. Use the <a class="external" href="http://www.mozilla.org/en-US/firefox/aurora/">Aurora</a> or <a class="external" href="http://nightly.mozilla.org/">Nightly</a> channel to try out this feature. (<a class="external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=853067" title="FIXED: Disable parallelarray in beta/release/esr for now">bug 853067</a>)</p>
+</div>
+<h2 id="Summary">Summary</h2>
+<p>The goal of ParallelArray is to enable data-parallelism in web applications. The higher-order functions available on ParallelArray attempt to execute in parallel, though they may fall back to sequential execution if necessary. To ensure that your code executes in parallel, it is suggested that the functions should be limited to the <a class="new" href="/en-US/docs/ParallelizableJavaScriptSubset" title="/en-US/docs/ParallelizableJavaScriptSubset">parallelizable subset of JS that Firefox supports</a>.</p>
+<h2 id="Syntax">Syntax</h2>
+<pre class="syntaxbox">new ParallelArray()
+new ParallelArray([element0, element1, ...])
+new ParallelArray(arrayLength, elementalFunction)</pre>
+<h2 id="ParallelArray_instances"><code>ParallelArray</code> instances</h2>
+<h3 id="Properties">Properties</h3>
+<dl>
+  <dt>
+    length</dt>
+  <dd>
+    Reflects the number of elements in the <code>ParallelArray</code>.</dd>
+</dl>
+<h3 id="Methods">Methods</h3>
+<dl>
+  <dt>
+    map</dt>
+  <dd>
+    Apply map callback to array elements.</dd>
+  <dt>
+    reduce</dt>
+  <dd>
+     </dd>
+  <dt>
+    scan</dt>
+  <dt>
+    scatter</dt>
+  <dd>
+    Scatter array elements.</dd>
+  <dt>
+    filter</dt>
+  <dt>
+    flatten</dt>
+  <dt>
+    partition</dt>
+  <dt>
+    get</dt>
+  <dd>
+    Get ParallelArray element.</dd>
+</dl>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example.3A_Using_map_in_parallel">Example: Using map in parallel</h3>
+<pre class="brush: js">var p = new ParallelArray([0, 1, 2, 3, 4]);
+var m = p.map(function (v) {
+  return v + 1;
+});</pre>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a class="external" href="http://wiki.ecmascript.org/doku.php?id=strawman:data_parallelism" title="http://wiki.ecmascript.org/doku.php?id=strawman:data_parallelism">Ecmascript ParallelArray strawman</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/nmatsakis">nmatsakis</a>, <a href="/en-US/profiles/Yoshino">Yoshino</a>, <a href="/en-US/profiles/williamr">williamr</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/nmatsakis">nmatsakis</a>, 
+          <time datetime="2013-07-10T07:15:34-07:00">Jul 10, 2013 7:15:34 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/nmatsakis">nmatsakis</a>, 
+            <time datetime="2013-07-10T07:15:34-07:00">Jul 10, 2013 7:15:34 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/ParallelArray$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

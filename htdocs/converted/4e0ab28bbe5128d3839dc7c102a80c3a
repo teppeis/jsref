@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="434851" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Array splice method</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Changes the content of an array, adding new elements while removing old elements.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en/JavaScript/Reference/Global_Objects/Array#Array_instances"><code>Array</code> instances</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>array</em>.splice(<em>index</em> ,<em> howMany</em>[<em>,</em><em> element1</em>[, ...[, <em>elementN</em>]]])</code>
+
+<code><em>array</em>.splice(<em>index</em>) // SpiderMonkey extension</code></pre>
+<h3 id="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>index</code></dt>
+  <dd>
+    Index at which to start changing the array. If greater than the length of the array, no elements will be removed.  If negative, will begin that many elements from the end.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>howMany</code></dt>
+  <dd>
+    An integer indicating the number of old array elements to remove. If <code>howMany</code> is 0, no elements are removed. In this case, you should specify at least one new element. If <code>howMany</code> is greater than the number of elements left in the array starting at <code>index</code>, then all of the elements though the end of the array will be deleted.  If no <code>howMany</code> parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after <code>index</code> are removed.</dd>
+</dl>
+<dl>
+  <dt>
+    <code>element1, ..., element<em>N</em></code></dt>
+  <dd>
+    The elements to add to the array. If you don't specify any elements, <code>splice</code> simply removes elements from the array.</dd>
+</dl>
+<h2 id="Returns">Returns</h2>
+<p>An array containing the removed elements. If only one element is removed, an array of one element is returned. If no elements are removed, an empty array is returned.</p>
+<h2 id="Description">Description</h2>
+<p>If you specify a different number of elements to insert than the number you're removing, the array will have a different length at the end of the call.</p>
+<h2 id="Backward_Compatibility">Backward Compatibility</h2>
+<h3 id="JavaScript_1.2">JavaScript 1.2</h3>
+<p>The <code>splice</code> method returns the element removed, if only one element is removed (<code>howMany</code> parameter is 1); otherwise, the method returns an array containing the removed elements. Note that the last browser to use JavaScript 1.2 was Netscape Navigator 4, so you can depend on <code>splice</code> always returning an array.</p>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example.3A_Using_splice">Example: Using <code>splice</code></h3>
+<p>The following script illustrate the use of splice:</p>
+<pre class="brush: js">var myFish = ["angel", "clown", "mandarin", "surgeon"];
+
+//removes 0 elements from index 2, and inserts "drum"
+var removed = myFish.splice(2, 0, "drum");
+//myFish is ["angel", "clown", "drum", "mandarin", "surgeon"]
+//removed is [], no elements removed
+
+//removes 1 element from index 3
+removed = myFish.splice(3, 1);
+//myFish is ["angel", "clown", "drum", "surgeon"]
+//removed is ["mandarin"]
+
+//removes 1 element from index 2, and inserts "trumpet"
+removed = myFish.splice(2, 1, "trumpet");
+//myFish is ["angel", "clown", "trumpet", "surgeon"]
+//removed is ["drum"]
+
+//removes 2 elements from index 0, and inserts "parrot", "anemone" and "blue"
+removed = myFish.splice(0, 2, "parrot", "anemone", "blue");
+//myFish is ["parrot", "anemone", "blue", "trumpet", "surgeon"]
+//removed is ["angel", "clown"]
+
+//removes 2 elements from index 3
+removed = myFish.splice(3, <code class="language-js">Number<span class="token punctuation">.</span>MAX_VALUE</code>);
+//myFish is ["parrot", "anemone", "blue"]
+//removed is ["trumpet", "surgeon"]</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/push" title="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/push">push</a> / <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/pop" title="en/JavaScript/Reference/Global_Objects/Array/pop">pop</a> - add/remove elements from the end of the array;</li>
+  <li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/unshift" title="en/JavaScript/Reference/Global_Objects/Array/unshift">unshift</a> / <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/shift" title="en/JavaScript/Reference/Global_Objects/Array/shift">shift</a> - add/remove elements from the beginning of the array;</li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/concat" title="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/splice">concat</a> - returns a new array comprised of this array joined with other array(s) and/or value(s).</li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array%20methods">Array methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/zirak">zirak</a>, <a href="/en-US/profiles/Ruakh">Ruakh</a>, <a href="/en-US/profiles/do3cc">do3cc</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/SylvainPasche">SylvainPasche</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/asselin">asselin</a>, <a href="/en-US/profiles/ytpete">ytpete</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/DavidWalsh">DavidWalsh</a>, <a href="/en-US/profiles/jerry">jerry</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/asuth">asuth</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Xcelerate">Xcelerate</a>, <a href="/en-US/profiles/Anuarbek%20Safiyev">Anuarbek Safiyev</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/SteveB">SteveB</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/madarche">madarche</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/asselin">asselin</a>, 
+          <time datetime="2013-06-25T21:18:11-07:00">Jun 25, 2013 9:18:11 PM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/asselin">asselin</a>, 
+            <time datetime="2013-06-25T21:18:11-07:00">Jun 25, 2013 9:18:11 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="434087" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">hasOwnProperty</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns a boolean indicating whether the object has the specified property.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript ?</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>obj</em>.hasOwnProperty(<em>prop</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>prop</code></dt>
+  <dd>
+    The name of the property to test.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>Every object descended from <code>Object</code> inherits the <code>hasOwnProperty</code> method. This method can be used to determine whether an object has the specified property as a direct property of that object; unlike the <a href="/en-US/docs/JavaScript/Reference/Operators/Special/in" title="Core_JavaScript_1.5_Reference/Operators/Special_Operators/in_Operator"><code>in</code></a> operator, this method does not check down the object's prototype chain.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_hasOwnProperty_to_test_for_a_property.27s_existence" name="Example:_Using_hasOwnProperty_to_test_for_a_property.27s_existence">Example: Using <code>hasOwnProperty</code> to test for a property's existence</h3>
+<p>The following example determines whether the <code>o</code> object contains a property named <code>prop</code>:</p>
+<pre class="brush: js">o = new Object();
+o.prop = 'exists';
+
+function changeO() {
+  o.newprop = o.prop;
+  delete o.prop;
+}
+
+o.hasOwnProperty('prop');   //returns true
+changeO();
+o.hasOwnProperty('prop');   //returns false</pre>
+<h3 id="Example:_Direct_versus_inherited_properties" name="Example:_Direct_versus_inherited_properties">Example: Direct versus inherited properties</h3>
+<p>The following example differentiates between direct properties and properties inherited through the prototype chain:</p>
+<pre class="brush: js">o = new Object();
+o.prop = 'exists';
+o.hasOwnProperty('prop');             // returns true
+o.hasOwnProperty('toString');         // returns false
+o.hasOwnProperty('hasOwnProperty');   // returns false</pre>
+<h3 id="Example:_Itarate_over_properties_not_considering_inherited_properties" name="Example:_Itarate_over_properties_not_considering_inherited_properties">Example: Iterating over the properties of an object</h3>
+<p>The following example shows how to iterate over the properties of an object without executing on inherit properties. Note that the for..in loop is already only iterating enumerable items, so one should not assume based on the lack of non-enumerable properties shown in the loop that hasOwnProperty itself is confined strictly to enumerable items (as with <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames">getOwnPropertyNames</a>).</p>
+<pre class="brush: js">var buz = {
+    fog: 'stack'
+};
+
+for (var name in buz) {
+    if (buz.hasOwnProperty(name)) {
+        alert("this is fog (" + name + ") for sure. Value: " + buz[name]);
+    }
+    else {
+        alert(name); // toString or something else
+    }
+}</pre>
+<h3 id="hasOwnProperty_as_a_property"><code>hasOwnProperty</code> as a property</h3>
+<p>JavaScript does not protect the property name <code>hasOwnProperty</code>; thus, if the possibility exists that an object might have a property with this name, it is necessary to use an <em>external</em> <code>hasOwnProperty</code> to get correct results:</p>
+<pre class="brush: js"><code><span class="brush: js">var</span><span class="pln"> foo </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span>
+<span class="pln">    hasOwnProperty</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span>
+<span class="pln">        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span>
+<span class="pln">    </span><span class="pun">},</span>
+<span class="pln">    bar</span><span class="pun">:</span><span class="pln"> </span><span class="str">'</span></code><code><span class="str">Here be dragons</span></code><code><span class="str">'</span>
+<span class="pun">};</span>
+
+<span class="pln">foo</span><span class="pun">.</span><span class="pln">hasOwnProperty</span><span class="pun">(</span><span class="str">'bar'</span><span class="pun">);</span><span class="pln"> </span><span class="com">// always returns false</span>
+
+<span class="com">// </span></code><code><span class="com">Use another Object's hasOwnProperty and call it with 'this' set to foo</span></code><code>
+<span class="pun">({}).</span><span class="pln">hasOwnProperty</span><span class="pun">.</span><span class="pln">call</span><span class="pun">(</span><span class="pln">foo</span><span class="pun">,</span><span class="pln"> </span><span class="str">'bar'</span><span class="pun">);</span><span class="pln"> </span><span class="com">// true</span>
+
+<span class="com">// </span></code><code><span class="com">It's also possible to use the hasOwnProperty property from the Object property for this purpose</span></code><code>
+<span class="typ">Object</span><span class="pun">.</span><span class="pln">prototype</span><span class="pun">.</span><span class="pln">hasOwnProperty</span><span class="pun">.</span><span class="pln">call</span><span class="pun">(</span><span class="pln">foo</span><span class="pun">,</span><span class="pln"> </span><span class="str">'bar'</span><span class="pun">);</span><span class="pln"> </span><span class="com">// true</span>
+</code></pre>
+<p>Note that in the last case there are no newly created objects.</p>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/Enumerability_and_ownership_of_properties" title="/en-US/docs/Enumerability_and_ownership_of_properties">Enumerability and ownership of properties</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" title="JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames">getOwnPropertyNames</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Statements/for...in" title="JavaScript/Reference/Statements/for...in">for...in</a></li>
+  <li><a href="/en-US/docs/JavaScript/Reference/Operators/Special/in" title="Core_JavaScript_1.5_Reference/Operators/Special_Operators/in_Operator">in</a></li>
+  <li><a href="/en-US/docs/JavaScript/Guide/Inheritance_Revisited" title="JavaScript/Guide/Inheritance_Revisited">inheritance</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/BrunoLM">BrunoLM</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Nick_Pershin">Nick_Pershin</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Nick_Pershin">Nick_Pershin</a>, 
+          <time datetime="2013-06-24T06:05:21-07:00">Jun 24, 2013 6:05:21 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Nick_Pershin">Nick_Pershin</a>, 
+            <time datetime="2013-06-24T06:05:21-07:00">Jun 24, 2013 6:05:21 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

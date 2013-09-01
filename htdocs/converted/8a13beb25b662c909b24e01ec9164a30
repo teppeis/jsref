@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417687" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Number.isNaN</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div style="overflow: hidden; margin: 10px 0; padding: 0 10px; background: #9CF49C; text-align: center;"> 
+    <p style="margin: 4px 0;"><strong>This is an experimental technology, part of the Harmony (EcmaScript 6) proposal.</strong><br/>Because this technology's specification has not stabilized, check the <a href="#Browser_compatibility">compatibility table</a> for usage in various browsers. Also note that the syntax and behavior of an experimental technology is subject to change in future version of browsers as the spec changes.</p> 
+</div></div>
+<div>
+  <div class="overheadIndicator standardNote standardNoteBlock"> 
+<p>This content covers features introduced in <a href="https://developer.mozilla.org/en-US/docs/Firefox_15_for_developers">Firefox 15</a></p> 
+</div></div>
+<h2 id="Summary">Summary</h2>
+<p>Determine whether the passed value is <a href="/en-US/docs/JavaScript/Reference/Global_Objects/NaN" title="JavaScript/Reference/Global_Objects/NaN">NaN</a>. More robust version of the original global <a href="/en-US/docs/JavaScript/Reference/Global_Objects/isNaN" title="JavaScript/Reference/Global_Objects/isNaN">isNaN</a>.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of<code> <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number" title="JavaScript/Reference/Global_Objects/Number">Number</a></code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8.5+</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 6th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Number.isNaN(test<em>Value</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>test<em>Value</em></code></dt>
+  <dd>
+    The value to be tested for <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/NaN" title="JavaScript/Reference/Global_Objects/Number/NaN">NaN</a>.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>Due to both equality operators, == and ===, evaluating to <code>false</code> when checking if <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/NaN" title="JavaScript/Reference/Global_Objects/NaN">NaN</a> <em>is</em> NaN, the function <code>Number.isNaN</code> has become necessary. This situation is unlike all other possible value comparisons in JavaScript.</p>
+<p>In comparison to the global <a href="/en-US/docs/JavaScript/Reference/Global_Objects/isNaN" title="JavaScript/Reference/Global_Objects/isNaN">isNaN</a> function, Number.isNaN doesn't suffer the problem of forcefully converting the parameter to a number. This means it is now safe to pass values that would normally convert to NaN, but aren't actually the same value as NaN. This also means that only values of the type number, that are also NaN, return <code>true</code>.</p>
+<h2 id="Examples">Examples</h2>
+<pre class="brush:js;">Number.isNaN(NaN); // true
+Number.isNaN(Number.NaN); // true
+Number.isNaN(0 / 0) // true
+
+// everything else: false
+Number.isNaN(undefined);
+Number.isNaN({});     
+
+Number.isNaN(true);
+Number.isNaN(null);
+Number.isNaN(37);
+
+Number.isNaN("37");
+Number.isNaN("37.37");
+Number.isNaN("");
+Number.isNaN(" ");
+Number.isNaN("NaN");
+Number.isNaN("blabla"); // e.g. this would have been true with isNaN</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<div>
+  <div class="htab"> 
+    <a name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td>25.0</td>
+        <td>15.0 (15)</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td>15.0 (15)</td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+        <td><span style="color: #f00;" title="Not supported"> Not supported </span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Number">Number</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Number%20Methods">Number Methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/tw2113">tw2113</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/m_gol">m_gol</a>, <a href="/en-US/profiles/harrybotboy">harrybotboy</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:14-07:00">May 28, 2013 8:33:14 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/harrybotboy">harrybotboy</a>, 
+            <time datetime="2013-05-26T17:33:30-07:00">May 26, 2013 5:33:30 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

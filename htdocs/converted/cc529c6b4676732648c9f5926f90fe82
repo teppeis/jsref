@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417147" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Function.name</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div></div>
+<h2 id="Summary">Summary</h2>
+<p>The name of the function.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Property of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/Function"><code>Function</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript ?</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Description">Description</h2>
+<p>The name property returns the name of a function, or an empty string for anonymous functions:</p>
+<pre class="brush:js">function doSomething() { }
+
+alert(doSomething.name); // alerts "doSomething"
+</pre>
+<p>Functions created with the syntax <code>new <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="Function">Function</a>(...)</code> or just <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="Function">Function</a></code><code>(...)</code> have their name property set to "anonymous" on Firefox and Safari, or to an empty string on Chrome and Opera. This property is not supported on Internet Explorer.</p>
+<p>Note that in these examples anonymous functions are created, so <code>name</code> returns an empty string:</p>
+<pre class="brush:js">var f = function() { };
+var object = {
+  someMethod: function() {}
+};
+
+alert(f.name == ""); // true
+alert(object.someMethod.name == ""); // also true
+</pre>
+<p>You can define a function with a name in a <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope#Function_constructor_vs._function_declaration_vs._function_expression" title="JavaScript/Reference/Functions_and_function_scope#Function_constructor_vs._function_declaration_vs._function_expression">function expression</a>:</p>
+<pre class="brush:js">var object = {
+  someMethod: function object_someMethod() {}
+};
+alert(object.someMethod.name); // alerts "object_someMethod"
+
+try { object_someMethod } catch(e) { alert(e); }
+// ReferenceError: object_someMethod is not defined
+</pre>
+<p>You cannot change the <code>name</code> of a function, this property is read-only:</p>
+<pre class="brush:js">var object = {
+  // anonymous
+  someMethod: function() { }
+};
+
+object.someMethod.name = "someMethod";
+alert(object.someMethod.name); // empty string, someMethod is anonymous
+</pre>
+<h2 id="Examples">Examples</h2>
+<p>You can use <code>obj.constructor.name</code> to check the "class" of an object:</p>
+
+<pre class="brush:js">function a() { }
+
+var b = new a();
+
+alert(b.constructor.name); //Alerts "a"
+</pre>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsJSVersion">NeedsJSVersion</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Function">Function</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Andrea@3site.it">Andrea@3site.it</a>, <a href="/en-US/profiles/Seant23">Seant23</a>, <a href="/en-US/profiles/Andreas%20Wuest">Andreas Wuest</a>, <a href="/en-US/profiles/ft1">ft1</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:51-07:00">May 28, 2013 8:32:51 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-11-12T14:08:20-08:00">Nov 12, 2012 2:08:20 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

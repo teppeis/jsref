@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417663" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">toExponential</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Returns a string representing the Number object in exponential notation</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number"><code>Number</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.5</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre><code><em>number</em>.toExponential( [<i>fractionDigits</i>] )</code></pre>
+
+<h3 id="Parameter" name="Parameter">Parameter</h3>
+<dl>
+  <dt>fractionDigits</dt>
+  <dd>An integer specifying the number of digits after the decimal point. Defaults to as many digits as necessary to specify the number.</dd>
+</dl>
+
+
+<h2 id="Returns" name="Returns">Returns</h2>
+<p>A string representing a Number object in exponential notation with one digit before the decimal point, rounded to <code>fractionDigits</code> digits after the decimal point. If the <code>fractionDigits</code> argument is omitted, the number of digits after the decimal point defaults to the number of digits necessary to represent the value uniquely.</p>
+<p>If you use the <code>toExponential</code> method for a numeric literal and the numeric literal has no exponent and no decimal point, leave a space before the dot that precedes the method call to prevent the dot from being interpreted as a decimal point.</p>
+<p>If a number has more digits that requested by the <code>fractionDigits</code> parameter, the number is rounded to the nearest number represented by <code>fractionDigits</code> digits. See the discussion of rounding in the description of the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed" title="en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed">toFixed</a> method, which also applies to <code>toExponential</code>.</p>
+
+
+<h2 id="Example" name="Example">Example</h2>
+<pre class="brush:js">var num = 77.1234;
+
+alert("num.toExponential() is " + num.toExponential()); //displays 7.71234e+1
+
+alert("num.toExponential(4) is " + num.toExponential(4)); //displays 7.7123e+1
+
+alert("num.toExponential(2) is " + num.toExponential(2)); //displays 7.71e+1
+
+alert("77.1234.toExponential() is " + 77.1234.toExponential()); //displays 7.71234e+1
+
+alert("77 .toExponential() is " + 77 .toExponential()); //displays 7.7e+1</pre>
+
+<h2 id="See_Also" name="See_Also">See Also</h2>
+<ul>
+<li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed" title="en-US/docs/JavaScript/Reference/Global_Objects/Number/toFixed">Number.toFixed()</a></li>
+<li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toPrecision" title="en-US/docs/JavaScript/Reference/Global_Objects/Number/toPrecision">Number.toPrecision()</a></li>
+<li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number/toString" title="en-US/docs/JavaScript/Reference/Global_Objects/Number/toString">Number.toString()</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Mook">Mook</a>, <a href="/en-US/profiles/Diablownik">Diablownik</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:13-07:00">May 28, 2013 8:33:13 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-08-21T22:44:16-07:00">Aug 21, 2012 10:44:16 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toExponential$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

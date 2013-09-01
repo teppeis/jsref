@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417955" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Object.watch</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <div>
+  <div class="overheadIndicator nonStandard nonStandardHeader"> 
+      <p>Non-standard</p> 
+      </div></div>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>Watches for a property to be assigned a value and runs a function when that occurs.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>none</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><em>object</em>.watch(<em>prop</em>, <em>handler</em>)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>prop</code></dt>
+  <dd>
+    The name of a property of the object on which you wish to monitor changes.</dd>
+  <dt>
+    <code>handler</code></dt>
+  <dd>
+    A function to call when the specified property's value changes.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<div class="warning">
+  <strong>Warning:</strong> Generally you should avoid using <code>watch()</code> and <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch" title="/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch"><code>unwatch()</code></a> when possible. These two methods are implemented only in Gecko, and they're intended primarily for debugging use. In addition, using watchpoints has a serious negative impact on performance, which is especially true when used on global objects, such as window. You can usually use <a href="/en-US/docs/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters" title="https://developer.mozilla.org/en-US/docs/Core_JavaScript_1.5_Guide/Working_with_Objects#Defining_getters_and_setters">setters and getters</a> or proxies instead. See <a href="#Compatibility">Compatibility</a> for details.</div>
+<p>Watches for assignment to a property named <code>prop</code> in this object, calling <code>handler(prop, oldval, newval)</code> whenever <code>prop</code> is set and storing the return value in that property. A watchpoint can filter (or nullify) the value assignment, by returning a modified <code>newval</code> (or by returning <code>oldval</code>).</p>
+<p>If you delete a property for which a watchpoint has been set, that watchpoint does not disappear. If you later recreate the property, the watchpoint is still in effect.</p>
+<p>To remove a watchpoint, use the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch" title="JavaScript/Reference/Global_Objects/Object/unwatch">unwatch()</a></code> method. By default, the <code>watch</code> method is inherited by every object descended from <code>Object</code>.</p>
+<p>The JavaScript debugger has functionality similar to that provided by this method, as well as other debugging options. For information on the debugger, see <a href="/en-US/docs/Venkman" title="Venkman">Venkman</a>.</p>
+<p>In Firefox, <code>handler</code> is only called from assignments in script, not from native code. For example, <code>window.watch('location', myHandler)</code> will not call <code>myHandler</code> if the user clicks a link to an anchor within the current document. However, <code>window.location += '#myAnchor'</code> will call <code>myHandler</code>.</p>
+<div class="note">
+  <strong>Note:</strong> Calling <code>watch()</code> on an object for a specific property overrides and previous handler attached for that property.</div>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_watch_and_unwatch" name="Example:_Using_watch_and_unwatch">Example: Using <code>watch</code> and <code>unwatch</code></h3>
+<pre class="brush: js">var o = { p: 1 };
+
+o.watch("p", function (id, oldval, newval) {
+    console.log( "o." + id + " changed from " + oldval + " to " + newval );
+    return newval;
+});
+
+o.p = 2;
+o.p = 3;
+delete o.p;
+o.p = 4;
+
+o.unwatch('p');
+o.p = 5;</pre>
+<p>This script displays the following:</p>
+<pre>o.p changed from 1 to 2
+o.p changed from 2 to 3
+o.p changed from undefined to 4</pre>
+<h3 id="Example:_Using_watch_to_validate_an_object.27s_properties" name="Example:_Using_watch_to_validate_an_object.27s_properties">Example: Using <code>watch</code> to validate an object's properties</h3>
+<p>You can use <code>watch</code> to test any assignment to an object's properties. This example ensures that every Person always has a valid name and an age between 0 and 200.</p>
+<pre class="brush: js">Person = function(name,age) {
+  this.watch("age", Person.prototype._isValidAssignment);
+  this.watch("name", Person.prototype._isValidAssignment);
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.toString = function() {
+  return this.name + ", " + this.age;
+};
+
+Person.prototype._isValidAssignment = function(id, oldval, newval) {
+  if (id === "name" &amp;&amp; (!newval || newval.length &gt; 30)) {
+    throw new RangeError("invalid name for " + this);
+  }
+  if (id === "age"  &amp;&amp; (newval &lt; 0 || newval &gt; 200)) {
+    throw new RangeError("invalid age for " + this);
+  }
+  return newval;
+}
+
+will = new Person("Will", 29);
+print(will);   // Will, 29
+
+try {
+  will.name = "";
+} catch (e) {
+  print(e);
+}
+
+try {
+  will.age = -4;
+} catch (e) {
+  print(e);
+}</pre>
+<p>This script displays the following:</p>
+<pre>Will, 29
+RangeError: invalid name for Will, 29
+RangeError: invalid age for Will, 29
+</pre>
+<h2 id="Compatibility" name="Compatibility">Compatibility</h2>
+<ul>
+  <li>This <span class="external"><a class="external link-https" href="https://gist.github.com/384583" title="https://gist.github.com/384583">Polyfill</a> that offers watch to all ES5 compatible browser</span></li>
+  <li>Using a <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Proxy" title="Proxy">Proxy</a> enables you do that even deeper changes to how property assignments work</li>
+</ul>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch" title="JavaScript/Reference/Global_Objects/Object/unwatch">Object.unwatch()</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (4)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Fixit">Fixit</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsTechnicalReview">NeedsTechnicalReview</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/jswisher">jswisher</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Hamstersoup">Hamstersoup</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/paul.irish">paul.irish</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Talisker">Talisker</a>, <a href="/en-US/profiles/BlindWanderer">BlindWanderer</a>, <a href="/en-US/profiles/Joe%20Egan">Joe Egan</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/torbasow">torbasow</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/scrapmac">scrapmac</a>, <a href="/en-US/profiles/BYK">BYK</a>, <a href="/en-US/profiles/Brendan">Brendan</a>, <a href="/en-US/profiles/Trinithis">Trinithis</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Lcbarcellos">Lcbarcellos</a>, <a href="/en-US/profiles/Enumera">Enumera</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:26-07:00">May 28, 2013 8:33:26 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/torbasow">torbasow</a>, 
+            <time datetime="2013-02-22T00:58:25-08:00">Feb 22, 2013 12:58:25 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/watch$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

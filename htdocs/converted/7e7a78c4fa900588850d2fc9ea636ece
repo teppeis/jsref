@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417139" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Global Objects</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p/>
+<h2 id="Summary" name="Summary">Summary</h2>
+<p>This chapter documents all the JavaScript objects, along with their methods and properties.</p>
+<div class="onlyinclude">
+  <p>The term "global objects" here is not to be confused with the <em>global object</em>. Here, global objects refer to <em>objects in the global scope</em> (but only if ECMAScript 5 strict mode is not used! Otherwise it returns undefined). The global object itself can be accessed by <a href="/en-US/docs/JavaScript/Reference/Operators/this" title="JavaScript/Reference/Operators/this"><code>this</code></a> in the global scope. In fact, the global scope <em>consists</em><em> of</em> the properties of the global object (including inherited properties, if any).</p>
+<p>This page also includes the standard built-in constructors that are properties of the Intl object – these are not objects in the global scope, but they are available to all JavaScript programs.</p>
+  <h2 id="Standard_global_objects_(by_category)">Standard global objects (by category)</h2>
+  <h3 id="General-purpose_constructors">General-purpose constructors</h3>
+  <ul>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array">Array</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" title="JavaScript/Reference/Global_Objects/Boolean">Boolean</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date" title="JavaScript/Reference/Global_Objects/Date">Date</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/Function">Function</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Iterator" title="JavaScript/Reference/Global_Objects/Iterator">Iterator</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number" title="JavaScript/Reference/Global_Objects/Number">Number</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object">Object</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp" title="JavaScript/Reference/Global_Objects/RegExp">RegExp</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String">String</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Proxy" title="/en-US/docs/JavaScript/Reference/Global_Objects/Proxy">Proxy</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/ParallelArray" title="/en-US/docs/JavaScript/Reference/Global_Objects/ParallelArray">ParallelArray</a></li>
+  </ul>
+  <h3 id="Typed_array_constructors">Typed array constructors</h3>
+  <ul>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/ArrayBuffer" title="JavaScript_typed_arrays/ArrayBuffer">ArrayBuffer</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/DataView" title="/en-US/docs/JavaScript_typed_arrays/DataView">DataView</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Float32Array" title="JavaScript_typed_arrays/Float32Array">Float32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Float64Array" title="JavaScript_typed_arrays/Float64Array">Float64Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int16Array" title="JavaScript_typed_arrays/Int16Array">Int16Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int32Array" title="JavaScript_typed_arrays/Int32Array">Int32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int8Array" title="JavaScript_typed_arrays/Int8Array">Int8Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint16Array" title="JavaScript_typed_arrays/int16Array">Uint16Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint32Array" title="JavaScript_typed_arrays/Uint32Array">Uint32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint8Array" title="JavaScript_typed_arrays/int8Array">Uint8Array</a></li>
+    <li><a class="new" href="/en-US/docs/JavaScript_typed_arrays/Uint8ClampedArray" title="JavaScript_typed_arrays/Uint8ClampedArray">Uint8ClampedArray</a></li>
+  </ul>
+  <h3 id="Internationalization_constructors">Internationalization constructors</h3>
+  <ul>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Collator" title="JavaScript/Reference/Global_Objects/Collator">Intl.Collator</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat" title="JavaScript/Reference/Global_Objects/DateTimeFormat">Intl.DateTimeFormat</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat" title="JavaScript/Reference/Global_Objects/NumberFormat">Intl.NumberFormat</a></li>
+  </ul>
+  <h3 id="Error_constructors">Error constructors</h3>
+  <ul>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error" title="JavaScript/Reference/Global_Objects/Error">Error</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/EvalError" title="JavaScript/Reference/Global_Objects/EvalError">EvalError</a></li>
+    <li><a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/InternalError" title="JavaScript/Reference/Global_Objects/InternalError">InternalError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RangeError" title="JavaScript/Reference/Global_Objects/RangeError">RangeError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/ReferenceError" title="JavaScript/Reference/Global_Objects/ReferenceError">ReferenceError</a></li>
+    <li><a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/StopIteration" title="JavaScript/Reference/Global_Objects/StopIteration">StopIteration</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/SyntaxError" title="JavaScript/Reference/Global_Objects/SyntaxError">SyntaxError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="JavaScript/Reference/Global_Objects/TypeError">TypeError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/URIError" title="JavaScript/Reference/Global_Objects/URIError">URIError</a></li>
+  </ul>
+  <h3 id="Non-constructor_functions">Non-constructor functions</h3>
+  <ul>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/decodeURI" title="JavaScript/Reference/Global_Objects/decodeURI">decodeURI</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/decodeURIComponent" title="JavaScript/Reference/Global_Objects/decodeURIComponent">decodeURIComponent</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/encodeURI" title="JavaScript/Reference/Global_Objects/encodeURI">encodeURI</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/encodeURIComponent" title="JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/eval" title="JavaScript/Reference/Global_Objects/eval">eval</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/isFinite" title="JavaScript/Reference/Global_Objects/isFinite">isFinite</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/isNaN" title="JavaScript/Reference/Global_Objects/isNaN">isNaN</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/parseFloat" title="JavaScript/Reference/Global_Objects/parseFloat">parseFloat</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/parseInt" title="JavaScript/Reference/Global_Objects/parseInt">parseInt</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/uneval" title="JavaScript/Reference/Global_Objects/uneval">uneval</a></li>
+  </ul>
+  <h3 id="Other">Other</h3>
+  <ul>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Infinity" title="JavaScript/Reference/Global_Objects/Infinity">Infinity</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl" title="JavaScript/Reference/Global_Objects/Intl">Intl</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/JSON" title="JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math" title="JavaScript/Reference/Global_Objects/Math">Math</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NaN" title="JavaScript/Reference/Global_Objects/NaN">NaN</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/undefined" title="JavaScript/Reference/Global_Objects/undefined">undefined</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/null" title="/en-US/docs/JavaScript/Reference/Global_Objects/null">null</a></li>
+  </ul>
+  <h2 id="Standard_global_objects_(alphabetically)">Standard global objects (alphabetically)</h2>
+  <ul>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array">Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/ArrayBuffer" title="JavaScript_typed_arrays/ArrayBuffer">ArrayBuffer</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" title="JavaScript/Reference/Global_Objects/Boolean">Boolean</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Collator" title="JavaScript/Reference/Global_Objects/Collator">Collator</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/DataView" title="/en-US/docs/JavaScript_typed_arrays/DataView">DataView</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date" title="JavaScript/Reference/Global_Objects/Date">Date</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/DateTimeFormat" title="JavaScript/Reference/Global_Objects/DateTimeFormat">DateTimeFormat</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/decodeURI" title="JavaScript/Reference/Global_Objects/decodeURI">decodeURI</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/decodeURIComponent" title="JavaScript/Reference/Global_Objects/decodeURIComponent">decodeURIComponent</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/encodeURI" title="JavaScript/Reference/Global_Objects/encodeURI">encodeURI</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/encodeURIComponent" title="JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Error" title="JavaScript/Reference/Global_Objects/Error">Error</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/eval" title="JavaScript/Reference/Global_Objects/eval">eval</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/EvalError" title="JavaScript/Reference/Global_Objects/EvalError">EvalError</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Float32Array" title="JavaScript_typed_arrays/Float32Array">Float32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Float64Array" title="JavaScript_typed_arrays/Float64Array">Float64Array</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="JavaScript/Reference/Global_Objects/Function">Function</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Infinity" title="JavaScript/Reference/Global_Properties/Infinity">Infinity</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Intl" title="JavaScript/Reference/Global_Objects/Intl">Intl</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int16Array" title="JavaScript_typed_arrays/Int16Array">Int16Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int32Array" title="JavaScript_typed_arrays/Int32Array">Int32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Int8Array" title="JavaScript_typed_arrays/Int8Array">Int8Array</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/isFinite" title="JavaScript/Reference/Global_Objects/isFinite">isFinite</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/isNaN" title="JavaScript/Reference/Global_Objects/isNaN">isNaN</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Iterator" title="JavaScript/Reference/Global_Objects/Iterator">Iterator</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/JSON" title="JavaScript/Reference/Global_Objects/JSON">JSON</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Math" title="JavaScript/Reference/Global_Objects/Math">Math</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NaN" title="JavaScript/Reference/Global_Properties/NaN">NaN</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Number" title="JavaScript/Reference/Global_Objects/Number">Number</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/NumberFormat" title="JavaScript/Reference/Global_Objects/NumberFormat">NumberFormat</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global_Objects/Object">Object</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/parseFloat" title="JavaScript/Reference/Global_Objects/parseFloat">parseFloat</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/parseInt" title="JavaScript/Reference/Global_Objects/parseInt">parseInt</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RangeError" title="JavaScript/Reference/Global_Objects/RangeError">RangeError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/ReferenceError" title="JavaScript/Reference/Global_Objects/ReferenceError">ReferenceError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RegExp" title="JavaScript/Reference/Global_Objects/RegExp">RegExp</a></li>
+    <li><a class="new" href="/en-US/docs/JavaScript/Reference/Global_Objects/StopIteration" title="JavaScript/Reference/Global_Objects/StopIteration">StopIteration</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/String" title="JavaScript/Reference/Global_Objects/String">String</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/SyntaxError" title="JavaScript/Reference/Global_Objects/SyntaxError">SyntaxError</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/TypeError" title="JavaScript/Reference/Global_Objects/TypeError">TypeError</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint16Array" title="JavaScript_typed_arrays/Uint16Array">Uint16Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint32Array" title="JavaScript_typed_arrays/Uint32Array">Uint32Array</a></li>
+    <li><a href="/en-US/docs/JavaScript_typed_arrays/Uint8Array" title="JavaScript_typed_arrays/Uint8Array">Uint8Array</a></li>
+    <li><a class="new" href="/en-US/docs/JavaScript_typed_arrays/Uint8ClampedArray" title="JavaScript_typed_arrays/Uint8ClampedArray">Uint8ClampedArray</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/undefined" title="JavaScript/Reference/Global_Properties/undefined">undefined</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/uneval" title="JavaScript/Reference/Global_Objects/uneval">uneval</a></li>
+    <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/URIError" title="JavaScript/Reference/Global_Objects/URIError">URIError</a></li>
+  </ul>
+  <p>Other objects in the global scope are either <a href="/en-US/docs/JavaScript/Guide/Working_with_Objects#Creating_new_objects" title="JavaScript/Guide/Working_with_Objects#Creating_new_objects">created by the user script</a> or provided by the host application. The host objects available in <a href="/en-US/docs/Gecko" title="Gecko">Gecko</a>-based browsers are documented in the <a href="/en-US/docs/Gecko_DOM_Reference" title="Gecko_DOM_Reference">Gecko DOM Reference</a>.</p>
+  <p>For more information about the distinction between the <a href="/en-US/docs/DOM" title="DOM">DOM</a> and core <a href="/en-US/docs/JavaScript" title="JavaScript">JavaScript</a>, see <a href="/en-US/docs/JavaScript_technologies_overview" title="JavaScript_technologies_overview">JavaScript technologies overview</a>.</p>
+</div>
+<p> </p>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/DavidCary">DavidCary</a>, <a href="/en-US/profiles/Sephr">Sephr</a>, <a href="/en-US/profiles/kmaglione">kmaglione</a>, <a href="/en-US/profiles/user01">user01</a>, <a href="/en-US/profiles/MarkGiffin">MarkGiffin</a>, <a href="/en-US/profiles/Dionys">Dionys</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ziyunfei">ziyunfei</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/m_gol">m_gol</a>, <a href="/en-US/profiles/Norbert">Norbert</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/SamB">SamB</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:50-07:00">May 28, 2013 8:32:50 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Norbert">Norbert</a>, 
+            <time datetime="2013-04-04T13:06:28-07:00">Apr 4, 2013 1:06:28 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

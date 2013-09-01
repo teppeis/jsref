@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="459983" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Array</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>The JavaScript <code>Array</code> global object is a constructor for arrays, which are high-level, list-like objects.</p>
+<h2 id="Syntax">Syntax</h2>
+<pre class="syntaxbox">[<var>element0</var>, <var>element1</var>, ..., <var>elementN</var>]
+new Array(<em>element0</em>, <em>element1</em>, ..., <em>elementN</em>)
+new Array(<em>arrayLength</em>)
+</pre>
+<dl>
+  <dt>
+    <code><var>element0</var>, <var>element1</var>, ..., <var>elementN</var> </code></dt>
+  <dd>
+    A JavaScript array is initialized with the given elements, except in the case where a single argument is passed to the <code>Array</code> constructor and that argument is a number. (See below.) Note that this special case only applies to JavaScript arrays created with the <code>Array</code> constructor, not with array literals created with the bracket syntax.</dd>
+  <dt>
+    <code><var>arrayLength</var></code></dt>
+  <dd>
+    If the only argument passed to the <code>Array</code> constructor is an integer between 0 and 2<sup>32</sup>-1 (inclusive), a new, empty JavaScript array and its length is set to that number. If the argument is any other number, a <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/RangeError" title="JavaScript/Reference/Global_Objects/RangeError">RangeError</a></code> exception is thrown.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p>Arrays are list-like objects that come with a several built-in methods to perform traversal and mutation operations. Neither the size of a JavaScript array nor the types of its elements are fixed. Since an array's size can grow or shrink at any time, JavaScript arrays are not guaranteed to be dense. In general, these are convenient characteristics; but if these features are not desirable for your particular use case, you might consider using WebGL typed arrays.</p>
+<p>Note that <a class="external" href="http://www.andrewdupont.net/2006/05/18/javascript-associative-arrays-considered-harmful/">you shouldn't use an array as an associative array</a>. You can use plain <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object" title="JavaScript/Reference/Global Objects/Object">objects</a> instead, although doing so comes with its own caveats. See the post <a class="external" href="http://www.less-broken.com/blog/2010/12/lightweight-javascript-dictionaries.html" title="http://monogatari.doukut.su/2010/12/lightweight-javascript-dictionaries.html">Lightweight JavaScript dictionaries with arbitrary keys</a> as an example.</p>
+<h3 id="Accessing_array_elements">Accessing array elements</h3>
+<p>JavaScript arrays are zero-indexed; the first element of an array is actually at index <code>0</code>, and the last element is at the index equal to the value of the array's <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/length" title="JavaScript/Reference/Global_Objects/Array/length"><code>length</code></a> property minus 1.</p>
+<pre class="brush: js">var arr = ["this is the first element", "this is the second element"];
+console.log(arr[0]);              // prints "this is the first element"
+console.log(arr[1]);              // prints "this is the second element"
+console.log(arr[arr.length - 1]); // prints "this is the second element"
+</pre>
+<p>Array elements are just object properties, in the way that <code><a href="/en-US/docs/toString" title="toString">toString</a></code> is a property. However, note that trying to access the first element of an array as follows will throw a syntax error:</p>
+<pre class="brush: js">console.log(arr.0);
+</pre>
+<p>Note that there is nothing unique about JavaScript arrays and their properties that causes this. JavaScript properties that begin with a digit cannot be referenced with dot notation. They must be accessed using bracket notation. For example, if you had an object with a property "3d", it too would have to be referenced using bracket notation, not dot notation. This similarity is exhibited in the following two code samples:</p>
+<pre class="brush: js">var years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];
+try {
+  console.log(years.0);
+}
+catch (ex) {
+  console.log("Using bracket notation");
+  console.log(years[0]);
+}
+</pre>
+<pre class="brush: js">try {
+  renderer.3d.setTexture(model, "character.png");
+}
+catch (ex) {
+  console.log("Using bracket notation");
+  renderer["3d"].setTexture(model, "character.png");
+}
+</pre>
+<p>Note that in the <code>3d</code> example, "<code>3d</code>" had to be quoted. It's possible to quote the JavaScript array indexes as well (e.g., <code>years["2"]</code> instead of <code>years[2]</code>), although it's not necessary. The 2 in <code>years[2]</code> eventually gets coerced into a string by the JavaScript engine, anyway, through an implicit <code>toString</code> conversion. It is for this reason that "2" and "02" would refer to two different slots on the <code>years</code> object and the following example logs <code>true</code>:</p>
+<pre class="brush: js">console.log(years["2"] != years["02"]);
+</pre>
+<h3 id="Relationship_between_length_and_numerical_properties">Relationship between <code>length</code> and numerical properties</h3>
+<p>A JavaScript array's <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/length" title="JavaScript/Reference/Global_Objects/Array/length">length</a></code> property and numerical properties are connected. Several of the built-in array methods (e.g., <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/join" title="JavaScript/Reference/Global_Objects/Array/join">join</a></code>, <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/slice" title="JavaScript/Reference/Global_Objects/Array/slice">slice</a></code>, <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf" title="JavaScript/Reference/Global_Objects/Array/indexOf">indexOf</a></code>, etc.) take into account the value of an array's <code>length</code> property when they're called. Other methods (e.g., <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/push" title="JavaScript/Reference/Global_Objects/Array/push">push</a></code>, <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/splice" title="JavaScript/Reference/Global_Objects/Array/splice">splice</a></code>, etc.) also result in updates to an array's <code>length</code> property.</p>
+<pre class="brush: js">var fruits = [];
+fruits.push("banana", "apple", "peach");
+
+console.log(fruits.length); // 3</pre>
+<p>When setting a property on a JavaScript array when the property is a valid array index and that index is outside the current bounds of the array, the array will grow to a size large enough to accommodate an element at that index, and the engine will update the array's <code>length</code> property accordingly:</p>
+<pre class="brush: js">fruits[3] = "mango";
+console.log(fruits[3]);
+console.log(fruits.length); // 4</pre>
+<p>Setting the <code>length</code> property, directly, also results in special behavior.</p>
+<pre class="brush: js">fruits.length = 10;
+console.log(fruits);        // The array gets padded with undefined
+console.log(fruits.length); // 10
+</pre>
+<p>This is explained further on the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/length" title="JavaScript/Reference/Global_Objects/Array/length"><code>length</code></a> page.</p>
+<h3 id="Creating_an_array_using_the_result_of_a_match">Creating an array using the result of a match</h3>
+<p>The result of a match between a regular expression and a string can create a JavaScript array. This array has properties and elements that provide information about the match. An array is the return value of RegExp.exec, String.match, and String.replace. To help explain these properties and elements, look at the following example and then refer to the table below:</p>
+<pre class="brush: js">// Match one d followed by one or more b's followed by one d
+// Remember matched b's and the following d
+// Ignore case
+
+var myRe = /d(b+)(d)/i;
+var myArray = myRe.exec("cdbBdbsbz");
+</pre>
+<p>The properties and elements returned from this match are as follows:</p>
+<table class="fullwidth-table">
+  <tbody>
+    <tr>
+      <td class="header">Property/Element</td>
+      <td class="header">Description</td>
+      <td class="header">Example</td>
+    </tr>
+    <tr>
+      <td><code>input</code></td>
+      <td>A read-only property that reflects the original string against which the regular expression was matched.</td>
+      <td>cdbBdbsbz</td>
+    </tr>
+    <tr>
+      <td><code>index</code></td>
+      <td>A read-only property that is the zero-based index of the match in the string.</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><code>[0]</code></td>
+      <td>A read-only element that specifies the last matched characters.</td>
+      <td>dbBd</td>
+    </tr>
+    <tr>
+      <td><code>[1], ...[n]</code></td>
+      <td>Read-only elements that specify the parenthesized substring matches, if included in the regular expression. The number of possible parenthesized substrings is unlimited.</td>
+      <td>[1]: bB<br/>
+        [2]: d</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Properties">Properties</h2>
+<p><small><em>For properties available on <code>Array</code> instances, see <a class="external" href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Properties">Properties of Array instances</a>.</em></small></p>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/prototype" title="JavaScript/Reference/Global_Objects/Array/prototype">prototype</a></dt>
+  <dd>
+    Allows the addition of properties to all objects.</dd>
+</dl>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a>:</span></div> 
+<div><a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Arity"><code>arity</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Caller"><code>caller</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Constructor"><code>constructor</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Length"><code>length</code></a>, <a class="internal external" href="http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/Name"><code>name</code></a></div> 
+</div></div>
+<h2 id="Methods">Methods</h2>
+<div>
+  <small><em>For methods available on <code>Array</code> instances, see <a class="external" href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Methods">Methods of Array instances</a>.</em></small></div>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/isArray" title="JavaScript/Reference/Global Objects/Array/isArray">isArray</a> <span class="inlineIndicator jsMinVer">Requires <a class="external" href="http://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Return true if a variable is an array, if not false.</dd>
+</dl>
+<h2 id="Array_generic_methods"><code>Array</code> generic methods</h2>
+<p>Sometimes you would like to apply array methods to strings or other array-like objects (such as function <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments" title="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments"><code>arguments</code></a>). By doing this, you treat a string as an array of characters (or otherwise treat a non-array as an array). For example, in order to check that every character in the variable <var>str</var> is a letter, you would write:</p>
+<pre class="brush: js">function isLetter(character) {
+  return (character &gt;= "a" &amp;&amp; character &lt;= "z");
+}
+
+if (Array.prototype.every.call(str, isLetter))
+  alert("The string '" + str + "' contains only letters!");
+</pre>
+<p>This notation is rather wasteful and JavaScript 1.6 introduced a generic shorthand:</p>
+<pre class="brush: js">if (Array.every(isLetter, str))
+  alert("The string '" + str + "' contains only letters!");
+</pre>
+<p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String#String_generic_methods" title="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String#String_generic_methods">Generics</a> are also available on <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" title="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String"><code>String</code></a>.</p>
+<p>These are currently not part of ECMAScript standards (though the ES6 <a class="external" href="https://github.com/monolithed/ECMAScript-6" title="https://github.com/monolithed/ECMAScript-5"><code>Array.from()</code></a> can be used to achieve this). The following is a shim to allow its use in all browsers:</p>
+<pre class="brush: js">// Assumes Array extras already present (one may use polyfills for these as well)
+(function () {
+    'use strict';
+
+    var i,
+        // We could also build the array of methods with the following, but the
+        //   getOwnPropertyNames() method is non-shimable:
+        // Object.getOwnPropertyNames(Array).filter(function (methodName) {return typeof Array[methodName] === 'function'});
+        methods = [
+            'join', 'reverse', 'sort', 'push', 'pop', 'shift', 'unshift',
+            'splice', 'concat', 'slice', 'indexOf', 'lastIndexOf',
+            'forEach', 'map', 'reduce', 'reduceRight', 'filter',
+            'some', 'every', 'isArray'
+        ],
+        methodCount = methods.length,
+        assignArrayGeneric = function (methodName) {
+            var method = Array.prototype[methodName];
+            Array[methodName] = function (arg1) {
+                return method.apply(arg1, Array.prototype.slice.call(arguments, 1));
+            };
+        };
+
+    for (i = 0; i &lt; methodCount; i++) {
+        assignArrayGeneric(methods[i]);
+    }
+}());</pre>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example.3A_Creating_an_array">Example: Creating an array</h3>
+<p>The following example creates an array, <code>msgArray</code>, with a length of 0, then assigns values to <code>msgArray[0]</code> and <code>msgArray[99]</code>, changing the length of the array to 100.</p>
+<pre class="brush: js">var msgArray = new Array();
+msgArray[0] = "Hello";
+msgArray[99] = "world";
+
+if (msgArray.length == 100)
+   print("The length is 100.");
+</pre>
+<h3 id="Example.3A_Creating_a_two-dimensional_array">Example: Creating a two-dimensional array</h3>
+<p>The following creates chess board as a two dimensional array of strings. The first move is made by copying the 'p' in 6,4 to 4,4. The old position 6,4 is made blank.</p>
+<pre class="brush: js">var board = 
+[ ['R','N','B','Q','K','B','N','R'],
+  ['P','P','P','P','P','P','P','P'],
+  [' ',' ',' ',' ',' ',' ',' ',' '],
+  [' ',' ',' ',' ',' ',' ',' ',' '],
+  [' ',' ',' ',' ',' ',' ',' ',' '],
+  [' ',' ',' ',' ',' ',' ',' ',' '],
+  ['p','p','p','p','p','p','p','p'],
+  ['r','n','b','q','k','b','n','r']];
+print(board.join('\n') + '\n\n');
+
+// Move King's Pawn forward 2
+board[4][4] = board[6][4];
+board[6][4] = ' ';
+print(board.join('\n'));
+</pre>
+<p>Here is the output:</p>
+<pre class="eval">R,N,B,Q,K,B,N,R
+P,P,P,P,P,P,P,P
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
+p,p,p,p,p,p,p,p
+r,n,b,q,k,b,n,r
+
+R,N,B,Q,K,B,N,R
+P,P,P,P,P,P,P,P
+ , , , , , , , 
+ , , , , , , , 
+ , , , ,p, , , 
+ , , , , , , , 
+p,p,p,p, ,p,p,p
+r,n,b,q,k,b,n,r
+</pre>
+<h2 id="Browser_compatibility" name="Browser_compatibility">Browser compatibility</h2>
+<p/><div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p/>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari (WebKit)</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Phone</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a class="external" href="https://github.com/plusdude/array-generics" title="https://github.com/plusdude/array-generics">Polyfill for JavaScript 1.8.5 Array Generics and ECMAScript 5 Array Extras</a></li>
+  <li><a href="/en-US/docs/JavaScript/Guide/Working_with_Objects#Indexing_object_properties" title="JavaScript/Guide/Working_with_objects#Indexing_object_properties">"Indexing object properties" in JavaScript Guide: "Working with objects"</a></li>
+  <li><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.7#Array_comprehensions" title="New_in_JavaScript_1.7#Array_comprehensions">New in JavaScript 1.7: Array comprehensions</a></li>
+  <li><a href="/en-US/docs/JavaScript/New_in_JavaScript/1.6#Array_extras" title="New_in_JavaScript_1.6#Array_extras">New in JavaScript 1.6: Array extras</a></li>
+  <li><a href="/en-US/docs/JavaScript_typed_arrays" title="JavaScript_typed_arrays">Draft: Typed Arrays</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (3)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Skierpage">Skierpage</a>, <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/snearley">snearley</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Jblumel">Jblumel</a>, <a href="/en-US/profiles/jswisher">jswisher</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/Jeremie">Jeremie</a>, <a href="/en-US/profiles/Vor0nwe">Vor0nwe</a>, <a href="/en-US/profiles/XP1">XP1</a>, <a href="/en-US/profiles/Mckoss">Mckoss</a>, <a href="/en-US/profiles/aDataChemist">aDataChemist</a>, <a href="/en-US/profiles/Hamstersoup">Hamstersoup</a>, <a href="/en-US/profiles/SylvainPasche">SylvainPasche</a>, <a href="/en-US/profiles/Shaver">Shaver</a>, <a href="/en-US/profiles/Marcoos">Marcoos</a>, <a href="/en-US/profiles/kaijim">kaijim</a>, <a href="/en-US/profiles/sholsinger">sholsinger</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/DataForge">DataForge</a>, <a href="/en-US/profiles/jsled">jsled</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Ncmathsadist">Ncmathsadist</a>, <a href="/en-US/profiles/Amyhoy">Amyhoy</a>, <a href="/en-US/profiles/Zipotron">Zipotron</a>, <a href="/en-US/profiles/Milx">Milx</a>, <a href="/en-US/profiles/M%20runwal">M runwal</a>, <a href="/en-US/profiles/Kumarsatheesh">Kumarsatheesh</a>, <a href="/en-US/profiles/%E7%AB%8B%E7%9F%B3">立石</a>, <a href="/en-US/profiles/Ted_Mielczarek">Ted_Mielczarek</a>, <a href="/en-US/profiles/kiran.soparla">kiran.soparla</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Crash">Crash</a>, <a href="/en-US/profiles/Neil">Neil</a>, <a href="/en-US/profiles/Anonymous">Anonymous</a>, <a href="/en-US/profiles/jryans">jryans</a>, <a href="/en-US/profiles/vjeux">vjeux</a>, <a href="/en-US/profiles/hobophobe">hobophobe</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/daniel35310">daniel35310</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/teoli">teoli</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Andr3w">Andr3w</a>, <a href="/en-US/profiles/plusdude">plusdude</a>, <a href="/en-US/profiles/grendel">grendel</a>, <a href="/en-US/profiles/Maciekp">Maciekp</a>, <a href="/en-US/profiles/paul.irish">paul.irish</a>, <a href="/en-US/profiles/delae">delae</a>, <a href="/en-US/profiles/Fran">Fran</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/ColdHawaiian">ColdHawaiian</a>, <a href="/en-US/profiles/mua">mua</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Ward">Ward</a>, <a href="/en-US/profiles/scribu">scribu</a>, <a href="/en-US/profiles/BenoitL">BenoitL</a>, <a href="/en-US/profiles/Trinithis">Trinithis</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/berkerpeksag">berkerpeksag</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+          <time datetime="2013-08-28T06:16:44-07:00">Aug 28, 2013 6:16:44 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+            <time datetime="2013-08-28T06:16:44-07:00">Aug 28, 2013 6:16:44 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

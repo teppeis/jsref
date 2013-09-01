@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417119" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">switch</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Evaluates an expression, matching the expression's value to a case label, and executes statements associated with that case.</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Statement</td>
+    </tr>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.2</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMA-262 3rd Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox">switch (<em>expression</em>) {
+  case <em>label1</em>:
+    <em>statements1</em>
+    [break;]
+  case <em>label2</em>:
+    <em>statements2</em>
+    [break;]
+  ...
+  case <em>labelN</em>:
+    <em>statementsN</em>
+    [break;]
+  default:
+    <em>statements_def</em>
+    [break;]
+}</pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>expression</code></dt>
+  <dd>
+    An expression matched against each label.</dd>
+  <dt>
+    <code>labelN</code></dt>
+  <dd>
+    Identifier used to match against <code>expression</code>.</dd>
+  <dt>
+    <code>statementsN</code></dt>
+  <dd>
+    Statements that are executed if <code>expression</code> matches the associated label.</dd>
+  <dt>
+    <code>statements_def</code></dt>
+  <dd>
+    Statements that are executed if <code>expression</code> does not match any label.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>If a match is found, the program executes the associated statements. If multiple cases match the provided value, the first case that matches is selected, even if the cases are not equal to each other.</p>
+<p>The program first looks for a <code>case</code> clause with a label matching the value of expression and then transfers control to that clause, executing the associated statements. If no matching label is found, the program looks for the optional <code>default</code> clause, and if found, transfers control to that clause, executing the associated statements. If no <code>default</code> clause is found, the program continues execution at the statement following the end of <code>switch</code>. By convention, the <code>default</code> clause is the last clause, but it does not need to be so.</p>
+<p>The optional <code><a href="/en-US/docs/JavaScript/Reference/Statements/break" title="JavaScript/Reference/Statements/break">break</a></code> statement associated with each case label ensures that the program breaks out of switch once the matched statement is executed and continues execution at the statement following switch. If <code>break</code> is omitted, the program continues execution at the next statement in the <code>switch</code> statement.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_switch" name="Example:_Using_switch">Example: Using <code>switch</code></h3>
+<p>In the following example, if <code>expr</code> evaluates to "Bananas", the program matches the value with case "Bananas" and executes the associated statement. When <code>break</code> is encountered, the program breaks out of <code>switch</code> and executes the statement following <code>switch</code>. If <code>break</code> were omitted, the statement for case "Cherries" would also be executed.</p>
+<pre class="brush: js">switch (expr) {
+  case "Oranges":
+    document.write("Oranges are $0.59 a pound.&lt;br&gt;");
+    break;
+  case "Apples":
+    document.write("Apples are $0.32 a pound.&lt;br&gt;");
+    break;
+  case "Bananas":
+    document.write("Bananas are $0.48 a pound.&lt;br&gt;");
+    break;
+  case "Cherries":
+    document.write("Cherries are $3.00 a pound.&lt;br&gt;");
+    break;
+  case "Mangoes":
+  case "Papayas":
+    document.write("Mangoes and papayas are $2.79 a pound.&lt;br&gt;");
+    break;
+  default:
+    document.write("Sorry, we are out of " + expr + ".&lt;br&gt;");
+}
+
+document.write("Is there anything else you'd like?&lt;br&gt;");
+</pre>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (1)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/statements">statements</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Amorphic8">Amorphic8</a>, <a href="/en-US/profiles/Skierpage">Skierpage</a>, <a href="/en-US/profiles/sgrossman">sgrossman</a>, <a href="/en-US/profiles/Ancestor">Ancestor</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Karaokeyoga">Karaokeyoga</a>, <a href="/en-US/profiles/juliandoesstuff">juliandoesstuff</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Victory">Victory</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:50-07:00">May 28, 2013 8:32:50 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2013-04-27T18:36:00-07:00">Apr 27, 2013 6:36:00 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Statements/switch$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

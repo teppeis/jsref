@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="454273" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Array reduce method</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary">Summary</h2>
+<p>Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array" title="JavaScript/Reference/Global_Objects/Array"><code>Array</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.8</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 5th Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code><var>array</var>.reduce(<var>callback</var><span style="font-style: italic;">[</span>, <var>initialValue</var><span style="font-style: italic;">]</span>)</code></pre>
+<h3 id="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>callback</code></dt>
+  <dd>
+    Function to execute on each value in the array, taking four arguments:
+    <dl>
+      <dt>
+        <code>previousValue</code></dt>
+      <dd>
+        The value previously returned in the last invocation of the callback, or <code>initialValue</code>, if supplied. (See below.)</dd>
+      <dt>
+        <code>currentValue</code></dt>
+      <dd>
+        The current element being processed in the array.</dd>
+      <dt>
+        <code>index</code></dt>
+      <dd>
+        The index of the current element being processed in the array.</dd>
+      <dt>
+        <code>array</code></dt>
+      <dd>
+        The array <code>reduce</code> was called upon.</dd>
+    </dl>
+  </dd>
+  <dt>
+    <code>initialValue</code></dt>
+  <dd>
+    Object to use as the first argument to the first call of the <code>callback</code>.</dd>
+</dl>
+<h2 id="Description">Description</h2>
+<p><code>reduce</code> executes the <code>callback</code> function once for each element present in the array, excluding holes in the array, receiving four arguments: the initial value (or value from the previous <code>callback</code> call), the value of the current element, the current index, and the array over which iteration is occurring.</p>
+<p>The first time the callback is called, <code>previousValue</code> and <code>currentValue</code> can be one of two values. If <code>initialValue</code> is provided in the call to <code>reduce</code>, then <code>previousValue</code> will be equal to <code>initialValue</code> and <code>currentValue</code> will be equal to the first value in the array. If no <code>initialValue</code> was provided, then <code>previousValue</code> will be equal to the first value in the array and <code>currentValue</code> will be equal to the second.</p>
+<p>Suppose the following use of <code>reduce</code> occurred:</p>
+<pre class="brush:js">[0,1,2,3,4].reduce(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue;
+});
+</pre>
+<p>The callback would be invoked four times, with the arguments and return values in each call being as follows:</p>
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th scope="col"> </th>
+      <th scope="col"><code>previousValue</code></th>
+      <th scope="col"><code>currentValue</code></th>
+      <th scope="col"><code>index</code></th>
+      <th scope="col"><code>array</code></th>
+      <th scope="col">return value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">first call</th>
+      <td><code>0</code></td>
+      <td><code>1</code></td>
+      <td><code>1</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>1</code></td>
+    </tr>
+    <tr>
+      <th scope="row">second call</th>
+      <td><code>1</code></td>
+      <td><code>2</code></td>
+      <td><code>2</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>3</code></td>
+    </tr>
+    <tr>
+      <th scope="row">third call</th>
+      <td><code>3</code></td>
+      <td><code>3</code></td>
+      <td><code>3</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>6</code></td>
+    </tr>
+    <tr>
+      <th scope="row">fourth call</th>
+      <td><code>6</code></td>
+      <td><code>4</code></td>
+      <td><code>4</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>10</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>The value returned by <code>reduce</code> would be that of the last callback invocation (<code>10</code>).</p>
+<p>If you were to provide an initial value as the second argument to <code>reduce</code>, the result would look like this:</p>
+<pre class="brush:js">[0,1,2,3,4].reduce(function(previousValue, currentValue, index, array){
+  return previousValue + currentValue;
+}, 10);
+</pre>
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th scope="col"> </th>
+      <th scope="col"><code>previousValue</code></th>
+      <th scope="col"><code>currentValue</code></th>
+      <th scope="col"><code>index</code></th>
+      <th scope="col"><code>array</code></th>
+      <th scope="col">return value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">first call</th>
+      <td><code>10</code></td>
+      <td><code>0</code></td>
+      <td><code>0</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>10</code></td>
+    </tr>
+    <tr>
+      <th scope="row">second call</th>
+      <td><code>10</code></td>
+      <td><code>1</code></td>
+      <td><code>1</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>11</code></td>
+    </tr>
+    <tr>
+      <th scope="row">third call</th>
+      <td><code>11</code></td>
+      <td><code>2</code></td>
+      <td><code>2</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>13</code></td>
+    </tr>
+    <tr>
+      <th scope="row">fourth call</th>
+      <td><code>13</code></td>
+      <td><code>3</code></td>
+      <td><code>3</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>16</code></td>
+    </tr>
+    <tr>
+      <th scope="row">fifth call</th>
+      <td><code>16</code></td>
+      <td><code>4</code></td>
+      <td><code>4</code></td>
+      <td><code>[0,1,2,3,4]</code></td>
+      <td><code>20</code></td>
+    </tr>
+  </tbody>
+</table>
+<p>The value returned by <code>reduce</code> this time would be, of course, <code>20</code>.</p>
+<h2 id="Compatibility">Compatibility</h2>
+<p><code>Array.prototype.reduce</code> is an ECMAScript 5 addition; as such it may not be present in other implementations of the standard. You can work around this by inserting the following code at the beginning of your scripts, allowing use of <code>reduce</code> in implementations which do not natively support it.</p>
+<pre class="brush:js">if ('function' !== typeof Array.prototype.reduce) {
+  Array.prototype.reduce = function(callback, opt_initialValue){
+    'use strict';
+    if (null === this || 'undefined' === typeof this) {
+      // At the moment all modern browsers, that support strict mode, have
+      // native implementation of Array.prototype.reduce. For instance, IE8
+      // does not support strict mode, so this check is actually useless.
+      throw new TypeError(
+          'Array.prototype.reduce called on null or undefined');
+    }
+    if ('function' !== typeof callback) {
+      throw new TypeError(callback + ' is not a function');
+    }
+    var index, value,
+        length = this.length &gt;&gt;&gt; 0,
+        isValueSet = false;
+    if (1 &lt; arguments.length) {
+      value = opt_initialValue;
+      isValueSet = true;
+    }
+    for (index = 0; length &gt; index; ++index) {
+      if (this.hasOwnProperty(index)) {
+        if (isValueSet) {
+          value = callback(value, this[index], index, this);
+        }
+        else {
+          value = this[index];
+          isValueSet = true;
+        }
+      }
+    }
+    if (!isValueSet) {
+      throw new TypeError('Reduce of empty array with no initial value');
+    }
+    return value;
+  };
+}
+</pre>
+<h2 id="Examples">Examples</h2>
+<h3 id="Example.3A_Sum_up_all_values_within_an_array">Example: Sum up all values within an array</h3>
+<pre class="brush:js">var total = [0, 1, 2, 3].reduce(function(a, b) {
+    return a + b;
+});
+// total == 6
+</pre>
+<h3 id="Example.3A_Flatten_an_array_of_arrays">Example: Flatten an array of arrays</h3>
+<pre class="brush:js">var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+    return a.concat(b);
+});
+// flattened is [0, 1, 2, 3, 4, 5]
+</pre>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p>Based on <a class="external" href="http://kangax.github.com/es5-compat-table/">Kangax's compat tables</a></p>
+<div>
+  <div class="htab"> 
+    <a id="AutoCompatibilityTable" name="AutoCompatibilityTable"/> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div></div>
+<div id="compat-desktop">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Chrome</th>
+        <th>Firefox (Gecko)</th>
+        <th>Internet Explorer</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: #888;" title="Please update this with the earliest version of support.">(Yes)</span></td>
+        <td>3.0 (1.9)</td>
+        <td>9</td>
+        <td>10.5</td>
+        <td>4.0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="compat-mobile">
+  <table class="compat-table">
+    <tbody>
+      <tr>
+        <th>Feature</th>
+        <th>Android</th>
+        <th>Chrome for Android</th>
+        <th>Firefox Mobile (Gecko)</th>
+        <th>IE Mobile</th>
+        <th>Opera Mobile</th>
+        <th>Safari Mobile</th>
+      </tr>
+      <tr>
+        <td>Basic support</td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+        <td><span style="color: rgb(255, 153, 0);" title="Compatibility unknown; please update this.">?</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Array/ReduceRight" title="JavaScript/Reference/Objects/Array/reduceRight">reduceRight</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (5)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/ECMAScript5">ECMAScript5</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array">Array</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%201.8">JavaScript 1.8</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Array%20methods">Array methods</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/cwest">cwest</a>, <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/Jresig">Jresig</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/dbruant">dbruant</a>, <a href="/en-US/profiles/krishnamohanguda">krishnamohanguda</a>, <a href="/en-US/profiles/rwaldron">rwaldron</a>, <a href="/en-US/profiles/dhodder">dhodder</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/LeoDutra">LeoDutra</a>, <a href="/en-US/profiles/mjball">mjball</a>, <a href="/en-US/profiles/MattBrubeck">MattBrubeck</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/berkerpeksag">berkerpeksag</a>, <a href="/en-US/profiles/evan_elwood">evan_elwood</a>, <a href="/en-US/profiles/Inimino">Inimino</a>, <a href="/en-US/profiles/evgeniypavlyuk">evgeniypavlyuk</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+          <time datetime="2013-08-15T03:45:15-07:00">Aug 15, 2013 3:45:15 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/Brettz9">Brettz9</a>, 
+            <time datetime="2013-08-15T03:45:15-07:00">Aug 15, 2013 3:45:15 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

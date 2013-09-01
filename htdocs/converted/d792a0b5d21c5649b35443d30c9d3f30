@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417183" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Function.prototype</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Represents the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="en-US/docs/JavaScript/Reference/Global_Objects/Function">Function</a> prototype object.</p>
+<table class="standard-table">
+  <tbody>
+    <tr>
+      <td class="header" colspan="2">Property of Function</td>
+    </tr>
+    <tr>
+      <td>Implemented in:</td>
+      <td>JavaScript 1.1, NES 2.0</td>
+    </tr>
+    <tr>
+      <td>ECMA Version:</td>
+      <td>ECMA-262</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Description" name="Description">Description</h2>
+<p><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function" title="en-US/docs/JavaScript/Reference/Global Objects/Function"><code>Function</code></a> objects inherit from <code>Function.prototype</code>. Modifications to the <code>Function.prototype</code> object are propagated to all <code>Function</code> instances.</p>
+<h2 id="Properties" name="Properties">Properties</h2>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/arguments" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/arguments">arguments</a> <span class="inlineIndicator deprecated deprecatedInline" title="">Deprecated</span></dt>
+  <dd>
+    An array corresponding to the arguments passed to a function. This is deprecated as property of <code>Function</code>, use the <a href="/en-US/docs/JavaScript/Reference/Functions_and_function_scope/arguments" title="en-US/docs/JavaScript/Reference/Functions/arguments">arguments</a> object available within the function instead.</dd>
+</dl>
+<dl>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/arity" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/arity">arity</a> <span class="inlineIndicator obsolete obsoleteInline" title="">Obsolete since <a class="new" href="/en-US/docs/JavaScript/New_in_JavaScript/1.8.6">JavaScript 1.8.6</a></span></dt>
+  <dd>
+    Specifies the number of arguments expected by the function. Use the <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/length" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/length">length</a> property instead.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/caller" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/caller">caller</a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Specifies the function that invoked the currently executing function.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/constructor" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/constructor">constructor</a></dt>
+  <dd>
+    Specifies the function that creates an object's prototype.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/length" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/length">length</a></dt>
+  <dd>
+    Specifies the number of arguments expected by the function.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/name" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/name">name</a> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    The name of the function.</dd>
+</dl>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Properties inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/Constructor"><code>constructor</code></a></div> 
+</div></div>
+<h2 id="Methods" name="Methods">Methods</h2>
+<dl>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">apply</a></code></dt>
+  <dd>
+    Applies the method of another object in the context of a different object (the calling object); arguments can be passed as an Array object.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/bind" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/bind">bind</a></code> <span class="inlineIndicator jsMinVer">Requires <a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a></span></dt>
+  <dd>
+    Creates a new function which, when called, itself calls this function in the context of the provided value, with a given sequence of arguments preceding any provided when the new function was called.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/call" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/call">call</a></code></dt>
+  <dd>
+    Calls (executes) a method of another object in the context of a different object (the calling object); arguments can be passed as they are.</dd>
+  <dt>
+    <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/isGenerator" title="en-US/docs/JavaScript/Reference/Global Objects/Function/isGenerator"><code>isGenerator</code></a> <span class="inlineIndicator jsMinVer">Requires <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.6">JavaScript 1.8.6</a></span></dt>
+  <dd>
+    Returns <code>true</code> if the function is a <a href="/en-US/docs/Core_JavaScript_1.5_Guide/Iterators_and_Generators#Generators.3a_a_better_way_to_build_Iterators" title="en-US/docs/Core JavaScript 1.5 Guide/Iterators and Generators#Generators.3a a better way to build Iterators">generator</a>; otherwise returns <code>false</code>.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/toSource" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/toSource">toSource</a></code> <span class="inlineIndicator nonStandard nonStandardInline">Non-standard</span></dt>
+  <dd>
+    Returns a string representing the source code of the function. Overrides the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource" title="en-US/docs/JavaScript/Reference/Global_Objects/Object/toSource">Object.toSource</a></code> method.</dd>
+  <dt>
+    <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Function/toString" title="en-US/docs/JavaScript/Reference/Global_Objects/Function/toString">toString</a></code></dt>
+  <dd>
+    Returns a string representing the source code of the function. Overrides the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Object/toString" title="en-US/docs/JavaScript/Reference/Global_Objects/Object/toString">Object.toString</a></code> method.</dd>
+</dl>
+<div>
+  <div class="inheritsbox template-jsOverrides" style="border: 5px solid #D1D1FF; background: #f5f5ff; padding: 2px 10px; margin: 10px; overflow: hidden;">  
+<div><span style="font-weight: 700;">Methods inherited from  <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>:</span></div> 
+<div><a class="internal" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/ToSource"><code>toSource</code></a></div> 
+</div></div>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript%20Reference">JavaScript Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/JavaScript">JavaScript</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/delae">delae</a>, <a href="/en-US/profiles/JulesH">JulesH</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>, <a href="/en-US/profiles/zhubo">zhubo</a>, <a href="/en-US/profiles/Micmath">Micmath</a>, <a href="/en-US/profiles/Seant23">Seant23</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/lmorchard">lmorchard</a>, <a href="/en-US/profiles/Hao2lian">Hao2lian</a>, <a href="/en-US/profiles/Wafe">Wafe</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/wizard04">wizard04</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/Potappo">Potappo</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:52-07:00">May 28, 2013 8:32:52 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/ethertank">ethertank</a>, 
+            <time datetime="2012-10-30T06:36:52-07:00">Oct 30, 2012 6:36:52 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/prototype$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

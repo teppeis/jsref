@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="417255" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">Date.parse</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <h2 id="Summary" name="Summary">Summary</h2>
+<p>Parses a string representation of a date, and returns the number of milliseconds since January 1, 1970, 00:00:00 UTC.</p>
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th class="header" colspan="2">Method of <a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date" title="JavaScript/Reference/Global_Objects/Date"><code>Date</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Implemented in</td>
+      <td>JavaScript 1.0</td>
+    </tr>
+    <tr>
+      <td>ECMAScript Edition</td>
+      <td>ECMAScript 1st Edition</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<pre class="syntaxbox"><code>Date.parse(dateString)</code></pre>
+<h3 id="Parameters" name="Parameters">Parameters</h3>
+<dl>
+  <dt>
+    <code>dateString</code></dt>
+  <dd>
+    A string representing an <a class="external" href="http://tools.ietf.org/html/rfc2822#page-14" title="http://tools.ietf.org/html/rfc2822#page-14">RFC2822</a> or ISO 8601 date.</dd>
+</dl>
+<h2 id="Description" name="Description">Description</h2>
+<p>The <code>parse</code> method takes a date string (such as "<code>Dec 25, 1995</code>") and returns the number of milliseconds since January 1, 1970, 00:00:00 UTC. The local time zone is used to interpret arguments that do not contain time zone information. This function is useful for setting date values based on string values, for example in conjunction with the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date/setTime" title="JavaScript/Reference/Global_Objects/Date/setTime">setTime</a></code> method and the <code><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date" title="JavaScript/Reference/Global_Objects/Date">Date</a></code> object.</p>
+<p>Given a string representing a time, <code>parse</code> returns the time value. It accepts the RFC2822 / IETF date syntax (<a class="external" href="http://tools.ietf.org/html/rfc2822#page-14" title="http://tools.ietf.org/html/rfc2822#page-14">RFC2822 Section 3.3</a>), e.g. "<code>Mon, 25 Dec 1995 13:30:00 GMT</code>". It understands the continental US time-zone abbreviations, but for general use, use a time-zone offset, for example, "<code>Mon, 25 Dec 1995 13:30:00 +0430</code>" (4 hours, 30 minutes east of the Greenwich meridian). If you do not specify a time zone, the local time zone is assumed. GMT and UTC are considered equivalent.</p>
+<p/><div class="blockIndicator standardNote standardNoteBlock"> 
+    <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.8.5">JavaScript 1.8.5</a> note</p> 
+    <p style="font-weight: 400;">A <a class="external" href="http://www.w3.org/TR/NOTE-datetime">subset of ISO 8601</a> formatted date strings can now also be parsed.</p> 
+</div><p/>
+<p>Alternatively, the date/time string may be in <a class="external" href="http://www.w3.org/TR/NOTE-datetime" title="http://www.w3.org/TR/NOTE-datetime">ISO 8601</a> format. Starting with JavaScript 1.8.5 (Firefox 4), a <a class="external" href="http://www.w3.org/TR/NOTE-datetime" title="http://www.w3.org/TR/NOTE-datetime">subset of ISO 8601</a> is supported. For example, "<code>2011-10-10</code>" (just date) or "<code>2011-10-10T14:48:00</code>" (date and time) can be passed and parsed.</p>
+<p>Note that while time zone specifiers are used during date string parsing to properly interpret the argument, they do not affect the value returned, which is always the number of milliseconds between January 1, 1970 00:00:00 UTC and the point in time represented by the argument.</p>
+<p>Because <code>parse</code> is a static method of <code>Date</code>, you always use it as <code>Date.parse()</code>, rather than as a method of a <code>Date</code> object you created.</p>
+<h2 id="Examples" name="Examples">Examples</h2>
+<h3 id="Example:_Using_parse" name="Example:_Using_parse">Example: Using <code>parse</code></h3>
+<p>If <code>IPOdate</code> is an existing <code>Date</code> object, then you can set it to August 9, 1995 (local time) as follows:</p>
+<pre class="brush: js">IPOdate.setTime(Date.parse("Aug 9, 1995"));
+</pre>
+<p>Some other examples:</p>
+<pre class="brush: js">// Returns 807937200000 in time zone GMT-0300, and other values in other
+// timezones, since the argument does not specify a time zone.
+Date.parse("Aug 9, 1995");
+</pre>
+<pre class="brush: js">// Returns 807926400000 no matter the local time zone.
+Date.parse("Wed, 09 Aug 1995 00:00:00 GMT");
+</pre>
+<pre class="brush: js">// Returns 807937200000 in timezone GMT-0300, and other values in other
+// timezones, since there is no time zone specifier in the argument.
+Date.parse("Wed, 09 Aug 1995 00:00:00");
+</pre>
+<pre class="brush: js">// Returns 0 no matter the local time zone.
+Date.parse("Thu, 01 Jan 1970 00:00:00 GMT");
+</pre>
+<pre class="brush: js">// Returns 14400000 in timezone GMT-0400, and other values in other 
+// timezones, since there is no time zone specifier in the argument.
+Date.parse("Thu, 01 Jan 1970 00:00:00");
+</pre>
+<pre class="brush: js">// Returns 14400000 no matter the local time zone.
+Date.parse("Thu, 01 Jan 1970 00:00:00 GMT-0400");
+</pre>
+<h2 id="See_also" name="See_also">See also</h2>
+<ul>
+  <li><a href="/en-US/docs/JavaScript/Reference/Global_Objects/Date/UTC" title="JavaScript/Reference/Global_Objects/Date/UTC">Date.UTC</a></li>
+</ul>
+                  </div>
+    
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i class="icon-tags"/>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Date">Date</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Date%20Methods">Date Methods</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/evilpie">evilpie</a>, <a href="/en-US/profiles/BradSpencer">BradSpencer</a>, <a href="/en-US/profiles/Ericn">Ericn</a>, <a href="/en-US/profiles/Ghodmode">Ghodmode</a>, <a href="/en-US/profiles/openjck">openjck</a>, <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Yuichirou">Yuichirou</a>, <a href="/en-US/profiles/fanf">fanf</a>, <a href="/en-US/profiles/ethertank">ethertank</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Brettz9">Brettz9</a>, <a href="/en-US/profiles/BenB">BenB</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/lpage">lpage</a>, <a href="/en-US/profiles/Maian">Maian</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:32:55-07:00">May 28, 2013 8:32:55 AM</time>
+                      <br/>
+            Last reviewed by:  
+            <a href="/en-US/profiles/openjck">openjck</a>, 
+            <time datetime="2013-05-12T18:35:55-07:00">May 12, 2013 6:35:55 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>

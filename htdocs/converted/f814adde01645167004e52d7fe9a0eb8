@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+
+
+<body id="" class="html-ltr document" role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+  
+
+    
+
+      
+  
+<!-- top toolbar -->
+
+
+
+
+<section class="entry-content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main" data-current-revision="418251" data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes." data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title entry-title">
+            <h1 class="page-title">prototype</h1>
+                        
+
+            
+            
+                                </div>
+        
+
+        
+               </header>
+
+           
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                
+                                <p> </p>
+<h2 id="Summary">Summary</h2>
+<p>Represents the prototype for the <a href="/en/JavaScript/Reference/Global_Objects/ReferenceError" title="en/JavaScript/Reference/Global_Objects/ReferenceError"><code>ReferenceError</code></a> constructor.</p>
+<h2 id="Description">Description</h2>
+<p>All <a href="/en/JavaScript/Reference/Global_Objects/ReferenceError" title="en/JavaScript/Reference/Global_Objects/ReferenceError"><code>ReferenceError</code></a> instances inherit from <code>ReferenceError.prototype</code>. You can use the prototype to add properties or methods to all instances.</p>
+<h2 id="Properties">Properties</h2>
+<dl> <dt><a href="/en/JavaScript/Reference/Global_Objects/ReferenceError/constructor" title="en/JavaScript/Reference/Global_Objects/ReferenceError/constructor">constructor</a></dt> <dd>Specifies the function that created an instance's prototype.</dd>
+</dl>
+<dl> <dt><a href="/en/JavaScript/Reference/Global_Objects/ReferenceError/name" title="en/JavaScript/Reference/Global_Objects/ReferenceError/name"><code>name</code></a></dt> <dd>Error name.</dd>
+</dl>
+<p/><div style="border: solid #ccc 1px; background: #eee; padding: 0px 10px 0px 10px; margin: 10px 0px 10px 0px;"><b>Properties inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype">Error.prototype</a></b><br/><small><a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/fileName">fileName</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/lineNumber">lineNumber</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/message">message</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/name">name</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/number">number</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/stack">stack</a></small></div><p/>
+<h2 id="Methods">Methods</h2>
+<p>Although the <code>ReferenceError</code> prototype object does not contain any methods of its own, <a href="/en/JavaScript/Reference/Global_Objects/ReferenceError" title="en/JavaScript/Reference/Global_Objects/ReferenceError"><code>ReferenceError</code></a> instances do inherit some methods through the prototype chain.</p>
+<p/><div style="border: solid #ccc 1px; background: #eee; padding: 0px 10px 0px 10px; margin: 10px 0px 10px 0px;"><b>Methods inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/prototype">Error.prototype</a></b><br/><small><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/toSource">toSource</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error/toString">toString</a></small></div><p/>
+<p/><div style="border: solid #ccc 1px; background: #eee; padding: 0px 10px 0px 10px; margin: 10px 0px 10px 0px;"><b>Methods inherited from <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype">Object.prototype</a></b><br/><small><a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__defineGetter__">__defineGetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__defineSetter__">__defineSetter__</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">hasOwnProperty</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/isPrototypeOf">isPrototypeOf</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__lookupGetter__">__lookupGetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__lookupSetter__">__lookupSetter__</a>, <a class="new" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/__noSuchMethod__">__noSuchMethod__</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable">propertyIsEnumerable</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/unwatch">unwatch</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/valueOf">valueOf</a>, <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/watch">watch</a></small></div><p/>
+<h2 id="See_also">See also</h2>
+<ul> <li><a href="/en/JavaScript/Reference/Global_Objects/Error/prototype" title="en/JavaScript/Reference/Global_Objects/Error/prototype"><code>Error.prototype</code></a></li> <li><a href="/en/JavaScript/Reference/Global_Objects/Function/prototype" title="en/JavaScript/Reference/Global_Objects/Function/prototype"><code>Function.prototype</code></a></li>
+</ul>
+<p/>
+                  </div>
+    
+    <section class="page-meta">
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Sevenspade">Sevenspade</a>
+                          <br/>
+          Last updated by:  
+          <a href="/en-US/profiles/Sheppy">Sheppy</a>, 
+          <time datetime="2013-05-28T08:33:39-07:00">May 28, 2013 8:33:39 AM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError/prototype$edit">
+      <input type="hidden" name="form" id="form" value="rev"/>
+      <input type="hidden" name="content" value="" class="entry-content"/>
+  </form>
+      </div>
+   </div>
+    </section>  
+
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+
+
+
+
+          
+      
+      
+      
+              
+                  
+  
+  
+      
+
+    <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=aa6c00e"/>
+
+
+        
+    
+
+
+</body>
+</html>
